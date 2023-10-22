@@ -21,6 +21,7 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval=TRUE, include=TRUE, cache=TRUE)
 library(tidyverse)
+library(gganimate)
 ```
 
 ```{css echo=FALSE}
@@ -108,8 +109,48 @@ library(tidyverse)
 
 ---
 # Hvad betyder det? 
-```{r}
+```{r echo=FALSE}
+library(tidyverse)
+library(gganimate)
 
+# data0 = read_csv2("Data/DST_OFF3_indtaegter_i_alt.csv", col_names = c("Year", "Indtaegter"))
+
+# # Create a base plot
+# base_plot = ggplot(data0, aes(x = Year, y = Indtaegter)) +
+#   geom_line() +
+#   labs(title = "Public Revenue Over Time")
+# 
+# # Plot 2: Public revenue versus time with a trend line
+# plot2 = base_plot +
+#   geom_smooth(method = "lm", se = FALSE, color = "red") +
+#   labs(title = "Public Revenue Over Time with Trend Line")
+# 
+# # Plot 3: Public revenue with the trendline subtracted out
+# plot3 = base_plot +
+#   geom_smooth(method = "lm", se = FALSE, color = "red") +
+#   geom_line(data = data0 %>% mutate(Indtaegter = Indtaegter - predict(lm(Indtaegter ~ Year, data0))), color = "blue") +
+#   labs(title = "Public Revenue with Trend Line Subtracted")
+# 
+# # Combine plots 2 and 3 into a list
+# plot_list = list(base_plot, plot2, plot3)
+# 
+# # Animate the transition between the plots
+# anim = gganimate::transition_states(
+#   state = seq_along(plot_list),
+#   transition_length = 3,
+#   state_length = 3
+# )
+# 
+# # Render the animation
+# anim_plot = base_plot + gganimate::enter_fade() +
+#   gganimate::exit_fade()
+# anim_plot
+ggplot(mtcars, aes(mpg, disp)) +
+  geom_point() +
+  geom_smooth(colour = 'grey', se = FALSE) +
+  geom_smooth(aes(colour = factor(gear))) +
+  transition_layers(layer_length = 1, transition_length = 2) +
+  enter_fade() + enter_grow()
 ```
 
 .footnote[
