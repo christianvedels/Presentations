@@ -164,7 +164,7 @@ Advertisement and networking
 ---
 
 .pull-left[
-#### Implications (2/2)
+## Implications (2/2)
 
 - **The most important thing on the programme:** Conference dinner
   + And whatever happens afterwards
@@ -176,12 +176,14 @@ Advertisement and networking
 - Check the programme and who you want to speak with 
 - Write them an email before and after the conference 
   + No reason to do so? Invent one
-  
-- Alcohol: A problem
 ]
+
+--
 
 .pull-right[
 ![Vienna](Figures/Vienna.jpg)
-**Vieaneese beer garten**
+**Vieaneese beer garten - Got back to the hotel at 5**
+
+- **Alcohol culture?**
 
 ]
