@@ -1,7 +1,7 @@
 # Guest Lectures and Talks
 In this repository I will collect random talks and guest lecture I give here and there. More to come! 
 
-![Networking at conferences](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Networking_at_confenrences/Slides.html#1): Presentation at SDU Junior retreat 2023
+[Networking at conferences](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Networking_at_confenrences/Slides.html#1): Presentation at SDU Junior retreat 2023
 
 ### Danish presentations 
  
