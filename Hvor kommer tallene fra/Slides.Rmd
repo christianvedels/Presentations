@@ -264,6 +264,31 @@ ggsave("Figures/Beskaetigelse.png", plot = p3, width = 4, height = 4)
 
 
 ---
+# Begreber
+
+.pull-left[
+## Bruttoeffekt
+- Den umiddelbare effekt 
+- F.eks. den ekstra arbejdstid på papiret
+]
+
+.pull-right[
+## Nettoeffekt
+- Den endelige effekt baseret på faktisk adfærd og 'tilbageløb'
+- F.eks. den ekstra arbejdstid folk faktisk ender med at præstere
+]
+
+--
+.pull-right-wide[
+**Gemmemslag**
+- Hvor meget af bruttoeffekten 'slår igennem' til nettoeffekten
+- F.eks. 75%, 0% eller -10%
+]
+
+
+
+
+---
 # 2. Hvordan ved de at det er 8500 mere?
 
 - **Strukturel beskæfitgelse:** 2.5 mio. 
@@ -271,10 +296,9 @@ ggsave("Figures/Beskaetigelse.png", plot = p3, width = 4, height = 4)
 - **Bruttoforøgelse af arbejdstid:** 1/220 $\approx$ 0,45%
 - **Gennemslag:** .highlight[Ubekendt men estimeret til 75%]
 - **Nettoforøgelse af arbejdstid:** $Gennemslag \times Bruttoforøgelse \approx 0.34\%$
-- **Ændring i strukturel beskæftigelse:** $Nettoforøgelse\:af\:arbejdstid\times Strukturel\:beskæfitgelse \approx 8500$
+- **Ændring i strukturel beskæftigelse:** $0.34\% \times 2.5 mio. \approx 8500$ 
 --
-$0.34\% \times 2.5 mio. \approx 8500$
-
+$Nettoforøgelse\:af\:arbejdstid\times Strukturel\:beskæfitgelse \approx 8500$
 --
 
 $\mathbf{Gennemslag} \times Bruttoforøgelse\times Strukturel beskæfitgelse \approx 8500$
@@ -325,6 +349,14 @@ ggsave("Figures/Arbejdstid.png", plot = p1, width = 6, height = 3)
 ]
 
 ---
+# Katte og statistik
+.center[
+.middle[
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HUti6vGctQM?si=VpeL6ydO60RoiHG5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+]
+]
+
+---
 
 # 2. Hvordan ved de at det er 8500 mere?
 .pull-left[
@@ -339,7 +371,6 @@ ggsave("Figures/Arbejdstid.png", plot = p1, width = 6, height = 3)
   + B: $\mathbf{Y}\rightarrow\mathbf{X}$
   + C: $\mathbf{Z}\rightarrow\mathbf{Y}$ og $\mathbf{Z}\rightarrow\mathbf{X}$
 ]
-
 --
 
 .pull-right[
