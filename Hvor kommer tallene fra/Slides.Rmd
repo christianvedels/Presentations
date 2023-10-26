@@ -78,6 +78,23 @@ library(tidyverse)
 ```
 
 ---
+# Hvem er jeg
+.pull-left[
+
+- Økonom - nyuddannet PhD d. 25. september
+- Adjunkt på økonomisk institut
+- Forskning i krydsfeltet mellem machine learning og økonomisk historie
+- Underviser i alt fra machine learning fag til indledende mikroøkonomi
+- IB student fra Nyborg Gymnasium i 2013 - 10 år siden. 
+
+]
+
+.pull-right[
+![Student 2013](Figures/IB_diploma.jpg)
+.small123[*Dimission 2013*]
+]
+
+---
 # TL;DR
 - Stol aldrig på finansministeriet 
 - Stol lidt på dem alligevel 
