@@ -1,0 +1,403 @@
+---
+output:
+  xaringan::moon_reader:
+    includes:
+      after_body: insert-logo.html
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+class: center, inverse
+
+```{css echo=FALSE}
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+```
+
+
+
+# Breaking the HISCO Barrier: AI and Occupational Data Standardization
+## Christian Møller-Dahl
+## Christian Vedel
+### University of Southern Denmark, HEDG
+
+#### Twitter: @ChristianVedel,
+#### Email: christian-vs@sam.sdu.dk
+#### Updated `r Sys.Date()` 
+
+---
+
+# Introduction
+.pull-left[
+### Motivation
+- Manual labelling of data is tedious, expensive and error-prone  
+- We collectively poor thousands of hours into similar work
+- 4 mil. $\rightarrow$ 96k $\rightarrow$ 605 days of work 
+
+
+### This presentation
+- **Automatic tool to make HISCO labels** 
+- 98 percent precision
+- How it is done $\rightarrow$ ongoing updates
+]
+
+.pull-right[
+![Iron_and_coal](Figures/Iron_and_coal.jpg)
+*Willam Bell Scott (1861) "Iron and Coal" (Wikimedia)*
+
+]
+
+---
+# HISCO codes
+- Derived from ISCO (International Standard Classification of Occupations) 
+- Invented for the sake of international comparability  
+- Introduced by Leuwen, Maas, Miles (2002) based on ISCO68  
+- Hiearchical structure well suited for analysis
+- Common application: Convert to ranking (HISCAM, HISCLASS, etc. )
+- Usually labelled with 'smart' manual methods 
+
+![HISCO](Figures/HISCO structure.png)
+
+---
+# Data example
+```{r echo=FALSE}
+load("Data_example_presentation.Rdata")
+rownames(tmp) = NULL
+
+DT::datatable(
+  tmp,
+  fillContainer = FALSE, options = list(pageLength = 8)
+)
+```
+
+---
+.pull-left[
+## The naive solution
+- List all unique occupational descriptions and label them e.g. "farm servant: 62120"
+- Label via lookup table  
+
+## The challenge
+- 17865 different occupational descriptions fit with "farm servant" in DK censuses ("in service", "servant girl", "servant boy", "servant woman", "servant karl")
+- HISCO has ~2000 occupational classes, each with similar complexity in writing 
+- Spelling mistakes, **negations**, and different spelling conventions
+
+]
+
+--
+.pull-right[
+## The solution
+![arhc_small](Figures/Architecture_small.png)
+- Use machine learning! 
+- Multi-label multiple classification 
+- Trivial machine learning problem 
+- Apply tricks from the machine learning literature to improve performance on unseen examples
+]
+
+---
+
+.pull-left[
+## The tricks
+
+- Unseen test and validation data 
+- LSTM reccurent: Reads with memory "lives of fishing and farm work" (Hochreiter, Schmidhuber, 1997)
+- Overparameterized neural network: More parameters than data (Allen-Zhu, Li, Liang, 2018) 
+- Regularization via dropout: Some neurons are randomly disabled in training (Srivastava et al 2014) 
+- Embedding: Represent language in high-dimensional space  (Mandelbaum, 2016)
+- Data augmentation (Moris et al, 2020): 
+  + "farmer": {"farmtr", "fermer", "yellow farmer"}
+]
+
+
+.pull-right[
+**Overfitting**
+![Overfitting](https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Overfitting.svg/300px-Overfitting.svg.png)
+(Wikimedia)
+
+### Metrics
+- Accuracy
+- Precision
+- Recall 
+- F1 
+- Micro- and macro-level 
+- In training: Binary cross-entropy (differentiable)
+]
+
+---
+# Data sources
+
+### Used today:
+| Source | Lang | Observations | Reference    |
+|------------------|----------------------------|
+| Danish census | Da |  4,673,892  | Clausen (2015) |
+| UK Mariage certificates | En | 4,046,387  | Clark, Cummins, Curtis (2022) |
+| DK Ørsted | Da | 36,608 | Ford (2023) |
+| HSN | Nl | 13,495 | Mandemakers et al (2020) |
+| SE Chalmers | Sw | 14,426 | Ford (2023) |
+
+- But also much more in the pipeline. ~70gb
+--
+
+- *Adequate performance down to 10.000 labels* 
+--
+
+- **Amazing performance in millions of observations**
+
+---
+
+# What is other data? 
+
+.pull-left[
+### Other data
+- Swedish census data
+- Norwegian census data
+- Dutch family history data 
+- Labelled biographies
+- IPUMS
+- Barcelona Historical Marriage Database
+- ~70GB
+]
+
+.pull-right[
+### Call for data!
+- If you have something with HISCO labels on it, please send it to christian-vs@sam.sdu.dk. I owe you HISCO codes 
+]
+
+
+---
+# The architecture
+![Arch2](Figures/Architecture.png)
+
+### Training 
+- Model starts at random state
+- Continuously tweaked towards more correct predictions
+
+### Ongoing work
+- Replacing the brains by a multilingual transformer model (XML-RoBERTa) *akin to a chatGPT-frankenstein*
+
+---
+# Training
+![Training](Figures/Training process.png)
+
+### Stopping condition 
+- When validation loss has not improved for 10 epochs training stops
+
+---
+# The product
+```{r echo=TRUE, message=TRUE, warning=TRUE, eval=FALSE}
+# Example prompts
+string_to_hisco("A farmer")
+string_to_hisco("Tailor of beautiful dresses")
+string_to_hisco("The train's fireman")
+```
+
+--
+
+```{r echo=FALSE, message=TRUE, warning=TRUE}
+# Example prompts
+rbind(
+  data.frame(
+    string = "A farmer",
+    hisco = "61110",
+    description = "General Farmer"
+  ),
+  data.frame(
+    string = "Tailor of beautiful dresses",
+    hisco = "79100",
+    description = "Tailor, Specialisation Unknown"
+  ),
+  data.frame(
+    string = "The train's fireman",
+    hisco = "98330",
+    description = "Railway SteamEngine Fireman"
+  )
+)
+
+```
+
+
+---
+# The performance (1/5)
+
+*DK data based on 300.000 validation observations*
+
+### Macro level performance
+
+```{r echo=FALSE}
+load("DK_stats.Rdata")
+x = all_stats[2,]
+rownames(x) = NULL
+knitr::kable(x) 
+```
+
+
+--
+
+### Micro level
+
+```{r echo=FALSE}
+load("DK_stats.Rdata")
+x = all_stats[1,]
+rownames(x) = NULL
+knitr::kable(x) 
+```
+
+
+---
+# The performance (2/5)
+![Recalls](Figures/Recall.png)
+
+---
+# The performance (2/5)
+![Recalls](Figures/Precision.png)
+---
+# The performance (2/5)
+![Recalls](Figures/F1.png)
+
+---
+# The performance (3/5): Confusion matrix
+![Conf_mat1](Figures/conf_mat_lvl5.png)
+---
+# The performance (3/5): Confusion matrix
+![Conf_mat1](Figures/conf_mat_lvl4.png)
+---
+# The performance (3/5): Confusion matrix
+![Conf_mat1](Figures/conf_mat_lvl3.png)
+
+---
+# The performance (3/5): Confusion matrix
+![Conf_mat1](Figures/conf_mat_lvl2.png)
+---
+# The performance (3/5): Confusion matrix
+![Conf_mat1](Figures/conf_mat_lvl1.png)
+
+---
+# Performance (5/5) 
+
+
+
+**Conversion to status scores as validation** $\Rightarrow$ **Higher than human accuracy**
+```{r echo=FALSE}
+load("SES_scores.Rdata")
+rownames(eval) = NULL
+
+SES_perf = SES_perf[,c(1:4,6)]
+names(SES_perf)[5] = "Scale"
+
+DT::datatable(
+  SES_perf,
+  fillContainer = FALSE, options = list(pageLength = 8)
+)
+```
+
+---
+# Transformers
+
+- Architecture that fuels ChatGPT
+- Lives inside chatGPT
+- It is not chatGPT (that would be expensive)
+- Instead: XLM-RoBERTa w. 279M params 
+- Trained on 2.5TB of website data / 100 languages
+- Finetuned for our purpose
+
+--
+
+### Results
+- Still training 
+- 'light' version: 94.7 pct accurate
+
+---
+# Transformer results
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+eval = read_csv2("Eval_stats.csv")
+rownames(eval) = NULL
+
+signif0 = function(x, digits) {
+  if(is.character(x)){
+    return(x)
+  } else{
+    signif(x, digits)
+  }
+}
+
+eval = eval %>% 
+  select(acc0, f10, stat, subset, pct_obs) %>% 
+  mutate_all(signif0, 3) %>% 
+  rename(
+    accuracy = acc0,
+    f1 = f10
+  )
+
+DT::datatable(
+  eval,
+  fillContainer = FALSE, options = list(pageLength = 6),
+  filter = "top"
+)
+```
+
+---
+class: center
+# Trained embeddings
+```{r out.width="650px", echo=FALSE}
+knitr::include_graphics("Figures/tSNE_KMeans_Clustering_with_lang.png")
+```
+
+---
+class: center
+# Untrained embeddings
+```{r out.width="650px", echo=FALSE}
+knitr::include_graphics("Figures/tSNE_KMeans_Clustering_with_lang_raw.png")
+```
+
+---
+
+
+#### An applcation
+
+![Event](Figures/Map.png)
+
+---
+# Empirical strategy
+
+$$log(y_{it}) = Affected_i \times Year_t \beta_t + FE + \varepsilon_{it}$$
+
+
+---
+### Breach $\rightarrow$ Parishes with fishermen
+![Fish1](Figures/fish_extensive.png)
+
+---
+# Conclusion
+
+.pull-left[
+### Steps ahead
+- More data, more training
+- A generalized understand of occupational descriptions
+- Application oriented validation
+]
+
+.pull-right[
+**Please let me know**
+- How do we make this a tool? 
+- <p style="color:red;">If you have data to HISCO codes, please send it to me (christian-vs@sam.sdu.dk)</p>
+- <p style="color:red;">In return I owe you HISCO codes for your project!</p>
+]
+
+
+
+
+
