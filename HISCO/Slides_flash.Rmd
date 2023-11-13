@@ -323,11 +323,12 @@ ggsave("Figures/CPH_stats.png", plot = p1, width = 6, height = 4)
 - Enables more time on caring about the quality of sources and their nature
 
 **Steps ahead:**  
+- Still work in progress
 - More data, more training
 ]
 
 .pull-right[
-**Feel free to reach out**
+**Feel free to reach out**  
 Twitter: @ChristianVedel  
 christian-vs@sam.sdu.dk  
 ]
