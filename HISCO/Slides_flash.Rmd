@@ -14,6 +14,18 @@ editor_options:
 ---
 class: center, inverse
 
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
 ```{css echo=FALSE}
 .pull-left {
   float: left;
@@ -161,6 +173,8 @@ DT::datatable(
 ![Arhcitecture](Figures/Architecture_small.png)
 - Use existing categorised archives 
 - Fine tune a Language model to replicate their findings 
+- **CANINE:** Transformer at character level
+- 
 ]
 
 ---
@@ -179,9 +193,6 @@ x = read_csv2("Data_sources.csv")$Source %>% unique() %>% paste(collapse = "<br>
 .red[**Are you a researcher? Please send us some data. We owe you HISCO codes in return**]  
 .red[christian-vs@sam.sdu.dk]
 
----
-# The performance: 'Confusion matrix'
-![Conf_mat1](Figures/conf_mat_lvl1.png)
 
 ---
 # The product
@@ -215,6 +226,86 @@ rbind(
 )
 
 ```
+
+
+---
+```{r include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+
+loadR = function(x){
+  load(x)
+  return(p3d)
+}
+
+p3d_wlang_base = loadR("Figures/CANINE baseline (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wlang = loadR("Figures/CANINE finetuned (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang_base = loadR("Figures/CANINE baseline (wo. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang = loadR("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata")
+```
+
+# Why do we want a finetuned model?
+.pull-left-narrow[
+- The model learns to understand occupational structures *semantically*
+- Vastly improves performance* 
+- Natural starting point for other general tasks related to occupation
+
+*This is evident from the the embeddings: 768 dimensions reduced to 3* $\rightarrow$
+]
+
+.pull-right-wide[
+.panelset[
+.panel[.panel-name[Unaligned CANINE]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+p3d_wlang_base %>% layout(autosize = F, width = 500, height = 400)
+```
+]
+]
+.panel[.panel-name[Finetuned CANINE]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+p3d_wlang %>% layout(autosize = F, width = 500, height = 400)
+```
+]
+]
+]
+
+---
+# Performance 
+.panelset[
+.panel[.panel-name[All]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+knitr::include_graphics("Figures/All.png")
+```
+]
+]
+.panel[.panel-name[Norwegian]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+knitr::include_graphics("Figures/Lang_no.png")
+```
+]
+.panel[.panel-name[English]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+knitr::include_graphics("Figures/Lang_en.png")
+```
+]
+.panel[.panel-name[Danish]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+knitr::include_graphics("Figures/Lang_da.png")
+```
+]
+.panel[.panel-name[Dutch]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+knitr::include_graphics("Figures/Lang_nl.png")
+```
+]
+.panel[.panel-name[All languages]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+knitr::include_graphics("Figures/Performance_lang_wise2.png")
+```
+]
+]
 
 
 ---
