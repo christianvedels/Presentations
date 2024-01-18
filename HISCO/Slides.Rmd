@@ -14,6 +14,18 @@ editor_options:
 ---
 class: center, inverse
 
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
 ```{css echo=FALSE}
 .pull-left {
   float: left;
@@ -25,6 +37,44 @@ class: center, inverse
 }
 .pull-right ~ p {
   clear: both;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 33%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 33%;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.red {
+  color: red
+}
+
+.xsmall123 {
+  font-size: 0.60em;
 }
 ```
 
@@ -38,6 +88,54 @@ class: center, inverse
 #### Twitter: @ChristianVedel,
 #### Email: christian-vs@sam.sdu.dk
 #### Updated `r Sys.Date()` 
+
+---
+class: center, middle
+
+```{r include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+
+loadR = function(x){
+  load(x)
+  return(p3d)
+}
+
+p3d_wlang_base = loadR("Figures/CANINE baseline (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wlang = loadR("Figures/CANINE finetuned (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang_base = loadR("Figures/CANINE baseline (wo. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang = loadR("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata")
+```
+
+
+
+---
+# Why do we want a finetuned model?
+.pull-left-narrow[
+- The model learns to understand occupational structures 
+- Vastly improves performance* 
+- Natural starting point for other general tasks related to occupation
+
+*This is evident from the the embeddings: 768 dimensions reduced to 3* $\rightarrow$
+]
+
+.pull-right-wide[
+.panelset[
+.panel[.panel-name[Unaligned CANINE]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+p3d_wlang_base %>% layout(autosize = F, width = 500, height = 400)
+```
+]
+]
+.panel[.panel-name[Finetuned CANINE]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+p3d_wlang %>% layout(autosize = F, width = 500, height = 400)
+```
+]
+]
+]
+
 
 ---
 
