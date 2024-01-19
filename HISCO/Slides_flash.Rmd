@@ -92,23 +92,22 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 #### Email: christian-vs@sam.sdu.dk
 #### Updated `r Sys.Date()` 
 
----
-# Motivation
+<!-- # Motivation -->
 
-.pull-left[
-- The 2023 Nobel Prize was given to Claudia Goldin
-> *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023)
+<!-- .pull-left[ -->
+<!-- - The 2023 Nobel Prize was given to Claudia Goldin -->
+<!-- > *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023) -->
 
-- This type of work inherently requires data about the labour market
+<!-- - This type of work inherently requires data about the labour market -->
 
-- *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data*
+<!-- - *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data* -->
 
-]
+<!-- ] -->
 
-.pull-right[
-![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg)
-*Claudia Goldin, wikimedia* 
-]
+<!-- .pull-right[ -->
+<!-- ![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg) -->
+<!-- *Claudia Goldin, wikimedia*  -->
+<!-- ] -->
 
 ---
 # Open questions
@@ -121,6 +120,10 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 
 - **All of it requires data**
+
+### This presentation:
+- A tool to automatically systematise occupational descriptions
+
 ]
 .pull-right[
 ![Suffering](Figures/37004_PhD student in the archive trying to survive yet a_xl-1024-v1-0.png)
@@ -174,7 +177,6 @@ DT::datatable(
 - Use existing categorised archives 
 - Fine tune a Language model to replicate their findings 
 - **CANINE:** Transformer at character level
-- 
 ]
 
 ---
@@ -190,7 +192,7 @@ x = read_csv2("Data_sources.csv")$Source %>% unique() %>% paste(collapse = "<br>
 
 
 --
-.red[**Are you a researcher? Please send us some data. We owe you HISCO codes in return**]  
+.red[**Please send us some data. We owe you HISCO codes in return**]  
 .red[christian-vs@sam.sdu.dk]
 
 
