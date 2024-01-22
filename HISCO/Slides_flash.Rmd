@@ -83,7 +83,8 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 
 
-# Breaking the HISCO Barrier: AI and Occupational Data Standardization
+# Breaking the HISCO Barrier: 
+## *AI and Occupational Data Standardization*
 ## Christian Møller-Dahl
 ## Christian Vedel
 ### University of Southern Denmark, HEDG
@@ -92,22 +93,23 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 #### Email: christian-vs@sam.sdu.dk
 #### Updated `r Sys.Date()` 
 
-<!-- # Motivation -->
+---
+# Motivation
 
-<!-- .pull-left[ -->
-<!-- - The 2023 Nobel Prize was given to Claudia Goldin -->
-<!-- > *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023) -->
+.pull-left[
+- The 2023 Nobel Prize was given to Claudia Goldin
+> *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023)
 
-<!-- - This type of work inherently requires data about the labour market -->
+- This type of work inherently requires data about the labour market
 
-<!-- - *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data* -->
+- *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data*
 
-<!-- ] -->
+]
 
-<!-- .pull-right[ -->
-<!-- ![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg) -->
-<!-- *Claudia Goldin, wikimedia*  -->
-<!-- ] -->
+.pull-right[
+![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg)
+*Claudia Goldin, wikimedia*
+]
 
 ---
 # Open questions
@@ -200,9 +202,9 @@ x = read_csv2("Data_sources.csv")$Source %>% unique() %>% paste(collapse = "<br>
 # The product
 ```{r echo=TRUE, message=TRUE, warning=TRUE, eval=FALSE}
 # Example prompts
-string_to_hisco("A farmer")
-string_to_hisco("Tailor of beautiful dresses")
-string_to_hisco("The train's fireman")
+model.predict("A farmer")
+model.predict("Tailor of beautiful dresses")
+model.predict("The train's fireman")
 ```
 
 --
@@ -229,21 +231,35 @@ rbind(
 
 ```
 
+.footnote[
+***See 'PREDICT_HISCOs.py'***
+]
+
+
 
 ---
 ```{r include=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(plotly)
 
-loadR = function(x){
+loadR1 = function(x){
   load(x)
   return(p3d)
 }
+loadR2 = function(x){
+  load(x)
+  return(p2d)
+}
 
-p3d_wlang_base = loadR("Figures/CANINE baseline (w. lang)Interactive_tsne_3d.Rdata")
-p3d_wlang = loadR("Figures/CANINE finetuned (w. lang)Interactive_tsne_3d.Rdata")
-p3d_wolang_base = loadR("Figures/CANINE baseline (wo. lang)Interactive_tsne_3d.Rdata")
-p3d_wolang = loadR("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata")
+p3d_wlang_base = loadR1("Figures/CANINE baseline (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wlang = loadR1("Figures/CANINE finetuned (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang_base = loadR1("Figures/CANINE baseline (wo. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang = loadR1("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata")
+
+p2d_wlang_base = loadR2("Figures/CANINE baseline (w. lang)Interactive_tsne_2d.Rdata")
+p2d_wlang = loadR2("Figures/CANINE finetuned (w. lang)Interactive_tsne_2d.Rdata")
+p2d_wolang_base = loadR2("Figures/CANINE baseline (wo. lang)Interactive_tsne_2d.Rdata")
+p2d_wolang = loadR2("Figures/CANINE finetuned (wo. lang)Interactive_tsne_2d.Rdata")
 ```
 
 # Why do we want a finetuned model?
@@ -252,7 +268,7 @@ p3d_wolang = loadR("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata
 - Vastly improves performance* 
 - Natural starting point for other general tasks related to occupation
 
-*This is evident from the the embeddings: 768 dimensions reduced to 3* $\rightarrow$
+*This is evident from the the embeddings: 768 dimensions reduced to 2* $\rightarrow$
 ]
 
 .pull-right-wide[
@@ -260,13 +276,13 @@ p3d_wolang = loadR("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata
 .panel[.panel-name[Unaligned CANINE]
 .center[
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-p3d_wlang_base %>% layout(autosize = F, width = 500, height = 400)
+p2d_wlang_base %>% layout(autosize = F, width = 500, height = 400)
 ```
 ]
 ]
 .panel[.panel-name[Finetuned CANINE]
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-p3d_wlang %>% layout(autosize = F, width = 500, height = 400)
+p2d_wlang %>% layout(autosize = F, width = 500, height = 400)
 ```
 ]
 ]
@@ -282,9 +298,9 @@ knitr::include_graphics("Figures/All.png")
 ```
 ]
 ]
-.panel[.panel-name[Norwegian]
+.panel[.panel-name[Swedish]
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/Lang_no.png")
+knitr::include_graphics("Figures/Lang_se.png")
 ```
 ]
 .panel[.panel-name[English]
@@ -309,6 +325,43 @@ knitr::include_graphics("Figures/Performance_lang_wise2.png")
 ]
 ]
 
+---
+# The nature of the mistakes
+.panelset[
+.panel[.panel-name[Example 1]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_marr_cert3742836.png")
+```
+]
+]
+.panel[.panel-name[Example 2]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_parish33715.png")
+```
+]
+]
+.panel[.panel-name[Example 3]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_uk_ipums2325523.png")
+```
+]
+]
+.panel[.panel-name[Example 4]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_DK_census1787182508.png")
+```
+]
+]
+.panel[.panel-name[More]
+.center[
+#### *More in Figures/CANINE_preds_w_lang*
+]
+]
+]
 
 ---
 # Application: Copenhagen Burial Records 
