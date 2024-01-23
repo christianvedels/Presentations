@@ -60,6 +60,10 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
   width: 30%;
 }
 
+.tiny123 {
+  font-size: 0.40em;
+}
+
 .small123 {
   font-size: 0.80em;
 }
@@ -85,8 +89,8 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 # Breaking the HISCO Barrier: 
 ## *AI and Occupational Data Standardization*
-## Christian Møller-Dahl
-## Christian Vedel
+### Christian Møller-Dahl
+### Christian Vedel
 ### University of Southern Denmark, HEDG
 
 #### Twitter: @ChristianVedel,
@@ -112,24 +116,29 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 ]
 
 ---
-# Open questions
-.pull-left[
+### Open questions:
 - The role of technology and change of technology
 - The dynamics of income inequality 
 - Social mobility 
 - Returns to education
-- Much more
 
 
-- **All of it requires data**
+### Barriers:
 
-### This presentation:
-- A tool to automatically systematise occupational descriptions
+.pull-left[
+**Type A:**
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="300px"}
+knitr::include_graphics("Figures/DALL·E 2024-01-23 08.21.09 - A graduate student sitting in an old library, surrounded by stacks of ancient books, meticulously transcribing content from one of the books into a la.png")
+```
 
 ]
+
+
 .pull-right[
-![Suffering](Figures/37004_PhD student in the archive trying to survive yet a_xl-1024-v1-0.png)
-.small123[*beta.dreamstudio.ai*]
+.red[**Type B:**]
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="300px"}
+knitr::include_graphics("Figures/DALL·E 2024-01-23 08.21.11 - An image of the same graduate student surrounded by heaps of paper, looking overwhelmed, with a large chalkboard filled with various charts, graphs, a.png")
+```
 ]
 
 ---
@@ -182,20 +191,47 @@ DT::datatable(
 ]
 
 ---
-# Thanks to data contributors
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-x = read_csv2("Data_sources.csv")$Source %>% unique() %>% paste(collapse = "<br>")
-```
+## Thanks to data contributors
+.pull-left-wide[
+.tiny123[
+| file                        | Observations | Percent | Language | Source                                                    |
+|-----------------------------|--------------|---------|----------|-----------------------------------------------------------|
+| DK_census_[x].csv           | 5,391,656    | 29.794% | da       | Clausen (2015); The Danish National Archives              |
+| EN_marr_cert_[x].csv        | 4,046,203    | 22.359% | en       | Clark, Cummins, Curtis (2022)                             |
+| EN_uk_ipums_[x].csv         | 3,026,859    | 16.726% | en       | MPC (2020); Office of National Statistics                 |
+| SE_swedpop_[x].csv          | 1,793,557    | 9.911%  | se       | SwedPop (2022)                                            |
+| JIW_database_[x].csv        | 966,793      | 5.343%  | nl       | De Moor & van Weeren (2021)                               |
+| EN_ca_ipums_[x].csv         | 818,657      | 4.524%  | unk      | MPC (2020); Statistics Canada                             |
+| CA_bcn_[x].csv              | 644,484      | 3.561%  | ca       | Pujades-Mora & Valls (2017)                               |
+| HISCO_website_[x].csv       | 392,248      | 2.168%  | mult     | HISCO website                                             |
+| HSN_database_[x].csv        | 184,937      | 1.022%  | nl       | Mandemakers et al (2020)                                  |
+| NO_ipums_[x].csv            | 147,255      | 0.814%  | no       | MPC (2020)                                                |
+| FR_desc_[x].csv             | 142,778      | 0.789%  | fr       | historyofwork.iisg.nl                                     |
+| EN_us_ipums_[x].csv         | 139,595      | 0.771%  | en       | MPC (2020); Bureau of the Census                          |
+| EN_ship_data_[x].csv        | 103,023      | 0.569%  | en       | Schneider & Gao (2019)                                    |
+| EN_parish_[x].csv           | 73,806       | 0.408%  | en       | de Pleijt, Nuvolari, Weisdorf (2020)                      |
+| DK_cedar_[x].csv            | 46,563       | 0.257%  | da       | Ford (2023)                                               |
+| SE_cedar_[x].csv            | 45,581       | 0.252%  | se       | Ford (2023)                                               |
+| DK_orsted_[x].csv           | 36,608       | 0.202%  | da       | Ford (2023)                                               |
+| EN_oclack_[x].csv           | 24,530       | 0.136%  | en       | O-clack                                                   |
+| EN_loc_[x].csv              | 23,179       | 0.128%  | en       | Mooney (2016)                                             |
+| IS_ipums_[x].csv            | 20,459       | 0.113%  | is       | MPC (2020)                                                |
+| SE_chalmers_[x].csv         | 14,426       | 0.08%   | se       | Ford (2023)                                               |
+| DE_ipums_[x].csv            | 8,482        | 0.047%  | de       | MPC (2020); Statistics Netherlands                        |
+| IT_fm_[x].csv               | 4,525        | 0.025%  | it       | Fornasin & Marzona (2016)                                 |
 
-**Based on ~20 million already labelled cases from various sources**
-.small123[
-`r x`
+]
 ]
 
 
+
 --
-.red[**Please send us some data. We owe you HISCO codes in return**]  
+.pull-right-narrow[
+.red[**Please send us some data. We owe you HISCO codes in return**]
+
+
 .red[christian-vs@sam.sdu.dk]
+]
 
 
 ---
