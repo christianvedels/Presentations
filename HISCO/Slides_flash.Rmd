@@ -98,24 +98,6 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 #### Updated `r Sys.Date()` 
 
 ---
-# Motivation
-
-.pull-left[
-- The 2023 Nobel Prize was given to Claudia Goldin
-> *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023)
-
-- This type of work inherently requires data about the labour market
-
-- *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data*
-
-]
-
-.pull-right[
-![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg)
-*Claudia Goldin, wikimedia*
-]
-
----
 ### Open questions:
 - The role of technology and change of technology
 - The dynamics of income inequality 
@@ -140,6 +122,26 @@ knitr::include_graphics("Figures/DALL·E 2024-01-23 08.21.09 - A graduate studen
 knitr::include_graphics("Figures/DALL·E 2024-01-23 08.21.11 - An image of the same graduate student surrounded by heaps of paper, looking overwhelmed, with a large chalkboard filled with various charts, graphs, a.png")
 ```
 ]
+
+---
+# Motivation
+
+.pull-left[
+- The 2023 Nobel Prize was given to Claudia Goldin
+> *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023)
+
+- This type of work inherently requires data about the labour market
+
+- *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data*
+
+]
+
+.pull-right[
+![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg)
+*Claudia Goldin, wikimedia*
+]
+
+
 
 ---
 # Data examples
@@ -323,9 +325,27 @@ p2d_wlang %>% layout(autosize = F, width = 500, height = 400)
 ]
 ]
 ]
+---
+# Test data performance (1/2)
+| Statistic | Lang. info. | Value | Optimal thr. |
+|-----------|-------------|-------|--------------|
+| Accuracy  | No          | 0.930 | 0.46         |
+| Accuracy  | Yes         | 0.935 | 0.45         |
+| F1 score  | No          | 0.956 | 0.20         |
+| F1 score  | Yes         | 0.960 | 0.22         |
+| Precision | No          | 0.951 | 0.37         |
+| Precision | Yes         | 0.955 | 0.40         |
+| Recall    | No          | 0.986 | 0.01         |
+| Recall    | Yes         | 0.987 | 0.01         |
+
+.footnote[
+.small123[
+*Based on 1 million test observations*
+]
+]
 
 ---
-# Performance 
+# Test data performance (2/2) 
 .panelset[
 .panel[.panel-name[All]
 .center[
@@ -355,8 +375,8 @@ knitr::include_graphics("Figures/Lang_nl.png")
 ```
 ]
 .panel[.panel-name[All languages]
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/Performance_lang_wise2.png")
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/Performance_by_language.png")
 ```
 ]
 ]
@@ -400,8 +420,31 @@ knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_DK_census1787182508.p
 ]
 
 ---
+# Differential error rates
+![HISCO_count](Figures/Performance_by_hisco.png)
+
+---
+# Bias
+![SES](Figures/Performance_by_ses.png)
+
+---
+# Architecture
+![Arch](Figures/Architecture.png)
+
+**Summary:** Description goes in, probabilities comes out
+
+---
+# Possible expansions
+
+- Other coding schemes
+- Different settings 
+- Different historical data: Trade statistics 
+
+- Utilizing the inherent structural understanding in this model 
+
+---
 # Application: Copenhagen Burial Records 
-*Data from CPH burial records - 90% accuracy with early version of algorithm*
+*Data from CPH burial records - 94% accuracy*
 
 *388,057 Copenhageners from around ~1861 to ~1911*
 
@@ -505,8 +548,7 @@ ggsave("Figures/CPH_stats.png", plot = p1, width = 6, height = 4)
 - Enables more time on caring about the quality of sources and their nature
 
 **Steps ahead:**  
-- Still work in progress
-- More data, more training
+- Figuring how to make this as useful as possible
 ]
 
 .pull-right[
