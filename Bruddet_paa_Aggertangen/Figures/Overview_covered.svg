@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="87.337074mm"
+   height="153.81354mm"
+   viewBox="0 0 87.337074 153.81354"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="Overview_covered.svg"
+   inkscape:export-filename="D:\Dropbox\PhD\Handing in\Defence\Defence slides\Figures\Overview EN 2.png"
+   inkscape:export-xdpi="600"
+   inkscape:export-ydpi="600"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1407"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1405" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1397"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1395" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1387"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1385" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="31.390873"
+     inkscape:cy="371.85307"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="3832"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-18.067262,-45.546131)">
+    <g
+       id="g980"
+       transform="translate(1.0583333)">
+      <rect
+         y="45.546131"
+         x="17.008928"
+         height="33.639881"
+         width="87.3125"
+         id="rect833"
+         style="fill:#273a8f;fill-opacity:1;stroke-width:1" />
+      <text
+         id="text896"
+         y="50.546173"
+         x="17.372519"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="50.546173"
+           x="17.372519"
+           id="tspan894"
+           sodipodi:role="line">Ch 1</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="36.375515"
+         y="64.167854"
+         id="text896-6"><tspan
+           id="tspan964"
+           sodipodi:role="line"
+           x="36.375515"
+           y="64.167854"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583">A perfect storm </tspan></text>
+    </g>
+    <g
+       id="g980-9"
+       transform="translate(1.0829082,40.054962)">
+      <rect
+         style="fill:#b33d3d;fill-opacity:1;stroke-width:1"
+         id="rect833-80"
+         width="87.3125"
+         height="33.639881"
+         x="17.008928"
+         y="45.546131" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="17.372519"
+         y="50.546173"
+         id="text896-4"><tspan
+           sodipodi:role="line"
+           id="tspan894-8"
+           x="17.372519"
+           y="50.546173"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583">Ch 2</tspan></text>
+      <text
+         id="text896-6-73"
+         y="59.715847"
+         x="60.22765"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="59.715847"
+           x="60.22765"
+           sodipodi:role="line"
+           id="tspan964-6">Holy Cows and</tspan><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="68.623314"
+           x="60.22765"
+           sodipodi:role="line"
+           id="tspan1087">Spilt Milk</tspan></text>
+    </g>
+    <g
+       id="g980-60"
+       transform="translate(1.0829086,80.10664)">
+      <rect
+         style="fill:#de7500;fill-opacity:1;stroke-width:1"
+         id="rect833-5"
+         width="87.3125"
+         height="33.639881"
+         x="17.008928"
+         y="45.546131" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="17.372519"
+         y="50.546173"
+         id="text896-0"><tspan
+           sodipodi:role="line"
+           id="tspan894-3"
+           x="17.372519"
+           y="50.546173"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583">Ch 3</tspan></text>
+      <text
+         id="text896-6-6"
+         y="60.320461"
+         x="60.248322"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="60.320461"
+           x="60.248322"
+           sodipodi:role="line"
+           id="tspan964-2">Does culturel </tspan><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="69.227928"
+           x="60.248322"
+           sodipodi:role="line"
+           id="tspan1089">Assimilation Matter?</tspan></text>
+    </g>
+    <g
+       transform="translate(1.0740826,120.17365)"
+       id="g980-60-0">
+      <rect
+         y="45.546131"
+         x="17.008928"
+         height="33.639881"
+         width="87.3125"
+         id="rect833-5-9"
+         style="fill:#2c5c34;fill-opacity:1;stroke-width:1" />
+      <text
+         id="text896-0-3"
+         y="50.546173"
+         x="17.372519"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="50.546173"
+           x="17.372519"
+           id="tspan894-3-8"
+           sodipodi:role="line">Ch 4</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="60.627281"
+         y="55.260395"
+         id="text896-6-6-1"><tspan
+           sodipodi:role="line"
+           x="60.627281"
+           y="55.260395"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           id="tspan1095">Adaptability, </tspan><tspan
+           sodipodi:role="line"
+           x="60.627281"
+           y="64.167862"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           id="tspan1101">Diversification,</tspan><tspan
+           sodipodi:role="line"
+           x="60.627281"
+           y="73.075325"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           id="tspan1099"> and Engery Shocks</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.7;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1387)"
+       d="m 61.131064,75.279865 0.03341,16.336852"
+       id="path1109"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.7;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1397)"
+       d="m 61.398334,115.30348 0.233861,16.77116"
+       id="path1111"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.7;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1407)"
+       d="m 99.845021,114.20984 0.07828,59.81235"
+       id="path1113"
+       sodipodi:nodetypes="cc" />
+    <rect
+       inkscape:export-ydpi="600"
+       inkscape:export-xdpi="600"
+       y="45.546131"
+       x="18.067261"
+       height="73.857956"
+       width="87.3125"
+       id="rect885"
+       style="fill:#ffffff;fill-opacity:0.78629;stroke-width:1.48174" />
+  </g>
+</svg>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Bruddet_paa_Aggertangen.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+background-image: url("Figures/Background_intro.png")
+background-size: cover
+background-color: #2c5c34
+
+&lt;style type="text/css"&gt;
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 33%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 33%;
+}
+.pull-right-narrow ~ p {
+  clear: both;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+&lt;/style&gt;
+
+# Aggerkanalens betydning for Limfjordens økonomiske udvikling
+
+## Hvad er effekten af transportforbedringer?
+
+### Christian Vedel,&lt;br&gt; Syddansk Universitet
+
+### 2024-04-10
+
+???
+..large123[**---&gt; 1 &lt;----**]
+
+
+---
+class: middle
+&lt;img src="Figures/Map.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+???
+.large123[**---&gt; 7 &lt;----** ]
+
+
+---
+class: middle
+# Introduktion
+.pull-left[
+- Nordjylland er en ø - men har ikke altid været det
+- Hvad er effekten af transportforbedringer?
+- 24% &lt;-- Hvad betyder det? Og hvorfor er det vigtigt?
+
+
+#### Disposition
+  - Hvem er jeg?
+  - Hvad er økonomisk historie 
+  - Hvad er transport-økonomi (for sådan en)?
+  - Hvad skete der ved Limfjorden i 1825?
+]
+
+.pull-right[
+
+&lt;img src="Figures/Petersen 1877.png" width="100%" style="display: block; margin: auto;" /&gt;
+*Petersen (1877)*
+
+]
+
+
+
+???
+.large123[**---&gt; 6 &lt;----** ]
+- Understanding what causes wealth (wellbeing, etc.) is at the heart of Economics 
+- Understanding the interplay between geography (environment) and Economics is vital in the 21st century
+
+---
+class: middle
+.pull-left[
+# Christian Vedel
+- ***Økonom***isk historiker v. SDU
+
+
+- PhD, 2023: "Natural Experiments in Geography and Institutions", Syddansk Universitet, Økonomisk Institut
+
+- Forskning:
+  + Emner: Geografi (transport) og historie
+  + Metoder: Maskinlæring og kausal inference
+
+
+]
+
+.pull-right[
+![Billede](Figures/Billede4.jpg)
+]
+
+---
+class: middle
+# Økonomisk historie 
+
+.pull-left[
+&gt; *"Den videnskabelige del af økonomi (og historie)"* - Deidre McCloskey 
+
+
+- Et forsøg på at afdække de største, bredeste, *positive* (modsat normative) sammenhænge 
+- Årsager og effekter og størrelsen deraf:
+  + Hvorfor er der højere velstand i nogle samfund?
+  + Hvorfor er der mere ulighed i nogle samfund? 
+  + Oprindelsen af den industrielle revolution
+  + Kvinders arbejdsmarkedsdeltagelse
+  + Hvordan blev Danmark et rigt og lykkeligt land? 
+  + **Hvad er effekten af geografi på økonomisk udvikling?** 
+  
+]
+
+.pull-right[
+![Table](Figures/toll example p 52 degn 1994.PNG)
+
+.small123[
+Navne: Bernanke, Eichengreen, Fogel, Friedman, Goldin, Kuznets, Maddison, Marx, Morkyr, North, Piketty, Romer, Schumpeter
+
+##### Note:
+- Nogle gange er svaret: "Det ved vi ikke"
+- Ofte er svaret: "i gennemsnit sker der X"'
+- (Store bededag)
+]
+
+]
+
+---
+class: middle
+.pull-left-wide[
+# Verdens mindste teori-sektion:
+- Malthus 101:
+  + Det er trist at være fattig 
+  + Endnu mere i fattige samfund 
+  + Dynamik:
+    + Velstandsforbedring `\(\rightarrow\)` flere børn overlever 
+    + Velstrandsforringelse `\(\rightarrow\)` flere børn dør 
+    
+    
+- **Resultat:** Befolkningstilvækst (i fattige samfund) er et udtryk for velstand
+]
+
+.pull-right-narrow[
+![Malthus](Figures/Malthus.jpg)
+
+.small123[
+Thomas Malthus (1766-1834)
+*Source: [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Thomas_Robert_Malthus_Wellcome_L0069037_-crop.jpg)*
+]
+]
+
+---
+class: middle
+# Transportøkonomi
+.pull-left[
+- To forklaringer:
+  + Institutioner 
+  + Geografi 
+  
+- Geografi:
+  + 1.-ordens: Naturskabt 
+  + 2.-ordens: Menneskeskabt
+  + Ressourcer 
+  + Morfologi og markedsadgang*
+  
+.footnote[
+* *Økonom-ord for afstanden mellem mennesker og hvad de laver*
+]
+  
+]
+
+.pull-right[
+![GeovsInst](Figures/Inst_vs_geo.png)
+]
+
+---
+# Transportøkonomi - resultater 
+.pull-left[
+- Vi *tror* at markedsadgang betyder leder til højere velstand 
+- Lukningen af Suez-kanalen (1967-1975) førte til tab a velstand (Feyrer, 2021)
+- Panama-kanalen førte til forøget velstand (Maurer &amp; Rauch, 2023)
+- Steder tæt på naturlig adgang til markeder klare sig bedre (Henderson, Storeygard, Weil, 2018)
+- Jernbaner var årsag til velstandsforbedringer (ikke omvendt) (Berger &amp; Enflo, 2017; Donaldson &amp; Hornbeck, 2016)
+
+
+**Problemer** 
+- Årsager til begge: Udvikling eller målet om samme 
+- Brug for naturlige ekseperimenter
+]
+
+
+.pull-right[
+![Loading butter](Figures/1924 Loading Butter, Esbjerg port.jpg)
+]
+
+---
+class: center, middle, inverse
+background-image: url("Figures/Background_ch1.png")
+background-size: cover
+background-color: #273a8f
+
+# Aggerkanalens betydning for Limfjordens økonomiske udvikling
+
+???
+.large123[**---&gt; 4 &lt;----**]
+
+
+---
+class: middle
+# Aggertangen
+.pull-left[
+- D. 4. februar 1825 brød den smalle Aggertange og blev kort efter sejlbar
+- Limfjorden havde været lukket i 700 år.
+
+#### Det vi kan måle
+  - Kanalen medførte handel
+  - Kanalen gav befolkningsvækst 
+  - Kanalen gav manufakturarbejde
+  - Det modsatte skete efter 1100-tallet
+
+]
+
+.pull-right[
+
+&lt;img src="Figures/Deichbruch_an_der_Elbe_1825.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+
+.small123[
+Diebrud ved Elben, 1825 [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Deichbruch_an_der_Elbe_1825.jpg)
+]
+
+
+]
+
+
+
+???
+.large123[**---&gt; 6 &lt;----** ]
+- Understanding what causes wealth (wellbeing, etc.) is at the heart of Economics 
+- Understanding the interplay between geography (environment) and Economics is vital in the 21st century
+
+
+---
+# Kort
+.center[
+&lt;iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d704129.7470425251!2d8.826970647896832!3d56.880787313536544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sda!2sdk!4v1634159326111!5m2!1sda!2sdk" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;
+]
+
+---
+# 'Thye'-landet
+.pull-left[
+#### Aagard, 1802
+- "En anden plan ... Den består i at forene Liimfiorden med Vesterhavet, ved at gennemskiære den smalle landstrimmel"
+- "For nærværende Tid bestaar Sejladsen paa Liimfiorden allene i at bringe Landets Korn ned til Aalborg, og igen derfra at hente de fornødne Kjøbmandsvare." 
+- "I Særdelshed blive Aggerbeboerne anseete som de mindst kultiverede ..."
+- "En ublidere Iordplet end den hvorpaa Agger Sogn ligger, findes maaske neppe beboet"
+- Øllet smager også dårligt for de har ikke brænde til at koge urten længe nok
+]
+
+.pull-right[
+![Aagard](Figures/Aagard1802.png)
+.center[
+.small123[
+*Aagard (1802)*
+]
+]
+]
+
+
+.footnote[
+.small123[Samme historie males af Christensen (1785), Schade (1811), Thaarup (1825), osv.]
+]
+
+---
+name: timeline
+# Tidslinje
+
+--
+
+#### Før 1825: 
+- 1085-1208: En vestlig kanal lukker til
+- 1672: Aalborg er landets 2.-største købstad
+- Vestlige limfjordskøbstæder er blandt de mindste
+
+--
+
+#### Efter 1825:
+- 1825: Bruddet på Aggertangen
+- 1834: Skiber begynder at benytte den nye kanal
+- 1841: Limfjordskøbstæder får frie handelsrettigheder
+- 1850-1900: Stor økonomisk fremgang
+
+![Newspaper](Figures/Stenkul_from_Newcastle.PNG)
+
+???
+.large123[**---&gt; 8 &lt;----** ]
+
+---
+class: middle
+&lt;img src="Figures/Map.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Markedsadgang
+.pull-left[
+Kost-afstand fra sogne til havne: 
+`$${MA}_p = \sum_{h \in H} [CostDist(p, h) + 1]^\theta \times W_{p}$$`
+- CostDist - Dijkstra's agoritme - 10 gange højere pris for landtransport
+- `\(\theta = -1\)`  
+- Nye havne i limfjorden: `\(H\rightarrow H^*\)`
+
+`$$MA_{before} = MA_p|H \\
+MA_{after} = MA_p|H^*$$`
+Effekten af bruddet: 
+`$$\Delta log(MA) = log(MA_{after})-log(MA_{before})$$`
+]
+
+.pull-right[
+![Event](Figures/Map.png)
+]
+
+---
+class: middle
+# Data
+
+**To primære kilder:**
+  1. Folketællinger 1787-1901 (meget stort excelark m. 13.5 mio. observationer)
+  2. Øresundstoldens tabeleller   
+  (3. Arkæologiske fund)
+
+
+---
+# Handel kom til Limfjorden
+&lt;img src="Figures/Ship_trafic.png" width="70%" style="display: block; margin: auto;" /&gt;
+???
+.large123[**---&gt; 13 &lt;----** ]
+
+---
+name: pop
+# Befolkningstilvækst
+
+.pull-left[
+### Effekt af markedsadgang
+&lt;img src="Figures/pop_ma.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+### Gennemsnitligt for vestl. Limfj. 
+&lt;img src="Figures/pop_dummy.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+???
+.large123[**---&gt; 14 &lt;----**]
+- Rauch &amp; Maurer (2022): 2.3 for panama canal
+
+---
+# Beskæftigelser (1/2)
+
+.pull-left-wide[
+&lt;img src="Figures/All_occupations.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-narrow[
+- Tilvækst i manufakturhandel 
+- Tilvækst i landbrug (det man 'falder tilbage på')
+]
+
+???
+.large123[**---&gt; 14 &lt;----** ]
+
+---
+# Beskæftigelser (2/2)
+.pull-left-wide[
+&lt;img src="Figures/Occ_decom_dummy_asi2.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right-narrow[
+- Spinderi, fabriksarbejde, husflid og fiskeri
+
+- *Baseret på ny algortime, der kan kategoriserer beskrivelser*
+]
+
+
+???
+.large123[**---&gt; 15 &lt;----** ]
+
+---
+# Tilflytning eller fødsler?
+.pull-left[
+### Migration
+*Født i andet amt:*
+&lt;img src="Figures/born_different.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+### Fødsler
+*Børn pr. kvinde:*
+&lt;img src="Figures/fertility.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+???
+.large123[**---&gt; 15 &lt;----**]
+
+---
+class: middle
+.pull-left[ 
+# Det modsatte naturlige eksperiment 
+- Ekstern validitet?
+- Det viser sig, at være smart at samle sin 'handelsflåde' i Limfjorden i vikingetiden (Matthiessen 1941; Rasmussen, 1966) 
+- Limfjorden er den samme, men landet er **meget** anderledes i 1200-tallet
+- Mellem 1086 og 1208 lukker Limfjordens vestlige indsejling til (Saxo, 1208 + Geologiske kilder).
+
+**Data?** 
+- Registerdata
+
+
+]
+
+.pull-right-narrow[
+![Overseas Guests, Roerich, 1901](https://upload.wikimedia.org/wikipedia/commons/a/a6/Nicholas_Roerich%2C_Guests_from_Overseas_%28corrected_colour%29.jpg)
+*'Overseas Guests', Roerich (1901)*
+![Viking hub](Figures/Hub2.jpg)
+*maps.stamen.com*
+]
+
+???
+.large123[**---&gt; 17 &lt;----**] 
+
+---
+class: center
+name: arch1
+**Møntfund**
+&lt;img src="Figures/arch_dummy_coins.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+[More details](#appendixarch); [Matched sample alternative](#matching_coins)
+
+???
+.large123[**---&gt; 17 &lt;----**] 
+
+---
+class: center
+name: arch2
+**Bygninger**
+&lt;img src="Figures/arch_dummy_buildings.png" width="80%" style="display: block; margin: auto;" /&gt;
+[More details](#appendixarch); [Matched sample alternative](#matching_buildings)
+
+???
+.large123[**---&gt; 18 &lt;----**]
+
+---
+name: other-results
+# Konklusion
+.pull-left[
+- **RQ:** Hvad betyder transport for økonomisk udvikling? 
+
+- 24 procent
+
+- Handel, manufaktur, fiskeri
+
+- Unik stærkt naturligt laboratorie. Ingen have valgt, at det skulle være der, eller på det tidspunkt. 
+]
+
+.pull-right[
+&lt;img src="Figures/Morsoe.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+*Morsøovn i mit barndomshjem. Svensk/Norsk jern og Engelsk kul. Grundlagt i 1853.*
+]
+
+???
+.large123[**---&gt; 19 &lt;----**] 
+
+
+---
+# Referencer
+.small123[
+Berger, Thor and Enflo, Kerstin, (2017), Locomotives of local growth: The short- and long-term impact of railroads in Sweden, Journal of Urban Economics, 98, issue C, p. 124-138, https://EconPapers.repec.org/RePEc:eee:juecon:v:98:y:2017:i:c:p:124-138.
+
+Donaldson, D., Hornbeck, R., Railroads and American Economic Growth: A “Market Access” Approach , The Quarterly Journal of Economics, Volume 131, Issue 2, May 2016, Pages 799–858, https://doi.org/10.1093/qje/qjw002
+
+Feyrer, James. 2019. "Trade and Income—Exploiting Time Series in Geography." American Economic Journal: Applied Economics, 11 (4): 1-35. DOI: 10.1257/app.20170616
+Feyrer, J. (2021). Distance, trade, and income — The 1967 to 1975 closing of the Suez canal as a natural experiment. Journal of Development Economics, 153, 102708. doi:10.1016/j.jdeveco.2021.102708
+J Vernon Henderson, Tim Squires, Adam Storeygard, David Weil, The Global Distribution of Economic Activity: Nature, History, and the Role of Trade, The Quarterly Journal of Economics, Volume 133, Issue 1, February 2018, Pages 357–406, https://doi.org/10.1093/qje/qjx030
+
+Stephan Maurer, Ferdinand Rauch, Economic geography aspects of the Panama Canal, Oxford Economic Papers, Volume 75, Issue 1, January 2023, Pages 142–162, https://doi.org/10.1093/oep/gpac009
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

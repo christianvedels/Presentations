@@ -9,6 +9,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      ratio: '16:9'
 editor_options: 
   chunk_output_type: console
 ---
@@ -90,58 +91,86 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 # Breaking the HISCO Barrier: 
 ## *AI and Occupational Data Standardization*
 ### Christian Møller-Dahl
+### Torben S. D. Johansen
 ### Christian Vedel
 ### University of Southern Denmark, HEDG
 
-#### Twitter: @ChristianVedel,
-#### Email: christian-vs@sam.sdu.dk
 #### Updated `r Sys.Date()` 
 
 ---
-### Open questions:
-- The role of technology and change of technology
-- The dynamics of income inequality 
-- Social mobility 
-- Returns to education
-
-
-### Barriers:
-
+class: middle, Large
 .pull-left[
-**Type A:**
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="300px"}
-knitr::include_graphics("Figures/DALL·E 2024-01-23 08.21.09 - A graduate student sitting in an old library, surrounded by stacks of ancient books, meticulously transcribing content from one of the books into a la.png")
-```
+# What
+- New tool to make research using historical occupations easier
+- Language model, OccCANINE:
+  + **Input:** "En" + "He is a farmer"
+  + **Output:** HISCO code 61110 (probability=0.989589)
+  
+- Everything is free, open source, wrapped up in a simple python library and available at [github.com/christianvedels/OccCANINE](https://github.com/christianvedels/OccCANINE)
 
-]
-
-
-.pull-right[
-.red[**Type B:**]
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="300px"}
-knitr::include_graphics("Figures/DALL·E 2024-01-23 08.21.11 - An image of the same graduate student surrounded by heaps of paper, looking overwhelmed, with a large chalkboard filled with various charts, graphs, a.png")
-```
 ]
 
 ---
-# Motivation
+# Team
 
 .pull-left[
-- The 2023 Nobel Prize was given to Claudia Goldin
-> *"for having advanced our understanding of women’s labour market outcomes"* (NobelPrize.org, 2023)
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width=150}
+knitr::include_graphics("https://portal.findresearcher.sdu.dk/files-asset/200947586/1b5a4dd1-bfba-4b37-a685-854958b1dd4e.jpg?w=160&f=webp")
+```
 
-- This type of work inherently requires data about the labour market
+Christian Møller Dahl, Professor
 
-- *We are working on an algorithm, which can automatically classify occupations based on raw textual entries from archival data*
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width=150}
+knitr::include_graphics("https://portal.findresearcher.sdu.dk/files-asset/234467387/4353be14-7b5e-4a74-949c-144e6478a7da.jpg?w=160&f=webp")
+```
+
+Christian Vedel, Assistant Professor
 
 ]
 
 .pull-right[
-![ClaudiaGoldin](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Claudia_Goldin_%28cropped%29.jpg/1024px-Claudia_Goldin_%28cropped%29.jpg)
-*Claudia Goldin, wikimedia*
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width=150}
+knitr::include_graphics("https://media.licdn.com/dms/image/C4D03AQHyT9bJKlGKiA/profile-displayphoto-shrink_800_800/0/1581022934019?e=1716422400&v=beta&t=M00riaQqwb3DTRb_KD80_B1-POZINjpYq2VexqQ_kpE")
+```
+
+Torben S. D. Johansen, Assistant Professor
+
+*All at the university of Southern Denmark, Department of Economics*
 ]
 
 
+---
+# Data - thanks to...
+.pull-left[
+.tiny123[
+| Shorthand name   | Language | Source                                                    |
+|------------------|----------|-----------------------------------------------------------|
+| DK_census        | da       | Clausen (2015); The Danish National Archives              |
+| EN_marr_cert     | en       | G. Clark et al. (2022)                                    |
+| EN_uk_ipums      | en       | MPS (2020); Office of National Statistics                 |
+| SE_swedpop       | se       | SwedPop Team (2022)                                       |
+| JIW_database     | nl       | Moor and van Weeren (“2021”)                              |
+| EN_ca_ipums      | unk      | MPS (2020); Statistics Canada                             |
+| CA_bcn           | ca       | Pujades Mora and Valls (2017)                             |
+| HISCO_website    | mult     | HISCO database (2023)                                     |
+| HSN_database     | nl       | Mandemakers et al (2020)                                  |
+| NO_ipums         | no       | MPS (2020)                                                |
+| FR_desc          | fr       | HISCO database (2023)                                     |
+| EN_us_ipums      | en       | MPS (2020); Bureau of the Census                          |
+| EN_parish        | en       | de Pleijt Nuvolari and Weisdorf (2019)                    |
+| DK_cedar         | da       | Ford (2023)                                               |
+| SE_cedar         | se       | Edvinsson and Westberg (2016)                             |
+| DK_orsted        | da       | Ford (2023)                                               |
+| EN_oclack        | en       | Zijdeman (2023)                                           |
+| EN_loc           | en       | Mooney (2016)                                             |
+| IS_ipums         | is       | MPS (2020)                                                |
+| SE_chalmers      | se       | Ford (2023)                                               |
+| DE_ipums         | ge       | MPS (2020); German Federal Statistical Office             |
+| IT_fm            | it       | Fornasin and Marzona (2016)                               |
+
+]
+]
 
 ---
 # Data examples
@@ -166,177 +195,43 @@ DT::datatable(
 ```
 
 ---
-# HISCO codes
-- Derived from ISCO (International Standard Classification of Occupations) 
-- Invented for the sake of international comparability  
-- Introduced by Leuwen, Maas, Miles (2002) based on ISCO68  
-- Hiearchical structure well suited for analysis
-
-![HISCO](Figures/HISCO structure.png)
-
----
+class: middle
 .pull-left[
 # The old solution
 - Spend weeks, months or years manually reading and categorising 
 
 - 17865 different occupational descriptions fit with "farm servant" in DK censuses ("in service", "servant girl", "servant boy", "servant woman", "servant karl") 
 
-- Spelling mistakes, **negations**, and different spelling conventions
+- Spelling mistakes, negations, and different spelling conventions
 ]
 
 .pull-right[
 # Our solution
 ![Arhcitecture](Figures/Architecture_small.png)
-- Use existing categorised archives 
-- Fine tune a Language model to replicate their findings 
-- **CANINE:** Transformer at character level
-]
-
----
-## Thanks to data contributors
-.pull-left-wide[
-.tiny123[
-| file                        | Observations | Percent | Language | Source                                                    |
-|-----------------------------|--------------|---------|----------|-----------------------------------------------------------|
-| DK_census_[x].csv           | 5,391,656    | 29.794% | da       | Clausen (2015); The Danish National Archives              |
-| EN_marr_cert_[x].csv        | 4,046,203    | 22.359% | en       | Clark, Cummins, Curtis (2022)                             |
-| EN_uk_ipums_[x].csv         | 3,026,859    | 16.726% | en       | MPC (2020); Office of National Statistics                 |
-| SE_swedpop_[x].csv          | 1,793,557    | 9.911%  | se       | SwedPop (2022)                                            |
-| JIW_database_[x].csv        | 966,793      | 5.343%  | nl       | De Moor & van Weeren (2021)                               |
-| EN_ca_ipums_[x].csv         | 818,657      | 4.524%  | unk      | MPC (2020); Statistics Canada                             |
-| CA_bcn_[x].csv              | 644,484      | 3.561%  | ca       | Pujades-Mora & Valls (2017)                               |
-| HISCO_website_[x].csv       | 392,248      | 2.168%  | mult     | HISCO website                                             |
-| HSN_database_[x].csv        | 184,937      | 1.022%  | nl       | Mandemakers et al (2020)                                  |
-| NO_ipums_[x].csv            | 147,255      | 0.814%  | no       | MPC (2020)                                                |
-| FR_desc_[x].csv             | 142,778      | 0.789%  | fr       | historyofwork.iisg.nl                                     |
-| EN_us_ipums_[x].csv         | 139,595      | 0.771%  | en       | MPC (2020); Bureau of the Census                          |
-| EN_ship_data_[x].csv        | 103,023      | 0.569%  | en       | Schneider & Gao (2019)                                    |
-| EN_parish_[x].csv           | 73,806       | 0.408%  | en       | de Pleijt, Nuvolari, Weisdorf (2020)                      |
-| DK_cedar_[x].csv            | 46,563       | 0.257%  | da       | Ford (2023)                                               |
-| SE_cedar_[x].csv            | 45,581       | 0.252%  | se       | Ford (2023)                                               |
-| DK_orsted_[x].csv           | 36,608       | 0.202%  | da       | Ford (2023)                                               |
-| EN_oclack_[x].csv           | 24,530       | 0.136%  | en       | O-clack                                                   |
-| EN_loc_[x].csv              | 23,179       | 0.128%  | en       | Mooney (2016)                                             |
-| IS_ipums_[x].csv            | 20,459       | 0.113%  | is       | MPC (2020)                                                |
-| SE_chalmers_[x].csv         | 14,426       | 0.08%   | se       | Ford (2023)                                               |
-| DE_ipums_[x].csv            | 8,482        | 0.047%  | de       | MPC (2020); Statistics Netherlands                        |
-| IT_fm_[x].csv               | 4,525        | 0.025%  | it       | Fornasin & Marzona (2016)                                 |
-
-]
-]
-
-
-
---
-.pull-right-narrow[
-.red[**Please send us some data. We owe you HISCO codes in return**]
-
-
-.red[christian-vs@sam.sdu.dk]
-]
-
-
----
-# The product
-```{r echo=TRUE, message=TRUE, warning=TRUE, eval=FALSE}
-# Example prompts
-model.predict("A farmer")
-model.predict("Tailor of beautiful dresses")
-model.predict("The train's fireman")
-```
-
---
-
-```{r echo=FALSE, message=TRUE, warning=TRUE}
-# Example prompts
-rbind(
-  data.frame(
-    string = "A farmer",
-    hisco = "61110",
-    description = "General Farmer"
-  ),
-  data.frame(
-    string = "Tailor of beautiful dresses",
-    hisco = "79100",
-    description = "Tailor, Specialisation Unknown"
-  ),
-  data.frame(
-    string = "The train's fireman",
-    hisco = "98330",
-    description = "Railway SteamEngine Fireman"
-  )
-)
-
-```
-
-.footnote[
-***See 'PREDICT_HISCOs.py'***
-]
-
-
-
----
-```{r include=FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
-library(plotly)
-
-loadR1 = function(x){
-  load(x)
-  return(p3d)
-}
-loadR2 = function(x){
-  load(x)
-  return(p2d)
-}
-
-p3d_wlang_base = loadR1("Figures/CANINE baseline (w. lang)Interactive_tsne_3d.Rdata")
-p3d_wlang = loadR1("Figures/CANINE finetuned (w. lang)Interactive_tsne_3d.Rdata")
-p3d_wolang_base = loadR1("Figures/CANINE baseline (wo. lang)Interactive_tsne_3d.Rdata")
-p3d_wolang = loadR1("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata")
-
-p2d_wlang_base = loadR2("Figures/CANINE baseline (w. lang)Interactive_tsne_2d.Rdata")
-p2d_wlang = loadR2("Figures/CANINE finetuned (w. lang)Interactive_tsne_2d.Rdata")
-p2d_wolang_base = loadR2("Figures/CANINE baseline (wo. lang)Interactive_tsne_2d.Rdata")
-p2d_wolang = loadR2("Figures/CANINE finetuned (wo. lang)Interactive_tsne_2d.Rdata")
-```
-
-# Why do we want a finetuned model?
-.pull-left-narrow[
-- The model learns to understand occupational structures *semantically*
-- Vastly improves performance* 
-- Natural starting point for other general tasks related to occupation
-
-*This is evident from the the embeddings: 768 dimensions reduced to 2* $\rightarrow$
-]
-
-.pull-right-wide[
-.panelset[
-.panel[.panel-name[Unaligned CANINE]
 .center[
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-p2d_wlang_base %>% layout(autosize = F, width = 500, height = 400)
-```
+### OccCANINE
+.red[
+~10k HISCO codes in 27 seconds  
+~100k HISCO codes in 5 min.  
+~1 million HISCO codes in 45 min.  
+$\rightarrow$ **All with high precision and recall**
 ]
+
 ]
-.panel[.panel-name[Finetuned CANINE]
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-p2d_wlang %>% layout(autosize = F, width = 500, height = 400)
-```
+
 ]
-]
-]
+
 ---
-# Test data performance (1/2)
-| Statistic | Lang. info. | Value | Optimal thr. |
-|-----------|-------------|-------|--------------|
-| Accuracy  | No          | 0.930 | 0.46         |
-| Accuracy  | Yes         | 0.935 | 0.45         |
-| F1 score  | No          | 0.956 | 0.20         |
-| F1 score  | Yes         | 0.960 | 0.22         |
-| Precision | No          | 0.951 | 0.37         |
-| Precision | Yes         | 0.955 | 0.40         |
-| Recall    | No          | 0.986 | 0.01         |
-| Recall    | Yes         | 0.987 | 0.01         |
+class: middle
+# Test data performance
+.pull-left-narrow[
+| Statistic | Lang. info. | Value |
+|-----------|-------------|-------|
+| Accuracy  | Yes         | 0.935 |
+| F1 score  | Yes         | 0.960 |
+| Precision | Yes         | 0.955 |
+| Recall    | Yes         | 0.987 |
+]
 
 .footnote[
 .small123[
@@ -345,217 +240,61 @@ p2d_wlang %>% layout(autosize = F, width = 500, height = 400)
 ]
 
 ---
-# Test data performance (2/2) 
-.panelset[
-.panel[.panel-name[All]
-.center[
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/All.png")
-```
-]
-]
-.panel[.panel-name[Swedish]
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/Lang_se.png")
-```
-]
-.panel[.panel-name[English]
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/Lang_en.png")
-```
-]
-.panel[.panel-name[Danish]
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/Lang_da.png")
-```
-]
-.panel[.panel-name[Dutch]
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
-knitr::include_graphics("Figures/Lang_nl.png")
-```
-]
-.panel[.panel-name[All languages]
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+class: middle
+# Multilingual performance
+
+.pull-left[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width=450}
 knitr::include_graphics("Figures/Performance_by_language.png")
 ```
 ]
-]
+
+
 
 ---
-# The nature of the mistakes
-.panelset[
-.panel[.panel-name[Example 1]
-.center[
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
-knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_marr_cert3742836.png")
-```
-]
-]
-.panel[.panel-name[Example 2]
-.center[
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
-knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_parish33715.png")
-```
-]
-]
-.panel[.panel-name[Example 3]
-.center[
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
-knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_uk_ipums2325523.png")
-```
-]
-]
-.panel[.panel-name[Example 4]
-.center[
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
-knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_DK_census1787182508.png")
-```
-]
-]
-.panel[.panel-name[More]
-.center[
-#### *More in Figures/CANINE_preds_w_lang*
-]
-]
-]
+class: middle
 
----
-# Differential error rates
-![HISCO_count](Figures/Performance_by_hisco.png)
-
----
-# Bias
-![SES](Figures/Performance_by_ses.png)
-
----
-# Architecture
-![Arch](Figures/Architecture.png)
-
-**Summary:** Description goes in, probabilities comes out
-
----
-# Possible expansions
-
-- Other coding schemes
-- Different settings 
-- Different historical data: Trade statistics 
-
-- Utilizing the inherent structural understanding in this model 
-
----
-# Application: Copenhagen Burial Records 
-*Data from CPH burial records - 94% accuracy*
-
-*388,057 Copenhageners from around ~1861 to ~1911*
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
-data0 = read_csv2("CPH_hisco_codes_clean.csv")
-data1 = read_csv("CBP.csv")
-
-data1 = data1 %>% select(
-  pa_id, event_year
-) %>% 
-  rename(Year = event_year)
-
-data0 = data0 %>% 
-  left_join(data1, by = "pa_id") %>% 
-  pivot_longer(
-    cols = hisco1:hisco5
-  ) %>% 
-  distinct(Year, pa_id, occ1, name, value) %>% 
-  drop_na(value) %>% 
-  mutate(
-    value = as.character(value)
-  ) %>% 
-  mutate( # Fix leading zeros
-    value = ifelse(nchar(value)==4, paste("0", value), value)
-  ) %>% 
-  mutate(
-    HISCO1st = substr(value, 1, 1)
-  ) %>% 
-  select(-name) %>% 
-  rename(hisco = value)
-
-```
-
-.small123[
-```{r echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
-set.seed(20)
-tmp = data0 %>% 
-  distinct(Year, occ1, hisco, HISCO1st) %>% 
-  sample_frac() %>% 
-  rename(
-    Occupation = occ1,
-    `1 st digit`= HISCO1st
-  )
-tmp = tmp[1:100,]
-
-DT::datatable(
-  tmp,
-  fillContainer = FALSE, options = list(pageLength = 4)
-)
-```
-
-]
+# Out of Distribution
+.pull-left[
+| Dataset                    | N checked | Accuracy |
+|----------------------------|-----------|----------|
+| Copenhagen Burial Records  | 200       | 0.950    |
+| Training Ship Data         | 200       | 0.985    |
+| Swedish Strikes            | 200       | 0.945    |
+| Dutch Familiegeld*         | 200       | 0.925    |
 
 .footnote[
-Data from Link Lives. See https://link-lives.dk/
+.small123[
+$^*$ *Thanks to Bram Hilkens*  
+See more details in the paper
 ]
+]
+
+]
+
 
 ---
-# Application: Copenhagen Burial Records
-```{r echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
-p1 = data0 %>% 
-  filter(Year >= 1861) %>% 
-  filter(Year <= 1911) %>% 
-  mutate(
-    HISCO1st = ifelse(
-      HISCO1st %in% c("0", "1"), "0/1", HISCO1st
-    )
-  ) %>% 
-  mutate(
-    HISCO1st = ifelse(
-      HISCO1st %in% c("7", "8", "9"), "7/8/9", HISCO1st
-    )
-  ) %>% 
-  group_by(HISCO1st) %>% 
-  count() %>% 
-  ungroup() %>% 
-  mutate(
-    pct = n/sum(n)
-  ) %>% 
-  ggplot(aes(HISCO1st, y = pct, fill = HISCO1st)) + 
-  geom_bar(stat = "identity") + 
-  scale_fill_brewer(palette = "RdYlBu") + 
-  labs(fill = "HISCO major category", x = "HISCO major category") + 
-  theme_bw() +
-  theme(legend.position = "bottom") +
-  scale_y_continuous(labels = scales::percent) +
-  labs(
-    title = "Occupations in Copenhagen 1861 to 1911"
-  )
+class: middle
+# Read more
 
-ggsave("Figures/CPH_stats.png", plot = p1, width = 6, height = 4)
-```
+### [https://arxiv.org/abs/2402.13604](https://arxiv.org/abs/2402.13604)
 
-![CPH](Figures/CPH_stats.png)
-
----
-# Conclusion
-.pull-left[
-- Something that took weeks, months and years, now takes an afternoon
-- Enables new research 
-- Enables more time on caring about the quality of sources and their nature
-
-**Steps ahead:**  
-- Figuring how to make this as useful as possible
+.pull-right-narrow[
+![Abstract](Figures/Paper.png)
 ]
 
-.pull-right[
-**Feel free to reach out**  
-Twitter: @ChristianVedel  
-christian-vs@sam.sdu.dk  
-]
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

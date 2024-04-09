@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:export-ydpi="600"
+   inkscape:export-xdpi="600"
+   inkscape:export-filename="D:\Dropbox\PhD\Handing in\Defence\Defence slides\Figures\Overview DA.png"
+   sodipodi:docname="Overview_DA.svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 87.337074 153.81354"
+   height="153.81354mm"
+   width="87.337074mm">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1407"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1405"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1397"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1395"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1387"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1385"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="1912"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="334.02012"
+     inkscape:cx="462.26513"
+     inkscape:zoom="0.98994949"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-18.067262,-45.546131)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       transform="translate(1.0583333)"
+       id="g980">
+      <rect
+         style="fill:#273a8f;fill-opacity:1;stroke-width:1"
+         id="rect833"
+         width="87.3125"
+         height="33.639881"
+         x="17.008928"
+         y="45.546131" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="17.372519"
+         y="50.546173"
+         id="text896"><tspan
+           sodipodi:role="line"
+           id="tspan894"
+           x="17.372519"
+           y="50.546173"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583">Ch 1</tspan></text>
+      <text
+         id="text896-6"
+         y="64.167854"
+         x="36.375515"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="64.167854"
+           x="36.375515"
+           sodipodi:role="line"
+           id="tspan964">En perfekt storm</tspan></text>
+    </g>
+    <g
+       transform="translate(1.0829082,40.054962)"
+       id="g980-9">
+      <rect
+         y="45.546131"
+         x="17.008928"
+         height="33.639881"
+         width="87.3125"
+         id="rect833-80"
+         style="fill:#b33d3d;fill-opacity:1;stroke-width:1" />
+      <text
+         id="text896-4"
+         y="50.546173"
+         x="17.372519"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="50.546173"
+           x="17.372519"
+           id="tspan894-8"
+           sodipodi:role="line">Ch 2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="60.22765"
+         y="59.715847"
+         id="text896-6-73"><tspan
+           id="tspan1087"
+           sodipodi:role="line"
+           x="60.22765"
+           y="59.715847"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583">Hellige køer</tspan><tspan
+           id="tspan1921"
+           sodipodi:role="line"
+           x="60.22765"
+           y="68.623314"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583">og spildt mælk</tspan></text>
+    </g>
+    <g
+       transform="translate(1.0829086,80.10664)"
+       id="g980-60">
+      <rect
+         y="45.546131"
+         x="17.008928"
+         height="33.639881"
+         width="87.3125"
+         id="rect833-5"
+         style="fill:#de7500;fill-opacity:1;stroke-width:1" />
+      <text
+         id="text896-0"
+         y="50.546173"
+         x="17.372519"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="50.546173"
+           x="17.372519"
+           id="tspan894-3"
+           sodipodi:role="line">Ch 3</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="60.248322"
+         y="60.320461"
+         id="text896-6-6"><tspan
+           id="tspan1089"
+           sodipodi:role="line"
+           x="60.248322"
+           y="60.320461"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583">Betyder kulturel</tspan><tspan
+           id="tspan1925"
+           sodipodi:role="line"
+           x="60.248322"
+           y="69.227928"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583">assimilation noget?</tspan></text>
+    </g>
+    <g
+       id="g980-60-0"
+       transform="translate(1.0740826,120.17365)">
+      <rect
+         style="fill:#2c5c34;fill-opacity:1;stroke-width:1"
+         id="rect833-5-9"
+         width="87.3125"
+         height="33.639881"
+         x="17.008928"
+         y="45.546131" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="17.372519"
+         y="50.546173"
+         id="text896-0-3"><tspan
+           sodipodi:role="line"
+           id="tspan894-3-8"
+           x="17.372519"
+           y="50.546173"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.64444px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';fill:#ffffff;fill-opacity:1;stroke-width:0.264583">Ch 4</tspan></text>
+      <text
+         id="text896-6-6-1"
+         y="55.260395"
+         x="60.627281"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           id="tspan1099"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="55.260395"
+           x="60.627281"
+           sodipodi:role="line">Tilpasning,</tspan><tspan
+           id="tspan1932"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="64.167862"
+           x="60.627281"
+           sodipodi:role="line">Diversificering og</tspan><tspan
+           id="tspan1934"
+           style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.05556px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           y="73.075325"
+           x="60.627281"
+           sodipodi:role="line">Energi-Chok</tspan></text>
+    </g>
+    <path
+       sodipodi:nodetypes="cc"
+       id="path1109"
+       d="m 61.131064,75.279865 0.03341,16.336852"
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.7;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1387)" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path1111"
+       d="m 61.398334,115.30348 0.233861,16.77116"
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.7;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1397)" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path1113"
+       d="m 99.845021,114.20984 0.07828,59.81235"
+       style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.7;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1407)" />
+  </g>
+</svg>
