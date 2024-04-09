@@ -78,7 +78,7 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 ### Christian Vedel,<br> Syddansk Universitet
 
-### 2024-04-10
+### Transportøkonomisk Forening, 2024-04-10
 
 ???
 ..large123[**---> 1 <----**]
@@ -187,7 +187,7 @@ class: middle
 - Malthus 101:
   + Det er trist at være fattig 
   + Endnu mere i fattige samfund 
-  + Dynamik:
+- Dynamik:
     + Velstandsforbedring $\rightarrow$ flere børn overlever 
     + Velstrandsforringelse $\rightarrow$ flere børn dør 
     
@@ -264,7 +264,7 @@ background-color: #273a8f
 class: middle
 # Aggertangen
 .pull-left[
-- D. 4. februar 1825 brød den smalle Aggertange og blev kort efter sejlbar
+- D. 4. februar 1825 brød den smalle Agger-kanal og blev kort efter sejlbar
 - Limfjorden havde været lukket i 700 år.
 
 #### Det vi kan måle
@@ -342,7 +342,7 @@ name: timeline
 
 #### Efter 1825:
 - 1825: Bruddet på Aggertangen
-- 1834: Skiber begynder at benytte den nye kanal
+- 1834: Skibe begynder at benytte den nye kanal
 - 1841: Limfjordskøbstæder får frie handelsrettigheder
 - 1850-1900: Stor økonomisk fremgang
 
@@ -382,7 +382,7 @@ class: middle
 
 **To primære kilder:**
   1. Folketællinger 1787-1901 (meget stort excelark m. 13.5 mio. observationer)
-  2. Øresundstoldens tabeleller   
+  2. Øresundstoldens regnskaber (1.8 mio rejser)  
   (3. Arkæologiske fund)
 
 
@@ -445,7 +445,7 @@ knitr::include_graphics("Figures/Occ_decom_dummy_asi2.png")
 .pull-right-narrow[
 - Spinderi, fabriksarbejde, husflid og fiskeri
 
-- *Baseret på ny algortime, der kan kategoriserer beskrivelser*
+- *Baseret på ny algoritme, der kan kategorisere beskrivelser*
 ]
 
 
@@ -535,7 +535,7 @@ name: other-results
 - Handel, manufaktur, fiskeri
 
 - Unik stærkt naturligt laboratorie. 
-- Ingen have valgt, at det skulle være der, eller på det tidspunkt. 
+- Ingen havde valgt, at det skulle være der, eller på det tidspunkt. 
 ]
 
 .pull-right[
