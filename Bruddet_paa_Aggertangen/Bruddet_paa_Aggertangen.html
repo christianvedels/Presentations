@@ -6,6 +6,9 @@
     <script src="libs/header-attrs-2.21/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -14,6 +17,29 @@ class: center, middle, inverse
 background-image: url("Figures/Background_intro.png")
 background-size: cover
 background-color: #2c5c34
+
+
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #808080;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 &lt;style type="text/css"&gt;
 .pull-left {
@@ -497,7 +523,8 @@ name: other-results
 
 - Handel, manufaktur, fiskeri
 
-- Unik stærkt naturligt laboratorie. Ingen have valgt, at det skulle være der, eller på det tidspunkt. 
+- Unik stærkt naturligt laboratorie. 
+- Ingen have valgt, at det skulle være der, eller på det tidspunkt. 
 ]
 
 .pull-right[
