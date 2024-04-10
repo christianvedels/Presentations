@@ -175,10 +175,11 @@ Navne: Bernanke, Eichengreen, Fogel, Friedman, Goldin, Kuznets, Maddison, Marx, 
 ##### Note:
 - Nogle gange er svaret: "Det ved vi ikke"
 - Ofte er svaret: "i gennemsnit sker der X"'
-- (Store bededag)
+- Cost-Benefit-analysernes grundstof
 ]
 
 ]
+
 
 ---
 class: middle
@@ -395,6 +396,34 @@ knitr::include_graphics("Figures/Ship_trafic.png")
 .large123[**---> 13 <----** ]
 
 ---
+# Skibe gennem Aggerkanalen
+
+![Ship traffic](Figures/Ship_trafic_channel.png)
+*Svalgaard (1977) toldarkiver*
+
+---
+# Tilpasning
+
+.pull-left-narrow[
+- Fisk blev tabt
+- Nye muligheder kom til 
+- Havnene kunne ikke følge med
+- Magre men gyldne tider
+
+### Projekter
+- Frederik VII kanal
+- Høfdebygning
+- Jernbane
+- Landeveje 
+- Nye havne i alle købstæderne
+- Fiskeri på åbent hav (og senere IM)
+]
+
+.pull-right-wide[
+![Fisk](Figures/Herring_caught_Poulsen_et_al_2007.png)
+]
+
+---
 name: pop
 # Befolkningstilvækst
 
@@ -562,6 +591,394 @@ J Vernon Henderson, Tim Squires, Adam Storeygard, David Weil, The Global Distrib
 
 Stephan Maurer, Ferdinand Rauch, Economic geography aspects of the Panama Canal, Oxford Economic Papers, Volume 75, Issue 1, January 2023, Pages 142–162, https://doi.org/10.1093/oep/gpac009
 ]
+
+---
+name: appendix1
+count: false
+class: center, middle, inverse
+background-color: #273a8f
+# Appendix
+
+.footnote[
+[Back](#apendicies)
+]
+
+---
+name: new-ports
+# New ports
+[Back](#instmech)
+![New ports](Figures/WestMiddle_port_projects.png)
+
+---
+name: railways1
+# Railways (1/2)
+[Back](#instmech)
+
+.pull-left[
+![1860](Figures/Y1860.png)
+]
+
+.pull-right[
+![1866](Figures/Y1866.png)
+
+]
+
+Source: Fertner (2013)
+
+---
+name: railways2
+# Railways (2/2)
+[Back](#instmech)
+.pull-left[
+![1880](Figures/Y1880.png)
+]
+
+.pull-right[
+![1900](Figures/Y1900.png)
+]
+
+Source: Fertner (2013)
+
+---
+name: MAmath
+# Market Access
+.pull-left[
+Based on cost distance from parishes to harbours: 
+$${MA}_p = \sum_{h \in H} [CostDist(p, h) + 1]^\theta \times W_{p}$$
+- CostDist - Dijkstra's agorithm and 1/10 land/sea ratio 
+- $\theta = -1$  
+- Breach caused new harbours in West Limfjord: $H\rightarrow H^*$
+
+$$MA_{before} = MA_p|H \\
+MA_{after} = MA_p|H^*$$
+Main measure:
+$$\Delta log(MA) = log(MA_{after})-log(MA_{before})$$
+]
+
+.pull-right[
+![Event](Figures/Map.png)
+]
+
+.footnote[[Back](#empstrat1)]
+
+---
+name: elsinor
+# Elsinor
+
+
+.center[
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3743.038856836935!2d12.616720634729397!3d56.03904113734528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sda!2sdk!4v1655049802848!5m2!1sda!2sdk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+]
+
+[Back to STR](#str-presentation), [Back to results](#str-results)
+
+
+---
+name: Rob_comp
+## Robustness: Comparison groups
+
+.pull-left[
+#### MA approach
+![MA_mult](Figures/Multiverse_MA.png)
+]
+
+.pull-right[
+#### Dummy approach
+![Dummy_mult](Figures/Multiverse_dummy.png)
+]
+
+[Back](#pop)
+
+.footnote[
+**Definitions:** A: <5km to coast; B: Copenhagen excl.; C: Control >100 km from Limfj.; D: <5km to Market town
+]
+
+
+
+---
+name: all-paramMA
+## Robustness: Parameter choices
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("Figures/Multiverse_MA_param.png")
+```
+
+[Back](#pop)
+
+---
+name: pre_treat_adj
+## Robustness: Pre-treat characteristics
+
+.pull-left[
+- Using the doubly robust estimator from Callaway & Sant’Anna (2021).
+- Combines outcome regression with propensity score method. If either is valid, then the estimator is consistent.
+- Only corrects for pre-treatment characteristics
+
+**Columns:** (1): No adj.; (2): Adj. for age, occupation, fertility; (3): Adds log(Pop) as adj.
+]
+
+.pull-right[
+![DR_est](Figures/CS_DR_estimate.png)
+]
+
+[Back](#pop)
+
+
+---
+name: fish
+# Environmental impact
+[Back](#mechanism1)
+
+![Fish](Figures/Herring_caught_Poulsen_et_al_2007.png)
+
+---
+name: newspapers
+# Newspapers
+
+.pull-left[
+- Based on all newspapers in published in the period
+]
+
+.pull-right[
+![Newspapers](Figures/Mentions_of_agger_channel.png)
+]
+
+---
+name: instmech
+# Mechanism: Adaptation
+
+.pull-left[
+[Back](#mechanism1)  
+*Theoretical mystery desribed by Redding and Turner (2015)*
+
+#### Historiography:
+- 1840s: [New ports were constructed in all west Limfjord market towns](#new-ports)
+- 1841: Independent rights for international trade
+- 1852: First ever Danish steam route to England 
+- 1856-1861: Construction of the Frederik VII canal at Løgstør 
+- 1860-1900: [Railways](#railways1) and highways 
+- 1875-1933: Groins to stabilise the channel (and coast) 
+]
+
+
+
+.pull-right[
+![FrederikVII](Figures/1884 Milton Jensen - Frederik VII canal - wikimedia commons.jpg)
+*Milton (1884) Frederik VII canal*
+
+![Trade](Figures/placat_1841.jpg)
+*'Placat' announcing trade rights of Limfjord market towns*
+]
+
+
+---
+name: hisco
+# New occupational data
+[Back](#censusdata)
+
+.pull-left[
+- Data censuses 1787-1901 contain occupational for some years (3.7 mio. observations) 
+- Training data to train an automatic HISCO-label AI for all 12.4 mio. records. 
+- Precision: 97.21%; Recall: 97.07% 
+- Separate paper - please let me know if you have data
+]
+
+.pull-right[
+#### How it is applied here
+- Top 100 occupations are manually labelled as 'Fishing' or 'Manufacturing'
+- Used in a mediation analysis: Can either explain away the effect of the channel?  
+- Manufacturing can! 
+]
+
+
+![Network](Figures/Architecture.png)
+
+---
+class: center, middle
+name: appendixarch
+# Archaeological evidence details
+
+.footnote[
+[Back](#arch)
+]
+
+---
+
+.pull-left[
+## About the data
+- Administrative database of all archaelogical sites and finds 
+- Managed by ministry of culture 
+- 321 generic types of findings. E.g. coins
+- 1940 dated sites with coins between 750 and 1500
+
+- Panel construction:
+  + **Innovation:** Monte Carlo to estimate $P_i(Coin|t)$   
+  + Probability that a coin finding was generated at a specific time
+
+]
+
+.pull-right[
+## Data example
+![Data example](Figures/Arch_data_example.png)
+![Coins](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Hist_Museum_Oslo_IMG_2914_viking_coin_find.jpg/800px-Hist_Museum_Oslo_IMG_2914_viking_coin_find.jpg)
+*Coins, wikimedia commons*
+]
+
+.footnote[
+[Back](#arch)
+]
+
+---
+# Estimator of coin probability
+.pull-left[
+- **Objective:** We want to know *how likely it is that coin was left at a particular time $t$*
+- **What we have:** Observations of individual coin findings and a distribution of times $t$, which are likely for a specific coin finding in a place $i$ 
+
+**In equation form:**
+- What we have: $P_i(t|c)$: Probability of $t$ given one coin 
+- What we want: $P_i(\{c\}|t)$: Probability of *any* coins in time $t$
+]
+--
+.pull-right[
+### The solution
+Bayes formula and Monte Carlo
+- Simple to sample from this distribution
+- Sample $t$ from each coin 
+- Count frequency of coin findings
+$$P(\{c\}|t)=\left[1-\prod_{c=1}^{K_i} \left( 1 - P(t|c) \right)\right] P(\{c\})$$
+where it is assumed that
+$P(t|c)\sim \mathscr{U}(Year_{min}^c; Year_{max}^c)$ or
+$P(t|c)\sim \mathscr{N}(\mu_c, \sigma_c),$
+$\sigma_c=\frac{(Year_{max}^c - Year_{min}^c)}{1.96}$
+]
+
+
+---
+### All indicators 
+![Other_ind](Figures/Arch_all.png)
+
+.footnote[
+[Back](#arch)
+]
+---
+name: matching
+### Soil type matching
+.pull-left[
+- Soil types linked to medieval developmental trajectory (Andersen et al, 2016)
+- Using common soil types to estimate treatment propensity score with XGBoost 
+- Soil from GEUS
+- West Limfjord matched to other parishes using greedy matching. 
+]
+
+.pull-right[
+*Before*
+```{r echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("Figures/Propensity_before.png")
+```
+
+*After*
+```{r echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("Figures/Propensity_after.png")
+```
+
+]
+
+---
+name: matching_coins
+#### Coin findings (matched sample)
+```{r echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("Figures/arch_dummy_coins_matched.png")
+```
+[Back](#arch1)
+---
+name: matching_buildings
+#### Building findings (matched sample)
+```{r echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("Figures/arch_dummy_buildings.png")
+```
+[Back](#arch2)
+---
+### Safer, more convenient harbours
+![Skudehandel](Figures/Wikimedia_skudehandel.jpg)
+*Dangerous loading on the west coast*
+
+---
+# International trading rights (1/2)
+.pull-left[
+**Two interpretations:**
+- Trading rights $\rightarrow$ Growth
+- Channel $\rightarrow$ Trading rights $\rightarrow$ Growth
+
+*Trading rights can determine population growth* (Cermeño, Enflo 2019)
+
+- Two types of rights: 
+  + Market town rights (all comercial activity had to happen in these locations) 
+  + Customs rights (*toldsted*): Places where goods could be declared and taxed before it was traded on foreign markets 
+
+]
+
+.pull-right[
+![Skudehandel](Figures/Wikimedia_skudehandel.jpg)
+]
+
+
+
+---
+# International trading rights
+.pull-left[
+**Timeline**
+
+**1657-1720:** General consumption tax in market towns and Dano-Swedish wars boosts timber/grain legal grey zone trade (*skudehandel*) between Thy and Norway.  
+**1814:** Norway becomes Swedish. Illegal trade continues  
+**1834-35:** Overwelming trade with even larger ships. Coastal watch established. Thisted becomes de facto customs town.  
+**1837, 1840:** Petitions to the King for formal international trading rights for all market towns  
+
+]
+
+.pull-right[
+**1841**: Full customs rights introduced to only Limfjord Market towns 
+
+![Placat](Figures/placat_1841.jpg)
+]
+
+.footnote[
+Holm (1989); Fode (1989); Svalgaard (1977); Svalgaard (1974)
+]
+
+
+---
+# On the origin of the channel 
+
+.pull-left[
+- Gradual erosion is documented in Petersen (1877) as early as 1688.
+- Agger Church lost in 1832.  
+- In the 16th century in the same period Christian II made it illegal to drive cattle across the Isthmus  
+- Groins constructed from 1875 (Esbjerg).
+![Maarup](Figures/Maarup_church_demolition_2008.jpg)
+.small123[*Mårup church demolition 2008*]
+]
+
+
+
+.pull-right[
+
+
+.center[
+*Groins*
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15541.513031989105!2d8.187605907284134!3d56.6904893489832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sdk!4v1695323661648!5m2!1sen!2sdk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+]
+]
+
+---
+# Descriptive evidence - coins
+![Arch](Figures/Arch_descriptive.png)
+
+---
+# Alternative shipping statistics
+
+![Ship traffic](Figures/Ship_trafic_channel.png)
+*Descriptive statistics from Svalgaard (1977) sourced from customs archives*
+
 
 
 
