@@ -2,7 +2,7 @@
 title: "Hvor kommer tallene fra?<br>Hvordan laver man dem?"
 author: 'Christian Vedel<br>
 Email: christian-vs@sam.sdu.dk<br>
-Slides: https://tinyurl.com/2usap4va'
+Slides: https://tinyurl.com/2jbc65fv'
 institute: 'Økonomisk institut'
 date: "Opdateret `r Sys.Date()`" 
 output:
