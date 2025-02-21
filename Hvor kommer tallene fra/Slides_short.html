@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Hvor kommer tallene fra? Hvordan laver man dem?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Christian Vedel  Email: christian-vs@sam.sdu.dk  Slides: https://tinyurl.com/2usap4va" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Hvor kommer tallene fra?<br>Hvordan laver man dem?
+]
+.author[
+### Christian Vedel<br> Email: <a href="mailto:christian-vs@sam.sdu.dk" class="email">christian-vs@sam.sdu.dk</a><br> Slides: <a href="https://tinyurl.com/2usap4va" class="uri">https://tinyurl.com/2usap4va</a>
+]
+.institute[
+### Økonomisk institut
+]
+.date[
+### Opdateret 2025-02-21
+]
+
+---
+
+
+
+
+
+
+
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #808080;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+&lt;style type="text/css"&gt;
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.huge123 {
+  font-size: 4em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+
+.highlight {
+  background-color: yellow;
+}
+&lt;/style&gt;
+
+# Hvem er jeg
+.pull-left[
+
+- Økonom - nyuddannet PhD d. 25. september 2023
+- Adjunkt på økonomisk institut
+- Forskning i krydsfeltet mellem machine learning og økonomisk historie
+- Underviser i alt fra statistik, data science og nere klassiske økonomiske fag
+- IB student fra Nyborg Gymnasium i 2013 - 12 år siden. 
+
+]
+
+.pull-right[
+![Student 2013](Figures/IB_diploma.jpg)
+.small123[*Dimission 2013*]
+]
+
+---
+# TL;DR
+- Stol aldrig på finansministeriet 
+- Stol lidt på dem alligevel
+- På økonomistudiet på SDU kan man lære at gøre det bedre 
+- (Og så kunne man f.eks. arbejde i finansministeriet og få styr på deres sager)
+
+---
+--
+![Topskattelettelse](Figures/Topskat.png)
+--
+.pull-right-narrow[
+![Kattegatforbindelse](Figures/Kattegatforbindelse.png)
+]
+--
+.pull-left-wide[
+![Dagpenge](Figures/Dagpengereform.png)
+]
+--
+.pull-right-narrow[
+***...Og senest Store Bededag:***
+]
+
+--
+.center[
+.pull-right[
+![Bededag](Figures/Bededag.png)
+]
+]
+
+---
+### Finansministeriets vurdering af effekten ved afskaffelse af en helligdag
+
+&gt; "En afskaffelse af en helligdag, som hvert år falder på en hverdag, vurderes at kunne øge den samlede præsterede arbejdstid med ca. 0,34 pct. årligt svarende til en stigning i strukturelle beskæftigelse på ca. .highlight[8.500 fuldtidsbeskæftigede]. Forslaget skønnes at styrke den .highlight[strukturelle offentlige saldo med i omegnen af 3 mia. kr.] og øge strukturelt BNP med ca. 9,4 mia. kr., jf. tabel 1." - [Faktaark, fm.dk](https://fm.dk/media/26738/faktaark_finansministeriets-vurdering-af-effekten-ved-afskaffelse-af-en-helligdag.pdf)
+
+--
+
+.pull-left[
+**Spørgsmål**
+1. Hvad betyder det?
+2. Hvordan ved de, at det er 8500 mere? 
+3. Hvad er usikkerheden på det tal? 
+4. Hvordan har de beregnet det? 
+5. Hvordan *bør* man beregne det?
+]
+
+.pull-right[
+**Svar (til uddybning)**
+1. Budgettet i de lange løb 
+2. Det gør de ikke 
+3. Meget stor 
+4. Med en ringe metode
+5. Med en bedre metode / Overhoved ikke
+]
+
+---
+# 1. Hvad betyder det? 
+### Hvad betyder 'strukturel'?
+
+
+
+
+.pull-left[
+![Saldo](Figures/Offentlige_saldo.png)
+]
+
+.pull-right[
+![Beskaeftigelse](Figures/Beskaetigelse.png)
+]
+
+
+
+.footnote[
+.small123[
+**Noter:**
+*Kilde DST, dataserie OFF3*  
+*Simple 'strukturelle' beregninger baseret på lineære tendenser.*
+]
+]
+
+---
+# Hvad betyder det?
+### Afskaffelsen af en helligdag vil betyde 8500 flere strukturelt beskæftiget
+.pull-left[
+**Scenarie 1 - store bededag bibeholdt:**  
+2.996.730 personer 'strukturelt' beskæftiget
+
+]
+
+.pull-right[
+**Scenarie 2 - store bededag afkaffet:**  
+2.996.730 .highlight[\+ 8500] personer 'strukturelt' beskæftiget
+]
+
+### Hvornår kan man det? 
+- Når man har en god model, der kan forudsige kontrafakta 
+- Hvordan (ideelt):
+  + Afskaf store bededag for halvdelen af befolkning. Mål forskellen. 
+- Hvordan (realistisk):
+  + Brug et eller flere *gode* naturlige eksperimenter 
+
+---
+# Beregning skridt for skridt
+
+- **Strukturel beskæfitgelse:** 2.5 mio. 
+- **Arbejdsdage på et år:** 220
+- **Bruttoforøgelse af arbejdstid:** 1/220 `\(\approx\)` 0,45%
+- **Gennemslag:** .highlight[Ubekendt men estimeret til 75%]
+- **Nettoforøgelse af arbejdstid:** `\(Gennemslag \times Bruttoforøgelse \approx 0.34\%\)`
+- **Ændring i strukturel beskæftigelse:** `\(0.34\% \times 2.5 mio. \approx 8500\)` 
+--
+`\(Nettoforøgelse\:af\:arbejdstid\times Strukturel\:beskæfitgelse \approx 8500\)`
+--
+
+`\(\mathbf{Gennemslag} \times Bruttoforøgelse\times Strukturel beskæfitgelse \approx 8500\)`
+
+--
+.huge123[.center[???]]
+--
+.center[Så hvor kommer .highlight[gennemslaget] fra?]
+
+
+
+
+---
+# 2. Hvordan ved de at det er 8500 mere?
+
+--
+.pull-left[
+### Hvor kommer gennemslaget fra?
+![Elasticitet](Figures/Central_elasticitet.png)
+]
+
+--
+.pull-right[
+1. Kan man gøre sådan?
+2. Hvad er usikkerheden?
+]
+
+
+---
+
+# 2. Hvordan ved de at det er 8500 mere?
+
+.pull-left-wide[
+- Hvad er sandsynligt?:
+  + A: Den officielle arbejdstid har indflydelse på den faktiske arbejdstid (*FMs antagelse*)
+  + B: Den faktiske arbejdstid har indflydelse på den officielle arbejdstid (*Plausibelt*) 
+  + C: En tredje *fælles årsag* til begge dele. F.eks. lyst til mere fritid (*Meget sandsynligt*) - se f.eks. Overvismandens kritik i [politiken](https://politiken.dk/indland/art9157437/Overvismand-studser-over-regeringens-regnestykke)
+- Moderne økonomiske metoder tager stilling til den slags problemer ([Nobelpris 2021](https://www.nobelprize.org/prizes/economic-sciences/2021/popular-information/)). Det gør FM ikke her. 
+- Is og badning
+
+]
+
+---
+# Hvad er et godt naturligt eksperiment? 
+
+.pull-left[
+- Eksperimentet, `\(Z\)`, skal være *eksogent* ('udefrakommende') og *relevant* 
+- *Det lære I mere om I økonometri*
+]
+
+.pull-right-narrow[
+![DAG](Figures/DAG.png)
+
+]
+
+---
+# Et dårligt naturligt eksperiment: Is og badning
+
+.pull-left-narrow[
+- Bør man vente med at bade til lang tid efter man har spist is? 
+- [Is_draber.xlsx](https://github.com/christianvedels/Guest_Lectures_and_misc_talks/blob/main/Hvor%20kommer%20tallene%20fra/Is_draeber.xlsx)
+- 10 is slår 7 børn ihjel! Genmmenslaget er 70%!
+]
+
+--
+.pull-right-wide[
+![Is_draeber](Figures/Is_draeber.png)
+*Som faktisk forklares udmærket af noget tredje - sommer*
+
+]
+
+
+
+---
+class: inverse, center, middle
+# Skamløs annanas i egen juice:
+## '[A perfect storm*](https://raw.githack.com/christianvedels/Slides-for-PhD-defence/main/Defence_slides.html#3)'-projektet: 
+### Et ret godt naturligt eksperiment for infrastruktur
+
+.footnote[
+\* Det er et link. Man kan klikke på det!
+]
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url(SDU_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 125px;
+  height: 60px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // insert more to hide here
+    ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
