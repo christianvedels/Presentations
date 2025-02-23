@@ -145,12 +145,12 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 ]
 
 ---
-### TL;DR
-- 75% gennemslag er den kritiske antagelse
+### TL;DR (Den korte version)
 - Stol aldrig på finansministeriet 
 - Stol lidt på dem alligevel
 - På økonomistudiet på SDU kan man lære at gøre det bedre 
-- (Og så kunne man f.eks. arbejde i finansministeriet og få styr på deres sager)
+- (Og så kunne man f.eks. arbejde i finansministeriet og få styr på deres sager) 
+- 75% 
 
 ---
 ### Finansministeriets vurdering af effekten ved afskaffelse af en helligdag
@@ -246,6 +246,10 @@ delta_beskf = nettoforoegelse * strkt_besk
 .pull-left[
 - Eksperimentet, $Z$, skal være *eksogent* ('udefrakommende') og *relevant*
 - *Det lære I mere om I økonometri*
+
+- Eksempel 
+  + $Z$: Tilfældig ændring i arbejdsdage
+  + F.eks. nogle Andelsmejerier indførte søndagslukkethed
 ]
 
 .pull-right-narrow[
