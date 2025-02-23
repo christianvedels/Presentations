@@ -157,25 +157,6 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 > "En afskaffelse af en helligdag, som hvert år falder på en hverdag, vurderes at kunne øge den samlede præsterede arbejdstid med ca. 0,34 pct. årligt svarende til en stigning i strukturelle beskæftigelse på ca. .highlight[8.500 fuldtidsbeskæftigede]. Forslaget skønnes at styrke den .highlight[strukturelle offentlige saldo med i omegnen af 3 mia. kr.] og øge strukturelt BNP med ca. 9,4 mia. kr., jf. tabel 1." - [Faktaark, fm.dk](https://fm.dk/media/26738/faktaark_finansministeriets-vurdering-af-effekten-ved-afskaffelse-af-en-helligdag.pdf)
 
---
-
-.pull-left[
-**Spørgsmål**
-1. Hvad betyder det?
-2. Hvordan ved de, at det er 8500 mere? 
-3. Hvad er usikkerheden på det tal? 
-4. Hvordan har de beregnet det? 
-5. Hvordan *bør* man beregne det?
-]
-
-.pull-right[
-**Svar (til uddybning)**
-1. Budgettet i de lange løb 
-2. Det gør de ikke 
-3. Meget stor 
-4. Med en ringe metode
-5. Med en bedre metode / Overhoved ikke
-]
 
 
 ---
@@ -287,6 +268,15 @@ delta_beskf = nettoforoegelse * strkt_besk
 *Som faktisk forklares udmærket af noget tredje - sommer*
 
 ]
+
+---
+# Konklusion
+
+- Hvor kommer tallene fra?
+  + Grundig overvejelse af, hvad mennesker gør
+  + Altid indeholdende store usikkerheder
+  + Men måske bedre end at navigere efter mavefornemmelser
+
 
 ---
 class: middle, inverse
