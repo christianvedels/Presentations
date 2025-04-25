@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Slides.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, inverse, middle
+
+
+
+
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #808080;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+&lt;style type="text/css"&gt;
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.pull-right-extra-narrow {
+  float: right;
+  width: 20%;
+}
+
+.pull-center {
+  margin-left: 28%;
+  width: 44%;
+}
+
+.pull-center-narrow {
+  margin-left: 30%;
+  width: 28%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.medium123 {
+  font-size: 1.5em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+&lt;/style&gt;
+
+
+# Hvad er meningen med... 
+## ... Kunstig intelligens i samfundsvidenskabelig forskning?
+
+#### Christian Vedel,&lt;br&gt;Økonomisk Institut
+
+#### Email: [christian-vs@sam.sdu.dk](christian-vs@sam.sdu.dk)
+
+#### 2025-04-25
+
+
+---
+
+# Frygt og truslen om forandring
+
+.pull-left-narrow[
+
+#### 2021
+- Dengang skrev man selv sin danskstil
+- Dengang måtte man selv skrive udkast til emails
+- Dengang blev man tvunget til at bruge noget der hedder 'google'
+
+#### 2022
+- ChatGPT
+
+#### 2026-2036
+- ??
+
+]
+
+--
+
+.pull-right-wide[
+.pull-center[
+![Futuristic question](Figures/white_question.png)
+.small123[*AI genereret billede*]
+]
+
+### Planen i dag: Et blik fremmad
+- Gode grunde til optimisme og bekymring. Men i én lys side
+- *Hvad gør AI aktuelt i forskningen?*
+- Hvad finder vi ud af? 
+- Hvordan kan vores metoder komme andre til gavn?
+]
+
+
+
+
+???
+- I december 2022 ramte chatGPT os
+- Men det byger ovenpå en lang udvikling
+- Og den udvikling er stadig undervejs
+
+---
+class: middle
+
+# Hvem er vi? Og hvad er værdien af det vi laver?
+.pull-left[
+#### Økonomisk institut - andet end penge
+- Økonomisk udvikling
+- Velfærd
+- Ulighed
+- Klimaforandringer
+- Kunst og kultur
+- Knappe resourcer
+
+#### *Vi har også én af Europas ledende grupper for økonomisk historie*
+- Groft sagt: Vi skaber indsigter i alt det der betyder mest
+
+]
+
+--
+
+.pull-right[
+.pull-left[
+![Christian](Figures/Christian.jpg)
+.small123[
+.small123[
+#### *Christian Vedel, adjunkt*
+- Økonomisk historie
+- Økonomisk geografi
+- Machine learning
+]
+]
+]
+
+.pull-right[
+![Torben](Figures/Torben.jpg)
+.small123[
+.small123[
+#### *Torben Johansen, adjunkt*
+- Statistiske metoder
+- Velfærd &amp; sundhed
+- Machine learning
+- Økonomisk historie
+]
+]
+]
+]
+
+
+---
+class: middle
+
+# Hvordan vi bruger maskinerne
+- Vi er modelbyggere ligeså meget som modelbrugere
+- 'små' modeller (~100 mio. parametre) 
+- Konkrete opgaver
+
+---
+# Hvordan ser sådan en model-fætter ud?
+
+*Bare rolig - detaljeret forklaring følger ikke*
+
+.pull-left-wide[
+![OccCANINE](Figures/Architecture.png)
+]
+
+.pull-right-narrow[
+### Det vigtige er:
+
+- Alt er open source
+- Alt er nemt og 'modulært'
+- Vi kan nemt bygge løsninger der virker
+  + ...Og det kan vores studerende også
+]
+
+---
+# Hvad lavede folk i gamle dage
+
+--
+
+.pull-left-narrow[
+#### Hvad lavede folk egentlig
+
+- Viden om folks arbejde er nyttigt
+- Social mobilitet, velstand, økonomisk udvikling
+
+
+#### Heldigvis har vi folketællinger
+![Folketælling](Figures/Folketaelling_Odense1850_crop.jpeg)
+.tiny123[
+*(Folketælling, Odense, 1850, Rigsarkivet)*
+]
+
+
+- 'Kun' 13.7 mio. beskrivelser at gennemgå 
+- `\(=\)` 20 medarbejdere i ét år
+
+]
+
+--
+
+.pull-right-wide[
+
+.pull-left[
+
+![Den kunstige](Figures/Den_kunstige_forskningsassitent.png)
+
+]
+
+
+.pull-right[
+#### Data
+&gt; `"byens bedste hattemager"`  
+&gt; `"karretssmed"`  
+&gt; `"togets fyrbøder"`  
+&gt; `"han er bare landmand"`  
+
+#### Løsning
+
+![HISCO](Figures/hiscokoder.png)
+
+]
+
+- På 26 sekunder kan vores model standardisere 10.000 beskrivelser
+- 10 timer versus 38.833 timer
+
+.pull-right-wide[
+.tiny123[
+#### Reference
+Dahl, C. M., Johansen, T., &amp; Vedel, C. (2024). Breaking the HISCO barrier: Automatic occupational standardization with OccCANINE. arXiv. https://arxiv.org/abs/2402.13604
+]
+]
+
+
+
+]
+
+
+---
+# Hvordan giver vi børn den bedste start på livet?
+
+.pull-left-narrow[
+### Udfordringen
+- Vi tror at tidlige indsater er vigtige
+- Men hvor vigtige er de?
+- Og hvordan skal man prioritere knappe ressourcer?
+
+#### De viser sig ...
+- ... At en læge i 60 besluttede 'tilfældigt' at give nogle børn mere sundhedspleje
+- ... At der blev ført grundige journaler
+- ... Og disse journaler nu kan blive automatisk digitaliseret
+]
+
+--
+
+.pull-right-wide[
+![Journals](Figures/Nurse_records.png)
+
+.pull-left-narrow[
+![Kunstig assistent](Figures/Den_kunstige_forskningsassitent.png)
+
+]
+
+.pull-right-wide[
+.small123[
+#### Resultater
+- Data på tusindvis af mennesker gennem hele livet
+- Få ressourcer brugt i barndommen har lange positive effekter for resten af livet
+]
+]
+  
+.tiny123[
+#### Reference
+Baker, J. L., Bjerregaard, L. G., Dahl, C. M., Johansen, T. S. D., Sørensen, E. N., &amp; Wüst, M. (2023). Universal investments in toddler health: Learning from a large government trial (IZA DP No. 16270). IZA.
+]
+
+]
+
+---
+# Studenterbiografier
+
+.pull-left-narrow[
+- Det er er 150 år siden i år, at kvinder fik adgang til universitetsuddannelser
+- Men hvordan blev Danmark et videnssamfund?
+- Og gør viden os mere velstående?
+
+- Alt dette forsøger vi at besvare for hele Norden i et stor projekt med samarbejde i Norge, Danmark, Tyskland og Sverige
+]
+
+--
+
+.pull-right-wide[
+#### Biografier
+*Der findes i tusindvis a studenterbiografier for 25 års jublæer*
+
+.pull-left-narrow[
+![Den kunstige](Figures/Den_kunstige_forskningsassitent.png)
+]
+
+.pull-right-wide[
+![Biografi](Figures/Mekanisme.png)
+]
+
+- Uddannelse og livsmuligheder på tværs af lande og århundrede
+
+]
+
+---
+class: middle
+# Hvorfor?
+
+.pull-left-wide[
+.medium123[
+1. Fordi vi gerne vil forstå verden
+2. Fordi vi gerne vil gøre verden bedre
+3. Fordi vores metoder kan bruges andetsteds
+]
+]
+
+
+
+---
+class: inverse
+
+## *En anden version af AI-revolution: Små smart løsninger*
+
+
+.pull-left-narrow[
+- En masse bøvl på vej væk
+- Fokus på de bedste løsninger
+- Replikation
+- En verden af modelbyggere
+]
+
+
+.pull-right-wide[
+
+![Cloud](Figures/futuristic_question.png)
+
+]
+
+---
+class: middle
+
+# ...Eller?
+
+.pull-left[
+- Det er svært at spå
+  + ... *især* om fremtiden
+  
+- Hvad sker der, når arbejde/opgaver bliver erstattet?
+  + Over årtier: Alt bliver måske fint?
+  + I det korte løb: ?
+  
+.pull-left[
+![People](Figures/people.png)
+]
+
+]
+
+.pull-right-narrow[
+
+![Oplysning](Figures/Enlightenment.png)
+*På vej mod en mere oplyst fremtid eller Jevons paradox?*
+
+]
+
+
+---
+class: middle, inverse
+
+# Tak for nu
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url(SDU_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 125px;
+  height: 60px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // insert more to hide here
+    ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
