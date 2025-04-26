@@ -216,6 +216,35 @@ class: middle
 - Konkrete opgaver
 
 ---
+
+# Hvad er kunstig intellegens
+
+.pull-left-narrow[
+.large123[Input]  
+
+- Billeder
+- Tekst
+- Tal
+]
+
+--
+
+.pull-center-narrow[
+![Kunstig](Figures/Den_kunstige_forskningsassitent.png)
+- *Han har mange knapper at skrue på*
+]
+
+--
+
+.pull-right-narrow[
+.large123[Output]  
+
+- Kategorier
+- Ny tekst
+- Data
+]
+
+---
 # Hvordan ser sådan en model-fætter ud?
 
 *Bare rolig - detaljeret forklaring følger ikke*
