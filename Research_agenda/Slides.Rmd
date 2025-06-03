@@ -535,29 +535,50 @@ A measure of long run changes in skill premium
 ---
 # Examples
 
-.pull-left-wide[
+.pull-left-narrow[
+- What we do with it
+]
+
+.pull-right-wide[
 
 .panelset[
 .panel[.panel-name[A]
+.pull-left-wide[
+.pull-right-wide[
 ![Wright](Figures/Carroll_D._Wright2.jpg)
 *Caroll D. Wright*
 ]
+]
+
+]
 .panel[.panel-name[B]
+.pull-left-wide[
+.pull-right-wide[
+
 ![Worktime2](Figures/col-cover.png)
+]
+]
+
 ]
 .panel[.panel-name[C]
 ![Worktime2](Figures/col-first-tab.png)
 ]
-.panel[.panel-name[C]
+.panel[.panel-name[D]
+
+.pull-left-wide[
+.pull-right-wide[
 ![Worktime2](Figures/ltm.png)
 ]
-.panel[.panel-name[D]
+]
+
+]
+.panel[.panel-name[E]
 ![Worktime2](Figures/avg_wage_by_place.png)
 ]
 
 
 
-.panel[.panel-name[D]
+.panel[.panel-name[F]
 ![Worktime2](Figures/Blacksmith.png)
 ]
 
