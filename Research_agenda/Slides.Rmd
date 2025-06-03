@@ -261,6 +261,7 @@ class: middle
 - .orange[CHAOS: Converting Historical Accounts Into Occupational Scores]
 - .blue[Vikings and Nazis]
 - .orange[Occunyms: Is Mr. Smith's son more likely to have the social status of a Smith?]
+- .orange[PST version of OccCANINE ++]
 - *Probbably a few things I forgot*
 ]
 
