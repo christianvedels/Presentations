@@ -452,6 +452,7 @@ where `\(d\)` is a text string, `\(h\)` is some classiciation of that string and
 - What if you could construct something similar, automatically using the most relevant local sources?
 
 #### Uses
+- .red[*Women's return to education in the US*]
 - What happens to income / occupational structure when new technologies emerge?
 - Can economies adapt to climate change?
 - What is the social mobility across different types of societies?
@@ -517,12 +518,18 @@ $$
 An occupational index is a weighted mean:
 `$$\mathbb{E}(y_i|h_j)=\sum_{i \in \mathbf{S}} y_i w_i.$$`
 
+--
+
 E.g. the income of "61110 Farmer" could be 
 `$$0.47\times y_\text{"farmer"} + 0.45 \times y_\text{"has some land"} + 0.08\times y_\text{"butcher"}$$`
 `$$0.47\times 123 + 0.45 \times 107 + 0.08 \times 198 = 121.8$$`
 
+--
+
 #### OccCANINE can help with deriving these weights:
 `$$w_i= \overset{OccCANINE}{\overbrace{Pr(h_j|d_i)}} \frac{\overset{Prior}{\overbrace{Pr(d_i)}}}{\underset{Norm.}{\underbrace{Pr(h_j)}}}$$`
+
+--
 
 ...And we can also use OccCANINE to apply HISCO wage index to descriptions. E.g. if a census entry is 75 pct "61110", then it should be given this 75 pct of this income
 
@@ -536,6 +543,39 @@ E.g. the income of "61110 Farmer" could be
 
 #### Product:
 A measure of long run changes in skill premium
+
+]
+
+---
+# Examples
+
+.pull-left-wide[
+
+.panelset[
+.panel[.panel-name[A]
+![Wright](Figures/Carroll_D._Wright2.jpg)
+*Caroll D. Wright*
+]
+.panel[.panel-name[B]
+![Worktime2](Figures/col-cover.png)
+]
+.panel[.panel-name[C]
+![Worktime2](Figures/col-first-tab.png)
+]
+.panel[.panel-name[C]
+![Worktime2](Figures/ltm.png)
+]
+.panel[.panel-name[D]
+![Worktime2](Figures/avg_wage_by_place.png)
+]
+
+
+
+.panel[.panel-name[D]
+![Worktime2](Figures/Blacksmith.png)
+]
+
+]
 
 ]
 
