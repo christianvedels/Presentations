@@ -7,6 +7,8 @@ In this repository I will collect random talks and guest lecture I give here and
 
 [Networking at conferences](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Networking_at_confenrences/Slides.html#1): Presentation at SDU Junior retreat 2023
 
+[Research agenda](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Research_agenda/Slides.html)
+
 ### Danish presentations 
 
 [Hvad er meningen med: Kunstig intelligens i samfundsvidenskabelig forskning?](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Hvad_er_meningen_med_AI/Slides.html): Om AI i forskning
