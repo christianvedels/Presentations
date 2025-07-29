@@ -124,7 +124,6 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 ### Updated `r Sys.Date()`
 
-
 ---
 
 .pull-left[
@@ -375,7 +374,8 @@ $i$: Index of source; $j$: Index in HISCO table; $k$: Index of target table
 - **Relevance:** the source needs to be relevant for the target
   
 #### Debiasing & scaling
-- Any method like this will induce regression to the mean, which entails both a scaling and debiasing problem.
+.small123[
+- Bias and scaling problems $\mathbb{E}(\hat{y}_k)\neq\mathbb{E}(y_k)$ and $\mathbb{V}(\hat{y}_k)\neq\mathbb{V}(y_k)$  
 - But we can observe this problem if we are willing to assume:
 $$
 \begin{split}
@@ -384,6 +384,9 @@ $$
 \end{split}
 $$
 (Conceptually similar to *relevance* - details still need to ironed out)
+]
+
+.chaosred[**Implication**]: Classification does not need to be perfect - we can correct for bias
 
 ]
 
@@ -402,8 +405,8 @@ $$
 Then we get:
 $$
 \begin{split}
-Classifier:\qquad Pr(h_j\mid d_k) &\;=\; Pr(h_j), \qquad \text{(bd cond. prob.)} \\
-CHAOS:\qquad \mathbb{E}(y_k|d_k) &\;= \mathbb{E}(y_i)
+Classifier:\qquad &Pr(h_j\mid d_k) \;=\; Pr(h_j), \qquad \text{(bd cond. prob.)} \\
+CHAOS:\qquad &\mathbb{E}(y_k|d_k) \;= \mathbb{E}(y_i)
 \end{split}
 $$
 I.e. we just get the mean from the source
