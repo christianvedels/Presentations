@@ -78,6 +78,11 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
   width: 66%;
 }
 
+.pull-center-medium {
+  margin-left: 20%;
+  width: 60%;
+}
+
 .tiny123 {
   font-size: 0.40em;
 }
@@ -127,6 +132,47 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 ---
 
 .pull-left[
+# The problem
+
+- Archives are **rich in occupations**, but **sparse in direct incomes** (wages, earnings, status).
+- Standard workaround: impute income with **occupational scores** (e.g., IPUMS **OCCSCORE**).
+- But fixed benchmarks (e.g., 1950 US wages) can **misstate levels and trends** across **time, place, and titles**.
+
+]
+
+--
+
+.pull-right[
+### Use of OCCSCORE (examples)
+.small123[
+- Abramitzky, Boustan & Eriksson (2014): Assimilation of immigrants 1900–1920 using what a median US worker earned in 1950 (OCCSCORE adjusted back).  
+- Ager, Boustan & Eriksson (2021): Recovery of Southern slaveholder families after the Civil War, comparing wealth shocks, with adjustments based on occupation-based earnings proxies from later censuses.
+Abramitzky, Ager, Boustan, Cohen & Hansen, C. W. (2023): Migration does not offset local wages (as proxied by their occupation and a few other characteristics)
+- Collins & Wanamaker (2014): Uses occupational scores to measure the effects, on income, from the great internal migration among africian americans in the period 1910-1930s
+
+*Amazing paper in the age before high-powered machine learning*
+- But now we can do better
+]
+
+]
+
+---
+class: middle
+
+# Three problems:
+
+1. **Source-Target drift:** Problematic to estimate effects in e.g. 1900 based on 1950s wages
+2. **Within Occupation variation:** All bakers do not earn the same
+3. **Hard to construct:** Constructing new measures is time consuming.
+
+.footnote[
+.chaosred[*1. and 2. causes systematic bias*]
+]
+
+
+---
+
+.pull-left[
 # CHAOS
 - This paper introduces a method for:  
   + **C**onverting (using maths)
@@ -134,7 +180,11 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
   + **O**ccupational **S**scores (something like IPUMS occscore [but better])
 
 
-- **Still preliminary**
+### Some points:
+- .chaosred[**Still preliminary**]
+- Different than Saavedra & Twinam (2020): Not a classical supervised ML approach
+- Different than Paker, Stephenson, Wallis (2025): Produces estimates across occupations
+- Fully automatic and highly interpretable + comes with built in debiasing (even more preliminary)
 
 ]
 
@@ -196,25 +246,12 @@ $$
 ]
 
 ---
-class: middle
-
-# How it is usefull
-
-.pull-left[
-- History is ripe with:
-  + Occupational data
-  + Scattered but unsystematic accounts of occupational outcomes (e.g. wages tables)
-- This is a systematic, out-of-the-box, framework for dealing with this
-- Not a black box. Every step is interpretable. 
-
-#### Uses
-- What happens to income / occupational structure when new technologies emerge?
-- Do certain institutions promote economic development?
-- Settling old debates in Economic History
-- .red[Constructing measures of regional living standards using better sources than random wikipedia scrapes and Maddison]
-- etc.
-
-]
+<br>
+<br>
+<br>
+<br>
+<br>
+# A disclaimer
 
 
 --
@@ -225,15 +262,15 @@ class: middle
 This is not:
  - A magic bullet
  - An excuse to not care about source criticism
- - (In fact a key econometric result 'relevance criterion')
+ - (In fact a key econometric result is the *'relevance assumption'*)
 ]
 
 ]
 
 ---
 # Sneakpeak: Where we are getting to
-
-.pull-center-wide[
+*Given a source:*
+.pull-center-medium[
 ![NY example](Figures/wages_ny_over_time.png)
 
 ]
@@ -270,28 +307,49 @@ This is not:
 
 ]
 
+
 ---
-# Another way of thinking about what we do
+class: middle
 
-### *"It could easily accomplished with a computer"* - Dr. Strangelove
-.pull-left-wide[
+# Mostly harmless maths
 
-Imagine having some data:
+.pull-left[
+.small123[
+#### Target / Source
 
-| Occupation  | Income |
-|-------------|--------|
-| Carpenter   | $2.00  |
-| Butcher     | $2.00  |
-| Farmer      | $2.30  |
+We are interested in
+$$\mathbb{E}(y_k \mid d_k).$$
+(The expected income of observation, $k$, given occupational description $d_k$)
+
+What we have is observations containing
+
+$$\mathbb{E}(y_i \mid d_i).$$
+(The expected income of observation, $i$, given occupational description $d_i$)
+
+#### Assumption:
+1. **Source-Target relevance:** Good historian's assumption: Your Source must be relevant for your target: $i$ and $k$ are both iid draws from the same distribution
+2. **Broadband** You have a *broadband* way of classifying occupational descriptions which captures the mean: $\mathbb{E}(y_i \mid h_j, d_i) = \mathbb{E}(y_i \mid h_j)$ 
+]
+]
+
+--
+
+.pull-right[
+.small123[
 
 
-From this imagine constructing a function which takes a text string and outputs an estimated income, years of education, social status, etc. for a given place $i$ and time $t$:
+]
 
-$$
-f_{it}(\textit{"He has some land"}) = 1.71844
-$$
 
-We suggest that you can build such a function based on classifiers
+#### What you then get:
+$$\mathbb{E}(y_i\mid d_i) = \mathbb{E}(y_k\mid d_k)$$
+So the task is just to get a function which can estimate $$\mathbb{E}(y_i\mid d_i)$$
+
+Our approach:
+1. Calculate HISCO-level averages: $$\mathbb{E}(y_i \mid h_j)$$
+2. Estimate how well target descriptions fit HISCO codes 
+
+Secret sauce: We can estimate $$\Pr(h_j\mid d_i)$$
 
 ]
 
@@ -335,11 +393,13 @@ $$
 
 
 ---
-## Mostly harmless maths
+## More mostly harmless maths
 
 .pull-left[
 
-#### Estimating HISCO wages
+
+
+### .chaosred[Source to HISCO]
 
 $$\mathbb{E}(y_i\mid h_j)\;=\; \sum_{i\in \mathcal{S}} y_iw_{ij} \;=\; \sum_{i \in \mathcal{S}} y_i \;\frac{\overset{OccCANINE}{\overbrace{Pr(h_j\mid d_i)}}\;\overset{Prior}{\overbrace{Pr(d_i)}}}{\underset{Evidence}{\underbrace{Pr(h_j)}}}$$
 
@@ -352,7 +412,7 @@ $$2.49\times 0.8878 + 3.96\times 0.0568 + ...$$
 --
 
 .pull-right[
-### Applying the estimator
+### .chaosred[HISCO to Target]
 $$\mathbb{E}(y_k\mid d_k) \;=\;  \sum_{j\in \mathcal{H}} \hat{y}_j w_{jk} \;=\; \sum_{j \in \mathcal{H}} {\underset{\text{from above}}{\underbrace{\mathbb{E}(y_i\mid h_j)}}}  \overset{OccCANINE}{\overbrace{Pr(h_j\mid  d_k)}}$$
 
 #### Example:
@@ -366,33 +426,16 @@ $i$: Index of source; $j$: Index in HISCO table; $k$: Index of target table
 ]
 ]
 
+
+---
+# Demonstration
+[Notebook]
+
 ---
 # Not so harmless maths
 
+
 .pull-left[
-#### Assumptions
-- **Relevance:** the source needs to be relevant for the target
-  
-#### Debiasing & scaling
-.small123[
-- Bias and scaling problems $\mathbb{E}(\hat{y}_k)\neq\mathbb{E}(y_k)$ and $\mathbb{V}(\hat{y}_k)\neq\mathbb{V}(y_k)$  
-- But we can observe this problem if we are willing to assume:
-$$
-\begin{split}
-\mathbb{E}( y_k-\hat{y}_k) = \mathbb{E}(y_i-\hat{y}_i) \\
-\mathbb{V}( y_k-\hat{y}_k) = \mathbb{V}(y_i-\hat{y}_i)
-\end{split}
-$$
-(Conceptually similar to *relevance* - details still need to ironed out)
-]
-
-.chaosred[**Implication**]: Classification does not need to be perfect - we can correct for bias
-
-]
-
---
-
-.pull-right[
 .small123[
 ### More than one source?
 $$
@@ -414,9 +457,68 @@ I.e. we just get the mean from the source
 ]
 
 
+--
+
+.pull-right[
+
+#### Debiasing & scaling
+.small123[
+- Bias and scaling problems $\mathbb{E}(\hat{y}_k)\neq\mathbb{E}(y_k)$ and $\mathbb{V}(\hat{y}_k)\neq\mathbb{V}(y_k)$  
+- But we can observe this problem if we are willing to assume:
+$$
+\begin{split}
+\mathbb{E}( y_k-\hat{y}_k) = \mathbb{E}(y_i-\hat{y}_i) \\
+\mathbb{V}( y_k-\hat{y}_k) = \mathbb{V}(y_i-\hat{y}_i)
+\end{split}
+$$
+True under *relevance assumption*
+]
+
+.chaosred[**Implication**]: Classification does not need to be perfect - we can correct for bias
+
+*Note: This is a vast improvement over previous methods*
+
+]
+
 ---
-# Demonstration
-[Notebook]
+<br>
+<br>
+<br>
+
+# Bias correction via self-validation
+
+.pull-left-wide[
+- If you trust you own source, you can use LOO-CV self-validation to debias
+  1. Leave out $i^*$ in source
+  2. Estimate prediction from $i^*$ for each source observation
+  3. Use CHAOS on the predicted errors to obtain $\widehat{B}(d)$
+  4. Repeat for all observations to recover error estimate for all source observations
+  
+- Under Source-Target relevance, we can now estimate bias for new observations $B(d_k)$ using CHAOS.
+  
+*LOO can be implemented very quickly (and exactly) via weights updating*
+
+.chaosred[**Code still needs to be implemented**]
+]
+
+--
+
+.pull-right-narrow[
+> Whenever you run a regression you can correct for the bias via $$\hat\beta \;=\; \hat\beta_{\text{naive}} + (X'X)^{-1}X'\widehat{B}(d)$$
+
+
+> $\rightarrow$ Unbiased results 
+
+> *All of this build on PPI and DSL* $^1$
+
+.footnote[
+$^1$: PPI: Angelopoulos et al. (2023), DSL: Egami et al. (2024) 
+]
+
+]
+
+
+
 
 ---
 # Application: Setup
@@ -483,7 +585,7 @@ I.e. we just get the mean from the source
 - We hope its useful
 
 - More work to be done on:
-  + Automatic debiasing and how to use these estimates in regressions
+  + Automatic debiasing
   + Application
   
   
@@ -580,8 +682,157 @@ software use, writing, communication
 
 ]
 
+---
+class: middle
+# Appendix Example: New York, 1880
+
+### "He is a blacksmith"
+
+We want to estimate an income for a census record  
+with only an occupational title.  
+
+We start from a **source table** of daily wages in New York, 1880:
+
+.small123[
+| Source title $d_i$  | Outcome $y_i$ (daily wage) |
+|---------------------|----------------------------|
+| Blacksmith          | $2.80 |
+| Hammersmith         | $2.55 |
+| Tinsmith            | $2.30 |
+| Goldsmith           | $3.10 |
+| Shoemaker           | $2.40 |
+| (other)             | ...   |
+]
+---
+
+# Step A1: Classifier probabilities
+
+OccCANINE assigns each source title $d_i$ a distribution over HISCO codes:
+
+.small123[
+| $d_i$       | Pr(83110 Blacksmith) | Pr(83120 Hammersmith) | Pr(87340 Tinsmith) | Pr(88050 Goldsmith) | Pr(80110 Shoemaker) |
+|-------------|----------------------|-----------------------|--------------------|---------------------|---------------------|
+| Blacksmith  | 0.955 | 0.011 | 0.018 | 0.013 | 0.003 |
+| Hammersmith | 0.112 | 0.851 | 0.031 | 0.000 | 0.006 |
+| Tinsmith    | 0.069 | 0.000 | 0.911 | 0.018 | 0.002 |
+| Goldsmith   | 0.074 | 0.011 | 0.012 | 0.901 | 0.002 |
+| Shoemaker   | 0.011 | 0.000 | 0.012 | 0.000 | 0.977 |
+]
+
+---
+
+# Step A2: Posterior probabilities
+
+Via Bayes rule, we invert to $\Pr(d_i \mid h_j)$:
+
+.small123[
+| $d_i$       | Blacksmith | Hammersmith | Tinsmith | Goldsmith | Shoemaker |
+|-------------|------------|-------------|----------|-----------|-----------|
+| Blacksmith  | 0.782 | 0.013 | 0.018 | 0.014 | 0.003 |
+| Hammersmith | 0.092 | 0.975 | 0.032 | 0.000 | 0.006 |
+| Tinsmith    | 0.057 | 0.000 | 0.926 | 0.019 | 0.002 |
+| Goldsmith   | 0.061 | 0.013 | 0.012 | 0.967 | 0.002 |
+| Shoemaker   | 0.009 | 0.000 | 0.012 | 0.000 | 0.987 |
+]
+
+---
+
+# Step A3: HISCO-level means
+
+Aggregate outcomes into HISCO-level expected values:  
+
+$\; y_j = \sum_i y_i \Pr(d_i \mid h_j)$
+
+.small123[
+| HISCO code | Occupation          | $\mathbb{E}(y_i\mid h_j)$ |
+|------------|--------------------|---------------------------|
+| 83110      | Blacksmith         | 2.76 |
+| 83120      | Hammersmith        | 2.56 |
+| 87340      | Tinsmith           | 2.33 |
+| 88050      | Goldsmith          | 3.08 |
+| 80110      | Shoemaker          | 2.40 |
+]
+
+---
+
+# Step B1: Target classification
+
+Target record: *“He is a blacksmith”*  
+
+OccCANINE distribution over HISCO:
+
+.small123[
+| Target $d_k$ | Blacksmith | Hammersmith | Tinsmith | Goldsmith | Shoemaker |
+|--------------|------------|-------------|----------|-----------|-----------|
+| "He is a blacksmith" | 0.918 | 0.019 | 0.032 | 0.016 | 0.015 |
+]
+
+---
+
+# Step B2: Target prediction
+
+Estimate $\hat y_k = \sum_j y_j \Pr(h_j\mid d_k)$
+
+$$\hat y_k = 2.76\cdot0.918 + 2.56\cdot0.019 + 2.33\cdot0.032 + 3.08\cdot0.016 + 2.40\cdot0.015$$
+
+$$\hat y_k \;\approx\; \$2.75$$
+
+**Prediction:** A census record with “blacksmith” in 1880 New York  
+gets an estimated daily wage of $2.745.
+
+---
+
+# Step C: Collapsed weights
+
+We can collapse HISCO and express weights $w_{ik}$ directly:
+
+.small123[
+| Source $d_i$ | Weight $w_{ik}$ |
+|--------------|-----------------|
+| Blacksmith   | 0.719 |
+| Hammersmith  | 0.104 |
+| Tinsmith     | 0.082 |
+| Goldsmith    | 0.072 |
+| Shoemaker    | 0.023 |
+]
+
+So prediction = weighted average:
+
+$$\hat y_k = 0.719\cdot2.80 + 0.104\cdot2.55 + 0.082\cdot2.30 + 0.072\cdot3.10 + 0.023\cdot2.40$$
+
+= **$2.745**
+
+---
+
+class: middle
+# Interpretation
+
+- Majority weight: **Blacksmith** row (0.719)  
+- Related trades contribute: Hammersmith, Tinsmith, Goldsmith  
+- Even Shoemaker leaves a small trace  
+- **Not a black box:** full transparency on how the estimate is built  
 
 
 
+---
+class: middle
+# Example 1
+
+.pull-left-wide[
+- Suppose the source reports an income of $3.10 for "smiths." 
+- In HISCO, there are several possibilities: blacksmith, tinsmith, and goldsmith. Instead of forcing a hard choice, CHAOS distributes the weight across codes. 
+- If historical usage suggests "smith" usually means blacksmith, we might assign $w_{ij}=0.7$ to blacksmith, $w_{ij}=0.2$ to tinsmith, and $w_{ij}=0.1$ to goldsmith. 
+- The CHAOS equations thereby preserve the ambiguity and propagate it through to the estimates. 
+]
+
+---
+class: middle
+# Example 2
+
+.pull-left-wide[
+- Sometimes a historical record lists multiple occupations for the same person
+- For instance, "farmer and butcher'" with an average income of $2.50. In HISCO, these map to two codes.
+- Instead of forcing a choice, CHAOS splits the weights, say $w_{ij}=0.7$ for farmer and $w_{ij}=0.3$ for butcher.  
+]
 
 
