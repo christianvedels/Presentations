@@ -141,14 +141,14 @@ class: center, inverse, middle
 
 ### Email: [christian-vs@sam.sdu.dk](christian-vs@sam.sdu.dk)  
 
-### Updated 2025-09-15
+### Updated 2025-09-16
 
 ---
 
 .pull-left[
 # The problem
 
-- Archives are **rich in occupations**, but **sparse in direct incomes** (wages, earnings, status).
+- Archives are **rich in occupations**, but **sparse in individual incomes**.
 - Standard workaround: impute income with **occupational scores** (e.g., IPUMS **OCCSCORE**).
 - But fixed benchmarks (e.g., 1950 US wages) can **misstate levels and trends** across **time, place, and titles**.
 
@@ -190,14 +190,14 @@ class: middle
 # CHAOS
 - This paper introduces a method for:  
   + **C**onverting (using maths)
-  + **H**historical **A**ccounts (e.g. wage tables)
-  + **O**ccupational **S**scores (something like IPUMS occscore [but better])
+  + **H**istorical **A**ccounts (e.g. wage tables)
+  + **O**ccupational **S**cores (something like IPUMS occscore [but better])
 
 
 ### Some points:
 - .chaosred[**Still preliminary**]
-- Different than Saavedra &amp; Twinam (2020): Not a classical supervised ML approach
-- Different than Paker, Stephenson, Wallis (2025): Produces estimates across occupations
+- Different than Saavedra &amp; Twinam (2020) `\(\leftrightarrow\)` Not a classical supervised ML approach
+- Different than Paker, Stephenson, Wallis (2025) `\(\leftrightarrow\)` Produces estimates across occupations
 - Fully automatic and highly interpretable + comes with built in debiasing (even more preliminary)
 
 ]
@@ -292,27 +292,18 @@ This is not:
 
 
 ---
-
-.pull-left-narrow[
-## Step by step
-1. You find a **source** of occupational outcomes (e.g. wages)
-2. You classify them into a **standardized system** (e.g. HISCO)
-3. You calculate **average** (e.g. how they taught you in school)
-4. You assign these averages to new **target observations**
-  a. Classify occupations in target (e.g. into HISCO)
-  b. Apply estimates from step 3
-]
+# How it works
 
 --
 
 .pull-right-wide[
 .panelset[
-.panel[.panel-name[Steps 1-3]
+.panel[.panel-name[Steps 1]
 .pull-right-wide[
 ![blacksmith](Figures/blacksmith_example.svg)
 ]
 ]
-.panel[.panel-name[Step 4]
+.panel[.panel-name[Step 2]
 .pull-right-wide[
 ![blacksmith and farmer](Figures/blacksmith_and_farmer_example.svg)
 ]
@@ -363,7 +354,7 @@ Our approach:
 1. Calculate HISCO-level averages: `$$\mathbb{E}(y_i \mid h_j)$$`
 2. Estimate how well target descriptions fit HISCO codes 
 
-Secret sauce: We can estimate `$$\Pr(h_j\mid d_i)$$`
+Secret sauce: We can estimate: `$$\Pr(h_j\mid d_i)$$`
 
 ]
 
@@ -396,10 +387,7 @@ $$
 *Figure 1: Conceptual architecture*
 
 .small123[
-#### Some numbers:
-- 10k occupational descriptions: 27 seconds
-- 100k occupational descriptions: 5 min.
-- 1 million occupational descriptions: 45 min.
+#### Outputs a probability of belonging to standardized occupational codes
 ]
 
 
@@ -723,8 +711,10 @@ We start from a **source table** of daily wages in New York, 1880:
 
 OccCANINE assigns each source title `\(d_i\)` a distribution over HISCO codes:
 
+`$$\Pr(h_j \mid d_i)$$`
+
 .small123[
-| `\(d_i\)`       | Pr(83110 Blacksmith) | Pr(83120 Hammersmith) | Pr(87340 Tinsmith) | Pr(88050 Goldsmith) | Pr(80110 Shoemaker) |
+| `\(d_i\)`       | `\(Pr(83110\mid d_i)\)` | `\(Pr(83120\mid d_i)\)` | `\(Pr(87340\mid d_i)\)` | `\(Pr(88050\mid d_i)\)` | `\(Pr(80110\mid d_i)\)` |
 |-------------|----------------------|-----------------------|--------------------|---------------------|---------------------|
 | Blacksmith  | 0.955 | 0.011 | 0.018 | 0.013 | 0.003 |
 | Hammersmith | 0.112 | 0.851 | 0.031 | 0.000 | 0.006 |
@@ -733,6 +723,12 @@ OccCANINE assigns each source title `\(d_i\)` a distribution over HISCO codes:
 | Shoemaker   | 0.011 | 0.000 | 0.012 | 0.000 | 0.977 |
 ]
 
+- 83110: Blacksmith
+- 83120: Hammersmith
+- 87340: Tinsmith
+- 88050: Goldsmith
+- 80110: Shoemaker
+
 ---
 
 # Step A2: Posterior probabilities
@@ -740,7 +736,7 @@ OccCANINE assigns each source title `\(d_i\)` a distribution over HISCO codes:
 Via Bayes rule, we invert to `\(\Pr(d_i \mid h_j)\)`:
 
 .small123[
-| `\(d_i\)`       | Blacksmith | Hammersmith | Tinsmith | Goldsmith | Shoemaker |
+| `\(d_i\)`       | `\(Pr(d_i\mid 83110)\)` | `\(Pr(d_i \mid 83120)\)` | `\(Pr(d_i \mid 87340)\)` | `\(Pr(d_i \mid 88050)\)` | `\(Pr(d_i \mid 80110)\)` |
 |-------------|------------|-------------|----------|-----------|-----------|
 | Blacksmith  | 0.782 | 0.013 | 0.018 | 0.014 | 0.003 |
 | Hammersmith | 0.092 | 0.975 | 0.032 | 0.000 | 0.006 |
@@ -748,6 +744,13 @@ Via Bayes rule, we invert to `\(\Pr(d_i \mid h_j)\)`:
 | Goldsmith   | 0.061 | 0.013 | 0.012 | 0.967 | 0.002 |
 | Shoemaker   | 0.009 | 0.000 | 0.012 | 0.000 | 0.987 |
 ]
+
+- 83110: Blacksmith
+- 83120: Hammersmith
+- 87340: Tinsmith
+- 88050: Goldsmith
+- 80110: Shoemaker
+
 
 ---
 
@@ -792,7 +795,7 @@ Estimate `\(\hat y_k = \sum_j y_j \Pr(h_j\mid d_k)\)`
 $$\hat y_k \;\approx\; \$2.75$$
 
 **Prediction:** A census record with “blacksmith” in 1880 New York  
-gets an estimated daily wage of $2.745.
+gets an estimated daily wage of $2.75.
 
 ---
 
@@ -814,7 +817,7 @@ So prediction = weighted average:
 
 `$$\hat y_k = 0.719\cdot2.80 + 0.104\cdot2.55 + 0.082\cdot2.30 + 0.072\cdot3.10 + 0.023\cdot2.40$$`
 
-= **$2.745**
+= **$2.75**
 
 ---
 
