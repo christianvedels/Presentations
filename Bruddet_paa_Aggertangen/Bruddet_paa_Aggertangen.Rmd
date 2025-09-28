@@ -76,9 +76,9 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 ## Hvad er effekten af transportforbedringer?
 
-### Christian Vedel,<br> Syddansk Universitet
+### Christian Vedel,<br> Syddansk Universitet, <br> Økonomisk Institut, HEDG
 
-### Transportøkonomisk Forening, 2024-04-10
+### Gæsteforelæsning, 2025-09-29
 
 ???
 ..large123[**---> 1 <----**]
@@ -194,6 +194,9 @@ class: middle
     
     
 - **Resultat:** Befolkningstilvækst (i fattige samfund) er et udtryk for velstand
+
+<br><br><br>
+**Bemærk:** Vi antager ingen perfekt rationelle agenter, perfekte markeder eller hvad man ellers beskylder økonomer for. Dette er en empirisk øvelse, som er motiveret af teori.
 ]
 
 .pull-right-narrow[
@@ -204,6 +207,13 @@ Thomas Malthus (1766-1834)
 *Source: [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Thomas_Robert_Malthus_Wellcome_L0069037_-crop.jpg)*
 ]
 ]
+
+---
+class: middle
+# Difference in difference
+- Eksempel på tavlen: Hvad sker der med arbejdsløshed, når man indfører mindsteløn?
+- Eksempel tilapsset fra Card & Krueger (1994)
+
 
 ---
 class: middle
@@ -458,6 +468,8 @@ knitr::include_graphics("Figures/All_occupations.png")
 .pull-right-narrow[
 - Tilvækst i manufakturhandel 
 - Tilvækst i landbrug (det man 'falder tilbage på')
+
+- Data kommer fra folketællinger og en [*sprogmodel for historiske beskæftigelser*](https://raw.githack.com/christianvedels/OccCANINE/refs/heads/update_paper/Project_dissemination/HISCO%20Slides/Slides.html?panelset_001=canine&panelset_002=example-1#1), som vi har udviklet
 ]
 
 ???
@@ -565,6 +577,9 @@ name: other-results
 
 - Unik stærkt naturligt laboratorie. 
 - Ingen havde valgt, at det skulle være der, eller på det tidspunkt. 
+
+- Læs mere her: [A Perfect Storm: First-Nature Geography and Economic Development](https://arxiv.org/abs/2408.00885)
+- Link: https://arxiv.org/abs/2408.00885
 ]
 
 .pull-right[
@@ -581,6 +596,8 @@ knitr::include_graphics("Figures/Morsoe.jpg")
 ---
 # Referencer
 .small123[
+Card, David & Krueger, Alan B, 1994. "Minimum Wages and Employment: A Case Study of the Fast-Food Industry in New Jersey and Pennsylvania," American Economic Review, American Economic Association, vol. 84(4), pages 772-793, September.
+
 Berger, Thor and Enflo, Kerstin, (2017), Locomotives of local growth: The short- and long-term impact of railroads in Sweden, Journal of Urban Economics, 98, issue C, p. 124-138, https://EconPapers.repec.org/RePEc:eee:juecon:v:98:y:2017:i:c:p:124-138.
 
 Donaldson, D., Hornbeck, R., Railroads and American Economic Growth: A “Market Access” Approach , The Quarterly Journal of Economics, Volume 131, Issue 2, May 2016, Pages 799–858, https://doi.org/10.1093/qje/qjw002
