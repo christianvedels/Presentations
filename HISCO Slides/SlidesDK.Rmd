@@ -1,0 +1,751 @@
+---
+output:
+  xaringan::moon_reader:
+    includes:
+      after_body: insert-logo.html
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+editor_options: 
+  chunk_output_type: console
+---
+class: center, inverse, middle
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
+```{css echo=FALSE}
+.pull-left {
+  float: left;
+  width: 48%;
+}
+.pull-right {
+  float: right;
+  width: 48%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.huge123 {
+  font-size: 4em;
+}
+
+.red {
+  color: red;
+}
+
+.highlight {
+  background-color: yellow;
+}
+```
+
+
+.huge123[
+## Glem alt om store sprogmodeller: 
+### Her er hvad vi kan gøre med små sprogmodeller 
+]
+
+#### *eller*
+
+## Breaking the HISCO Barrier: 
+### *Automatic Occupational Standardization with OccCANINE*
+
+#### Christian Møller Dahl, Torben Johansen, Christian Vedel
+#### University of Southern Denmark, HEDG
+
+**Twitter: @ChristianVedel,**  
+**Email: christian-vs@sam.sdu.dk**  
+**arXiv: [arxiv.org/abs/2402.13604](https://arxiv.org/abs/2402.13604)**  
+**Updated `r Sys.Date()`**
+
+
+---
+<br>
+<br>
+<br>
+<br>
+.pull-left-wide[
+# Denne præsentation handler ikke om...
+- ...at bruge AI som *økonomisk model* til at forudsige konjukturer el lign.
+- ...at bruge AI som forbruger (f.eks. workflows i chatGPT)
+]
+
+--
+
+.pull-left-wide[
+### *Denne præsentation*
+- Hvordan kan vi selv udvikle AI-løsninger som er nyttige i økonomiske analyser
+]
+
+
+---
+# Stort og småt
+
+.pull-left[
+### ChatGPT, Claude, Gemini, Llama
+- Store modeller
+- Gode til mange ting
+- Data bliver sendt et eller andet sted hen
+  + *eller* kræver infrastruktur
+- 100'ere milliarder parametrer
+
+]
+
+--
+
+.pull-right[
+### BERT, CANINE, etc.
+- 'Små' modeller
+- Gode til specialiseret opgaver
+- Kan klares på en bærbar og trænes lokalt
+- 100'ere millioner parametre
+- **Har bedre performance i deres kontekst** (Butcher & Martini, 2024)
+]
+
+.footnote[
+.pull-left-wide[
+.small123[Bucher, M. J. J., & Martini, M. (2024). Fine-tuned ‘small’ LLMs (still)significantly outperform zero-shot generative AI models in text classification. Retrieved from https://arxiv.org/abs/2406.08660]
+]
+]
+
+---
+# Data examples
+```{r echo = FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+```{r echo=FALSE, message=FALSE}
+# load("Data_example_presentation.Rdata")
+# Danish:
+# tmp = readxl::read_excel("CopenhagenBurials_05_manual_check.xlsx", skip = 1)
+suppressWarnings({
+  tmp = read_csv2("CPH_hisco_codes_clean.csv", col_types = "c")
+})
+rownames(tmp) = NULL
+
+set.seed(20)
+tmp = tmp %>%
+  rowwise() %>% 
+  mutate(
+    occ1 = strsplit(occ1, " ")[[1]][1]
+  ) %>% 
+  distinct(occ1, hisco1) %>% 
+  ungroup() %>% 
+  sample_n(13547, replace = TRUE) 
+
+```
+
+
+```{r echo=FALSE}
+DT::datatable(
+  tmp,
+  fillContainer = FALSE, options = list(pageLength = 5)
+)
+
+```
+
+.small123[
+*Københavns begravelsesprotkoller, Link Lives, Rigsarkivet*
+]
+
+---
+# HISCO codes
+- Kommer fra ISCO (International Standard Classification of Occupations) 
+- Minder om DISCO
+- Leuwen, Maas, Miles (2002) fra ISCO68  
+- Hirarkisk 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="300px", out.width="709px"}
+knitr::include_graphics("Figures/HISCO structure.png")
+```
+
+
+
+---
+class: middle
+# Vores løsning
+.pull-left[
+![Arhcitecture](Figures/Architecture_small.png)
+.center[
+### OccCANINE
+]
+]
+
+.pull-right[
+.middle[
+
+- Neuralt netværk trænet over ~20 dage
+]
+]
+
+.footnote[
+.small123[
+Canine: Pre-training an Efficient Tokenization-Free Encoder for Language Representation (Clark et al., TACL 2022)
+]
+]
+
+---
+# Architecture
+![Arch2](Figures/Architecture2.png)
+
+---
+## Thanks to data contributors
+.pull-left-wide[
+.tiny123[
+| file                        | Observations | Percent | Language | Source                                                    |
+|-----------------------------|--------------|---------|----------|-----------------------------------------------------------|
+| DK_census_[x].csv           | 5,391,656    | 29.794% | da       | Clausen (2015); The Danish National Archives              |
+| EN_marr_cert_[x].csv        | 4,046,203    | 22.359% | en       | Clark, Cummins, Curtis (2022)                             |
+| EN_uk_ipums_[x].csv         | 3,026,859    | 16.726% | en       | MPC (2020); Office of National Statistics                 |
+| SE_swedpop_[x].csv          | 1,793,557    | 9.911%  | se       | SwedPop (2022)                                            |
+| JIW_database_[x].csv        | 966,793      | 5.343%  | nl       | De Moor & van Weeren (2021)                               |
+| EN_ca_ipums_[x].csv         | 818,657      | 4.524%  | unk      | MPC (2020); Statistics Canada                             |
+| CA_bcn_[x].csv              | 644,484      | 3.561%  | ca       | Pujades-Mora & Valls (2017)                               |
+| HISCO_website_[x].csv       | 392,248      | 2.168%  | mult     | HISCO website                                             |
+| HSN_database_[x].csv        | 184,937      | 1.022%  | nl       | Mandemakers et al (2020)                                  |
+| NO_ipums_[x].csv            | 147,255      | 0.814%  | no       | MPC (2020)                                                |
+| FR_desc_[x].csv             | 142,778      | 0.789%  | fr       | historyofwork.iisg.nl                                     |
+| EN_us_ipums_[x].csv         | 139,595      | 0.771%  | en       | MPC (2020); Bureau of the Census                          |
+| EN_ship_data_[x].csv        | 103,023      | 0.569%  | en       | Schneider & Gao (2019)                                    |
+| EN_parish_[x].csv           | 73,806       | 0.408%  | en       | de Pleijt, Nuvolari, Weisdorf (2020)                      |
+| DK_cedar_[x].csv            | 46,563       | 0.257%  | da       | Ford (2023)                                               |
+| SE_cedar_[x].csv            | 45,581       | 0.252%  | se       | Ford (2023)                                               |
+| DK_orsted_[x].csv           | 36,608       | 0.202%  | da       | Ford (2023)                                               |
+| EN_oclack_[x].csv           | 24,530       | 0.136%  | en       | O-clack                                                   |
+| EN_loc_[x].csv              | 23,179       | 0.128%  | en       | Mooney (2016)                                             |
+| IS_ipums_[x].csv            | 20,459       | 0.113%  | is       | MPC (2020)                                                |
+| SE_chalmers_[x].csv         | 14,426       | 0.08%   | se       | Ford (2023)                                               |
+| DE_ipums_[x].csv            | 8,482        | 0.047%  | de       | MPC (2020); Statistics Netherlands                        |
+| IT_fm_[x].csv               | 4,525        | 0.025%  | it       | Fornasin & Marzona (2016)                                 |
+
+]
+]
+
+.pull-right-narrow[
+- Baseret på en masse bidrag
+- Data kommer stadig ind
+]
+
+
+---
+# Staldtips til træning af neurale netværk
+.pull-left[
+### To slags løsninger:
+1. Lær alt overfladisk
+2. Lær beskæftigelser som concept (som mennesker)
+
+.red[
+- Bedre performance jo mere man kan skubbe mod 2
+]
+
+]
+
+--
+
+.pull-right[
+### Hvordan?
+.small123[
+- Gør livet svært for modellen
+- Gør data dårligere
+
+- Indsæt tilfældige bogstaver
+- Dropout: Drop tilfældige 10% af 'neuroner' i træning
+- Etc.
+]
+]
+
+
+---
+
+# Produktet
+```{r echo=TRUE, message=TRUE, warning=TRUE, eval=FALSE}
+# Example prompts
+model.predict("A farmer")
+model.predict("Tailor of beautiful dresses")
+model.predict("The train's fireman")
+```
+
+--
+```{r echo=FALSE, message=TRUE, warning=TRUE}
+# Example prompts
+rbind(
+  data.frame(
+    string = "A farmer",
+    hisco = "61110",
+    description = "General Farmer"
+  ),
+  data.frame(
+    string = "Tailor of beautiful dresses",
+    hisco = "79100",
+    description = "Tailor, Specialisation Unknown"
+  ),
+  data.frame(
+    string = "The train's fireman",
+    hisco = "98330",
+    description = "Railway SteamEngine Fireman"
+  )
+)
+
+```
+
+
+
+
+---
+# Test data performance
+| Decoder | Statistic | **Digits** |   |   |   |   |
+|---------|-----------|-----------|---|---|---|---|
+|         |           | 1 | 2 | 3 | 4 | 5 |
+| *good*  | accuracy  | 0.977 | 0.968 | 0.964 | 0.961 | 0.960 |
+|         | precision | 0.978 | 0.968 | 0.964 | 0.961 | 0.960 |
+|         | recall    | 0.982 | 0.974 | 0.971 | 0.967 | 0.967 |
+|         | f1        | 0.979 | 0.970 | 0.966 | 0.963 | 0.963 |
+| *fast*  | accuracy  | 0.979 | 0.971 | 0.967 | 0.964 | 0.964 |
+|         | precision | 0.980 | 0.972 | 0.968 | 0.965 | 0.965 |
+|         | recall    | 0.983 | 0.979 | 0.976 | 0.973 | 0.973 |
+|         | f1        | 0.981 | 0.974 | 0.971 | 0.968 | 0.967 |
+
+
+.footnote[
+.small123[
+*Based on 1M test observations*
+]
+]
+
+
+---
+# Danske folketællinger (1787-1901)
+
+.pull-left-narrow[
+- Danske folketællinger indeholder folks beskæftigelse
+- 13.7 millioner observationer
+- Vi kan standardisere det hele automatisk på en eftermiddag
+- Offentligt tilgængelig 
+
+- Det kan vi lave meget med:
+  + Skamløse egne eksempler:
+    + [A Perfect Storm: First-Nature Geography and Economic Development](https://arxiv.org/abs/2408.00885)
+    + [Tracks to Modernity: Railroads, Growth, and Social Movements in Denmark](https://arxiv.org/abs/2502.21141)
+]
+
+--
+
+.pull-right-wide[
+![DK_income](Figures/Major_group.png)
+]
+
+
+---
+# Other systems: What about ...
+.pull-left-narrow[
+... OCC1950 (US censuses)  
+... OCCICEM (UK censuses)  
+... ISCO-68  
+... and so on?
+
+**Our solution also applies to those cases with finetuning**
+]
+
+--
+
+.pull-right-wide[
+#### Panel A: Full training data
+*~20 days of finetuning - millions of observations*
+
+| Target system | Accuracy | F1-score |
+|---------------|----------|----------|
+| ISCO-68       |    0.938 |    0.958 |
+| OCCICEM       |    0.974 |    0.977 |
+| OCC1950       |    0.866 |    0.875 |
+
+#### Panel B: Small scale training
+*~20 .red123[hours] of finetuning - 10.000 observations*
+
+| Target system | Accuracy | F1-score |
+|---------------|----------|----------|
+| ISCO-68       |    0.822 |    0.844 |
+| OCCICEM       |    0.857 |    0.860 |
+| OCC1950       |    0.805 |    0.813 |
+]
+
+---
+class: middle
+
+# Demonstration
+
+.pull-left-narrow[
+- Alt sammen pakket ind i et simpelt python library 
+]
+
+
+.pull-right-wide[
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d8dR5-clJeQ?si=R6mPJ0Yn2KGXKy-B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+]
+
+
+---
+class: middle
+# Konklusion
+.pull-left[
+- Det plejede at tage måneder og kræve uendelig mængder studentermedjælper
+- Nu kan vi gøre det på en bærbar i løbet af nogle timer
+- Mulighed for bedre kvalitet end før
+- Model og modelkode er open source 
+]
+
+.pull-right[
+**Kontakt**  
+BlueSky: @christianvedel.bsky.social  
+X: @ChristianVedel  
+christian-vs@sam.sdu.dk  
+
+
+OccCANINE guide YouTube: https://youtu.be/BF_oNe-sABQ?si=Ef1YrkK43Ln_IHJS
+]
+
+
+
+
+---
+class: middle, center
+
+# Appendix
+
+---
+# The nature of the mistakes
+.panelset[
+.panel[.panel-name[Example 1]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_marr_cert3742836.png")
+```
+]
+]
+.panel[.panel-name[Example 2]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_parish33715.png")
+```
+]
+]
+.panel[.panel-name[Example 3]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_EN_uk_ipums2325523.png")
+```
+]
+]
+.panel[.panel-name[Example 4]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.height="450px", out.width="675px"}
+knitr::include_graphics("Figures/CANINE_preds_w_lang/RowID_DK_census1787182508.png")
+```
+]
+]
+]
+
+
+
+
+---
+# Application 1: Copenhagen Burial Records 
+*Data from CPH burial records - 95% accuracy*
+
+*388,057 Copenhageners from around ~1861 to ~1911*
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+data0 = read_csv2("CPH_hisco_codes_clean.csv")
+
+data0 = data0 %>% 
+  pivot_longer(
+    cols = hisco1:hisco5
+  ) %>% 
+  distinct(pa_id, occ1, name, value) %>% 
+  drop_na(value) %>% 
+  mutate(
+    value = as.character(value)
+  ) %>% 
+  mutate( # Fix leading zeros
+    value = ifelse(nchar(value)==4, paste("0", value), value)
+  ) %>% 
+  mutate(
+    HISCO1st = substr(value, 1, 1)
+  ) %>% 
+  select(-name) %>% 
+  rename(hisco = value)
+
+```
+
+.small123[
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+set.seed(20)
+tmp = data0 %>% 
+  distinct(occ1, hisco, HISCO1st) %>% 
+  sample_frac() %>% 
+  rename(
+    Occupation = occ1,
+    `1 st digit`= HISCO1st
+  )
+tmp = tmp[1:100,]
+
+DT::datatable(
+  tmp,
+  fillContainer = FALSE, options = list(pageLength = 4)
+)
+```
+
+]
+
+.footnote[
+Data from Link Lives. See https://link-lives.dk/
+]
+
+---
+# Application 1: Copenhagen Burial Records
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+p1 = data0 %>% 
+  mutate(
+    HISCO1st = ifelse(
+      HISCO1st %in% c("0", "1"), "0/1", HISCO1st
+    )
+  ) %>% 
+  mutate(
+    HISCO1st = ifelse(
+      HISCO1st %in% c("7", "8", "9"), "7/8/9", HISCO1st
+    )
+  ) %>% 
+  group_by(HISCO1st) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(
+    pct = n/sum(n)
+  ) %>% 
+  ggplot(aes(HISCO1st, y = pct, fill = HISCO1st)) + 
+  geom_bar(stat = "identity") + 
+  scale_fill_brewer(palette = "RdYlBu") + 
+  labs(fill = "HISCO major category", x = "HISCO major category") + 
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Occupations in Copenhagen 1861 to 1911"
+  )
+
+ggsave("Figures/CPH_stats.png", plot = p1, width = 6, height = 4)
+```
+
+![CPH](Figures/CPH_stats.png)
+
+---
+class: middle
+# Application 2: Danish Census data (1787-1901)
+
+.pull-left-wide[
+- Danish censuses 1787-1901
+- 13.5 mil. observations
+- Contains a string every year describing peoples occupation
+
+- We can turn these 13.5 million descriptions into HISCO codes in ~2 hours on a laptop with 96% accuracy
+- Census data for 1787, 1801, 1845, 1880 was part of the training data of OccCANINE
+
+
+#### Available:
+[Vedel, Christian; Dahl, Christian Møller; Johansen, Torben S. D., 2024, "HISCO codes for Danish Census data", https://doi.org/10.7910/DVN/WZILNI, Harvard Dataverse, V3](https://doi.org/10.7910/DVN/WZILNI)
+
+]
+
+.pull-right-narrow[
+![Filled form](https://upload.wikimedia.org/wikipedia/commons/9/9a/Folket%C3%A6lling-1840.jpg)
+]
+
+
+
+---
+# What we are working on
+
+.pull-left[
+### Main chalenges for the 'old version'
+1. Weaker performance in some languages
+2. Weaker performance in rarer (higher human status) occupations
+2. Predicts full code rather than digits
+3. Rare cases of weird predictions in otherwise obvious cases $^1$
+4. Slow finetuning in some cases
+
+.footnote[
+.small123[
+$^1$: We always reccomend checking 200 observations manually. This is still much quicker than having to find HISCO codes for 20000 observations manually. 
+]
+]
+
+]
+
+.pull-right[
+### Development
+- New training data
+- Digit-based seq2seq architecture (predict one digit at a time)
+- More string augmentation:
+  + Adversarial training examples: Changing descriptions only slightly to make the model make wrong guesses
+  + Double translation 
+  + Random strings should always be '-1'
+- Testing 'finetunability' to OCC1950, OCCICEM, PST, ISCO68 
+- Two user end options: *'fast'* or *'good'*
+]
+
+
+---
+# Differential error rates
+.pull-left-narrow[
+- Performs best for the most common HISCO codes (99% --> 524 HISCO codes)
+- (As does squishy wet neural networks)
+]
+
+.pull-right-wide[
+![HISCO_count](Figures/Performance_by_hisco.png)
+]
+
+---
+# Bias
+
+.pull-left-narrow[
+- Potential problem: If error rates are correlated with Socio-Economic Status
+- Turns out its not
+- Not in a regression setting either
+]
+
+.pull-right-wide[
+![SES](Figures/Performance_by_ses.png)
+]
+
+---
+# Architecture
+![Arch](Figures/Architecture.png)
+
+**Summary:** Description goes in, probabilities comes out
+
+
+---
+class: middle
+# OccCANINE
+.pull-left[
+- New tool to make research using historical occupations easier
+
+- 10000 observations in minutes (rather than 27 hours)
+
+- Small language model, OccCANINE:
+  + **Input:** "En" + "He is a farmer"
+  + **Output:** HISCO code 61110 (probability=0.989589)
+  
+- Everything is free, open source, wrapped up in a simple python library and available at [github.com/christianvedels/OccCANINE](https://github.com/christianvedels/OccCANINE)
+
+
+]
+
+.pull-right[
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BF_oNe-sABQ?si=n3PxM8PkrB5esyPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+*Youtube video on how to use it*
+https://youtu.be/BF_oNe-sABQ?si=Ef1YrkK43Ln_IHJS
+]
+
+
+---
+```{r include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+
+loadR1 = function(x){
+  load(x)
+  return(p3d)
+}
+loadR2 = function(x){
+  load(x)
+  return(p2d)
+}
+
+p3d_wlang_base = loadR1("Figures/CANINE baseline (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wlang = loadR1("Figures/CANINE finetuned (w. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang_base = loadR1("Figures/CANINE baseline (wo. lang)Interactive_tsne_3d.Rdata")
+p3d_wolang = loadR1("Figures/CANINE finetuned (wo. lang)Interactive_tsne_3d.Rdata")
+
+p2d_wlang_base = loadR2("Figures/CANINE baseline (w. lang)Interactive_tsne_2d.Rdata")
+p2d_wlang = loadR2("Figures/CANINE finetuned (w. lang)Interactive_tsne_2d.Rdata")
+p2d_wolang_base = loadR2("Figures/CANINE baseline (wo. lang)Interactive_tsne_2d.Rdata")
+p2d_wolang = loadR2("Figures/CANINE finetuned (wo. lang)Interactive_tsne_2d.Rdata")
+```
+
+# The advantage of OccCANINE as a language model
+.pull-left-narrow[
+- The model learns to understand occupational structures *semantically*
+- *This is evident from the the embeddings: 768 dimensions reduced to 2*
+- Natural starting point for other general tasks related to occupation
+ $\rightarrow$
+]
+
+.pull-right-wide[
+.panelset[
+.panel[.panel-name[CANINE]
+.center[
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5, fig.align='center'}
+p2d_wlang_base %>% layout(autosize = F, width = 500, height = 400)
+```
+]
+]
+.panel[.panel-name[OccCANINE]
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+p2d_wlang %>% layout(autosize = F, width = 500, height = 400)
+```
+]
+]
+]
+
+
+
+
