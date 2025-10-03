@@ -447,8 +447,8 @@ BlueSky: @christianvedel.bsky.social
 X: @ChristianVedel  
 christian-vs@sam.sdu.dk  
 
-
-OccCANINE guide YouTube: https://youtu.be/BF_oNe-sABQ?si=Ef1YrkK43Ln_IHJS
+- OccCANINE guide YouTube: https://youtu.be/BF_oNe-sABQ?si=Ef1YrkK43Ln_IHJS
+- Paper på arXiv: https://arxiv.org/abs/2402.13604 
 ]
 
 
