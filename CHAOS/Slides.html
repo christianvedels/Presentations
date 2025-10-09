@@ -141,7 +141,7 @@ class: center, inverse, middle
 
 ### Email: [christian-vs@sam.sdu.dk](christian-vs@sam.sdu.dk)  
 
-### Updated 2025-09-16
+### Updated 2025-10-09
 
 ---
 
@@ -171,7 +171,10 @@ Abramitzky, Ager, Boustan, Cohen &amp; Hansen, C. W. (2023): Migration does not 
 ]
 
 ---
-class: middle
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
 
 # Three problems:
 
@@ -180,8 +183,11 @@ class: middle
 3. **Hard to construct:** Constructing new measures is time consuming.
 
 .footnote[
-.chaosred[*1. and 2. causes systematic bias*]
+.chaosred[*1. and 2. causes systematic bias* (Saavedra, Twinam, 2020; Inwood, Minns and Summerfield, 2019)] 
 ]
+
+--
+#### .chaosred[*We address all of these to some extend*]
 
 
 ---
@@ -290,27 +296,6 @@ This is not:
 ]
 
 
-
----
-# How it works
-
---
-
-.pull-right-wide[
-.panelset[
-.panel[.panel-name[Steps 1]
-.pull-right-wide[
-![blacksmith](Figures/blacksmith_example.svg)
-]
-]
-.panel[.panel-name[Step 2]
-.pull-right-wide[
-![blacksmith and farmer](Figures/blacksmith_and_farmer_example.svg)
-]
-]
-]
-
-]
 
 
 ---
@@ -473,13 +458,31 @@ $$
 \mathbb{V}( y_k-\hat{y}_k) = \mathbb{V}(y_i-\hat{y}_i)
 \end{split}`
 $$
-True under *relevance assumption*
+True under *relevance assumption*  
+`\(\rightarrow\)` Means that we can use PPI and DSL (Angelopoulos et al, 2023; Egami et al 2024)
 ]
 
-.chaosred[**Implication**]: Classification does not need to be perfect - we can correct for bias
 
-*Note: This is a vast improvement over previous methods*
+]
 
+---
+class: middle
+
+# PPI style bias correction example
+
+.pull-left-wide[
+- Say we are interested in the mean of income: `\(\mu(y)\)`
+- But we only observe `\(\hat{y}\)`
+- And we have a small validation set, `\(k\)`, where we observe both `\(y\)` and `\(\hat{y}\)`.
+- `\(\hat{y}\)` might be biased: `\(\mu(y)\not\approx \mu(\hat{y})\)`
+- **Solution:**
+`$$\mu(y)\approx \mu(\hat{y})+\frac{1}{k}\mu(y-\hat{y})$$`
+]
+
+--
+
+.footnote[
+.chaosred[*There are versions of this that generalises into regression*]
 ]
 
 ---
@@ -511,11 +514,6 @@ True under *relevance assumption*
 
 &gt; `\(\rightarrow\)` Unbiased results 
 
-&gt; *All of this build on PPI and DSL* `\(^1\)`
-
-.footnote[
-`\(^1\)`: PPI: Angelopoulos et al. (2023), DSL: Egami et al. (2024) 
-]
 
 ]
 
@@ -611,6 +609,29 @@ True under *relevance assumption*
 class: middle, center
 
 # Appendix
+
+---
+# How it works
+
+--
+
+.pull-right-wide[
+.panelset[
+.panel[.panel-name[Steps 1]
+.pull-right-wide[
+![blacksmith](Figures/blacksmith_example.svg)
+]
+]
+.panel[.panel-name[Step 2]
+.pull-right-wide[
+![blacksmith and farmer](Figures/blacksmith_and_farmer_example.svg)
+]
+]
+]
+
+]
+
+
 
 ---
 class: middle
