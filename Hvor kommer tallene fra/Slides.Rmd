@@ -15,6 +15,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      ratio: '16:9'
 editor_options: 
   chunk_output_type: console
 ---
@@ -101,11 +102,11 @@ library(tidyverse)
 - (Og så kunne man f.eks. arbejde i finansministeriet og få styr på deres sager)
 
 ---
-**Tal over det hele**
+
 --
 ![Topskattelettelse](Figures/Topskat.png)
 --
-.pull-right[
+.pull-right-narrow[
 ![Kattegatforbindelse](Figures/Kattegatforbindelse.png)
 ]
 --
@@ -114,8 +115,16 @@ library(tidyverse)
 ]
 --
 .pull-right-narrow[
-***...Og senest Store Bededag***
+***...Og senest Store Bededag:***
 ]
+
+--
+.center[
+.pull-right[
+![Bededag](Figures/Bededag.png)
+]
+]
+
 
 ---
 ### Finansministeriets vurdering af effekten ved afskaffelse af en helligdag
@@ -339,6 +348,8 @@ delta_beskf = nettoforoegelse * strkt_besk
 ---
 # 2. Hvordan ved de at det er 8500 mere?
 ### Hvor kommer gennemslaget fra?
+
+
 --
 ```{r}
 data0 = read_csv2("Data/Arbejdstid.csv")
@@ -350,10 +361,13 @@ p1 = ggplot(data0, aes(y = Arbejdstid, x = Year))+
   geom_line(col = "red") +
   theme_bw()
 
-ggsave("Figures/Arbejdstid.png", plot = p1, width = 6, height = 3)
+ggsave("Figures/Arbejdstid.png", plot = p1, width = 6, height = 4)
 ```
+
+.pull-left[
 ![Arbejdstid](Figures/Arbejdstid.png)
 .small123[*Arbejdstid i Danmark fra denstoredanske.lex.dk*]
+]
 
 
 ---
@@ -406,7 +420,12 @@ ggsave("Figures/Arbejdstid.png", plot = p1, width = 6, height = 3)
 - 10 is slår 7 børn ihjel! Genmmenslaget er 70%!
 
 --
+.pull-left-wide[
+.pull-right-wide[
 ![Is_draeber](Figures/Is_draeber.png)
+]
+]
+
 *Som faktisk forklares udmærket af noget tredje - sommer*
 
 ---
@@ -416,7 +435,7 @@ ggsave("Figures/Arbejdstid.png", plot = p1, width = 6, height = 3)
 Eksperimentet, $Z$, skal være *eksogent* ('udefrakommende') og *relevant* 
 ]
 
-.pull-right-wide[
+.pull-right[
 ![DAG](Figures/DAG.png)
 
 ]
@@ -424,7 +443,7 @@ Eksperimentet, $Z$, skal være *eksogent* ('udefrakommende') og *relevant*
 ---
 class: inverse, center, middle
 # Skamløs annanas i egen juice:
-## '[A perfect storm*](https://raw.githack.com/christianvedels/Slides-for-PhD-defence/main/Defence_slides.html#3)'-projektet: 
+## '[A perfect storm*](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Bruddet_paa_Aggertangen/Bruddet_paa_Aggertangen.html#1)'-projektet: 
 ### Et ret godt naturligt eksperiment for infrastruktur
 
 .footnote[
