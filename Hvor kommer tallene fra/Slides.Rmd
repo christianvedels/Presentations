@@ -84,7 +84,7 @@ library(tidyverse)
 - Økonom - nyuddannet PhD d. 25. september 2023
 - Adjunkt på økonomisk institut
 - Forskning i krydsfeltet mellem machine learning og økonomisk historie
-- Underviser i alt fra machine learning fag til indledende mikroøkonomi
+- Underviser i alt fra machine learning fag til indledende statistik og økonomisk historie
 - IB student fra Nyborg Gymnasium i 2013 - 10 år siden. 
 
 ]
