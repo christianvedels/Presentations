@@ -141,53 +141,7 @@ class: center, inverse, middle
 
 ### Email: [christian-vs@sam.sdu.dk](christian-vs@sam.sdu.dk)  
 
-### Updated 2025-10-09
-
----
-
-.pull-left[
-# The problem
-
-- Archives are **rich in occupations**, but **sparse in individual incomes**.
-- Standard workaround: impute income with **occupational scores** (e.g., IPUMS **OCCSCORE**).
-- But fixed benchmarks (e.g., 1950 US wages) can **misstate levels and trends** across **time, place, and titles**.
-
-]
-
---
-
-.pull-right[
-### Use of OCCSCORE (examples)
-.small123[
-- Abramitzky, Boustan &amp; Eriksson (2014): Assimilation of immigrants 1900–1920 using what a median US worker earned in 1950 (OCCSCORE adjusted back).  
-- Ager, Boustan &amp; Eriksson (2021): Recovery of Southern slaveholder families after the Civil War, comparing wealth shocks, with adjustments based on occupation-based earnings proxies from later censuses.
-Abramitzky, Ager, Boustan, Cohen &amp; Hansen, C. W. (2023): Migration does not offset local wages (as proxied by their occupation and a few other characteristics)
-- Collins &amp; Wanamaker (2014): Uses occupational scores to measure the effects, on income, from the great internal migration among africian americans in the period 1910-1930s
-
-*Amazing paper in the age before high-powered machine learning*
-- But now we can do better
-]
-
-]
-
----
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
-# Three problems:
-
-1. **Source-Target drift:** Problematic to estimate effects in e.g. 1900 based on 1950s wages
-2. **Within Occupation variation:** All bakers do not earn the same
-3. **Hard to construct:** Constructing new measures is time consuming.
-
-.footnote[
-.chaosred[*1. and 2. causes systematic bias* (Saavedra, Twinam, 2020; Inwood, Minns and Summerfield, 2019)] 
-]
-
---
-#### .chaosred[*We address all of these to some extend*]
+### Updated 2025-11-02
 
 
 ---
@@ -256,8 +210,11 @@ $$
 
 ]
 
-.panel[.panel-name[4 Collegial]
-*We are trying to replace IPUMS occscore*
+.panel[.panel-name[4 Broad]
+.chaosred[**We generalise the process of doing economic history:**] 
+
+- You have sources, and you want to summarise those sources to be informative for a target. 
+- This depends on the relevance of each piece of information
 ]
 
 
@@ -295,26 +252,111 @@ This is not:
 
 ]
 
+.chaosred[**Demo: Get code running**]
+
+
+---
+# How it works
+
+--
+
+.pull-right-wide[
+.panelset[
+.panel[.panel-name[Steps 1]
+.pull-right-wide[
+![blacksmith](Figures/blacksmith_example.svg)
+]
+]
+.panel[.panel-name[Step 2]
+.pull-right-wide[
+![blacksmith and farmer](Figures/blacksmith_and_farmer_example.svg)
+]
+]
+]
+
+]
+
+
 
 
 
 ---
-class: middle
 
 # Mostly harmless maths
+
+
+
+.pull-left[
+.small123[
+1. By definition
+
+$$
+\mathbb{E}(y_i \mid h_j) = \sum_i y_i\Pr(y_i\mid h_j)
+$$
+]
+]
+
+
+--
+
+.pull-left[
+.small123[
+
+2. By using Bayes we get that
+$$
+\mathbb{E}(y_i \mid h_j) = \sum_i y_i\frac{\Pr(h_j \mid y_i) \Pr(y_i)}{\Pr(h_j)}
+$$
+]
+]
+
+--
+
+
+.pull-left[
+.small123[
+3. Now an entry in a wage table might look something like:
+
+| Occupation (d) | Wage (y) |
+| -------------- | -------- |
+| Blacksmith     | 2.75     |
+| Boilermaker    | 2.65     |
+| ...            | ...      |
+]
+]
+
+--
+
+.pull-right[
+.small123[
+4. So we can naturally swap `\(y\)` for `\(d\)` getting
+
+$$
+\mathbb{E}(y_i \mid h_j) = \sum_i y_i\frac{\Pr(h_j \mid d_i) \Pr(d_i)}{\Pr(h_j)}
+$$
+*Note that `\(\Pr(h_j\mid d_i)\)` is simply the probability of having a specific HISCO code given the occupation's description*
+]
+]
+
+--
+
+.pull-right[
+.small123[
+.chaosred[**Applying it to new sources**]  
+
+5. Once we have `\(\mathbb{E}(y_i \mid h_j)\)` we can estimate target outcomes via
+$$
+\mathbb{E}(y_k \mid d_k) = \sum_j \mathbb{E}(y_i \mid h_j) \Pr(h_j \mid d_k)
+$$
+]
+]
+
+---
+
+# Mostly harmless maths (assumptions)
 
 .pull-left[
 .small123[
 #### Target / Source
-
-We are interested in
-`$$\mathbb{E}(y_k \mid d_k).$$`
-(The expected income of observation, `\(k\)`, given occupational description `\(d_k\)`)
-
-What we have is observations containing
-
-`$$\mathbb{E}(y_i \mid d_i).$$`
-(The expected income of observation, `\(i\)`, given occupational description `\(d_i\)`)
 
 #### Assumption:
 1. **Source-Target relevance:** Good historian's assumption: Your Source must be relevant for your target: `\(i\)` and `\(k\)` are both iid draws from the same distribution
@@ -335,14 +377,13 @@ What we have is observations containing
 `$$\mathbb{E}(y_i\mid d_i) = \mathbb{E}(y_k\mid d_k)$$`
 So the task is just to get a function which can estimate `$$\mathbb{E}(y_i\mid d_i)$$`
 
-Our approach:
+Which can be estimated under (mild) broad as:
 1. Calculate HISCO-level averages: `$$\mathbb{E}(y_i \mid h_j)$$`
 2. Estimate how well target descriptions fit HISCO codes 
 
-Secret sauce: We can estimate: `$$\Pr(h_j\mid d_i)$$`
+.chaosred[Secret sauce: We can estimate: `$$\Pr(h_j\mid d_i)$$`]
 
 ]
-
 
 ---
 class: middle
@@ -379,47 +420,13 @@ $$
 ]
 
 
----
-## More mostly harmless maths
-
-.pull-left[
-
-
-
-### .chaosred[Source to HISCO]
-
-`$$\mathbb{E}(y_i\mid h_j)\;=\; \sum_{i\in \mathcal{S}} y_iw_{ij} \;=\; \sum_{i \in \mathcal{S}} y_i \;\frac{\overset{OccCANINE}{\overbrace{Pr(h_j\mid d_i)}}\;\overset{Prior}{\overbrace{Pr(d_i)}}}{\underset{Evidence}{\underbrace{Pr(h_j)}}}$$`
-
-#### Example
-We estimate that HISCO 83110 "Blacksmith" earns $2.52 a day since this is the sum:
-`$$2.49\times 0.8878 + 3.96\times 0.0568 + ...$$`
-
-]
-
---
-
-.pull-right[
-### .chaosred[HISCO to Target]
-`$$\mathbb{E}(y_k\mid d_k) \;=\;  \sum_{j\in \mathcal{H}} \hat{y}_j w_{jk} \;=\; \sum_{j \in \mathcal{H}} {\underset{\text{from above}}{\underbrace{\mathbb{E}(y_i\mid h_j)}}}  \overset{OccCANINE}{\overbrace{Pr(h_j\mid  d_k)}}$$`
-
-#### Example:
-`"mainly blacksmith (also farmer)"` gets a wage `\(\hat{y}_k\)` assigned from both the HISCO codes for blacksmith (0.95) but also farmer (0.02) etc.
-
-]
-
-.footnote[
-.small123[
-`\(i\)`: Index of source; `\(j\)`: Index in HISCO table; `\(k\)`: Index of target table
-]
-]
-
 
 ---
 # Demonstration
 [Notebook]
 
 ---
-# Not so harmless maths
+# Not so harmless maths (if time)
 
 
 .pull-left[
@@ -448,7 +455,7 @@ I.e. we just get the mean from the source
 
 .pull-right[
 
-#### Debiasing &amp; scaling
+#### Debiasing &amp; scaling (if time)
 .small123[
 - Bias and scaling problems `\(\mathbb{E}(\hat{y}_k)\neq\mathbb{E}(y_k)\)` and `\(\mathbb{V}(\hat{y}_k)\neq\mathbb{V}(y_k)\)`  
 - But we can observe this problem if we are willing to assume:
@@ -468,7 +475,7 @@ True under *relevance assumption*
 ---
 class: middle
 
-# PPI style bias correction example
+# PPI style bias correction example (if time)
 
 .pull-left-wide[
 - Say we are interested in the mean of income: `\(\mu(y)\)`
@@ -482,7 +489,7 @@ class: middle
 --
 
 .footnote[
-.chaosred[*There are versions of this that generalises into regression*]
+.chaosred[*There are versions of this that generalisez into regression*]
 ]
 
 ---
@@ -490,7 +497,7 @@ class: middle
 &lt;br&gt;
 &lt;br&gt;
 
-# Bias correction via self-validation
+# Bias correction via self-validation (if time)
 
 .pull-left-wide[
 - If you trust you own source, you can use LOO-CV self-validation to debias
@@ -611,26 +618,40 @@ class: middle, center
 # Appendix
 
 ---
-# How it works
+## Simple example
+
+.pull-left[
+
+
+
+### .chaosred[Source to HISCO]
+
+`$$\mathbb{E}(y_i\mid h_j)\;=\; \sum_{i\in \mathcal{S}} y_iw_{ij} \;=\; \sum_{i \in \mathcal{S}} y_i \;\frac{\overset{OccCANINE}{\overbrace{Pr(h_j\mid d_i)}}\;\overset{Prior}{\overbrace{Pr(d_i)}}}{\underset{Evidence}{\underbrace{Pr(h_j)}}}$$`
+
+#### Example
+We estimate that:
+&gt; HISCO 83110 "Blacksmith" earns $2.52 a day:
+
+`$$2.49\times 0.8878 + 3.96\times 0.0568 + ...$$`
+
+]
 
 --
 
-.pull-right-wide[
-.panelset[
-.panel[.panel-name[Steps 1]
-.pull-right-wide[
-![blacksmith](Figures/blacksmith_example.svg)
-]
-]
-.panel[.panel-name[Step 2]
-.pull-right-wide[
-![blacksmith and farmer](Figures/blacksmith_and_farmer_example.svg)
-]
-]
-]
+.pull-right[
+### .chaosred[HISCO to Target]
+`$$\mathbb{E}(y_k\mid d_k) \;=\;  \sum_{j\in \mathcal{H}} \hat{y}_j w_{jk} \;=\; \sum_{j \in \mathcal{H}} {\underset{\text{from above}}{\underbrace{\mathbb{E}(y_i\mid h_j)}}}  \overset{OccCANINE}{\overbrace{Pr(h_j\mid  d_k)}}$$`
+
+#### Example:
+`"mainly blacksmith (also farmer)"` gets a wage `\(\hat{y}_k\)` assigned from both the HISCO codes for blacksmith (0.95) but also farmer (0.02) etc.
 
 ]
 
+.footnote[
+.small123[
+`\(i\)`: Index of source; `\(j\)`: Index in HISCO table; `\(k\)`: Index of target table
+]
+]
 
 
 ---
