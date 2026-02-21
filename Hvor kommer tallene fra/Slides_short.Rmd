@@ -103,6 +103,37 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 .highlight {
   background-color: yellow;
 }
+
+/* Centered “pull” block (useful for a single centered column) */
+.pull-center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 44%;           /* match pull-left/pull-right; adjust as you like */
+  float: none;          /* explicitly not floating */
+  display: block;
+}
+
+/* Clear after a centered pull block, analogous to your pull-right rule */
+.pull-center ~ p {
+  clear: both;
+}
+
+/* Optional variants to mirror your wide/narrow helpers */
+.pull-center-wide {
+  margin-left: auto;
+  margin-right: auto;
+  width: 66%;
+  float: none;
+  display: block;
+}
+
+.pull-center-narrow {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  float: none;
+  display: block;
+}
 ```
 
 --
@@ -131,11 +162,11 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 # Hvem er jeg
 .pull-left[
 
-- Økonom - nyuddannet PhD d. 25. september 2023
+- Økonom - PhD d. 25. september 2023
 - Adjunkt på økonomisk institut
 - Forskning i krydsfeltet mellem machine learning og økonomisk historie
 - Underviser i alt fra statistik, data science og nere klassiske økonomiske fag
-- IB student fra Nyborg Gymnasium i 2013 - 12 år siden. 
+- IB student fra Nyborg Gymnasium i 2013 - 13 år siden. 
 
 ]
 
@@ -273,22 +304,41 @@ delta_beskf = nettoforoegelse * strkt_besk
 
 ]
 
+--
+
+.pull-left-wide[
+#### Man burde bruge et *bedre* instrument - også for helligdage. Men det er svært.
+]
+
+
 ---
+class: middle 
+
 # Konklusion
 
 - Hvor kommer tallene fra?
   + Grundig overvejelse af, hvad mennesker gør
   + Altid indeholdende store usikkerheder
   + Men måske bedre end at navigere efter mavefornemmelser
+  
+.footnote[
+.pull-left-wide[
+.small123[
+**Note:** Og AI ser ud til vedblivende at være dårlig til den slags. På Ocoen-studiet lærer man at lave løsninger sammen med nyeste teknikker indenfor statistik, machine learning og data science. 
+]
+]
+]
 
 
 ---
 class: middle, inverse
 
+.pull-center-wide[
 # Tak for nu
 ## Vi ses på Oecon-studiet!
 .pull-left-narrow[
 ![SDUlogo](SDU_logo-white.png)
+]
 ]
 
 
