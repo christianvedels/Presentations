@@ -1,0 +1,934 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    includes:
+      after_body: insert-logo.html
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+editor_options:
+  chunk_output_type: console
+---
+class: center, inverse, middle
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
+```{css echo=FALSE}
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+.pull-right-narrow ~ p {
+  clear: both;
+}
+.pull-center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.pull-center-wide {
+  margin-left: auto;
+  margin-right: auto;
+  width: 66%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: #2c5c8f;
+}
+
+.grey {
+  color: #808080;
+}
+```
+
+# Jernbaner og modernitetens spor
+## Markedsadgang, vækst og demokrati i 1800-tallets Danmark
+
+### Christian Vedel,<br>Syddansk Universitet, Økonomisk Institut
+
+### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+
+### `r Sys.Date()`
+
+???
+Start roligt. "Danmark er et godt samfund at leve i. Men det var det ikke altid — og vi ved faktisk ikke så meget om, hvad der skabte det. Det er det, dette foredrag handler om."
+
+---
+<br>
+<br>
+<br>
+# I dag
+
+.pull-left-wide[
+**En jernbane er ikke bare et transportmiddel**
+- Jernbaner skaber markedsadgang (mobilitet)
+- Markedsadgang er en af de mest fundamentale 'naturkræfter' i samfundet
+]
+
+.pull-right-narrow[
+![Jernbane](Figures/Rails.jpg)
+
+.small123[
+*"Hvis man putter to Danskere i et lokale, så har de dannet mindst tre foreninger inden dagen er omme"*
+]
+]
+
+--
+.pull-left-wide[
+  ### Præsentationens tre dele
+- **Del 1:** Kontekst: Hvorfor er nogle steder rige og andre fattige? (Og hvad har jernbaner med det at gøre?)
+- **Del 2:** Hvad gør jernbaner ved et samfund?
+- **Del 3:** Hvilken rolle havde Jernbaner i at "getting to Denmark"?: Vækst og idéer
+]
+
+???
+Giv publikum et overblik. Understeg at dette ikke kun er gammelt støv — det handler om mekanismer der stadig virker.
+
+---
+class: middle
+.pull-left-wide[
+# Christian Vedel
+- Adjunkt i Økonomi(sk Historie) ved Syddansk Universitet
+
+- PhD 2023: naturlige eksperimenter i geografi og institutioner
+
+- Forsker i, hvad transport, geografi og teknologi har gjort ved samfund — historisk og i dag
+
+- Arbejder i skæringspunktet mellem økonomi, machine learning og historie
+
+- Dette foredrag bygger på fælles forskning med **Tom Görges** (TU Dortmund), **Magnus Ørberg Rove** (Danmarks Statistik) og **Paul Sharp** (SDU)
+]
+
+.footnote[
+  .small123["Tracks to Modernity: Railroads, Growth, and Social Movements in Denmark" (2025) — arXiv: https://arxiv.org/abs/2408.00885. *Under review hos EREH*]
+]
+
+???
+Hold det kort og personligt. Nævn at forskning kræver samarbejde — dette er ikke én persons work, men et hold.
+
+---
+class: inverse, middle, center
+# Del 1: Hvorfor er nogle steder rige og andre fattige?
+## (Og hvad har jernbaner med det at gøre?)
+
+---
+class: middle, inverse
+
+.pull-left-wide[
+  .pull-right-wide[
+  ![Question](Figures/futuristic_question.png)
+  ]
+]
+
+.pull-left-wide[
+
+.large123[**Hvordan endte vi lige her? Hvorfor er nogle steder rige og andre fattige?**]
+
+]
+
+---
+# Økonomi, historie og geografi
+
+--
+
+.pull-left[
+
+- Verden er ikke *isomorfisk*
+- Siden Von Thünen (1826) har økonomer vidst, at geografi påvirker økonomi
+- Vi placere aktiviteter afhængige af afstande til det vi har brug for
+- Loven om efterspørgsel*: Afstande gør ting dyrere
+
+]
+
+.pull-right[
+.panelset[.panel[.panel-name[Von Thünen 1826]
+
+.center[
+<img src="Figures/Wiki_Johann_Heinrich_von_Thünen_1840_portrait.png" style="width:50%;display:block;margin:auto">
+]
+*Von Thunen, Wikimedia Commons*
+]
+.panel[.panel-name[Illustration]
+.center[
+<img src="Figures/VonThunen_ChatGPT.png" style="width:50%;display:block;margin:auto">
+]
+*Illustration af Von Thünens model, genereret af ChatGPT*
+]
+]
+]
+
+.footnote[
+.pull-left-wide[
+.small123[
+*Loven om efterspørgsel: Du vil gerne have mindre, hvis det koster mere
+]
+]
+]
+
+--
+
+.pull-right[
+.red[**Dette former alt - altid**]
+]
+
+
+
+---
+class: inverse
+# Rom i 1572
+
+.pull-left-wide[
+![Rome](Figures/Rome_1572 Braun - Civitates Orbis Terrarum.png)
+]
+
+.pull-right-narrow[
+- Rom var ikke hvad det havde været.  
+.small123[*Braunius - Civitates Orbis Terrarum*]
+]
+
+
+---
+
+# Økonomi fra det ydre rum!
+
+--
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16481.518452212207!2d10.484111269376077!3d48.85214538786068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sdk!4v1773693622704!5m2!1sen!2sdk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+---
+class: middle, inverse
+
+![The Earth at Night](Figures/The_earth_at_night.jpg)
+*Wikimedia Commons, retrieved from NASA Earth Observatory, 27 November 2012*
+
+
+
+---
+
+# To forklaringer
+![Geografi vs. Institutioner](Figures/Institutions_Geography.png)
+
+--
+
+.pull-left[
+### Institutioner
+(Forstået meget bredt)  
+- Ejendomsrettigheder, demokrati, retsstaten, uddannelse
+- North, Acemoglu, Johnson, Robinson, Morkyr, McCloskey 
+- Forklarer alt sammen hvorfor nogle steder bliver mere velstående
+]
+
+--
+
+.pull-right[
+### Geografi
+- Klima, resourcer: Form på kontinenter, jordtyper, istider og undergrunden
+- Diamond, Sachs, Gallup, Krugman
+- Forklarer alt sammen hvorfor nogle steder har bedre forudsætninger for velstand
+- "First nature", "Second nature": naturskabt vs. menneskeskabt geografi
+]
+
+--
+.pull-left-wide[
+#### *For Jernbaner spiller det hele sammen*
+]
+
+---
+# Danmark som laboratorium
+
+.pull-left-wide[
+  <img src="Figures/Jernbaner_forbinder_ChatGPT.png" style="width:100%">
+.small123[*Jernbaner skaber nye forbindelser. (Genereret af ChatGPT)*]
+]
+
+--
+
+.pull-right-narrow[
+- På gåben: 5 km/t $\Rightarrow$ 25 km på 5 timer
+- Med jernbane: 50 km/t $\Rightarrow$ 250 km på 5 timer
+]
+
+---
+class: inverse, middle, center
+
+# Del 2: Hvad gør jernbaner ved et samfund?
+
+---
+class: middle
+# Robert Fogel og jernbanernes paradoks
+
+.pull-left[
+**Robert Fogel (1964):** *"Railroads and American Economic Growth"*
+
+> *Jernbaner var ikke afgørende for USA's vækst*
+
+Hvad ville det have kostet at fragte det samme gods uden jernbanen?
+**Svar: kun 2–3% af BNP**
+
+Nobel-pris 1993 — for kontrafaktisk metode
+]
+
+.pull-right[
+<img src="Figures/Fogel.jpg" style="width:50%;display:block;margin:auto">
+
+.small123[*"Hvad ville der være sket uden jernbanen?"*
+— Fogels spørgsmål er kernen i al god økonomi]
+]
+
+.footnote[.small123[Fogel, R.W. (1964). *Railroads and American Economic Growth*. Johns Hopkins Press.]]
+
+???
+Fogel er en god fortælling. Han vandt Nobelprisen for at sige noget kontraintuitivt. Hans kontrafaktiske metode var banebrydende. Hans konklusion er omdiskuteret: nyeste forskning viser at han undervurderede effekterne markant, fordi han ikke regnede med hvad der sker når ALLE markeder ændres på én gang.
+
+---
+<br><br>
+# Kliometrikerne vs. historikerne
+
+.pull-left[
+**Den nye økonomiske historie (~1960'erne)**
+— Fogel, North, McCloskey
+
+- Kontrafaktisk ræsonnement
+- Statistiske metoder
+- Kvantificering af historisk forandring
+
+> *"Man kan ikke vide, hvad der ikke skete"*
+.grey[— traditionel historikerindvending]
+]
+
+--
+
+.pull-right[
+**Kliometrikernes svar:**
+> *"Alle historiske påstande er implicit kontrafaktiske — vi gør det bare eksplicit"*
+
+.small123[Kliometri er i dag mainstream — og metoden vi bruger i dette papir.]
+]
+
+???
+Denne slide giver kontekst. Det er ikke historiebog-fortælling — det er forsøget på at kvantificere hvad der faktisk skete, og adskille årsag fra korrelation. Fogels provokation: han tog det implicitte kontrafaktum alvorligt og fandt at jernbanerne ikke var uerstattelige. Debatten ikke afgjort men kliometri er dominerende metode. Eksempel: "Jernbanen var afgørende for USA's vækst" — er det ikke selv en kontrafaktisk påstand?
+
+---
+# Det moderne svar: meget større end Fogel troede
+--
+
+.pull-left-wide[
+**USA** — Donaldson & Hornbeck (2016): jordværdi **+60%**
+]
+
+--
+
+.pull-left-wide[**USA** — Hornbeck (2024): **5–6 gange** mere produktivitetsvækst end Fogels estimat]
+
+--
+
+.pull-left-wide[**Sverige** — Berger & Enflo (2017): tidlig jernbane giver vedvarende vækst; sen jernbane giver *ingen* indhentning]
+
+--
+
+.pull-left-wide[**Preussen/England** — Hornung (2015); Bogart et al. (2022): byvækst og strukturforandring]
+
+--
+
+.pull-left-wide[**Indien** — Donaldson (2018): realindkomst **+16%**]
+
+--
+
+.pull-left-wide[
+  > Samme mønster. Fem lande. Én mekanisme: **markedsadgang**.
+]
+
+???
+Her er svaret på Fogel. Reveal én ad gangen — lad hvert land synke ind. Pointen: det er ikke et specialtilfælde, det er en universel mekanisme.
+
+---
+# Hvad driver effekterne? Fire mekanismer
+
+.pull-right-narrow[
+![Jernbane](Figures/Rails.jpg)
+]
+
+--
+
+.pull-left-wide[
+**Mekanisme 1: Specialisering**
+Lavere transportomkostninger → handel → fokusér på det, du er bedst til
+]
+
+--
+
+.pull-left-wide[
+**Mekanisme 2: Skalering**
+Større markeder → større fabrikker → lavere priser
+]
+
+--
+
+.pull-left-wide[
+**Mekanisme 3: Migration**
+Folk kan flytte til der, hvor jobsene er — arbejdskraft allokeres bedre
+]
+
+--
+
+.pull-left-wide[
+**Mekanisme 4: .red[Ideer på rejse]**
+*Organisatorer, lærere, aviser, ideologier* følger sporet
+]
+
+???
+Mekanisme 4 er nøglen til den danske Grundtvig-fortælling. Sæt det op tidligt. Vend tilbage til det.
+
+---
+<br>
+# Jernbaner spredte ideer og sociale bevægelser
+
+--
+
+.pull-left-wide[
+**USA, 1873–74:** Jernbaner spredte *afholdsbevægelsen* .small123[(García-Jimeno et al. 2022)]
+]
+
+--
+
+.pull-left-wide[
+**Sverige:** Jernbanen faciliterede grassroots-bevægelser — flere foreninger, større valgdeltagelse .small123[(Melander 2020)]
+]
+
+--
+
+.pull-left-wide[
+**Egypten:** Jernbaner spredte det Muslimske Broderskab til landets hjørner .small123[(Brooke 2018)]
+]
+
+???
+Reveal én case ad gangen. Den afsluttende pointe er stærk — infrastruktur er politisk neutral. Det gælder også internettet.
+
+---
+class: middle
+# Den lange hukommelse: effekter der ikke forsvinder
+
+.pull-left-wide[
+**Beeching-rapporten (1963), UK:**
+~5.000 km jernbane lukket
+
+Gibbons et al. (2024):
+> Vedvarende negative konsekvenser *årtier* efter lukningen
+
+> Svarende til 24 pct lavere befolkningsvækst i hårest ramte områder
+]
+
+
+
+???
+Dette er bro til nutiden. Spørgsmålet om lokalbaner i Danmark er ikke trivielt. Jernbaner forankrer steder: virksomheder etablerer sig, folk slår sig ned, institutioner placeres. Når infrastrukturen forsvinder, er alt det svært at flytte. "Path dependence" — fortiden sætter rammerne for fremtiden.
+
+---
+class: inverse, middle, center
+# Del 3: "Getting to Denmark"
+### — en usandsynlig succeshistorie
+
+---
+# Danmark 1800–1900: fra fattigdom til velstand
+
+.panelset[
+.panel[.panel-name[~1800]
+.pull-left[
+![Brendekilde](Figures/1920px-H._A._Brendekilde_-_Udslidt_1889.jpg)
+.small123[*"Udslidt" (1889) — H.A. Brendekilde - Wikimedia Commons*]
+]
+.pull-right[
+### Danmark ~1800:
+- Envælde
+- Blandt Europas fattigste lande
+- Korneksportør
+]
+]
+.panel[.panel-name[~1900]
+.pull-left-wide[
+![Andelsmejeri](Figures/Horns-herred-andelsmejeri-Danske-Mejerier.png)
+.small123[*Andelsmejeri i Horns Herred, ca. 1915, (Danske Mejerier)*]
+]
+.pull-right-narrow[
+### Danmark ~1900:
+- Fri forfatning
+- Leverandør nummer 1 af smør til en af verdens største økonomier (England)
+- Andelsmejerier
+- Folkehøjskoler
+]
+]
+.panel[.panel-name[Beskæftigelser]
+.pull-left-wide[
+![Beskæftigelser](Figures/Industry_landbrug_wide.png)
+.small123[*Andel beskæftiget i landbrug vs. industri (alle danskere 1787-1900) - egne tal*]
+]
+]
+.panel[.panel-name[Indkomst]
+.pull-left[
+![Indkomst](Figures/DK_occ_income.png)
+.small123[*Indkomst-score for beksæftigelse (alle danskere 1787-1900) - egne tal*]
+]
+
+.pull-right[
+### Indkomst-score for beskæftigelse
+- Høj stigning fra midt 1800-tallet og frem
+]
+]
+]
+
+---
+class: middle, inverse
+
+.pull-left-narrow[
+  ![Fukuyama](Figures/Francis_Fukuyama_2015_wiki.jpg)
+  .small123[Francis Fukuyama, Wikimedia Commons]
+]
+
+.pull-right-wide[
+.larger123[
+### **Francis Fukuyama (2011):** *"The Origins of Political Order"*
+- At bygge en moderne velfungerende stat kan beskrives som "Getting to Denmark" — en usandsynlig rejse fra kaos til orden
+- Men hvordan kom Danmmark til Danmark?
+]
+]
+
+---
+# "Getting to Denmark": tre ingredienser
+
+.panelset[
+.panel[.panel-name[Andelsmejerier]
+.pull-left[
+![Generalforsamling](Figures/Generalforsamling_i_Ansager_Andelsmejeri.jpg)
+.small123[*Generalforsamling i Ansager Andelsmejeri*]
+]
+.pull-right[
+**Andelsmejeriet:** bønder der går sammen om produktion og afsætning
+
+- Fra 1882: spredte sig eksplosivt
+- Kræver tillid, kontrakter, fælles beslutninger
+- Danmarks industrialisering var ikke kun i byen - den var også på landet
+]
+]
+.panel[.panel-name[Grundtvig]
+.pull-left[
+**N.F.S. Grundtvig (1783–1872)**
+
+> *"Det levende ord"* — viden skabes i samtalen, ikke ved udenadslære
+
+- Folkehøjskolerne: dannelse frem for eksamener
+- Unge landmænd: dansk sprog, historie, demokrati
+- Højskoler over hele landet
+]
+.pull-right[
+<img src="Figures/Grundtvig_wikimedia.jpg" style="width:50%;display:block;margin:auto">  
+.small123[N.F.S. Grundtvig (1783–1872), wikimedia commons]
+]
+]
+.panel[.panel-name[Forsamlingshuse]
+.pull-left-wide[
+**Forsamlingshuset:** lokalt mødelokale, bygget og ejet af bønderne selv
+
+Fra ~1880: spredte sig som ringe i vand
+
+- Grundtvigske foredrag og politiske debatter
+- Planlægning af andelsmejerier
+- Afstemninger om fælles beslutninger
+
+> I 1920 var der forsamlingshuse i næsten halvdelen af alle danske sogne
+]
+.pull-right-narrow[
+![Forsamlingshus](Figures/Forsamlingshus.jpg)
+.small123[*Dansk forsamlingshus, ca. 1900*]
+]
+]
+.panel[.panel-name[Overblik]
+<img src="Figures/Conceptual_framework.png" style="width:50%;display:block;margin:auto">
+.pull-right-wide[
+**Vores spørgsmål:** Kan vi *måle* jernbanernes bidrag til begge strømme?
+]
+]
+]
+
+
+???
+Grundtvig er en nøglefigur — konservativ nationalromantiker OG progressiv demokrat. Forsamlingshuset er det konkrete sted, hvor demokratiet levede lokalt. Jernbaner og Grundtvig er ikke alternative forklaringer — de er komplementære. Det motiverende mønster (data fra 1915): steder med jernbane → 10,7% mere sandsynlige for andelsmejerier; steder med forsamlingshus → 13,9% mere sandsynlige. Og disse effekter er UAFHÆNGIGE af hinanden.
+
+---
+# Jernbaner og markedsadgang
+
+.pull-left-narrow[
+- Massere af variation at udnytte fra første jernbane i 1847 til næsten komplet netværk i 1901
+]
+
+.pull-right-wide[
+.panelset[
+.panel[.panel-name[1847]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1847.png" style="width:50%">]
+]
+.panel[.panel-name[1857]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1857.png" style="width:50%">]
+]
+.panel[.panel-name[1867]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1867.png" style="width:50%">]
+]
+.panel[.panel-name[1877]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1877.png" style="width:50%">]
+]
+.panel[.panel-name[1887]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1887.png" style="width:50%">]
+]
+.panel[.panel-name[1897]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1897.png" style="width:50%">]
+]
+.panel[.panel-name[1907]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1907.png" style="width:50%">]
+]
+.panel[.panel-name[1917]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1917.png" style="width:50%">]
+]
+.panel[.panel-name[1927]
+.center[<img src="Figures/All_rails/actual_railwaysN_Y1927.png" style="width:50%">]
+]
+]
+]
+.footnote[.pull-right[.small123[*Fertner (2013); Digdag sognekort*]]]
+
+
+---
+class: middle
+# Jernbanernes udbredelse 1847–1901
+
+.pull-left[
+- **1847:** København–Roskilde — første linje
+- **1874:** Esbjerg — porten til England
+- **1901:** Næsten komplet nationalt netværk
+
+1.589 sogne. Hvert sogne får jernbane på *et specifikt tidspunkt* — vi udnytter denne variation.
+]
+
+---
+class: middle
+# Grundtvigske institutioner — deskriptivt overblik
+
+.pull-left-narrow[
+- *Røde linjer*: Sogne der fik jernbane. 
+- *Sorte linjer*: Sogne der aldrig fik jernbane.
+]
+
+.pull-right-wide[
+<img src="Figures/Grundtvig_over_time.png" style="width:75%;display:block;margin:auto">
+]
+
+
+???
+Nøglepointen: timing. Jernbanen kom først, Grundtvigianismen fulgte. Det er det rigtige kausalitetsmæssige mønster.
+
+
+---
+class: middle
+# Data og metode — kort version
+
+.pull-left[
+**Data:** 1.589 sogne, 1850–1901
+
+- Jernbaner: Fertner (2013)
+- Folketællingerne: 13 mio. obs. (LinkLives)
+- Grundtvigianisme: Bentzen et al. (2023)
+
+**Metode:** *"Hvad ville der være sket med sognet, hvis det IKKE havde fået jernbanen?"*
+
+Sogne der lignede hinanden inden jernbanen bruges som spejl — Callaway & Sant'Anna (2021)
+]
+
+.pull-right[
+<img src="Figures/DiD_example.png" style="width:75%;display:block;margin:auto">
+]  
+```{r, eval=FALSE, echo=FALSE}
+# Dif in Dif
+library(tidyverse)
+p1 = data.frame(
+  outcome = c(10.5, 10.5+2, 11, 14, 11, 11+2),
+  type = c("Kontrol", "Kontrol", "Behandlet", "Behandlet", "Kontrafaktisk", "Kontrafaktisk"),
+  year = c(1850, 1860, 1850, 1860, 1850, 1860)
+) %>%
+  ggplot(aes(x = year, y = outcome, group = type, color = type, linetype = type)) +
+  geom_line(linewidth = 1.2) +
+  geom_vline(xintercept = 1855, linetype = "dashed", color = "grey50") +
+  scale_color_manual(values = c("Kontrol" = "black", "Behandlet" = "red", "Kontrafaktisk" = "red")) +
+  scale_linetype_manual(values = c("Kontrol" = "solid", "Behandlet" = "solid", "Kontrafaktisk" = "dotted")) +
+  annotate("segment", x = 1860, xend = 1860, y = 13, yend = 14,
+           arrow = arrow(ends = "both", length = unit(0.2, "cm")), color = "darkred") +
+  annotate("text", x = 1860.3, y = 13.5, label = "DiD", hjust = 0, color = "darkred") +
+  labs(x = NULL, y = "Udfald", color = NULL, linetype = NULL) +
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(1850, 1860, by = 10)) +
+  theme(legend.position = "bottom")
+
+ggsave("DiD_example.png", p1, width = 6, height = 4)
+```
+
+
+.footnote[.small123[Fertner (2013); LinkLives/Mathiesen (2022); Bentzen et al. (2023); Callaway & Sant'Anna (2021)]]
+
+???
+Hold det enkelt. Tvillingeanalogien mundtligt: sammenlign to tvillinger, den ene får et nyt job, den anden ikke. Forskellen efterfølgende er effekten — forudsat de var ens inden. Vi har ikke tvillinger, men vi har mange sogne der lignede hinanden og fik jernbane på forskellige tidspunkter.
+
+
+---
+# Økonomisk spor: befolkning, migration, industri
+
+.panelset[
+.panel[.panel-name[Resultater]
+.pull-left[
+**Jernbaneforbindelse øgede (Callaway & Sant'Anna):**
+
+- **Befolkning:** +7%
+- **Indvandring:** +10%
+- **Industribeskæftigelse:** +1.8 pp
+- **Ikke-landbrugsbeskæftigelse:** +2.0 pp
+- **Fertilitet:** ingen effekt
+
+> Jernbanen omfordelte arbejdskraft og befolkning — ikke blot trafik
+]
+.pull-right[
+.small123[*Dynamiske event-study estimater — ingen systematiske pre-trends*]
+]
+]
+.panel[.panel-name[Befolkning]
+.center[<img src="Figures/results/p1_lnPopulation.png" style="width:50%">]
+]
+.panel[.panel-name[Migration]
+.center[<img src="Figures/results/p6_lnMigration.png" style="width:50%">]
+]
+.panel[.panel-name[Industri]
+.center[<img src="Figures/results/p3_industry_share.png" style="width:50%">]
+]
+.panel[.panel-name[Ikke-landbrug]
+.center[<img src="Figures/results/p4_non_agricultural_share.png" style="width:50%">]
+]
+]
+
+
+
+
+
+
+
+
+
+---
+# Grundtvigs spor: folkehøjskoler og forsamlingshuse
+
+.panelset[
+.panel[.panel-name[Resultater]
+.pull-left[
+**Jernbaneforbindelse øgede (Callaway & Sant'Anna):**
+
+- **Folkehøjskole** (tæthed i omegn): +0.019
+- **Forsamlingshus** (tæthed i omegn): +0.145
+
+> Jernbanen spredte Grundtvigs idéer — ikke blot til sognet, men til hele oplandet
+]
+.pull-right[
+.small123[*Forsamlingshuse etableredes lokalt; folkehøjskoler tiltrak studerende fra en hel region — jernbanen gjorde begge mere tilgængelige*]
+]
+]
+.panel[.panel-name[Forsamlingshus (omegn)]
+.center[<img src="Figures/results/p3_MA_assembly.png" style="width:50%">]
+]
+.panel[.panel-name[Folkehøjskole (omegn)]
+.center[<img src="Figures/results/p4_MA_folkhigh.png" style="width:50%">]
+]
+]
+
+---
+class: middle
+# Hvad forklarer hvad?
+
+.pull-left-wide[
+- **Jernbaner $\rightarrow$ andelsmejerier:** *+10,7 procentpoint*
+- **Forsamlingshus $\rightarrow$ andelsmejerier:** *+13,9 procentpoint*
+- **Uafhængige bidrag** — de summerer, de erstatter ikke hinanden
+
+> Jernbanerne katalyserede *begge* dimensioner af moderniseringen:
+> den økononomiske *og* den demokratisk-kulturelle
+]
+
+.pull-right-narrow[
+.panelset[
+.panel[.panel-name[Jernbaner]
+![Jernbaner og andelsbevægelsen](Figures/Connected_rail_vs_coops.png)
+.small123[*Jernbaneforbindelse og andelsmejerier, 1915*]
+]
+.panel[.panel-name[Forsamlingshuse]
+![Forsamlingshuse og andelsbevægelsen](Figures/Assembly_houses_vs_coops.png)
+.small123[*Forsamlingshustæthed og andelsmejerier, 1915*]
+]
+]
+]
+
+???
+Saml trådene. Jernbaner og Grundtvig er ikke to måder at sige det samme på — de er to separate mekanismer der begge bidrog.
+
+---
+class: inverse, middle, center
+# Konklusion
+## Jernbaner former mobilitet (*markedsadgang*) - mobilitet former alt - altid
+
+---
+<br><br>
+# Hvad har vi lært?
+
+> *Vil man forstå, hvordan et samfund bliver det, det er — så følg infrastrukturen.*
+
+--
+
+.pull-left-wide[
+**1. Infrastruktur påvirker første-ordens naturgeografi**
+]
+
+--
+
+.pull-left-wide[
+**2. Effekterne er vedvarende**
+]
+
+--
+
+.pull-left-wide[
+**3. Idéer rejser med infrastruktur**
+]
+
+--
+
+.pull-left-wide[
+**4. Jernbaner bidrog til "Getting to Denmark"**
+]
+
+???
+Afslut med det store billede. Jernbaner er ikke bare historie — de er et eksempel på, at store strukturelle investeringer former samfund på måder vi ikke fuldt ud forstår i øjeblikket. Det gælder også i dag: hvad gør bredbånd, motorveje, letbaner ved de steder de forbinder — og de steder de springer over?
+
+---
+class: middle
+# Tak for opmærksomheden
+
+.pull-left[
+**Christian Vedel**
+Syddansk Universitet, Økonomisk Institut
+
+- **Email:** [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+- **Twitter/X:** [@ChristianVedel](https://twitter.com/ChristianVedel)
+- **BlueSky:** [@christianvedel.bsky.social](https://bsky.app/profile/christianvedel.bsky.social)
+
+**Paperet:**
+Görges, Rove, Sharp & Vedel (2025):
+*"Tracks to Modernity: Railroads, Growth,*
+*and Social Movements in Denmark"*
+
+ArXiv: [https://arxiv.org/abs/2502.21141](https://arxiv.org/abs/2502.21141)  
+GitHub: [https://github.com/christianvedels/Tracks_to_modernity](https://github.com/christianvedels/Tracks_to_modernity)
+]
+
+.pull-right[
+![Jernbane](Figures/Rails.jpg)
+
+.small123[
+*Med-forfattere:*
+Tom Görges (TU Dortmund)
+Magnus Ørberg Rove (Danmarks Statistik)
+Paul Sharp (SDU)
+]
+]
+
+
+---
+# Danmark som laboratorium 
+.pull-left[
+- "Danmarks Suez-kanal" — skabte en ny handelsrute og ændrede byernes betydning
+- 25 pct flere indbyggere v. Limfjorden pga. forbedret markedsadgang (Vedel, 2024)*
+- Viser at markedsadgang har stor betydning for vækst og udvikling
+]
+
+
+.pull-right[
+.panelset[
+.panel[.panel-name[Aggerkanalen 1825]
+![Aggerkanalen](Figures/Map_nobg.png)
+]
+.panel[.panel-name[Effekt]
+![Aggerkanalen effekt](Figures/pop_dummy.png)
+]
+]
+]
+
+.footnote[
+  .small123[**A Perfect Storm: First-Nature Geography and Economic Development* https://arxiv.org/abs/2408.00885]
+]
