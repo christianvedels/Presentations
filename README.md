@@ -17,8 +17,9 @@ In this repository I will collect random talks and guest lecture I give here and
  
  [Hvor kommer tallene fra? Hvordan laver man dem?](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Hvor%20kommer%20tallene%20fra/Slides.html): Om de beregninger der ligger bag de tal vi høre i offentligheden - og de problemer og usikkerheder der er i disse. [Kort version](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Hvor%20kommer%20tallene%20fra/Slides_short.html)
 
-
  [Bruddet på Aggertangen](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Bruddet_paa_Aggertangen/Bruddet_paa_Aggertangen.html)
+
+ [Jernbaner](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Jernbaner/Railway_slides/Slides.html)
  
  
  
