@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="263.57684mm"
+   height="51.930214mm"
+   viewBox="0 0 263.57684 51.930214"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="CHAOS_flexibility.svg"
+   inkscape:export-filename="CHAOS_flexibility.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0167041"
+     inkscape:cx="453.91772"
+     inkscape:cy="150.97805"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="155.7896"
+       y="166.91743"
+       width="275.41376"
+       height="82.067734"
+       id="rect3" />
+    <marker
+       style="overflow:visible"
+       id="ArrowTriangleStylized"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Stylized triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 6,0 c -3,1 -7,3 -9,5 0,0 0,-4 2,-5 -2,-1 -2,-5 -2,-5 2,2 6,4 9,5 z"
+         id="path4" />
+    </marker>
+    <rect
+       x="91.456841"
+       y="403.38379"
+       width="255.59232"
+       height="111.27828"
+       id="rect2" />
+    <rect
+       x="91.456841"
+       y="403.38379"
+       width="255.59232"
+       height="111.27828"
+       id="rect2-1" />
+    <rect
+       x="91.456841"
+       y="403.38379"
+       width="255.59232"
+       height="111.27828"
+       id="rect2-6" />
+    <marker
+       style="overflow:visible"
+       id="ArrowTriangleStylized-4"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Stylized triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 6,0 c -3,1 -7,3 -9,5 0,0 0,-4 2,-5 -2,-1 -2,-5 -2,-5 2,2 6,4 9,5 z"
+         id="path4-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowTriangleStylized-7"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Stylized triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 6,0 c -3,1 -7,3 -9,5 0,0 0,-4 2,-5 -2,-1 -2,-5 -2,-5 2,2 6,4 9,5 z"
+         id="path4-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowTriangleStylized-4-1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Stylized triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 6,0 c -3,1 -7,3 -9,5 0,0 0,-4 2,-5 -2,-1 -2,-5 -2,-5 2,2 6,4 9,5 z"
+         id="path4-9-2" />
+    </marker>
+    <rect
+       x="155.7896"
+       y="166.91743"
+       width="275.41376"
+       height="82.067734"
+       id="rect3-6" />
+    <rect
+       x="155.7896"
+       y="166.91743"
+       width="275.41376"
+       height="82.067734"
+       id="rect3-8" />
+    <rect
+       x="155.7896"
+       y="166.91743"
+       width="275.41376"
+       height="82.067734"
+       id="rect3-82" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-12.381041,-87.971784)">
+    <rect
+       style="fill:none;stroke:#111111;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1"
+       width="74.710037"
+       height="37.907063"
+       x="12.881041"
+       y="97.895912" />
+    <ellipse
+       style="fill:none;stroke:#111111;stroke-width:1.28318;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.28318,3.84953999;stroke-dashoffset:0"
+       id="path2"
+       cx="144.77391"
+       cy="113.97947"
+       rx="40.5257"
+       ry="22.502277" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-6.5325279,2.9442379)"
+       id="text2"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);display:inline;fill:none;stroke:#111111;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+         x="96.985352"
+         y="425.77734"
+         id="tspan8"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan7">London Tradesman 
+</tspan></tspan><tspan
+         x="175.70117"
+         y="453.77734"
+         id="tspan10"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan9">(Skills)</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,85.79864,-4.061249)"
+       id="text2-6"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-1);display:inline;fill:none;stroke:#111111;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+         x="174.88086"
+         y="425.77734"
+         id="tspan12"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan11">HISCO
+</tspan></tspan><tspan
+         x="92.733398"
+         y="453.77734"
+         id="tspan14"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan13">(Occupational codes)</tspan></tspan></text>
+    <rect
+       style="fill:none;stroke:#111111;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1-7"
+       width="74.710037"
+       height="37.907063"
+       x="200.74785"
+       y="97.814499" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,180.8066,-2.958007)"
+       id="text2-1"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-6);display:inline;fill:none;stroke:#111111;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+         x="92.302734"
+         y="425.77734"
+         id="tspan16"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan15">Department of Labor
+</tspan></tspan><tspan
+         x="180.62988"
+         y="453.77734"
+         id="tspan18"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan17">Wages
+</tspan></tspan><tspan
+         x="94.449219"
+         y="481.77734"
+         id="tspan20"><tspan
+           style="fill:#000000;stroke:none"
+           id="tspan19">(Wages/Year/Place)</tspan></tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#111111;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#ArrowTriangleStylized)"
+       d="m 87.608987,109.76754 c 0,0 1.897992,-5.9962 7.106844,-7.73918 7.037479,-2.354867 9.914949,-0.58749 9.914949,-0.58749"
+       id="path3"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#111111;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#ArrowTriangleStylized-4)"
+       d="m 108.69198,124.40006 c 0,0 -2.11216,5.92415 -7.38025,7.47889 -7.117535,2.10056 -9.929661,0.23095 -9.929661,0.23095"
+       id="path3-2"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#111111;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#ArrowTriangleStylized-7)"
+       d="m 180.39379,103.60224 c 0,0 1.89799,-5.996195 7.10685,-7.739175 7.03747,-2.354867 9.91494,-0.58749 9.91494,-0.58749"
+       id="path3-0"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#111111;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#ArrowTriangleStylized-4-1)"
+       d="m 200.74072,119.52286 c 0,0 -2.11216,5.92415 -7.38025,7.47889 -7.11753,2.10056 -9.92966,0.23095 -9.92966,0.23095"
+       id="path3-2-4"
+       sodipodi:nodetypes="csc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.18381024,-0.04036881,0.04036881,0.18381024,37.44761,75.538801)"
+       id="text3"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect3);display:inline;fill:#b33d3d;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"><tspan
+         x="236.62109"
+         y="189.3125"
+         id="tspan22"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'CMU Serif Bold Italic'"
+           id="tspan21">CHAOS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.18381024,-0.04036881,0.04036881,0.18381024,124.3146,71.021222)"
+       id="text3-3"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect3-6);display:inline;fill:#b33d3d;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"><tspan
+         x="236.62109"
+         y="189.3125"
+         id="tspan24"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'CMU Serif Bold Italic'"
+           id="tspan23">CHAOS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.18381024,-0.04036881,0.04036881,0.18381024,39.587361,114.72558)"
+       id="text3-1"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect3-8);display:inline;fill:#b33d3d;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"><tspan
+         x="236.62109"
+         y="189.3125"
+         id="tspan26"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'CMU Serif Bold Italic'"
+           id="tspan25">CHAOS</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.18381024,-0.04036881,0.04036881,0.18381024,126.61354,110.982)"
+       id="text3-5"
+       style="font-style:italic;font-weight:500;font-size:28px;line-height:1;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect3-82);display:inline;fill:#b33d3d;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"><tspan
+         x="236.62109"
+         y="189.3125"
+         id="tspan28"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'CMU Serif Bold Italic'"
+           id="tspan27">CHAOS</tspan></tspan></text>
+  </g>
+</svg>
