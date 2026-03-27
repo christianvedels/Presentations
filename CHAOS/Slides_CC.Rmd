@@ -759,15 +759,14 @@ name: regression-setup
 .pull-left-wide[
 .chaosred[**Warning:** Everything that follows is proof of concept. Do not believe anything you see.]
 
-OLS throughout; SEs clustered by occupation. Four skill dimensions:
-- cognitive,
-- routine cognitive,
-- routine manual,
-- mechanical.
+OLS throughout; SEs clustered by occupation. Skills from a **2×2 task framework**:
 
-Also:
+**Two continuous margins:**
+- Routine vs. non-routine
+- Cognitive vs. manual
 
-**Specialization** $= \max_k\!\left(s_k \displaystyle\sum_{j \neq k} s_j^{-1}\right)$ — high when one dimension clearly dominates the skill profile.
+**Four binary quadrant indicators** (mutually exclusive):
+- Routine cognitive, non-routine cognitive, routine manual, non-routine manual
 ]
 
 ---
@@ -776,52 +775,20 @@ name: regression-specs
 # Regression specifications
 
 .pull-left-wide[
-**(1) Skill premium by country** — estimated separately per skill $s$ and country $c$:
-$$\log w_{ict} = \beta_c \, s_i + \gamma_t + \varepsilon_{ict}$$
 
-**(2) Skill premium over time** — estimated separately per skill $s$ and region $r$, reference 1800:
+**Skill premium over time** — estimated separately per skill $s$ and region $r$, reference 1800:
 $$\log w_{irt} = \sum_{t \neq 1800} \beta_t \bigl(s_i \cdot \mathbf{1}[\text{decade}=t]\bigr) + \gamma_t + \varepsilon_{irt}$$
 
-**(3) Skill-adjusted gender wage gap** — all skills jointly as controls, per region, reference 1800:
-$$\log w_{irt} = \sum_{t \neq 1800} \delta_t \bigl(F_i \cdot \mathbf{1}[\text{decade}=t]\bigr) + \mathbf{s}_i'\boldsymbol{\beta} + \gamma_t + \varepsilon_{irt}$$
 ]
 
 .pull-right-narrow[
-- $s_i$ = one (binarized) skill score at a time
-- $\mathbf{s}_i$ = all four skill scores (3 only)
 - $\gamma_t$ = decade fixed effects
-- $F_i = \mathbf{1}[\text{female}]$
+- Run separately per skill and region
+- **Continuous:** routine margin, cognitive margin
+- **Binary:** 2×2 quadrant membership
+- Weighted by CHAOS target evidence
 ]
 
----
-name: skill-premiums-country
-
-# Skill premiums by country
-
-.pull-left-narrow[
-One coefficient per country, clustered by occupation.
-
-- No balancing
-- No control for selection
-- Just descriptive
-]
-
-.pull-right-wide[
-.panelset[
-.panel[.panel-name[Cognitive]
-<div style="overflow-y:auto;max-height:360px">.center[<img src="Figures/by_country/weighted_cognitive_score_bin.png" width="100%">]</div>
-]
-.panel[.panel-name[Routine manual]
-<div style="overflow-y:auto;max-height:360px">.center[<img src="Figures/by_country/weighted_routine_manual_score_bin.png" width="100%">]</div>
-]
-.panel[.panel-name[Mechanical]
-<div style="overflow-y:auto;max-height:360px">.center[<img src="Figures/by_country/weighted_mechanical_score_bin.png" width="100%">]</div>
-]
-.panel[.panel-name[Specialization]
-<div style="overflow-y:auto;max-height:360px">.center[<img src="Figures/by_country/weighted_specialization_score_bin.png" width="100%">]</div>
-]
-]
-]
 
 ---
 name: skill-premiums-time
@@ -840,57 +807,27 @@ Coefficient = change in skill premium relative to 1800.
 
 .pull-right-wide[
 .panelset[
-.panel[.panel-name[Cognitive]
-.center[<img src="Figures/time_region/weighted_cognitive_score_bin.png" width="95%">]
+.panel[.panel-name[Routine margin]
+.center[<img src="Figures/time_region/weighted_routine_nonroutine_margin.png" width="85%">]
+]
+.panel[.panel-name[Cognitive margin]
+.center[<img src="Figures/time_region/weighted_cognitive_noncognitive_margin.png" width="85%">]
+]
+.panel[.panel-name[Routine cognitive]
+.center[<img src="Figures/time_region/weighted_is_routine_cognitive.png" width="85%">]
+]
+.panel[.panel-name[Non-routine cognitive]
+.center[<img src="Figures/time_region/weighted_is_non_routine_cognitive.png" width="85%">]
 ]
 .panel[.panel-name[Routine manual]
-.center[<img src="Figures/time_region/weighted_routine_manual_score_bin.png" width="95%">]
+.center[<img src="Figures/time_region/weighted_is_routine_manual.png" width="85%">]
 ]
-.panel[.panel-name[Mechanical]
-.center[<img src="Figures/time_region/weighted_mechanical_score_bin.png" width="95%">]
-]
-.panel[.panel-name[Specialization]
-.center[<img src="Figures/time_region/weighted_specialization_score_bin.png" width="95%">]
+.panel[.panel-name[Non-routine manual]
+.center[<img src="Figures/time_region/weighted_is_non_routine_manual.png" width="85%">]
 ]
 ]
 ]
 
----
-name: gender-gap
-
-# Skill-adjusted gender wage gap over time
-
-.pull-left-narrow[
-- Coefficient = change in **female log-wage penalty** relative to 1800
-- Skill mix controlled $\Rightarrow$ not driven by occupational sorting
-
-### Pattern .chaosred[(preliminary)]
-- Larger initial penalty in the UK, then US, then WE
-]
-
-.pull-right-wide[
-.center[<img src="Figures/gender_gap/weighted_bin.png" width="95%">]
-]
-
----
-name: social-planner
-
-# What should a 1750 social planner invest in?
-
-.pull-left-narrow[
-> Which skills will be rewarded in the 19th-century labor market?
-
-- **Cognitive** $\Rightarrow$ rising premium across all regions
-- **Routine manual** $\Rightarrow$ flat or declining
-- **Mechanical** $\Rightarrow$ mixed, tracks industrialization timing
-- **Specialization** $\Rightarrow$ rewarded, varies by region
-
-Consistent with skill-biased technological change. .chaosred[**Still preliminary**]
-]
-
-.pull-right-wide[
-.center[<img src="Figures/time_region/weighted_cognitive_score_bin.png" width="95%">]
-]
 
 ---
 name: conclusion
@@ -1155,6 +1092,15 @@ name: appendix-wages-premia
 .center[<img src="Figures/skill_premia_over_time_usa.png" width="90%">]
 ]
 ]
+
+---
+name: appendix-2d-task-space
+
+# Occupations in 2D task space
+
+.center[<img src="Figures/occupations_2d_matrix_simple_top2_zoom_labeled.png" width="60%">]
+
+[Back to slides](#regression-setup)
 
 ---
 name: appendix-references
