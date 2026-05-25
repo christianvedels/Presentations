@@ -143,7 +143,7 @@ class: center, inverse, middle
 
 ### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
 
-### Updated 2026-03-27
+### Updated 2026-05-25
 
 ---
 name: ovid
@@ -223,32 +223,19 @@ class: center, inverse
 ---
 name: motivation
 
-# CHAOS: Converting Historical Accounts to Occupational Scores
-
-.pull-left-wide[
-- When we don't have wages but occupations, we can proxy wages with people's occupations.
-- Typically OCC1950-SCORE (i.e. wages in the US in 1950s)
-
-]
+# CHAOS: What we formalize and generalize
 
 --
 
 .pull-left-wide[
-### This presentation:
-- We provide econometric formalization of the use of occscores
-- Introduce CHAOS, a new method for constructing occscores that is efficient, interpretable, and well-validated
-- Apply it to estimate skill premiums across the industrializing world, 1800–1900
+.center[&lt;img src="Figures/Wages1825.png" width="80%"&gt;]
 ]
-
-
---
 
 .pull-right-narrow[
-.center[&lt;img src="Figures/Wages1825.png" width="70%"&gt;]
-
 Could you tell me the income of a *Joiner*, *Cowherd*, *Bricklayer*?
 
-.center[&lt;img src="Figures/CHAOS_clipart.png" width="95%"&gt;]
+.center[&lt;img src="Figures/CHAOS_clipart.png" width="100%"&gt;]
+
 ]
 
 ---
@@ -281,22 +268,28 @@ name: bias
 
 # Problem: Bias from occ. scores
 
-`$$y_i = \alpha + \beta x_i + \varepsilon_i$$`
-
 .small123[
-where `\(y_i\)` is the true outcome (e.g. wage) to be replaced with `\(\mu_S(d_i)\)` s.t.
+What we want:
+
+
+`$$y_i = \alpha + \beta x_i + \varepsilon_i$$`
 ]
 
 --
 
-`$$\mu_S(d_i) = \alpha + \beta x_i + \varepsilon_i$$`
+.small123[
 
+
+What we have is `\(\hat{Y}(d_i) = \mu_S(d_i)\)` s.t.
+
+`$$\mu_S(d_i) = \alpha + \beta x_i + \varepsilon_i$$`
+]
 
 --
 
 .pull-left-wide[
 .small123[
-Let `\(\mu_S(d_i)\)` be the source-assigned score, `\(\mu_T(d_i)\)` the target-population mean, `\(y_i\)` the true outcome. The total proxy error decomposes as:
+The total proxy error decomposes as:
 
 `$$m_i \;=\; \underbrace{\mu_S(d_i) - \mu_T(d_i)}_{\delta(d_i)\ \text{source-target drift}} \;+\; \underbrace{\mu_T(d_i) - y_i}_{r_i\ \text{within-occupation residual}}$$`
 
@@ -307,16 +300,6 @@ Then:
 ]
 ]
 
-.pull-right-narrow[
-### The two big problems of occupational scores:
-.small123[
-`\(\delta(d_i)\)` — **source-target drift**
-1950 US wages `\(\neq\)` 1850 England.
-
-`\(r_i\)` — **within-occupation residual**
-Apprentice `\(\neq\)` master;
-]
-]
 
 --
 
@@ -335,45 +318,7 @@ IPUMS occscore uses 1950 US wages → Canadian migrants. Blacksmith rank shifts.
 
 r_i: "Smith" = goldsmith or blacksmith. "Tailor" = master or journeyman.
 
----
-# The goal
-To input:
-- One or multiple source of info on occupations
-- To obtain an estimator: `\(\mathbb{E}(y_k \mid d_k)\)`
-
---
-
-`$$\text{text}_k\Rightarrow y_k$$`
-
---
-
-$$\text{"he is a blacksmith"}\Rightarrow \$2.563$$
-
---
-
-.pull-left[
-### What we have:
-- Sources: `\(\{d_i, y_i\}\)`
-
-| Occupation | Income |
-|---|---|
-| blacksmith | $2.30 |
-| tailor | $1.98 |
-| farmer | $1.42 |
-]
-
---
-
-.pull-right[
-### What we want:
-- Target: `\(\{d_k\}\)`
-
-| Occupation | Income |
-|---|---|
-| smith | ? |
-| tailor | ? |
-| agricultural worker | ? |
-]
+.footnote[RHS case (score as regressor) is messier — see [appendix](#appendix-bias-rhs).]
 
 ---
 name: occcanine
@@ -408,37 +353,64 @@ name: chaos-math
 
 # Bringing Maths to CHAOS
 
-Now, let's introduce a unversal encoding `\(h_j\)`. *Let's say we know* `\(\color{#2c5c34}{Pr(h_j \mid d)}\)`
+.pull-left-wide[
+**Goal:** estimate `\(D_{i'} \mapsto \mathbb{E}(Y \mid D_{i'})\)` — expected wages for any occupation string, `\(i' \in \mathcal{T}\)`.
+
+With sparse historical data, few strings have enough observations to estimate this directly.
+
+**The cheat:** map through a shared encoding `\(H \in \mathcal{H}\)` (HISCO) to add structure (formalizing and generalizing the common approach).
+]
+
+--
+
+.pull-right-narrow[
+.small123[
+**Assumptions:**
+1. **Source-target relevance:** `\((Y_i, D_i, H_i) \perp R_i\)`
+2. **Broadband:** `\(\mathbb{E}(Y \mid D, H) = \mathbb{E}(Y \mid D) = \mathbb{E}(Y \mid H)\)`
+3. **Oracle:** `\(h(d,k) = \mathbb{P}(H=k \mid D=d)\)` known for all `\(d, k\)`
+]
+]
 
 --
 
 .pull-left[
-.small123[
-### Step 1 — by definition
-`$$\color{#b33d3d}{\mathbb{E}(y_i \mid h_j)} = \sum_i y_i\Pr(y_i\mid h_j)$$`
+### Step A — estimate category means from `\(\mathcal{S}\)`
 
-### Step 2 — Bayes rule
-`$$\color{#b33d3d}{\mathbb{E}(y_i \mid h_j)} = \sum_i y_i\frac{\Pr(h_j \mid y_i) \Pr(y_i)}{\Pr(h_j)}$$`
-
-### Step 3 — swap `\(y\)` for `\(d\)`
-`$$\color{#b33d3d}{\mathbb{E}(y_i \mid h_j)} = \sum_i y_i\frac{\color{#2c5c34}{\Pr(h_j \mid d_i)} \Pr(d_i)}{\Pr(h_j)}$$`
-
-]
+`$$\color{#b33d3d}{\hat{\mu}_k} = \frac{\displaystyle\sum_{i \in \mathcal{S}} Y_i\, \color{#2c5c34}{h(D_i,k)}}{\displaystyle\sum_{i \in \mathcal{S}} \color{#2c5c34}{h(D_i,k)}}$$`
 ]
 
 --
 
 .pull-right[
-.small123[
-### Step 4 — apply to target
-`$$\mathbb{E}(y_k \mid d_k) = \sum_j \color{#b33d3d}{\mathbb{E}(y_i \mid h_j)}\, \color{#2c5c34}{\Pr(h_j \mid d_k)}$$`
+### Step B — predict for target `\(i' \in \mathcal{T}\)`
 
-### Key assumptions
-1. **Source–target relevance:** source and target are iid draws from the same distribution
-2. **Broadband classifier:** `\(\mathbb{E}(y_i \mid h_j, d_i) = \mathbb{E}(y_i \mid h_j)\)`
+`$$\hat{\mathbb{E}}(Y \mid D_{i'}) = \hat{Y}_{i'} = \sum_{k \in \mathcal{H}} \color{#b33d3d}{\hat{\mu}_k}\, \color{#2c5c34}{h(D_{i'},k)}$$`
+
+Giving us the full estimator combining the two (one next page):
 
 ]
-]
+
+---
+# The full estimator
+
+`$$\hat{\mathbb{E}}(Y \mid D_{i'}) = \hat{Y}_{i'} = \sum_{k \in \mathcal{H}} \color{#b33d3d}{\frac{\displaystyle\sum_{i \in \mathcal{S}} Y_i\, \color{#2c5c34}{h(D_i,k)}}{\displaystyle\sum_{i \in \mathcal{S}} \color{#2c5c34}{h(D_i,k)}}}\, \color{#2c5c34}{h(D_{i'},k)}$$`
+
+--
+
+What is it? One interpretation is a weighted average over source observations.
+
+`$$\hat{Y}_{i'} = \sum_{i \in \mathcal{S}} W_{ii'}\, Y_i,$$` 
+
+where `\(W_{ii'} = \sum_{k \in \mathcal{H}} \frac{h(D_i,k)\,h(D_{i'},k)}{\displaystyle\sum_{j \in \mathcal{S}} h(D_j,k)}\)`
+
+--
+
+***Weights measure the relevance of sources for a target.***
+
+--
+
+It is also closely related to the Nadaraya-Watson kernel regression estimator with a text-driven kernel.
 
 ---
 name: method-check
@@ -448,11 +420,11 @@ name: method-check
 --
 
 .pull-left[
-### Evidence — a free byproduct of Bayes' rule
+### Evidence — a free byproduct of Step B
 
-`$$\text{Evidence}(d_k) = \sum_j \Pr(h_j) \cdot \Pr(h_j \mid d_k)$$`
+`$$\text{Evidence}(D_{i'}) = \sum_{k \in \mathcal{H}} \mathbb{P}(H=k) \cdot h(D_{i'},k)$$`
 
-&gt; Empirical backing for `\(d_k\)` — falls out of the derivation for free.
+&gt; Empirical backing for `\(D_{i'}\)` — falls out of the estimator for free.
 ]
 
 --
@@ -460,7 +432,7 @@ name: method-check
 .pull-right[
 ### Effective observations
 
-`$$N_\text{eff}(d_k) = N_\text{source} \times \text{Evidence}(d_k)$$`
+`$$N_\text{eff}(D_{i'}) = |\mathcal{S}| \times \text{Evidence}(D_{i'})$$`
 
 &gt; *How many source observations back this prediction?*
 
@@ -626,6 +598,12 @@ name: method-check-traceability
 ]
 ]
 ]
+
+???
+
+Slow down here. Walk through at least two Sankey examples in full —
+explain the left-to-right flow (description → HISCO codes → source wages)
+and point out the width of the bands. This tends to get rushed.
 
 ---
 class: inverse, middle, center
@@ -894,6 +872,7 @@ Recall `\(m_i = \hat{y}_i - y_i\)` decomposes as `\(\delta(d_i) + r_i\)` (drift 
 - Attenuation always present; CHAOS reduces `\(\text{Var}(m_i)\)` by eliminating `\(\delta\)`.
 ]
 
+[Back to slides](#bias)
 
 ---
 name: appendix-source-b
