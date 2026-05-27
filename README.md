@@ -20,6 +20,8 @@ In this repository I will collect random talks and guest lecture I give here and
  [Bruddet på Aggertangen](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Bruddet_paa_Aggertangen/Bruddet_paa_Aggertangen.html)
 
  [Jernbaner](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Jernbaner/Railway_slides/Slides.html)
+
+ [Copenhagen Tax Book Project](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Incomes_Copenhagen/Slides.html)
  
  
  

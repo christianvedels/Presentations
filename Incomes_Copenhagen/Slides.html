@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Slides.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.30/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, inverse, middle
+
+
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #808080;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+&lt;style type="text/css"&gt;
+.pull-left  { float: left;  width: 44%; }
+.pull-right { float: right; width: 44%; }
+.pull-right ~ p { clear: both; }
+
+.pull-left-wide   { float: left;  width: 66%; }
+.pull-right-wide  { float: right; width: 66%; }
+.pull-right-wide ~ p { clear: both; }
+
+.pull-left-narrow  { float: left;  width: 30%; }
+.pull-right-narrow { float: right; width: 30%; }
+
+.tiny123  { font-size: 0.40em; }
+.small123 { font-size: 0.80em; }
+.large123 { font-size: 2em;    }
+
+.red    { color: red;    }
+.orange { color: orange; }
+.green  { color: green;  }
+
+.hl { background-color: #fffacd; padding: 0 3px; border-radius: 2px; }
+
+.book-img img { width: 100%; max-height: 75vh; object-fit: contain; }
+
+.caption { font-size: 0.65em; color: #888; text-align: center; margin-top: 4px; }
+
+.note {
+  font-size: 0.6em;
+  color: #888;
+  position: absolute;
+  bottom: 1.5em;
+  left: 2em;
+  right: 2em;
+}
+
+.step-box {
+  background: #f5f5f5;
+  border-left: 4px solid #888;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+  border-radius: 0 4px 4px 0;
+}
+.step-box strong { color: #333; }
+
+.scroll-box {
+  overflow-y: auto;
+  max-height: 380px;
+  font-size: 0.62em;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+&lt;/style&gt;
+
+
+# Copenhagen Tax Book Project
+## 2.1 million taxpayer records, 1862–1919
+
+### Casper W. Hansen, Christian Vedel &amp; Asger M. Wingender
+### University of Copenhagen · University of Southern Denmark
+
+### Updated 2026-05-26
+
+.footnote[
+.left[.small123[*Work in progress — please do not circulate*]]
+]
+
+---
+class: middle
+
+# Outline
+
+.pull-left-wide[
+1. **The Source** — Copenhagen's income tax books
+2. **Famous Copenhageners** in the data
+3. **Digitisation** — Google Gemini pipeline
+4. **Key findings**
+   - Inequality over time
+   - Top income shares
+   - Occupational structure
+   - Wealth
+5. **Future work**
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/Front_page.png" width="95%"/&gt;
+.caption[Front page of a tax book]
+]
+
+---
+class: inverse, middle, center
+
+# The Tax Books
+
+---
+# Copenhagen's Income Tax
+
+.pull-left[
+**The law**
+- Enacted **15 May 1861**
+- 50 years before national tax
+- Covers residents and wealthy non-residents
+
+**What was taxed**
+- Salaries, profits, rents, investments
+- Net income after expenses
+]
+
+.pull-right[
+**Key features**
+- 800 kr basic deduction
+- Tax unit: household head
+- Available annually **1862–1918**
+
+**Scale**
+- 40 books digitised
+- ~2.1 million records
+- ~17,000 (1862) → ~164,000 (1919) taxpayers
+]
+
+---
+# Page from a Tax Book — 1863–64
+
+&lt;div class="book-img"&gt;
+&lt;img src="Figures/Book_1863.png"/&gt;
+&lt;/div&gt;
+.caption[Each row: name · address · occupation · income · tax paid. Format stable through 1903]
+
+---
+# Page from a Tax Book — 1917–18
+
+&lt;div class="book-img"&gt;
+&lt;img src="Figures/Book_1918.png"/&gt;
+&lt;/div&gt;
+.caption[Later format adds wealth columns and deductions]
+
+---
+class: inverse, middle, center
+
+# Famous Copenhageners in the Books
+
+---
+# C.E. Frijs (1817–1896)
+
+.pull-left-wide[
+- Prime Minister, 1865–1870
+- Income: .hl[500,000 kr annually, 1869–72]
+- ~50 million kr in today's terms
+- Highest recorded income in CPH
+- Occupation: .hl[Konseilspræs] · .hl[Lensgreve]
+- Residence: .hl[Toldbodvej 26]
+
+.small123[Illustrates ultra-rich landed aristocracy — rents, not wages]
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/K_V_Frijs.jpg" width="90%"/&gt;
+.caption[Source: Wikipedia]
+]
+
+---
+# H.C. Andersen (1805–1875)
+
+.pull-left-wide[
+- Renowned Danish fairy-tale author
+- Income: .hl[3,600 kr (1865)] · .hl[4,000 kr (1869–74)]
+- Top 20% of earners in 1870
+- Occupation: .hl[Professor (1865)] · .hl[Etatsraad (1869)]
+- .hl[Nyhavn 67] · .hl[Lille Kongensgade 1] · .hl[Høibroplads 21]
+
+.small123[Well-paid cultural figure — far below the industrialists]
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/hca.jpg" width="90%"/&gt;
+.caption[Source: Wikipedia]
+]
+
+---
+# C.F. Tietgen (1829–1901)
+
+.pull-left[
+- Banker and industrialist
+- Modest origins in Odense
+- Director of *Privatbanken* from 1857
+
+**Founded or financed:**
+.small123[Sporvei-Selskab (1866) · Store Nordiske Telegraf (1869) · Burmeister &amp; Wain (1871) · Sukkerfabrikker (1872) · Tuborg (1873)]
+
+.small123["New money" — banking and industry, not estates]
+
+&lt;img src="Figures/Tietgen.jpg" width="28%"/&gt;
+.caption[Source: Wikipedia]
+]
+
+.pull-right[
+&lt;img src="Figures/Tietgen_plot.png" width="100%"/&gt;
+.caption[Annual reported income, Danish Kroner]
+]
+
+---
+class: inverse, middle, center
+
+# Digitising with Google Gemini
+
+---
+# The Challenge
+
+.pull-left[
+**The data**
+- 40 books, each 300–1,500 pages
+- Machine-written tabular format
+- Five distinct layouts over time
+- Addresses printed once per block
+
+**Why standard OCR fails**
+- Column alignment varies
+- No clean row delimiters
+]
+
+.pull-right[
+**Solution: vision LLM reads each page**
+
+&lt;div class="step-box"&gt;&lt;strong&gt;1.&lt;/strong&gt; Split PDF → one PNG per page&lt;/div&gt;
+&lt;div class="step-box"&gt;&lt;strong&gt;2.&lt;/strong&gt; Image + prompt + schema → &lt;strong&gt;Gemini 2.5 Flash&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="step-box"&gt;&lt;strong&gt;3.&lt;/strong&gt; Receive structured JSON per row&lt;/div&gt;
+&lt;div class="step-box"&gt;&lt;strong&gt;4.&lt;/strong&gt; Assemble → one CSV per book&lt;/div&gt;
+&lt;div class="step-box"&gt;&lt;strong&gt;5.&lt;/strong&gt; Occupations → HISCO via &lt;em&gt;OccCANINE&lt;/em&gt;&lt;/div&gt;
+
+Total: **40 books · ~2.1 million records**
+]
+
+---
+# Gemini — How Each Page Is Processed
+
+.pull-left[
+**The API call**
+
+```python
+image = load_page_as_image(pdf, page_n)
+
+response = gemini_client.generate_content([
+    system_prompt,   # column layout
+    image,           # page PNG
+    output_schema,   # Pydantic model
+])
+
+rows = response.parsed  # list of TaxRow objects
+```
+
+**The prompt tells Gemini:**
+- Column order and meaning
+- Forward-fill blank addresses
+- Currency conventions
+- How to flag illegible entries
+]
+
+.pull-right[
+**Parsed row example**
+
+```json
+{
+  "surname": "Andersen",
+  "initials": "H.C.",
+  "street": "Nyhavn",
+  "house_number": "67",
+  "occupation": "Professor",
+  "income_reported_100_kroner": 36,
+  "rode": "2"
+}
+```
+
+**Scale and speed**
+- 400–1,500 pages per book
+- ~3–5 seconds per page
+- Full book under 2 hours
+]
+
+---
+# The Prompt (1889–1903 era)
+
+.scroll-box[
+```
+You are extracting rows from a historical Danish printed table from 1889-90.
+
+COLUMNS:
+- rode: the district/route name from the page header to the left
+  (e.g., "Nyhavns Rode"). Copy exactly as printed.
+- qvarter: the neighborhood name from the page header to the right
+  (e.g., "St. Anne Øster Kvarter"). Copy exactly as printed.
+- gade: CRITICAL - the street name embedded as headers within the table.
+  * When a street name appears, use it for all subsequent rows until
+    a new street name appears.
+  * If NO street name appears (table continues from previous page),
+    use "FROM PREVIOUS PAGE" for all rows.
+- gadenr: the number from the leftmost "Gade" column.
+- name: person's full name only from "Navn og Stand" column.
+- stand: occupation/status only from "Navn og Stand" column.
+- income_reported_100_kroner: number from "Den antagne Indtægt" column.
+- income_reported_tax_100_kroner: number from "Skatteindtægt" column.
+- reduction_par4_100_kroner: number under "Nedsættelse efter §4".
+- tax_quarter_kroner and tax_quarter_ore: numbers under
+  "Indkomstskat for hvert af Aarets 4 Kvartaler".
+
+RULES:
+- Parse numbers as numbers. Convert fractions like '1/2' to 0.5.
+- Income columns are in hundreds of Kroner — do NOT multiply.
+- If a cell is blank or a ditto mark, leave it null.
+- Ignore dotted leader lines and page ornaments.
+- Keep Danish diacritics exactly as printed.
+- If print is unreadable, leave null and add a reason in 'notes'.
+- STREET NAME LOGIC: street names appear as centered headers between
+  data rows. Once found, apply to all rows below until a new one appears.
+
+Return only JSON that matches the schema.
+```
+]
+
+.note[Five prompt variants cover layout changes across 1862–1919. Switching is a one-line change in `run.py`.]
+
+---
+# Occupation Coding: OccCANINE
+
+.pull-left[
+**The solution**
+- HISCO-code all 2.1 million occupations
+- *OccCANINE* (Dahl, Johansen &amp; Vedel, 2024)
+- Trained on historical occupations
+- &gt;90% accuracy in Danish
+]
+
+.pull-right[
+| HISCO | Sector |
+|-------|--------|
+| 0/1 | Professional &amp; technical |
+| 2 | Administrative |
+| 3 | Clerical |
+| 4 | Sales |
+| 5 | Service |
+| 6 | Agriculture |
+| 7/8/9 | Production &amp; transport |
+]
+
+---
+class: inverse, middle, center
+
+# Key Findings
+
+---
+# Income Distribution Across Decades
+
+&lt;div style="text-align:center;"&gt;
+&lt;img src="Figures/Income_density_decade_by_decade.png" height="430px"/&gt;
+&lt;/div&gt;
+
+.note[Note: 800 kr deduction truncates the left tail — all inequality measures are lower bounds]
+
+---
+# Lorenz Curves &amp; Gini over Time
+
+.pull-left[
+&lt;img src="Figures/lorenz_curve_by_year.png" width="100%"/&gt;
+.caption[Individual-level Lorenz curves — no functional-form assumptions]
+]
+
+.pull-right[
+&lt;img src="Figures/gini_over_time.png" width="100%"/&gt;
+.caption[Gini over time. Today: Denmark ≈ 0.30; US ≈ 0.41]
+]
+
+---
+# Top Income Shares
+
+.panelset[
+.panel[.panel-name[Top 10 %]
+&lt;div style="text-align:center;"&gt;
+&lt;img src="Figures/top_10pct_income_share_over_time.png" height="400px"/&gt;
+&lt;/div&gt;
+]
+.panel[.panel-name[Top 1 %]
+&lt;div style="text-align:center;"&gt;
+&lt;img src="Figures/top_1pct_income_share_over_time.png" height="400px"/&gt;
+&lt;/div&gt;
+]
+.panel[.panel-name[Top 0.1 %]
+&lt;div style="text-align:center;"&gt;
+&lt;img src="Figures/top_0_1pct_income_share_over_time.png" height="400px"/&gt;
+&lt;/div&gt;
+]
+]
+
+---
+# Occupational Structure
+
+.pull-left[
+&lt;img src="Figures/occupational_structure_over_time_hisco_major.png" width="100%"/&gt;
+.caption[Employment shares by HISCO group]
+]
+
+.pull-right[
+&lt;img src="Figures/income_shares_over_time_hisco_major_facets.png" width="100%"/&gt;
+.caption[Income shares by sector]
+]
+
+---
+# Occupational Structure across the Income Distribution
+
+&lt;div style="text-align:center;"&gt;
+&lt;img src="Figures/occupational_structure_by_income_percentile_hisco_major.png" height="430px"/&gt;
+&lt;/div&gt;
+.caption[Occupation mix at each income percentile]
+
+---
+# Wealth
+
+.pull-left[
+&lt;img src="Figures/gini_income_vs_wealth.png" width="100%"/&gt;
+.caption[Gini: income vs. wealth]
+]
+
+.pull-right[
+&lt;img src="Figures/top_wealth_shares_over_time.png" width="100%"/&gt;
+.caption[Top wealth shares over time]
+]
+
+---
+class: inverse, middle, center
+
+# Future Work
+
+---
+# What Else Can Be Done?
+
+.pull-left[
+**Linking to other sources**
+- Across tax years (unique ID from 1890)
+- Census records through 1901
+  - Migrant assimilation
+  - Returns to experience
+- Burial records — Preston curve
+- Street register with GIS data
+]
+
+.pull-right[
+**Research questions**
+- Electricity, germ theory, shipping
+- Union formation (1899)
+- Depressions of 1876 and 1908
+- Old vs. new money
+- Books available through 1970
+]
+
+---
+# Cost of Digitisation
+
+.pull-left[
+**Digitisation cost only (DKK, excl. VAT)**
+
+| Item | Total | Per book |
+|------|-------|----------|
+| Gemini API | ~8,400 kr* | ~210 kr |
+
+.small123[*Sept 2025–Apr 2026, excl. Jan &amp; May]
+
+**RA counterfactual (transcription only)**
+- ~28,000 pages (75 rows/page)
+- 5 min/page × 200 kr/hr = **~468,000 kr**
+- That is ~**56× the API cost**
+]
+
+.pull-right[
+&lt;br&gt;&lt;br&gt;
+.large123[~468,000 kr]
+.caption[RA transcription counterfactual]
+
+&lt;br&gt;
+
+.large123[~8,400 kr]
+.caption[Actual API cost]
+
+&lt;br&gt;
+
+**The LLM approach cost roughly 2 % of manual transcription**
+]
+
+---
+name: conclusion
+
+# Conclusion
+
+.pull-left[
+### Contributions
+- New dataset: 2.1 million named taxpayer records, 1862–1919
+- LLM-based digitisation at ~2% of RA cost
+- Individual-level inequality series, pre-WWI Copenhagen
+
+### What remains
+- Linking to census, burial, and street records
+- Full inequality and occupational earnings analysis
+
+**Email:** [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+]
+
+--
+
+.pull-right[
+&lt;img src="Figures/Book_1863.png" width="100%"/&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url(SDU_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 125px;
+  height: 60px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // insert more to hide here
+    ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
