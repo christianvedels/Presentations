@@ -11,6 +11,8 @@ In this repository I will collect random talks and guest lecture I give here and
 
 [Research agenda](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Research_agenda/Slides.html)
 
+[Copenhagen Tax Book Project](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Incomes_Copenhagen/Slides.html)
+
 ### Danish presentations 
 
 [Hvad er meningen med: Kunstig intelligens i samfundsvidenskabelig forskning?](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Hvad_er_meningen_med_AI/Slides.html): Om AI i forskning
@@ -21,7 +23,7 @@ In this repository I will collect random talks and guest lecture I give here and
 
  [Jernbaner](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Jernbaner/Railway_slides/Slides.html)
 
- [Copenhagen Tax Book Project](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Incomes_Copenhagen/Slides.html)
+ 
  
  
  
