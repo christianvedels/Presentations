@@ -14,7 +14,7 @@ output:
 editor_options:
   chunk_output_type: console
 ---
-class: center, inverse, middle
+class: middle
 
 ```{r xaringan-panelset, echo=FALSE}
 xaringanExtra::use_panelset()
@@ -88,21 +88,11 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 ```
 
 
-# Research Agenda
-
-### Christian Vedel, Department of Economics, SDU
-
-### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
-
-### `r Sys.Date()`
-
-
----
-class: middle
 
 .pull-left-wide[
 # Christian Vedel
 
+- Economic Historian
 - Assistant Professor
 - Defended PhD in Economics at SDU in 2023
 
