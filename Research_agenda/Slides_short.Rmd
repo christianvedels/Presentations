@@ -1,0 +1,151 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    includes:
+      after_body: insert-logo.html
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+editor_options:
+  chunk_output_type: console
+---
+class: center, inverse, middle
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
+```{css echo=FALSE}
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+```
+
+
+# Research Agenda
+
+### Christian Vedel, Department of Economics, SDU
+
+### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+
+### `r Sys.Date()`
+
+
+---
+class: middle
+
+.pull-left-wide[
+# Christian Vedel
+
+- Assistant Professor
+- Defended PhD in Economics at SDU in 2023
+
+> *I build machine learning tools and large-scale historical datasets to recover lost economic measurements from the past, and use them alongside causal inference methods to understand how geography and institutions shape prosperity.*
+
+]
+
+---
+class: middle
+# Two legs of the same agenda
+(*A small selection of way too many projects*)
+
+.pull-left[
+### Questions about prosperity
+*Causal inference × natural experiments × historical data*
+
+- **.green[A Perfect Storm]** — a storm in 1825 reshapes northwest Denmark; 25% population growth within a generation
+- **.green[Tracks to Modernity]** — how railway expansion shaped development and civic institutions
+- **.blue[Creameries]** — how religion, energy shocks, and geography drove industrial productivity
+
+]
+
+.pull-right[
+### Measurement infrastructure
+*Building the tools to see history clearly*
+
+- **.orange[OccCANINE]** — language model for occupational standardization; 14M+ records, 13 languages; rapidly becoming a field standard
+- **.orange[CHAOS]** — converts occupational classifications into continuous income estimates
+- **.orange[Copenhagen Income Project]** — reconstructs income distributions in 19th-century Denmark from records never before analyzed at scale
+
+.small123[
+**.orange[Data/methods] &nbsp; .green[Geography] &nbsp; .blue[Institutions]**
+]
+]
+
+---
+
+# From 2.2 mio. records of tax payers in Copenhagen
+.pull-left-wide[![Gini](Figures\gini_over_time.png)]
+
+.pull-right-narrow[
+  #### What excites me as a researcher
+  .red[*Being the first to get a peak at something like this. It's been hidden in the empirical mist.*]   
+
+  .red[**We have the privelege to see something that has never been seen before.**]
+]

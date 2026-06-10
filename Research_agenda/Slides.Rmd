@@ -9,7 +9,6 @@ output:
     nature:
       highlightStyle: github
       highlightLines: true
-      countIncrementalSlides: false
       ratio: '16:9'
 editor_options: 
   chunk_output_type: console
@@ -19,6 +18,7 @@ class: center, inverse, middle
 ```{r xaringan-panelset, echo=FALSE}
 xaringanExtra::use_panelset()
 ```
+
 
 ```{r xaringan-tile-view, echo=FALSE}
 xaringanExtra::use_tile_view()
@@ -122,7 +122,6 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 
 ### Updated `r Sys.Date()`
 
----
 class: middle
 
 .pull-left-wide[
@@ -138,12 +137,6 @@ $^1$*Hopefully you find this useful somehow - it's useful for me*
 
 ---
 class: middle
-
-## Why This Journey & Where It's heading
-
-1. **Motivation**  
-   - Can we improve life quality substantially? How?  
-   – What Denmark’s micro-experiments teach about economic development
 
 2. **Puzzles**  
    *Geography • Institutions • Culture • Persistence*
@@ -220,6 +213,7 @@ class: middle
 
 ]
 
+
 ---
 
 
@@ -287,7 +281,6 @@ class: middle
 *Published in Energy Economics in 2024*
 ]
 
-
 .pull-left[
 .small123[
 "Adaptability, diversification, and energy shocks: A firm level productivity analysis"  
@@ -295,18 +288,8 @@ w. Sofie Henriques, Paul Sharp and Xanthi Tsoukli
 [doi.org/10.1016/j.eneco.2024.107887](https://doi.org/10.1016/j.eneco.2024.107887)
 ]
 
-- Because of WWI and the Spanish Flu, Coal imports from England were strained
-- Some creameries were located closer to an (inferior but available) alternative: Peat
-- Short run and long run benefits
-
 ### Process reflection
-- Started off in another PhD students project - needed help with the econometrics
-- Working paper out in 2021
-- Was rejected approx 4-5 different journals
-- Finally decided to fix up weird econometrics
-
 ]
-
 
 .pull-right[
 ![Plot](Figures/energy_economics.jpg)
