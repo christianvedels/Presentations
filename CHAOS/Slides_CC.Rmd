@@ -384,8 +384,6 @@ name: chaos-math
 
 # The CHAOS estimator
 
-.small123[Three assumptions — stated implicitly by every occupational score user:]
-
 1. **Source–target relevance** — source and target drawn from the same $(D, Y, H)$ distribution
 2. **Broadband** — $\mathbb{E}[Y \mid H, D] = \mathbb{E}[Y \mid H]$; the category is sufficient for $Y$
 3. **Oracle access** — classifier gives $h(d,k) = \Pr(H{=}k \mid D{=}d)$ for every description
@@ -393,11 +391,18 @@ name: chaos-math
 --
 
 .pull-left[
-**Step A** — estimate category means from the source:
+**Step A.1** — estimate (wrong) means from the source:
 
 $$\hat{r}_k = \frac{\sum_{i \in \mathcal{S}} Y_i\,h(D_i,k)}{\sum_{i \in \mathcal{S}} h(D_i,k)}$$
 
-Correct for classifier confusion: $\hat{\mu} = \hat{A}^{-1}\hat{r}$, where $\hat{A}_{kj}$ is the confusion matrix. 
+This is biased, but we can get a handle on it:
+
+$$r_k = \sum_{j} A_{kj}\,\mu_j, \qquad A_{kj} = \mathbb{E}[h(D,j) \mid H=k]$$
+
+**Step A.2** — recover unbiased estimates by inverting the confusion matrix:
+
+$$\hat{\mu} = \hat{A}^{-1}\hat{r}$$
+
 ]
 
 --
@@ -441,9 +446,35 @@ $$n_\text{eff}(d) = \frac{1}{\displaystyle\sum_i W_i(d)^2}$$
 - Low $n_\text{eff}$ $\Rightarrow$ reverts toward the source mean
 ]
 
+---
+name: chaos-se
+
+# Standard errors
+
+> All sampling variation in $\hat{y}(d)$ runs through a single residual $\hat{\varepsilon}_i = Y_i - \hat{y}(D_i)$ per source observation.
+
+.small123[Following Kennedy (2023, arXiv:2203.06469); 
+
 --
 
-> **Standard errors** via the influence function. [Details](#appendix-influence-function)
+.pull-left[
+**Influence value** for observation $i$ at target description $d$:
+
+$$\hat{\phi}_{d,i} = h(d)^\top \hat{A}^{-1}\hat{s}_i, \qquad \hat{s}_{i,k} = \frac{h(D_i,k)\;\hat{\varepsilon}_i}{\hat{B}_k}$$
+
+where $\hat{B}_k = \frac{1}{n_\mathcal{S}}\sum_i h(D_i,k)$ is the average classifier mass on code $k$.
+]
+
+.pull-right[
+**Standard error:**
+
+$$\widehat{\mathrm{se}}\bigl(\hat{y}(d)\bigr) = \sqrt{\frac{1}{n_{\mathcal{S}}^2}\sum_{i \in \mathcal{S}} \hat{\phi}_{d,i}^2}$$
+
+- One score per source row, no distributional assumptions
+- Matches Monte Carlo standard deviations closely
+]
+
+[Full 3-step derivation](#appendix-influence-function)
 
 ---
 class: inverse, middle, center
@@ -1417,6 +1448,8 @@ Angelopoulos, Anastasios N., Stephen Bates, Clara Fannjiang, Michael I. Jordan, 
 Ludwig, Jens, Sendhil Mullainathan, and Ashesh Rambachan (2025). "Large Language Models: An Applied Econometric Framework." *NBER Working Paper* 33344.
 
 Bound, John, Charles Brown, and Nancy Mathiowetz (2001). "Measurement Error in Survey Data." In *Handbook of Econometrics*, Vol. 5, pp. 3705–3843.
+
+Kennedy, Edward H. (2023). "Semiparametric Doubly Robust Targeted Double Machine Learning: A Review." arXiv:2203.06469.
 
 Hampole, Menaka, Dimitris Papanikolaou, Lawrence D. W. Schmidt, and Bryan Seegmiller (2025). "Artificial Intelligence and the Labor Market." *NBER Working Paper*.
 ]
