@@ -161,6 +161,36 @@ class: center, inverse
 ![CHAOS funnel](Figures/CHAOS_funnel4.png)
 
 ---
+# Broader reflection: Why we use specific tools? (1/2)
+.pull-left-wide[
+.center[![Cost](Figures/cost_ml_in_eh.png)]
+]
+
+.pull-right-narrow[
+.small123[
+*From Koschnick, Johansen, and Vedel (2026, unpublished)*
+]
+]
+
+---
+class: middle
+# Broader reflection: Where are we going? (2/2)
+.pull-left-wide[
+- We need to validate, not just take ML predictions at face value. 
+- We care more about bias than accuracy.
+- Natural solution: 
+  1. **We need tools that are interpretable and traceable, not black boxes.**
+  2. **It is fine to use black boxes if we can *debias* them.** (DSL, PPI, etc. - also implemented in CHAOS)
+
+]
+
+.pull-right-narrow[
+.small123[
+*From Koschnick, Johansen, and Vedel (2026, unpublished)*
+]
+]
+
+---
 # The tool we present: *CHAOS*
 
 --
@@ -177,7 +207,7 @@ class: center, inverse
 
 --
 
-**Aproach:** We do probabilistic mapping to a standardized scheme. E.g. HISCO as an intermediate step
+**Approach:** We do probabilistic mapping to a standardized scheme. E.g. HISCO as an intermediate step
 
 
 --
@@ -209,19 +239,32 @@ class: center, inverse
 ---
 name: motivation
 
-# CHAOS: What we formalize and generalize
+# CHAOS: Converting Historical Accounts to Occupational Scores
+
+.pull-left-wide[
+- When we don't have wages but occupations, we can proxy wages with people's occupations.
+- Typically OCC1950-SCORE (i.e. wages in the US in 1950s)
+
+]
 
 --
 
 .pull-left-wide[
-.center[<img src="Figures/Wages1825.png" width="80%">]
+### This presentation:
+- We provide econometric formalization of the use of occscores
+- Introduce CHAOS, a new method for constructing occscores that is efficient, interpretable, and well-validated
+- Apply it to estimate skill premiums across the industrializing world, 1800–1900
 ]
 
+
+--
+
 .pull-right-narrow[
+.center[<img src="Figures/Wages1825.png" width="70%">]
+
 Could you tell me the income of a *Joiner*, *Cowherd*, *Bricklayer*?
 
-.center[<img src="Figures/CHAOS_clipart.png" width="100%">]
-
+.center[<img src="Figures/CHAOS_clipart.png" width="95%">]
 ]
 
 ---
@@ -254,28 +297,22 @@ name: bias
 
 # Problem: Bias from occ. scores
 
-.small123[
-What we want:
-
-
 $$y_i = \alpha + \beta x_i + \varepsilon_i$$
+
+.small123[
+where $y_i$ is the true outcome (e.g. wage) to be replaced with $\mu_S(d_i)$ s.t.
 ]
 
 --
 
-.small123[
-
-
-What we have is $\hat{Y}(d_i) = \mu_S(d_i)$ s.t.
-
 $$\mu_S(d_i) = \alpha + \beta x_i + \varepsilon_i$$
-]
+
 
 --
 
 .pull-left-wide[
 .small123[
-The total proxy error decomposes as:
+Let $\mu_S(d_i)$ be the source-assigned score, $\mu_T(d_i)$ the target-population mean, $y_i$ the true outcome. The total proxy error decomposes as:
 
 $$m_i \;=\; \underbrace{\mu_S(d_i) - \mu_T(d_i)}_{\delta(d_i)\ \text{source-target drift}} \;+\; \underbrace{\mu_T(d_i) - y_i}_{r_i\ \text{within-occupation residual}}$$
 
@@ -286,6 +323,16 @@ $$\hat{\beta} = \beta + \frac{\text{Cov}(x_i,\, m_i)}{\text{Var}(x_i)}$$
 ]
 ]
 
+.pull-right-narrow[
+### The two big problems of occupational scores:
+.small123[
+$\delta(d_i)$ — **source-target drift**
+1950 US wages $\neq$ 1850 England.
+
+$r_i$ — **within-occupation residual**
+Apprentice $\neq$ master;
+]
+]
 
 --
 
@@ -300,11 +347,9 @@ $m_i \;=\; \cancel{\underbrace{\mu_S(d_i) - \mu_T(d_i)}_{\delta(d_i)\ \text{sour
 
 ???
 
-IPUMS occscore uses 1950 US wages → Canadian migrants. Blacksmith rank shifts. Inwood et al. (2019).
+IPUMS occscore uses 1950 US wages --> Canadian migrants. Blacksmith rank shifts. Inwood et al. (2019).
 
 r_i: "Smith" = goldsmith or blacksmith. "Tailor" = master or journeyman.
-
-.footnote[RHS case (score as regressor) is messier — see [appendix](#appendix-bias-rhs).]
 
 ---
 name: occcanine
@@ -312,7 +357,7 @@ name: occcanine
 # OccCANINE: the classifier
 
 .pull-left[
-.small123[w. Christian Møller Dahl & Torben Johansen — [arxiv 2408.00885](https://arxiv.org/abs/2408.00885)]
+.small123[w. Christian Møller Dahl & Torben Johansen — [arxiv 2402.13604](https://arxiv.org/abs/2402.13604)]
 
 - Language model trained on **~18.5 million** observations
 - 13 languages, 29 sources
@@ -337,66 +382,35 @@ A full probability distribution over HISCO codes for any occupation string.
 ---
 name: chaos-math
 
-# Bringing Maths to CHAOS
+# The CHAOS estimator
 
-.pull-left-wide[
-**Goal:** estimate $D_{i'} \mapsto \mathbb{E}(Y \mid D_{i'})$ — expected wages for any occupation string, $i' \in \mathcal{T}$.
+.small123[Three assumptions — stated implicitly by every occupational score user:]
 
-With sparse historical data, few strings have enough observations to estimate this directly.
-
-**The cheat:** map through a shared encoding $H \in \mathcal{H}$ (HISCO) to add structure (formalizing and generalizing the common approach).
-]
-
---
-
-.pull-right-narrow[
-.small123[
-**Assumptions:**
-1. **Source-target relevance:** $(Y_i, D_i, H_i) \perp R_i$
-2. **Broadband:** $\mathbb{E}(Y \mid D, H) = \mathbb{E}(Y \mid D) = \mathbb{E}(Y \mid H)$
-3. **Oracle:** $h(d,k) = \mathbb{P}(H=k \mid D=d)$ known for all $d, k$
-]
-]
+1. **Source–target relevance** — source and target drawn from the same $(D, Y, H)$ distribution
+2. **Broadband** — $\mathbb{E}[Y \mid H, D] = \mathbb{E}[Y \mid H]$; the category is sufficient for $Y$
+3. **Oracle access** — classifier gives $h(d,k) = \Pr(H{=}k \mid D{=}d)$ for every description
 
 --
 
 .pull-left[
-### Step A — estimate category means from $\mathcal{S}$
+**Step A** — estimate category means from the source:
 
-$$\color{#b33d3d}{\hat{\mu}_k} = \frac{\displaystyle\sum_{i \in \mathcal{S}} Y_i\, \color{#2c5c34}{h(D_i,k)}}{\displaystyle\sum_{i \in \mathcal{S}} \color{#2c5c34}{h(D_i,k)}}$$
+$$\hat{r}_k = \frac{\sum_{i \in \mathcal{S}} Y_i\,h(D_i,k)}{\sum_{i \in \mathcal{S}} h(D_i,k)}$$
+
+Correct for classifier confusion: $\hat{\mu} = \hat{A}^{-1}\hat{r}$, where $\hat{A}_{kj}$ is the confusion matrix. 
 ]
 
 --
 
 .pull-right[
-### Step B — predict for target $i' \in \mathcal{T}$
+**Step B** — apply to any target description $d$:
 
-$$\hat{\mathbb{E}}(Y \mid D_{i'}) = \hat{Y}_{i'} = \sum_{k \in \mathcal{H}} \color{#b33d3d}{\hat{\mu}_k}\, \color{#2c5c34}{h(D_{i'},k)}$$
+$$\hat{y}(d) = \sum_{k \in \mathcal{H}} \hat{\mu}_k\, h(d, k)$$
 
-Giving us the full estimator combining the two (one next page):
-
+Equivalently: $\hat{y}(d) = \sum_{i \in \mathcal{S}} W_i(d)\,Y_i$ — a weighted average of source outcomes, with weights summing to 1.
 ]
 
----
-# The full estimator
-
-$$\hat{\mathbb{E}}(Y \mid D_{i'}) = \hat{Y}_{i'} = \sum_{k \in \mathcal{H}} \color{#b33d3d}{\frac{\displaystyle\sum_{i \in \mathcal{S}} Y_i\, \color{#2c5c34}{h(D_i,k)}}{\displaystyle\sum_{i \in \mathcal{S}} \color{#2c5c34}{h(D_i,k)}}}\, \color{#2c5c34}{h(D_{i'},k)}$$
-
---
-
-What is it? One interpretation is a weighted average over source observations.
-
-$$\hat{Y}_{i'} = \sum_{i \in \mathcal{S}} W_{ii'}\, Y_i,$$ 
-
-where $W_{ii'} = \sum_{k \in \mathcal{H}} \frac{h(D_i,k)\,h(D_{i'},k)}{\displaystyle\sum_{j \in \mathcal{S}} h(D_j,k)}$
-
---
-
-***Weights measure the relevance of sources for a target.***
-
---
-
-It is also closely related to the Nadaraya-Watson kernel regression estimator with a text-driven kernel.
+[Why the correction is needed](#appendix-broadband-assumption)
 
 ---
 name: method-check
@@ -406,11 +420,11 @@ name: method-check
 --
 
 .pull-left[
-### Evidence — a free byproduct of Step B
+### Evidence — how much of the source is about $d$?
 
-$$\text{Evidence}(D_{i'}) = \sum_{k \in \mathcal{H}} \mathbb{P}(H=k) \cdot h(D_{i'},k)$$
+$$\widehat{\mathrm{ev}}(d) = \sum_{k} h(d,k)\;\frac{1}{n_{\mathcal{S}}}\sum_{i \in \mathcal{S}} h(D_i, k)$$
 
-> Empirical backing for $D_{i'}$ — falls out of the estimator for free.
+> Share of the source truly belonging to this occupation. Computable from descriptions alone — before any outcome is collected.
 ]
 
 --
@@ -418,13 +432,18 @@ $$\text{Evidence}(D_{i'}) = \sum_{k \in \mathcal{H}} \mathbb{P}(H=k) \cdot h(D_{
 .pull-right[
 ### Effective observations
 
-$$N_\text{eff}(D_{i'}) = |\mathcal{S}| \times \text{Evidence}(D_{i'})$$
+$$n_\text{eff}(d) = \frac{1}{\displaystyle\sum_i W_i(d)^2}$$
 
-> *How many source observations back this prediction?*
+> *How many source observations effectively back this prediction?*
 
-- High $\Rightarrow$ reliable
-- Low $\Rightarrow$ reverts to source mean
+- Accounts for the **confusion discount** — mass spread across HISCO codes reduces precision
+- Equals $N_\text{source} \times \text{Evidence}(d)$ only under hard assignment ($A = I$)
+- Low $n_\text{eff}$ $\Rightarrow$ reverts toward the source mean
 ]
+
+--
+
+> **Standard errors** via the influence function. [Details](#appendix-influence-function)
 
 ---
 class: inverse, middle, center
@@ -494,6 +513,7 @@ name: chaos-flexibility
   <iframe width="560" height="315" src="https://www.youtube.com/embed/WHCYSQp6yCk?si=lcKyQfj_3ZUYiRih" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <br>
   [Short demonstration on YouTube](https://youtu.be/WHCYSQp6yCk)
+  *Old version* - if time we will do live demo with the new version
 ]
 
 ---
@@ -705,11 +725,7 @@ name: method-check-traceability
 ]
 ]
 
-???
-
-Slow down here. Walk through at least two Sankey examples in full —
-explain the left-to-right flow (description → HISCO codes → source wages)
-and point out the width of the bands. This tends to get rushed.
+[Appendix: step-by-step worked example](#appendix-blacksmith-example)
 
 ---
 class: inverse, middle, center
@@ -815,11 +831,11 @@ name: conclusion
 .pull-left[
 ### Contributions
 
-- **CHAOS:** interpretable, automatic occupation-to-skill scoring
+- **CHAOS:** probabilistic occupation scoring with confusion correction ($\hat{A}^{-1}$), standard errors via influence function, and full traceability
 - **Empirical:** skill premiums across the industrializing world, 1800–1900 .chaosred[(preliminary)]
 
 ### What remains
-- Validation, robustness, and extensions
+- Validation against alternatives (OCCSCORE, HISCAM, HISCLASS), robustness, and extensions
 
 **Email:** [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
 **BlueSky:** [@christianvedel.bsky.social](https://bsky.app/profile/christianvedel.bsky.social)
@@ -843,37 +859,271 @@ name: appendix-math-advanced
 
 .pull-left[
 .small123[
-### Multiple sources $s$
-$$\mathbb{E}(y_i\mid h_j)=\sum_i \left[ y_i \sum_s \left(
-    \frac{Pr(h_j\mid y_i, S_s)\,Pr(y_i\mid S_s)\,Pr(S_s)}{Pr(h_j)} \right) \right]$$
+### Multiple sources
+When sources $\mathcal{S}_1, \dots, \mathcal{S}_S$ are available, pool them to estimate $\hat{A}$ and $\hat{r}$:
+
+$$\hat{A}_{kj} = \frac{\sum_s \sum_{i \in \mathcal{S}_s} h(D_i,j)\,h(D_i,k)}{\sum_s \sum_{i \in \mathcal{S}_s} h(D_i,k)}$$
+
+Then apply $\hat{\mu} = \hat{A}^{-1}\hat{r}$ as before. No change to Step B.
 
 ### Gibberish input
-If the classifier is uninformative: $Pr(h_j\mid d_k) = Pr(h_j)$, then:
-$$\mathbb{E}(y_k|d_k) = \mathbb{E}(y_i)$$
-Prediction reverts gracefully to the source mean.
+If the classifier is uninformative: $h(d,k) \approx \bar{h}_k$ (flat), then $\hat{y}(d) \approx \bar{Y}$ — prediction reverts to the source mean.
 ]
 ]
 
 .pull-right[
 .small123[
-### Bias correction (PPI-style)
-Bias: $\mathbb{E}(\hat{y}_k)\neq\mathbb{E}(y_k)$
+### LOO calibration check
 
-Under relevance assumption:
-$$\mathbb{E}(y_k - \hat{y}_k) = \mathbb{E}(y_i - \hat{y}_i)$$
+The $\hat{A}^{-1}$ confusion correction ([see appendix](#appendix-confusion-correction)) supersedes the PPI-style mean correction.
 
-$\Rightarrow$ Observable via LOO-CV on the source.
+A closed-form LOO residual provides a free calibration diagnostic — no extra computation needed:
 
-$$\mu(y)\approx \mu(\hat{y})+\frac{1}{k}\mu(y-\hat{y})$$
+$$\hat{y}^{(-i)}(D_i) = \frac{\hat{y}(D_i) - P_{ii}\,Y_i}{1 - P_{ii}}$$
 
-Generalizes to regression:
-$$\hat\beta = \hat\beta_{\text{naive}} + (X'X)^{-1}X'\widehat{B}(d)$$
-
-.chaosred[**Code still being implemented**]
+where $P_{ii} = h(D_i)^\top(\mathbf{H}^\top\mathbf{H})^{-1}h(D_i)$ is the hat-matrix leverage. If LOO predictions track source actuals, the $\hat{A}^{-1}$ step is working.
 ]
 ]
 
 [Back to slides](#motivation)
+
+---
+name: appendix-broadband-assumption
+
+# Broadband — what the assumption really requires
+
+> **Assumption 2 (Broadband):** $\mathbb{E}[Y \mid H, D] = \mathbb{E}[Y \mid H]$
+> Once the occupational category is known, the text description adds no further information about the conditional mean of $Y$.
+
+.pull-left-wide[
+### Two conditions that satisfy it
+
+1. **Hard assignment** — the classifier returns one code with probability 1. Knowing $D$ already determines $H$ exactly; the text carries no residual information.
+
+2. **Constant within-category mean** — every description mapping to category $k$ yields the same expected outcome, regardless of exact wording.
+
+Classical scores (e.g. OCCSCORE) implicitly assume **(1)**. Probabilistic classifiers require making this explicit.
+]
+
+.pull-right-narrow[
+.small123[
+If a "journeyman blacksmith" and a "master blacksmith" earn different wages within HISCO 83110, neither condition holds — the Broadband assumption fails.
+
+$H$ must be sufficient for the regression of $Y$ on $(D, H)$.
+]
+]
+
+[Back to slides](#chaos-math)
+
+---
+name: appendix-confusion-bias
+
+# The naive weighted average is biased
+
+The natural first move — relevance-weighted average of source outcomes:
+
+$$\hat{r}_k = \frac{\sum_{i \in \mathcal{S}} Y_i \, h(D_i, k)}{\sum_{i \in \mathcal{S}} h(D_i, k)}$$
+
+.pull-left[
+### What it converges to
+
+$$r_k = \sum_{j} A_{kj} \, \mu_j, \qquad A_{kj} = \mathbb{E}[h(D,j) \mid H = k]$$
+
+$A_{kj}$ = expected classifier probability of category $j$ among true-$k$ observations — the **confusion matrix**.
+
+$\hat{r}_k \to r_k \neq \mu_k$
+]
+
+.pull-right[
+### Intuition
+
+| | $h(\cdot, \text{blksmth})$ | $h(\cdot, \text{hmrsmth})$ |
+|---|---|---|
+| "Blacksmith" | 0.955 | 0.011 |
+| "Hammersmith" | **0.112** | 0.851 |
+
+The blacksmith average absorbs hammersmith income. $\hat{r}_\text{blacksmith}$ is dragged toward $\mu_\text{hammersmith}$.
+
+.small123[Classical scores assume $A = I$ — this contamination simply does not appear.]
+]
+
+[Back to slides](#chaos-math)
+
+---
+name: appendix-confusion-correction
+
+# The fix: invert the confusion matrix
+
+Since $r = A\mu$ and $A$ is identifiable from classifier probabilities alone, the correction is:
+
+$$\hat{\mu} = \hat{A}^{-1} \hat{r}$$
+
+.pull-left[
+**Estimating $\hat{A}$** — no outcome data needed:
+
+$$\hat{A}_{kj} = \frac{\sum_{i \in \mathcal{S}} h(D_i, j)\, h(D_i, k)}{\sum_{i \in \mathcal{S}} h(D_i, k)}$$
+
+- Classical scores: $A = I$ (implicit assumption)
+- Sharp classifier: $A \approx I$, small correction
+- Near-singular $A$: aggregate sibling codes
+]
+
+.pull-right[
+**OLS equivalence** — $\hat{\mu}$ is numerically identical to:
+
+$$\hat{\mu} = (\mathbf{H}^\top \mathbf{H})^{-1} \mathbf{H}^\top \mathbf{Y}$$
+
+No-intercept regression of $Y_i$ on the probability vector $h(D_i)$.
+
+]
+
+[Back to slides](#chaos-math)
+
+---
+name: appendix-influence-function
+
+# Standard errors via the influence function
+
+Since $h$ is known, all sampling variation comes from estimating $(r, A)$ on $\mathcal{S}$.
+
+.panelset[
+.panel[.panel-name[Step 1: scores of r̂ and Â]
+
+Both $\hat{r}_k$ and $\hat{A}_{kj}$ are ratios of sample means. The ratio rule for influence functions gives:
+
+.pull-left[
+$$\phi^r_k(Y,D) = \frac{h(D,k)}{B_k}\bigl(Y - r_k\bigr)$$
+]
+
+.pull-right[
+$$\phi^A_{kj}(D) = \frac{h(D,k)}{B_k}\bigl(h(D,j) - A_{kj}\bigr)$$
+]
+
+where $B_k = \mathbb{E}[h(D,k)]$ is the expected classifier mass on code $k$. The second follows from the first by replacing $Y$ with $h(D,j)$.
+]
+
+.panel[.panel-name[Step 2: chain rule through Â⁻¹]
+
+Perturbing $\mu = A^{-1}r$ gives $\mathrm{d}\mu = A^{-1}\bigl(\mathrm{d}r - (\mathrm{d}A)\mu\bigr)$. The $k$-th entry of the bracket collapses:
+
+.pull-left[
+$$\bigl(\phi^r - \phi^A\mu\bigr)_k = \frac{h(D,k)}{B_k}\,\varepsilon, \quad \varepsilon := Y - \mathbb{E}[Y \mid D]$$
+
+The entire influence function runs through a single residual $\varepsilon$ — one score per source row, regardless of $K$.
+]
+
+.pull-right[
+Compact form:
+
+$$\phi^\mu(Y,D) = A^{-1}\, s(Y,D), \quad s_k := \frac{h(D,k)\,\varepsilon}{B_k}$$
+
+The $\hat{A}^{-1}$ correction propagates through the IF automatically.
+]
+]
+
+.panel[.panel-name[Step 3: prediction SE]
+
+For a fixed target description $d$, the IF of $\hat{y}(d) = h(d)^\top\hat{\mu}$ is $\phi_d = h(d)^\top A^{-1} s(Y,D)$.
+
+.pull-left[
+Plug-in with $(\hat{A},\hat{B},\hat{\mu})$ and residual $\hat\varepsilon_i = Y_i - h(D_i)^\top\hat{\mu}$:
+
+$$\hat{\phi}_{d,i} = h(d)^\top \hat{A}^{-1}\hat{s}_i, \quad \hat{s}_{i,k} = \frac{h(D_i,k)\,\hat\varepsilon_i}{\hat{B}_k}$$
+]
+
+.pull-right[
+Standard error from the sample variance of influence values:
+
+$$\widehat{\mathrm{se}}\bigl(\hat{y}(d)\bigr) = \sqrt{\frac{1}{n_{\mathcal{S}}^2}\sum_{i \in \mathcal{S}} \hat{\phi}_{d,i}^2}$$
+
+- One value per source row, no distributional assumptions
+- Matches the simulation's Monte Carlo SDs closely
+]
+]
+]
+
+[Back to slides](#method-check)
+
+---
+name: appendix-blacksmith-example
+
+# Worked example: "He is a blacksmith" (New York, 1880)
+
+.panelset[
+.panel[.panel-name[Source + classifier]
+
+.pull-left[
+Source $\mathcal{S}$ — five wage observations:
+
+| Title $D_i$ | Wage $Y_i$ |
+|---|---|
+| "Blacksmith" | \$2.80 |
+| "Hammersmith" | \$2.55 |
+| "Tinsmith" | \$2.30 |
+| "Goldsmith" | \$3.10 |
+| "Shoemaker" | \$2.40 |
+]
+
+.pull-right[
+.small123[
+OccCANINE probabilities $h(D_i, k)$ — top 5 HISCO codes:
+
+| | 83110 | 83120 | 87340 | 88050 | 80110 |
+|---|---|---|---|---|---|
+| Blacksmith | .955 | .011 | .018 | .013 | .003 |
+| Hammersmith | **.112** | .851 | .031 | .000 | .006 |
+| Tinsmith | .069 | .000 | .911 | .018 | .002 |
+| Goldsmith | .074 | .011 | .012 | .901 | .002 |
+| Shoemaker | .011 | .000 | .012 | .000 | .977 |
+
+Codes: 83110 Blacksmith · 83120 Hammersmith · 87340 Tinsmith · 88050 Goldsmith · 80110 Shoemaker.  "Hammersmith" leaks 0.112 onto the blacksmith code.
+]
+]
+]
+
+.panel[.panel-name[Step A: correction]
+
+.pull-left[
+.small123[
+HISCO-level estimates — top 5 codes:
+
+| | 83110 | 83120 | 87340 | 88050 | 80110 |
+|---|---|---|---|---|---|
+| Mass $s_k$ | 1.221 | 0.873 | 0.984 | 0.932 | 0.990 |
+| Naive $\hat{r}_k$ | 2.763 | 2.560 | 2.328 | 3.080 | 2.403 |
+| CHAOS $\hat{\mu}_k$ | **2.810** | 2.528 | 2.244 | 3.144 | 2.397 |
+]
+]
+
+.pull-right[
+$\hat{r}_{83110} = 2.763$ sits **below** the observed \$2.80 — hammersmith contamination pulled it down.
+
+After $\hat{A}^{-1}$ correction: $\hat{\mu}_{83110} = 2.810$ — recovered.
+
+Diagonal of $\hat{A}$ runs 0.77–0.96. Classical scores implicitly assume it equals 1.
+]
+]
+
+.panel[.panel-name[Step B: prediction]
+
+Target "He is a blacksmith" $\;\Rightarrow\;$ $h(d) = (0.951,\, 0.024,\, 0.013,\, 0.007,\, 0.005)$ $\;\Rightarrow\;$ $\hat{y}(d) = \mathbf{2.796}$
+
+.pull-left-wide[
+.small123[
+$$\hat{y}(d) = 0.995 \times \underbrace{2.80}_\text{Blacksmith} + 0.015 \times \underbrace{2.55}_\text{Hammersmith} - 0.006 \times \underbrace{2.30}_\text{Tinsmith} - 0.006 \times \underbrace{3.10}_\text{Goldsmith} + 0.002 \times \underbrace{2.40}_\text{Shoemaker}$$
+]
+]
+
+.pull-right-narrow[
+- Nearly all weight on the direct source
+- Positive weight on the related hammersmith
+- **Negative weights** subtract confusion contamination
+- Weights sum to 1; $n_\text{eff} \approx 1.0$
+]
+]
+]
+
+[Back to slides](#method-check-traceability)
 
 ---
 name: appendix-skills-ltm
@@ -945,7 +1195,7 @@ name: appendix-ny
 ]
 ]
 
-[Back to slides](#method-check)
+[Back to slides](#method-check-traceability)
 
 
 
@@ -978,7 +1228,6 @@ Recall $m_i = \hat{y}_i - y_i$ decomposes as $\delta(d_i) + r_i$ (drift + residu
 - Attenuation always present; CHAOS reduces $\text{Var}(m_i)$ by eliminating $\delta$.
 ]
 
-[Back to slides](#bias)
 
 ---
 name: appendix-source-b
@@ -986,15 +1235,13 @@ name: appendix-source-b
 # Source B — Skills (London Tradesman, 1747)
 
 .pull-left-wide[
-- 229 occupations with natural-language skill descriptions
-- **GPT-4o** extracts a JSON list of skills per occupation
-- **Sentence-BERT** embeds each skill; cosine similarity to anchor phrases gives a score per dimension
+- 229 occupations with natural-language skill descriptions from Campbell (1747)
 
-**Four dimensions** — share of skills semantically close to:
-- **Cognitive** — *"abstract reasoning, analytical thinking"*
-- **Routine cognitive** — *"repetitive task, following explicit rules"*
-- **Routine manual** — *"repetitive task, explicit rules"* (physical execution)
-- **Manual** — *"operate machinery, assemble parts"*
+**Four-step pipeline:**
+1. **LLM (GPT-4o)** extracts structured skill list per occupation
+2. **Sentence-BERT** embeds skills; cosine similarity to anchor phrases gives $\text{Score}(c) = \max_{s \in S}\,\text{score}(s,c)$
+3. **Discrete classification** — max rule maps scores to mutually exclusive categories: routine/non-routine × cognitive/manual (+ mechanical dimension)
+4. **CHAOS** maps occupation-level scores to HISCO-level indices
 ]
 
 .pull-right-narrow[
@@ -1082,6 +1329,33 @@ name: appendix-2d-task-space
 [Back to slides](#regression-setup)
 
 ---
+name: appendix-category-aggregation
+
+# When $\hat{A}$ is near-singular: aggregate sibling codes
+
+If the condition number $\kappa(\hat{A}) > \tau$, matrix inversion amplifies noise. The fix: coarsen the code space by merging hard-to-separate codes.
+
+.pull-left[
+### Greedy algorithm
+
+1. Compute SVD of $\hat{A}$; if $\kappa \leq \tau$, stop
+2. Find $k^* = \arg\max_k |v_{K',k}|$ — the code most loaded on the smallest singular direction
+3. Collapse all siblings of $k^*$ to their parent in the HISCO hierarchy; update $\hat{A}$ and $\hat{r}$ in $O(K'^2)$
+4. Repeat until $\kappa \leq \tau$
+]
+
+.pull-right[
+### Trade-off
+
+- **Fine codes** $\Rightarrow$ sharper category means, but $\hat{A}$ risks near-singularity
+- **Coarse codes** $\Rightarrow$ stable $\hat{A}$, but category means are pooled
+- Aggregation introduces bias only if merged codes have genuinely different true means
+- $\tau = 30$ in practice; typically reduces the active code set by $\sim 10\times$
+]
+
+[Back to slides](#appendix-confusion-correction)
+
+---
 name: appendix-references
 
 # References
@@ -1137,6 +1411,14 @@ de Pleijt, Alexandra, Alessandro Nuvolari, and Jacob Weisdorf (2020). "Human Cap
 Cinnirella, Francesco, Erik Hornung, and Julius Koschnick (2025). "Flow of Ideas: Economic Societies and the Rise of Useful Knowledge." *Economic Journal* 135(669): 1496–1535.
 
 de Pleijt, Alexandra, Julius Koschnick, and Patrick Wallis (2026). "Education and Skills during the First Industrial Revolution in England." *LSE Economic History Working Paper* 393.
+
+Angelopoulos, Anastasios N., Stephen Bates, Clara Fannjiang, Michael I. Jordan, and Tijana Zrnic (2023). "Prediction-Powered Inference." *Science* 382(6671): 669–674.
+
+Ludwig, Jens, Sendhil Mullainathan, and Ashesh Rambachan (2025). "Large Language Models: An Applied Econometric Framework." *NBER Working Paper* 33344.
+
+Bound, John, Charles Brown, and Nancy Mathiowetz (2001). "Measurement Error in Survey Data." In *Handbook of Econometrics*, Vol. 5, pp. 3705–3843.
+
+Hampole, Menaka, Dimitris Papanikolaou, Lawrence D. W. Schmidt, and Bryan Seegmiller (2025). "Artificial Intelligence and the Labor Market." *NBER Working Paper*.
 ]
 ]
 
