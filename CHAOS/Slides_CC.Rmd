@@ -161,20 +161,8 @@ class: center, inverse
 ![CHAOS funnel](Figures/CHAOS_funnel4.png)
 
 ---
-# Broader reflection: Why we use specific tools? (1/2)
-.pull-left-wide[
-.center[![Cost](Figures/cost_ml_in_eh.png)]
-]
-
-.pull-right-narrow[
-.small123[
-*From Koschnick, Johansen, and Vedel (2026, unpublished)*
-]
-]
-
----
 class: middle
-# Broader reflection: Where are we going? (2/2)
+# Broader reflection: Where are we going? (1/2)
 .pull-left-wide[
 - We need to validate, not just take ML predictions at face value. 
 - We care more about bias than accuracy.
@@ -189,6 +177,19 @@ class: middle
 *From Koschnick, Johansen, and Vedel (2026, unpublished)*
 ]
 ]
+
+---
+# Broader reflection: Why we use specific tools? (2/2)
+.pull-left-wide[
+.center[![Cost](Figures/cost_ml_in_eh.png)]
+]
+
+.pull-right-narrow[
+.small123[
+*From Koschnick, Johansen, and Vedel (2026, unpublished)*
+]
+]
+
 
 ---
 # The tool we present: *CHAOS*
@@ -207,7 +208,9 @@ class: middle
 
 --
 
-**Approach:** We do probabilistic mapping to a standardized scheme. E.g. HISCO as an intermediate step
+**Approach:** Training a machine learning model on this is not generally feasible. 
+
+.chaosred[**We cheat:**] Turn probabilistic classifier into estimated regression function $d\rightarrow \hat{y}$.
 
 
 --
@@ -225,7 +228,17 @@ class: middle
 
 --
 
-.pull-right-narrow[
+.pull-right-wide[
+.pull-left[
+.large123[
+  .chaosred[**CHAOS**]
+  $$\Rightarrow$$
+]
+$$\hat{y}(d) = \sum_{k} \hat{\mu}_k\, h(d, k)$$
+  
+]
+
+.pull-right[
 ### What you get:
 - Target: $\{d_k, \hat{y}_k\}$
 
@@ -235,37 +248,8 @@ class: middle
 | tailor | [Estimate] |
 | agricultural worker | [Estimate] |
 ]
-
----
-name: motivation
-
-# CHAOS: Converting Historical Accounts to Occupational Scores
-
-.pull-left-wide[
-- When we don't have wages but occupations, we can proxy wages with people's occupations.
-- Typically OCC1950-SCORE (i.e. wages in the US in 1950s)
-
 ]
 
---
-
-.pull-left-wide[
-### This presentation:
-- We provide econometric formalization of the use of occscores
-- Introduce CHAOS, a new method for constructing occscores that is efficient, interpretable, and well-validated
-- Apply it to estimate skill premiums across the industrializing world, 1800–1900
-]
-
-
---
-
-.pull-right-narrow[
-.center[<img src="Figures/Wages1825.png" width="70%">]
-
-Could you tell me the income of a *Joiner*, *Cowherd*, *Bricklayer*?
-
-.center[<img src="Figures/CHAOS_clipart.png" width="95%">]
-]
 
 ---
 name: literature
