@@ -1,0 +1,475 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+editor_options:
+  chunk_output_type: console
+---
+class: center, inverse, middle
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
+```{css echo=FALSE}
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+```
+
+
+
+# Economic History of Europe
+## Exercise 4: Welfare, Inequality, and the Lessons of History
+
+### Christian Vedel,<br>Department of Economics
+
+### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+
+### Updated `r Sys.Date()`
+
+
+
+.footnote[
+.left[
+.small123[
+*Exercise class based on old exam questions — see Absalon for the full exams*
+]
+]
+]
+
+???
+
+- Final exercise session. Explicitly frame as exam rehearsal.
+
+---
+class: middle
+# Today's exercise
+.pull-left-wide[
+**The synthesis session: what states do, who gets what, and what history teaches.**
+
+- **Theme:** The welfare state, socialism's rise and fall, inequality and convergence, migration
+- **Chapters:** Ch. 10 (governments), Ch. 11 (inequality), Ch. 5 (Marx), Ch. 9 (migration) + Conclusion
+- **Today's seminar papers:** Danish dairy protection (Henriksen et al.), crowding out (Boberg-Fazlić & Sharp), austerity and the Nazis (Galofré-Vilà et al.), geography and development (Vedel)
+]
+
+.pull-right-narrow[
+![Trees](Figures/Trees1.jpg)
+]
+
+???
+
+- Frame: what states do, who gets what, what history teaches.
+- Seminar theme 4 same day, including my own paper - invite attacks.
+
+---
+# Group assignments
+
+.small123[
+| Group | Question | Topic |
+|-------|----------|-------|
+| 1 | Exam 2021, Q3 | Why do self-interested voters build welfare states? |
+| 2 | Exam 2022, Q3 | Marx's trap: the decline of the socialist economies |
+| 3 | Exam 2022, Q4 + 2016 Set 2.1–2.2 | "Never as unequal as today"? β- and σ-convergence *(Excel)* |
+| 4 | Exam 2023, Q4 | What can economic history teach us about immigration? |
+]
+
+--
+
+> ~45 min preparation, then presentations. After the questions: my walkthrough, used after your presentations or if a group is missing. This is also your last structured exam rehearsal — steal shamelessly.
+
+???
+
+- Group 3 has the convergence Excel task - last data practice before the exam.
+
+---
+class: center, inverse
+# Full questions
+
+???
+
+- These are the classic essay-style questions; structure matters as much as content.
+
+---
+# Group 1 — exam 2021, Q3
+
+.pull-left-wide[
+> As a first approximation, economists often argue that people are largely motivated by self-interest. Why then have many Europeans, at least since the Second World War, voted for parties which have established and maintained large Welfare States? Would free markets not be a more efficient provider of services such as healthcare, education, and pensions?
+]
+
+???
+
+- The trap: answering with ideology instead of market-failure economics.
+
+---
+# Group 2 — exam 2022, Q3
+
+.pull-left-wide[
+> Karl Marx argued that social systems will thrive and expand only if they promote technological innovation and increases in material welfare. In what way can this idea be an explanation for the decline of the socialist regimes of Eastern Europe and the Soviet Union? How enduring should we expect the impact of these regimes to be and why?
+]
+
+???
+
+- Marx's own criterion is the hook - systems survive if they deliver innovation.
+
+---
+# Group 3 — exam 2022 Q4 + exam 2016 Set 2.1–2.2
+
+.pull-left-wide[
+.small123[
+> *(2022, Q4)* "The world has never been as unequal as it is today". Provide arguments both for and against this statement. Under what conditions should we expect inequality to decline in the future?
+
+> *(2016, Set 2)* Economic historians analyze two types of economic convergence, namely beta-convergence (β) and sigma-convergence (σ)
+>
+> **2.1** Start by defining these concepts precisely.
+>
+> **2.2** Turn first to beta convergence. Describe the major economic factors which contribute to beta convergence.
+]
+]
+
+???
+
+- Two halves: for/against on inequality, then precise convergence definitions.
+
+---
+# Group 4 — exam 2023, Q4
+
+.pull-left-wide[
+> What can economic history teach us about the advantages and disadvantages of immigration?
+]
+
+???
+
+- Short question, big canvas. Structure: aggregate gains, distribution, knowledge channel, backlash.
+
+---
+class: center, inverse
+# Answers
+
+???
+
+- Advance only after presentations.
+
+---
+class: inverse, middle, center
+# Group 1
+## Why welfare states? (2021 Q3)
+
+???
+
+- Welfare state walkthrough.
+
+---
+# Self-interested voters, big welfare states
+
+.pull-left-wide[
+The puzzle: if people are self-interested, why vote for high taxes?
+
+**Because welfare states solve market failures in insurance** (§10.6):
+
+- **Adverse selection**: private insurers attract the bad risks → markets unravel; compulsory pooling fixes it
+- **Moral hazard and myopia**: we under-save when young and healthy; mandatory schemes pre-commit us
+- Some services (education, health) have **externalities** — private provision under-supplies
+]
+
+--
+
+.pull-left-wide[
+So a self-interested voter *rationally* buys insurance through the ballot box — the welfare state is a giant insurance contract, not charity.
+]
+
+???
+
+- Resolution: welfare state = insurance against adverse selection, moral hazard, myopia.
+- A self-interested voter rationally buys insurance at the ballot box.
+
+---
+# Would free markets be more efficient?
+
+.pull-left-wide[
+- For most goods — yes. For **insurance against life risks** — no, because of the failures above
+- Historical timing fits: welfare states expand *after* industrialization urbanizes risk (no family farm to fall back on) and *after* democratization
+]
+
+--
+
+.pull-left-wide[
+.small123[
+**Seminar link:** Boberg-Fazlić & Sharp (today) — public relief did *not* crowd out charity under the Old Poor Laws; if anything the opposite. The oldest objection to welfare spending, tested and found wanting. And Galofré-Vilà et al. — what happened politically when the German state *withdrew* support in 1930–32.
+]
+]
+
+???
+
+- For most goods yes; for life-risk insurance no - that's the whole answer.
+- Seminar link: crowding-out paper kills the oldest objection; austerity paper shows withdrawal costs.
+
+---
+class: inverse, middle, center
+# Group 2
+## Marx's trap (2022 Q3)
+
+???
+
+- Socialism walkthrough.
+
+---
+# Marx's own test — failed by his heirs
+
+.pull-left-wide[
+**Marx's claim**: social systems survive and expand only if they promote technological innovation and material welfare (§5.3).
+]
+
+--
+
+.pull-left-wide[
+Applied to the socialist economies:
+
+- Early decades: **extensive growth** — mobilize labour and capital into industry; impressive on paper (Table: USSR grew fast 1950–70)
+- But no mechanism for **efficiency growth**: prices carried no information, soft budget constraints, no exit for failing firms, innovation was risky for managers with output quotas
+- When extensive sources ran dry (1970s–80s), growth collapsed → the system failed **Marx's own criterion**
+]
+
+???
+
+- Extensive growth worked for a while; no efficiency growth without price signals and exit.
+- The system failed Marx's own survival criterion - students love the irony.
+
+---
+# How persistent are the effects?
+
+.pull-left-wide[
+- Physical capital: obsolete quickly; trade patterns re-oriented within a decade
+- **Institutions and human capital**: longer shadows — property rights, courts, trust take generations
+- Values and expectations: measurable East–West differences (e.g. within Germany) persist decades after 1990
+- Convergence since 1990 has been real but uneven — links to group 3's β-convergence!
+]
+
+--
+
+.pull-left-wide[
+.small123[
+Good answers cite the textbook's GDP comparisons (Eastern vs. Western Europe 1950–90) and connect persistence to the institutions material from week 1.
+]
+]
+
+???
+
+- Capital fades fast; institutions and values linger (East-West Germany gaps).
+- Bridge to group 3: uneven post-1990 convergence.
+
+---
+class: inverse, middle, center
+# Group 3
+## Inequality and convergence (2022 Q4 + 2016 Set 2.1–2.2, Excel)
+
+???
+
+- Inequality and convergence walkthrough.
+
+---
+# "The world has never been as unequal as it is today"
+
+.pull-left[
+### For
+- **Between-country** gaps are historically enormous — 30:1+ vs. maybe 3:1 in 1800
+- **Within-country** inequality rising again since ~1980 (top shares)
+- Wealth inequality extreme
+]
+
+.pull-right[
+### Against
+- **Global** inequality between people has *fallen* since ~1990 — China and India grew
+- Welfare inequality (life expectancy, literacy) compressed massively
+- Pre-modern societies were near the **extraction frontier** — elites took all the surplus above subsistence
+]
+
+--
+
+**When should we expect declines?** Historically: wars, revolutions, and crises (the 20th century's "Great Levelling") — but also education racing ahead of technology, unions, and the welfare state (group 1!).
+
+.small123[
+*Also see Fig. 11.1 (Gini distributions from 10,000 BCE to the present), Fig. 11.2 (actual Gini as share of maximum Gini) and Fig. 11.3 (top-10% wealth share in Europe 1300–2000) in Chapter 11*
+]
+
+???
+
+- Force both sides: between-country gaps historic highs vs. global person-level inequality falling since ~1990.
+- Declines historically: wars/revolutions, but also education, unions, welfare state.
+
+---
+# β- and σ-convergence (2016 Set 2.1–2.2)
+
+.pull-left-wide[
+> **β-convergence**: poor countries grow *faster* than rich ones — a negative relation between initial GDP/capita and subsequent growth.
+
+> **σ-convergence**: the *dispersion* of GDP/capita across countries shrinks over time.
+]
+
+--
+
+.pull-left-wide[
+- β is necessary but **not sufficient** for σ (shocks can keep dispersion up)
+- What drives β: technology transfer and **catch-up** (Ch. 6) — imitation is cheaper than invention — plus capital flows and structural change
+- Conditional on: human capital, institutions, openness — absent these, no convergence (why many countries stayed poor: exam 2020 Q1 iv)
+]
+
+--
+
+.pull-left-wide[
+.small123[
+**Excel task:** pick ~8 countries in Maddison; plot growth 1950–2000 against log GDP/capita 1950 (β: downward slope?), and the standard deviation of log GDP/capita by decade (σ: falling?). Two charts, one story.
+
+*Also see Fig. 6.1 in Chapter 6 (growth of GDP/capita against initial GDP per head) — the textbook's own β-convergence plot*
+]
+]
+
+???
+
+- Definitions verbatim first; then beta necessary but not sufficient for sigma.
+- Drivers: technology transfer (imitation cheap), conditional on human capital + institutions.
+
+---
+class: inverse, middle, center
+# Group 4
+## Immigration in economic history (2023 Q4)
+
+???
+
+- Immigration walkthrough.
+
+---
+# What history teaches about immigration
+
+.pull-left-wide[
+**The Age of Mass Migration (1850–1913)**: ~60 million Europeans crossed the Atlantic — the biggest labour-market integration ever.
+
+- **Wage convergence**: emigration raised wages in Ireland, Italy, Scandinavia; migrants gained enormously
+- Receiving countries: faster growth, settled frontiers — and downward wage pressure in some local labour markets
+- **Backlash**: rising inequality concerns → US quotas (1920s) — globalization is politically self-limiting (Ch. 9.4–9.5)
+]
+
+???
+
+- Age of Mass Migration: 60m people, wage convergence, then backlash and quotas.
+- Balanced answer: real distributional costs AND large dynamic gains.
+
+---
+# Migration as knowledge transfer
+
+.pull-left-wide[
+Beyond labour supply, migrants carry **ideas**:
+
+- **Boberg-Fazlić & Sharp (Theme 2)**: Danish-American communities transmitted the Danish dairy revolution to the US Midwest — via newspapers and return migrants, decades after settling
+- Huguenots in Prussia, Jewish émigré scientists in the US — high-skilled migration shifts the technology frontier
+- Implication: benefits can arrive **decades later** and are impossible to forecast at arrival
+]
+
+--
+
+.pull-left-wide[
+**Balanced exam answer**: real distributional costs (Stolper–Samuelson again), real and large aggregate + dynamic gains, and political economy determines the policy cycle.
+]
+
+--
+
+.pull-left-wide[
+.small123[
+**Seminar link:** Vedel (today) — when geography changed, *fertility* not migration drove the population response. Ask: when does labour actually move?
+]
+]
+
+???
+
+- Boberg-Fazlic & Sharp: communities transmit ideas decades later - unforecastable benefits.
+- Vedel link: sometimes people don't move at all; fertility adjusts.
+
+---
+class: middle
+# Wrapping up — and the exam
+
+.pull-left[
+- Welfare states: insurance, not charity — and no crowding out
+- Socialism: failed Marx's own test
+- Inequality: know the between/within distinction and β vs. σ
+- Migration: labour + ideas, gains + backlash
+- **Exam**: expect a Maddison question — practice the Excel workflow from today and Wednesday
+]
+
+.pull-right[
+![Trees](Figures/Trees1.jpg)
+]
+
+???
+
+- Final message: expect a Maddison question; practice the Excel workflow once more before the exam.
+- Offer office-hours/email for exam questions.
