@@ -1,0 +1,29 @@
+plate_id,notes,chiara_plate_type,cnn_total,vit_total
+12126223_Vol_II_49_Romae_Rome,Reconstruction of ANCIENT Rome (Urbis Romae sicut olim); not a contemporary city view,detailed_city_view,599,1135
+12126292_Vol_III_23_Nobilis_Hannoniae_Comitatus_Descriptio,Heraldic table of Hainaut (coats of arms); not a city view,not_reviewed_assumed_city_view,462,488
+12126358_Vol_III_56_Nullus_in_Orbe_Locus_Praelucet_Amoenis_Baiis_Pozz,Bay of Baia/Pozzuoli landscape (Nullus in orbe locus); not a city view,not_reviewed_assumed_city_view,169,189
+12126360_Vol_III_57_View_of_Lago_d_Agnano_Vera_delineatio_lacus_Anian,Lago d'Agnano and Solfatara landscapes; not a city view,not_reviewed_assumed_city_view,158,226
+12126362_Vol_III_58_Mirabilium_Sulphureorum_Montium_Apud_Pureolos_Poz,Solfatara (Mirabilium sulphureorum) landscape; not a city view,not_reviewed_assumed_city_view,164,250
+12126416_Vol_IV_25_Danorum_Marca_vel_Cimbricum_aut_Daniae_Regnum_Denm,Map of Denmark (regional map); not a city view,not_reviewed_assumed_city_view,176,382
+12126418_Vol_IV_26_Freti_Danici_Or_Sundt_Accuratiss_Delineatio_Helsin,"Map of the Oresund with Kronborg; regional map, not a city view",not_reviewed_assumed_city_view,757,720
+12126420_Vol_IV_27_Topographia_Insulae_Huenae_Ven,Island of Hven (Tycho Brahe's Uraniborg); not a city view,not_reviewed_assumed_city_view,262,218
+12126472_Vol_IV_53_Ostia,"Ostia; imaginative reconstruction of the ancient harbour, not a contemporary city",not_reviewed_assumed_city_view,671,725
+12126474_Vol_IV_54_Antiquae_Urbis_Romae_Rome_upper_sheet,"Ancient Rome reconstruction, upper sheet; not a contemporary city",composite_same_view,2627,3242
+12126476_Vol_IV_55_Antiquae_Urbis_Romae_Rome_lower_sheet,"Ancient Rome reconstruction, lower sheet; not a contemporary city",composite_same_view,2362,2872
+12126477_Vol_IV_54_55_Composite_Antiquae_Urbis_Romae_Rome_upper_and_l,"Ancient Rome reconstruction, composite of 229 and 230 (duplicate)",detailed_city_view,4202,3257
+12126483_Vol_IV_58_Ierusalem_Jerusalem_upper_sheet,"Jerusalem at the time of Christ (Adrichom reconstruction), upper sheet",not_reviewed_assumed_city_view,1382,1234
+12126485_Vol_IV_59_Ierusalem_Jerusalem_lower_sheet,"Jerusalem at the time of Christ (Adrichom reconstruction), lower sheet",not_reviewed_assumed_city_view,918,896
+12126486_Vol_IV_58_59_Composite_Ierusalem_Jerusalem_upper_and_lower_s,"Jerusalem reconstruction, composite of 234 and 235 (duplicate)",not_reviewed_assumed_city_view,1839,1328
+12126491_Vol_V_1_Palatium_Regium_in_Angliae_Regno_Appellatum_Noncivit,"Nonsuch Palace with costume figures; a palace, not a city",not_reviewed_assumed_city_view,192,443
+12126499_Vol_V_5_Gades_Ab_Occiduis_Insulae_Partibus_Cadiz,"Cadiz surroundings with a chapel (Gades ab occiduis insulae partibus); landscape, not a city view",distant_city_view,197,232
+12126517_Vol_V_14_Amoenissimus_castri_Granatensis_Granada,"Alhambra/castle of Granada with vignettes; castle landscape, not a city view",partial_city_view,167,185
+12126521_Vol_V_16_La_Sierra_de_Sant_Adrian_en_Biscaia_San_Adrian,Sierra de San Adrian mountain pass with costume figures; not a city,not_reviewed_assumed_city_view,163,226
+12126564_Vol_V_37_Diuersi_Dithmarsorum_et_Vicinarum_Costumes_of_Dithm,Dithmarschen costume plate; not a city,not_reviewed_assumed_city_view,132,111
+12126607_Vol_V_58_Elgantissimus_a_parte_Orientali_Oenipontis_Innsbruc,"Ambras castle near Innsbruck; castle landscape, not a city",not_reviewed_assumed_city_view,114,314
+12126609_Vol_V_59_Oeniponticae_Zirl_Schlosberg_Schlossberg_bei_Seefel,"Zirl and Schlossberg; Alpine landscape, not a city",not_reviewed_assumed_city_view,198,417
+12126611_Vol_V_60_Venetos_Venice,"Venice: St Mark's square and the 1577 palace fire; buildings/event, not a city view",not_reviewed_assumed_city_view,326,642
+12126613_Vol_V_61_Caprarola_Arx_et_Horti_Farnesiani_Caprarola_Palazzo,Caprarola palace and gardens; not a city,not_reviewed_assumed_city_view,317,414
+12126643_Vol_VI_4_Scenographia_Escoriali_Escorial,Escorial palace; not a city,not_reviewed_assumed_city_view,381,449
+12126647_Vol_VI_6_Portrait_des_Chasteaux_Royaux_de_Sainct_Germain_En_,"Chateaux of Saint-Germain and Fontainebleau; palaces, not cities",not_reviewed_assumed_city_view,745,847
+12126711_Vol_VI_38_Zaros_Sarosd,"Saros castle (Zaros); castle landscape, not a town",not_reviewed_assumed_city_view,144,289
+12126751_Vol_VI_58_Prospectus_Freti_Siculi_Messina,"Strait of Messina prospect; landscape, Messina tiny",partial_city_view,288,359

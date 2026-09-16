@@ -1,0 +1,367 @@
+k|n_city_views|multi_city|view_type|from_above|non_city|notes
+0|2|yes|profile|no|no|Lisbon and Cascais; both profile views from the water
+1|3|yes|profile|no|no|Seville, Cadiz, Malaga; three stacked profile views
+2|2|yes|mixed|partly|no|Toledo bird's-eye; Valladolid profile
+3|1|no|landscape|no|no|Granada as distant landscape
+4|2|yes|mixed|partly|no|Barcelona bird's-eye; Ecija profile
+5|2|yes|landscape|no|no|Burgos and San Sebastian; distant landscape views
+6|1|no|plan_birdseye|yes|no|Paris
+7|3|yes|plan_birdseye|yes|no|Montpellier, Tours, Poitiers; three small bird's-eye panels
+8|3|yes|plan_birdseye|yes|no|Rouen, Nimes, Bordeaux; three small bird's-eye panels
+9|1|no|plan_birdseye|yes|no|Lyon
+10|1|no|oblique_distant|partly|no|Liege; elevated but distant
+11|1|no|plan_birdseye|yes|no|Aachen
+12|2|yes|profile|no|no|Mons and Arras; profiles
+13|1|no|plan_birdseye|yes|no|Brussels
+14|1|no|plan_birdseye|yes|no|Gent
+15|1|no|plan_birdseye|yes|no|Bruges
+16|1|no|plan_birdseye|yes|no|Antwerp
+17|3|yes|profile|no|no|'s-Hertogenbosch, Leuven, Mechelen; profiles
+18|1|no|plan_birdseye|yes|no|Utrecht
+19|1|no|plan_birdseye|yes|no|Amsterdam
+20|3|yes|profile|no|no|Groningen, Brouwershaven, Gorinchem; profiles
+21|3|yes|profile|no|no|Munster, Osnabruck, Wesel; profiles
+22|4|yes|profile|no|no|Braunschweig, Luneburg, Bremen, Oldenburg; profiles
+23|2|yes|profile|no|no|Lubeck and Hamburg; profiles
+24|5|yes|mixed|partly|no|Weimar, Jena, Erfurt, Gotha, Fulda; mostly profiles, small panels
+25|2|yes|oblique_distant|partly|no|Marburg and Kassel
+26|4|yes|mixed|partly|no|Wittenberg, Frankfurt/Oder, Wismar, Rostock; small panels
+27|2|yes|profile|no|no|Dresden and Leipzig; profiles
+28|2|yes|mixed|partly|no|Prague distant bird's-eye; Eger (Cheb) profile
+29|1|no|plan_birdseye|yes|no|Magdeburg
+30|4|yes|mixed|partly|no|Nurnberg profile, Ulm profile, Salzburg and Lindau small bird's-eye
+31|13|yes|plan_birdseye|partly|no|Thirteen Swiss confederate places in tiny panels
+32|1|no|plan_birdseye|yes|no|Strasbourg
+33|3|yes|profile|no|no|Heidelberg, Speyer, Worms; profiles
+34|1|no|plan_birdseye|yes|no|Frankfurt am Main
+35|3|yes|mixed|partly|no|Trier distant bird's-eye; Koblenz and Rothenburg profiles
+36|3|yes|mixed|partly|no|Mainz profile; Wurzburg and a third town small bird's-eye
+37|1|no|plan_birdseye|yes|no|Cologne
+38|1|no|plan_birdseye|yes|no|Augsburg
+39|6|yes|profile|no|no|Munich, Ingolstadt, Freising, Nordlingen, Regensburg, Straubing; six profile panels
+40|2|yes|profile|no|no|Vienna and Buda; profiles
+41|1|no|plan_birdseye|yes|no|Milan
+42|1|no|plan_birdseye|yes|no|Venice
+43|2|yes|mixed|partly|no|Genoa oblique profile; Florence bird's-eye
+44|1|no|plan_birdseye|yes|no|Rome
+45|1|no|plan_birdseye|yes|no|Ancona
+46|1|no|plan_birdseye|yes|no|Naples
+47|4|yes|mixed|partly|no|Parma and Siena small bird's-eye; Palermo and Trapani profiles
+48|1|no|plan_birdseye|yes|no|Messina
+49|4|yes|plan_birdseye|partly|no|Cagliari, Malta, Rhodes, Famagusta; small panels
+50|1|no|plan_birdseye|yes|no|Constantinople
+51|1|no|plan_birdseye|yes|no|Jerusalem; contemporary-style bird's-eye with wide surroundings
+52|4|yes|mixed|partly|no|Aden bird's-eye; Mombasa, Kilwa, Sofala tiny panels
+53|4|yes|profile|no|no|Calicut, Hormuz, Cannanore, Elmina; profiles
+54|1|no|oblique_distant|partly|no|Cairo; distant bird's-eye
+55|5|yes|plan_birdseye|partly|no|Tangier, Safi, Ceuta, Arzila, Sale; small panels
+56|4|yes|mixed|partly|no|Casablanca, Azemmour profiles; Diu, Goa oblique
+57|2|yes|plan_birdseye|partly|no|Mexico and Cusco; schematic plans
+58|1|no|plan_birdseye|yes|no|Cambridge
+59|2|yes|landscape|no|no|Oxford and Windsor; landscape views
+60|1|no|landscape|no|no|Alhama; town small in mountain landscape
+61|1|no|landscape|no|no|Antequera; distant landscape
+62|2|yes|landscape|no|no|Vejer and Velez-Malaga; landscape
+63|2|yes|landscape|no|no|Conil and Jerez; landscape with tuna-fishing scene
+64|1|no|landscape|no|no|Loja; landscape
+65|1|no|landscape|no|no|Bilbao; distant landscape
+66|1|no|oblique_distant|partly|no|Santander; distant bird's-eye
+67|2|yes|profile|no|no|Orleans and Bourges; profiles
+68|1|no|plan_birdseye|yes|no|La Rochelle
+69|1|no|plan_birdseye|yes|no|Marseille
+70|1|no|plan_birdseye|yes|no|Avignon
+71|1|no|plan_birdseye|yes|no|Blois
+72|1|no|plan_birdseye|yes|no|Metz
+73|1|no|plan_birdseye|yes|no|Besancon; high oblique
+74|1|no|landscape|no|no|Blamont; small town in landscape
+75|1|no|landscape|no|no|Limbourg; landscape
+76|1|no|oblique_distant|partly|no|Huy
+77|1|no|oblique_distant|partly|no|Namur; high but distant
+78|1|no|oblique_distant|partly|no|Maastricht; distant oblique across the river
+79|1|no|plan_birdseye|yes|no|Ypres
+80|3|yes|mixed|partly|no|Dunkirk profile; Gravelines plan; Bourbourg bird's-eye
+81|1|no|profile|no|no|Dordrecht; river profile
+82|1|no|plan_birdseye|yes|no|Leiden; city small within a large surrounding map
+83|1|no|plan_birdseye|yes|no|Haarlem
+84|1|no|plan_birdseye|yes|no|Brielle
+85|1|no|plan_birdseye|yes|no|Middelburg
+86|1|no|profile|no|no|Nijmegen; river profile
+87|1|no|profile|no|no|Kampen; river profile
+88|1|no|plan_birdseye|yes|no|Groningen
+89|1|no|plan_birdseye|yes|no|Emden
+90|4|yes|profile|no|no|Neuss, Bonn, Bruhl, Zons; profiles
+91|4|yes|mixed|partly|no|Kleve, Emmerich, Gennep profiles; Duisburg plan
+92|1|no|plan_birdseye|yes|no|Kalkar
+93|4|yes|plan_birdseye|partly|no|Wissembourg, Obernai, Colmar, Baden; small bird's-eye panels
+94|1|no|oblique_distant|partly|no|Schwabisch Hall
+95|1|no|plan_birdseye|yes|no|Kempten
+96|1|no|plan_birdseye|yes|no|Freiberg
+97|1|no|plan_birdseye|yes|no|Basel
+98|2|yes|plan_birdseye|yes|no|Konstanz and St Gallen; both bird's-eye
+99|1|no|landscape|no|no|Innsbruck; distant in Alpine landscape
+100|1|no|profile|no|no|Nurnberg; profile with large costume figures
+101|1|no|oblique_distant|partly|no|Meissen
+102|1|no|profile|no|no|Gorlitz
+103|1|no|profile|no|no|Danzig; distant profile
+104|1|no|plan_birdseye|yes|no|Moscow; schematic
+105|1|no|oblique_distant|partly|no|Grodno
+106|1|no|plan_birdseye|yes|yes|Reconstruction of ANCIENT Rome (Urbis Romae sicut olim); not a contemporary city view
+107|1|no|oblique_distant|partly|no|Mantua; distant bird's-eye
+108|2|yes|landscape|no|partly|Pozzuoli and Baia; bay landscape with ruins
+109|3|yes|profile|no|no|Sibenik, Porec, Modon; profiles
+110|2|yes|mixed|partly|no|Candia profile; Corfu bird's-eye
+111|1|no|plan_birdseye|yes|no|Jerusalem; schematic bird's-eye
+112|1|no|plan_birdseye|yes|no|Damascus; schematic bird's-eye
+113|1|no|plan_birdseye|yes|no|Alexandria
+114|3|yes|mixed|no|partly|Tunis profile; Mahdia (Africa) and Penon de Velez siege/naval scenes
+115|1|no|plan_birdseye|partly|partly|Tunis/La Goletta siege plan of 1574; military event map, city small
+116|1|no|plan_birdseye|yes|no|Algiers
+117|1|no|plan_birdseye|yes|no|Norwich
+118|1|no|plan_birdseye|yes|no|Bristol
+119|1|no|plan_birdseye|yes|no|Chester
+120|1|no|plan_birdseye|yes|no|Edinburgh
+121|2|yes|landscape|no|no|Lebrija(?) and Setenil; landscape
+122|1|no|plan_birdseye|yes|no|Orleans
+123|1|no|plan_birdseye|yes|no|Rouen
+124|2|yes|plan_birdseye|yes|no|Chartres and Chateaudun; both plans
+125|2|yes|plan_birdseye|yes|no|Grenoble and Romans; both plans
+126|2|yes|plan_birdseye|yes|no|Autun and Nevers; both plans
+127|1|no|plan_birdseye|yes|no|Leuven
+128|1|no|plan_birdseye|yes|no|Mechelen
+129|1|no|plan_birdseye|yes|no|Tienen
+130|1|no|plan_birdseye|yes|no|Bergen op Zoom
+131|1|no|plan_birdseye|yes|no|Maastricht
+132|1|no|plan_birdseye|yes|no|Luxembourg
+133|4|yes|plan_birdseye|yes|no|Arnhem, Venlo, Geldern, Roermond; four plans
+134|1|no|plan_birdseye|yes|no|Nijmegen
+135|1|no|plan_birdseye|yes|no|Lille
+136|1|no|plan_birdseye|yes|no|Douai
+137|1|no|plan_birdseye|yes|no|Sluis
+138|1|no|plan_birdseye|yes|no|Arras (city and cite on one plate)
+139|0|no|none|no|yes|Heraldic table of Hainaut (coats of arms); not a city view
+140|1|no|plan_birdseye|yes|no|Mons
+141|1|no|plan_birdseye|yes|no|Valenciennes
+142|4|yes|plan_birdseye|yes|no|Charlemont, Landrecies, Avesnes, Beaumont; four small plans
+143|4|yes|plan_birdseye|yes|no|Philippeville, Mariembourg, Chimay, Walcourt; four small plans
+144|1|no|plan_birdseye|yes|no|Dordrecht
+145|1|no|plan_birdseye|yes|no|Delft
+146|1|no|plan_birdseye|yes|no|Enkhuizen
+147|2|yes|profile|no|no|Rotterdam and Gouda; profiles
+148|1|no|plan_birdseye|yes|no|Namur
+149|1|no|plan_birdseye|yes|no|Deventer
+150|1|no|plan_birdseye|yes|no|Kampen
+151|1|no|plan_birdseye|yes|no|Zwolle
+152|2|yes|plan_birdseye|yes|no|Leeuwarden and Franeker; two plans
+153|2|yes|profile|no|no|Soest and Warburg; profiles
+154|1|no|oblique_distant|partly|no|Frankenberg
+155|2|yes|profile|no|no|Eschwege and Fritzlar; profiles
+156|2|yes|profile|no|no|Werden and Essen; profiles
+157|2|yes|profile|no|no|Halberstadt and Quedlinburg; profiles
+158|1|no|plan_birdseye|yes|no|Weimar
+159|2|yes|oblique_distant|partly|no|Konigsberg and Riga; distant oblique
+160|1|no|plan_birdseye|yes|no|Zurich
+161|1|no|landscape|no|no|Landshut; distant landscape
+162|1|no|oblique_distant|partly|no|Passau
+163|1|no|oblique_distant|partly|no|Salzburg
+164|1|no|plan_birdseye|yes|no|Trento
+165|1|no|mixed|partly|no|Verona; one city shown twice (profile above, plan below)
+166|1|no|landscape|no|no|Pesaro; distant landscape
+167|2|yes|profile|no|no|Orvieto and Loreto; profiles
+168|1|no|landscape|no|no|Tivoli; landscape with waterfalls
+169|1|no|landscape|no|no|Velletri; landscape
+170|1|no|landscape|no|no|Terracina; landscape
+171|2|yes|landscape|no|no|Mola (Formia) and Castellone; small towns in landscape
+172|0|no|landscape|no|yes|Bay of Baia/Pozzuoli landscape (Nullus in orbe locus); not a city view
+173|0|no|landscape|no|yes|Lago d'Agnano and Solfatara landscapes; not a city view
+174|0|no|landscape|no|yes|Solfatara (Mirabilium sulphureorum) landscape; not a city view
+175|1|no|plan_birdseye|yes|no|Vilnius
+176|1|no|plan_birdseye|yes|no|Canterbury
+177|1|no|plan_birdseye|yes|no|Seville
+178|2|yes|landscape|no|no|Marchena and Osuna; landscape
+179|2|yes|plan_birdseye|yes|no|Macon and Chalon; two plans
+180|1|no|oblique_distant|partly|no|Cambrai
+181|1|no|plan_birdseye|yes|no|Hesdin
+182|1|no|profile|no|no|Bethune
+183|1|no|plan_birdseye|yes|no|Saint-Omer
+184|1|no|plan_birdseye|yes|no|Tournai
+185|1|no|plan_birdseye|yes|no|Aalst
+186|1|no|plan_birdseye|yes|no|Lier
+187|1|no|plan_birdseye|yes|no|'s-Hertogenbosch
+188|1|no|plan_birdseye|yes|no|Rotterdam
+189|1|no|plan_birdseye|yes|no|Gouda
+190|1|no|mixed|partly|no|Amersfoort; one city shown twice (plan above, profile below)
+191|1|no|plan_birdseye|yes|no|Zutphen
+192|4|yes|plan_birdseye|yes|no|Bolsward, Stavoren, Harlingen, Hindeloopen; four plans
+193|4|yes|plan_birdseye|yes|no|Sneek, Dokkum, Sloten, IJlst; four plans
+194|1|no|plan_birdseye|yes|no|Wesel
+195|2|yes|profile|no|no|Lippstadt and Dortmund; profiles
+196|1|no|oblique_distant|partly|no|Soest; elevated profile
+197|1|no|landscape|no|no|Arnsberg; landscape
+198|1|no|plan_birdseye|yes|no|Neuss
+199|2|yes|profile|no|no|Oberwesel and Boppard; profiles
+200|0|no|none|no|yes|Map of Denmark (regional map); not a city view
+201|0|no|none|no|yes|Map of the Oresund with Kronborg; regional map, not a city view
+202|0|no|none|no|yes|Island of Hven (Tycho Brahe's Uraniborg); not a city view
+203|1|no|profile|no|no|Copenhagen; profile
+204|4|yes|plan_birdseye|partly|no|Helsingborg, Lund, Malmo, Landskrona; small bird's-eye panels
+205|2|yes|mixed|partly|no|Flensburg profile; Itzehoe bird's-eye
+206|1|no|oblique_distant|partly|no|Schleswig
+207|1|no|landscape|no|partly|Segeberg; castle hill dominates, small town below
+208|2|yes|oblique_distant|partly|no|Husum and a second town (Hadersleben?); oblique
+209|1|no|plan_birdseye|yes|no|Kiel
+210|2|yes|profile|no|no|Krempe and Reinholdsburg(?); profiles
+211|1|no|plan_birdseye|yes|no|Hamburg
+212|1|no|oblique_distant|partly|no|Bergen
+213|1|no|profile|no|no|Stockholm; one city shown twice, both profiles
+214|1|no|landscape|no|no|Hann. Munden; landscape
+215|2|yes|profile|no|no|Eisleben and Tubingen; profiles
+216|1|no|plan_birdseye|yes|no|Stettin
+217|1|no|plan_birdseye|yes|no|Wroclaw
+218|1|no|profile|no|no|Munich; profile
+219|1|no|landscape|no|no|Bratislava; distant landscape
+220|2|yes|mixed|no|no|Brixen landscape; Lauingen profile
+221|1|no|oblique_distant|partly|no|Serravalle
+222|1|no|plan_birdseye|yes|no|Vicenza
+223|1|no|oblique_distant|partly|no|Rimini
+224|1|no|plan_birdseye|yes|no|Bologna
+225|1|no|plan_birdseye|yes|no|Lucca
+226|1|no|plan_birdseye|yes|no|Perugia
+227|2|yes|mixed|partly|no|Urbino two small profiles; Sulmona plan
+228|1|no|plan_birdseye|yes|yes|Ostia; imaginative reconstruction of the ancient harbour, not a contemporary city
+229|1|no|plan_birdseye|yes|yes|Ancient Rome reconstruction, upper sheet; not a contemporary city
+230|1|no|plan_birdseye|yes|yes|Ancient Rome reconstruction, lower sheet; not a contemporary city
+231|1|no|plan_birdseye|yes|yes|Ancient Rome reconstruction, composite of 229 and 230 (duplicate)
+232|1|no|plan_birdseye|yes|no|Palermo
+233|1|no|oblique_distant|partly|no|Chios
+234|1|no|plan_birdseye|yes|yes|Jerusalem at the time of Christ (Adrichom reconstruction), upper sheet
+235|1|no|plan_birdseye|yes|yes|Jerusalem at the time of Christ (Adrichom reconstruction), lower sheet
+236|1|no|plan_birdseye|yes|yes|Jerusalem reconstruction, composite of 234 and 235 (duplicate)
+237|0|no|none|no|yes|Nonsuch Palace with costume figures; a palace, not a city
+238|1|no|plan_birdseye|yes|no|Lisbon
+239|1|no|plan_birdseye|yes|no|Braga
+240|1|no|plan_birdseye|yes|no|Coimbra; oblique bird's-eye
+241|0|no|landscape|no|yes|Cadiz surroundings with a chapel (Gades ab occiduis insulae partibus); landscape, not a city view
+242|1|no|profile|no|partly|Cadiz distant profile above; genre scene below
+243|1|no|landscape|no|no|Seville (Hoefnagel); distant landscape with large figures
+244|3|yes|landscape|no|no|San Juan del Foratche, Lebrija and a third small town; landscape strips beside the Giralda
+245|1|no|landscape|no|no|Archidona; landscape with rock vignettes
+246|3|yes|landscape|no|no|Los Palacios, Alcanerilla(?), Las Cabezas; landscape strips
+247|2|yes|landscape|no|no|Ardales and Cartama; landscape
+248|2|yes|landscape|no|no|Bornos and Zahara; landscape
+249|1|no|landscape|no|no|Granada; distant landscape
+250|0|no|landscape|no|yes|Alhambra/castle of Granada with vignettes; castle landscape, not a city view
+251|1|no|oblique_distant|partly|no|Toledo; distant bird's-eye with two building elevations below
+252|0|no|none|no|yes|Sierra de San Adrian mountain pass with costume figures; not a city
+253|1|no|plan_birdseye|yes|no|Saintes
+254|1|no|profile|no|no|Poitiers; distant profile with dolmen vignettes
+255|2|yes|landscape|no|no|Lyon and Vienne; distant landscape
+256|2|yes|profile|no|no|Tours and Angers; profiles
+257|1|no|plan_birdseye|yes|no|Cambrai
+258|1|no|plan_birdseye|yes|no|Calais
+259|1|no|oblique_distant|partly|no|Luxembourg; distant oblique plus Igel column and villa vignettes
+260|2|yes|mixed|partly|no|Cochem profile; Mayen plan
+261|3|yes|landscape|no|no|Zell, Bernkastel, Manderscheid; landscape strips
+262|2|yes|mixed|partly|no|Saarburg landscape; Pfalzel plan
+263|0|no|none|no|yes|TEXT PAGE (Antwerp description); not a city view
+264|1|no|plan_birdseye|yes|no|Vlissingen
+265|1|no|profile|no|no|Harderwijk; one city shown twice, both profiles
+266|1|no|plan_birdseye|yes|no|Odense
+267|1|no|plan_birdseye|yes|no|Eckernforde
+268|1|no|plan_birdseye|yes|no|Kolding
+269|2|yes|profile|no|no|Helsingor and Ribe; profiles
+270|2|yes|plan_birdseye|yes|no|Eutin and Tonder; two bird's-eye views
+271|2|yes|oblique_distant|partly|no|Tonning and a second Eiderstedt town; oblique
+272|1|no|oblique_distant|partly|no|Plon; small town in lake landscape
+273|0|no|none|no|yes|Dithmarschen costume plate; not a city
+274|2|yes|plan_birdseye|yes|no|Heide and Meldorf; two bird's-eye views
+275|1|no|plan_birdseye|yes|no|Visby
+276|1|no|plan_birdseye|yes|no|Stade
+277|1|no|plan_birdseye|yes|no|Bremen
+278|1|no|plan_birdseye|yes|no|Luneburg
+279|1|no|plan_birdseye|yes|no|Ratzeburg
+280|1|no|plan_birdseye|yes|no|Bardowick; small town, mostly fields
+281|1|no|plan_birdseye|yes|no|Barth
+282|1|no|plan_birdseye|yes|no|Bardowick; DUPLICATE scan of 280
+283|1|no|profile|no|no|Wismar; profile
+284|1|no|profile|no|no|Rostock; profile
+285|2|yes|profile|no|no|Halle and Hildesheim; profiles
+286|1|no|profile|no|partly|Prague; imperial palace elevation above, distant city profile below
+287|1|no|plan_birdseye|yes|no|Swiebodzin
+288|1|no|profile|no|no|Regensburg; distant profile
+289|1|no|landscape|no|no|Linz; distant landscape
+290|1|no|landscape|no|no|Gmunden; lake landscape
+291|1|no|plan_birdseye|partly|no|Gyor; fortress town, distant
+292|1|no|mixed|partly|no|Komarom; one place shown twice (profile above, bird's-eye of fortress below)
+293|2|yes|mixed|partly|partly|Nove Zamky fortress plan; Visegrad landscape
+294|1|no|oblique_distant|partly|no|Esztergom; one city shown twice, distant
+295|0|no|landscape|no|yes|Ambras castle near Innsbruck; castle landscape, not a city
+296|0|no|landscape|no|yes|Zirl and Schlossberg; Alpine landscape, not a city
+297|0|no|none|no|yes|Venice: St Mark's square and the 1577 palace fire; buildings/event, not a city view
+298|0|no|none|no|yes|Caprarola palace and gardens; not a city
+299|1|no|landscape|no|no|Fondi; landscape
+300|2|yes|landscape|no|no|Acquapendente and Farnese; landscape
+301|2|yes|landscape|no|no|Nocera Umbra and Castelnuovo; landscape
+302|1|no|landscape|no|partly|Naples seen from Posillipo; bay and Vesuvius landscape, city tiny
+303|1|no|plan_birdseye|yes|no|Caiazzo; small town plan
+304|1|no|plan_birdseye|yes|no|Gallipoli
+305|1|no|plan_birdseye|yes|no|Palmanova
+306|1|no|plan_birdseye|yes|no|Catania
+307|1|no|plan_birdseye|yes|no|London
+308|1|no|plan_birdseye|yes|no|Exeter
+309|3|yes|plan_birdseye|partly|partly|York, Shrewsbury, Lancaster small plans; plus Richmond Palace elevation
+310|4|yes|plan_birdseye|partly|no|Galway, Dublin, Limerick, Cork; small plans
+311|0|no|none|no|yes|Escorial palace; not a city
+312|1|no|oblique_distant|partly|no|Cordoba
+313|0|no|none|no|yes|Chateaux of Saint-Germain and Fontainebleau; palaces, not cities
+314|1|no|plan_birdseye|yes|no|Nancy
+315|1|no|plan_birdseye|yes|no|Bar-le-Duc; small image
+316|1|no|plan_birdseye|yes|no|The Hague
+317|1|no|plan_birdseye|yes|no|Amsterdam (1617 plan with new fortifications)
+318|1|no|plan_birdseye|yes|no|Ostend; siege-period fortification plan
+319|2|yes|oblique_distant|partly|no|Dillenburg and Siegen
+320|1|no|landscape|no|no|Budingen; landscape
+321|1|no|oblique_distant|partly|no|Zschopau(?) (Scopa vulgo Schvepa); castle and town
+322|1|no|plan_birdseye|yes|no|Bamberg
+323|3|yes|mixed|partly|no|Heilbronn bird's-eye; Muhlhausen and Reutlingen profiles
+324|1|no|plan_birdseye|yes|no|Leipzig
+325|2|yes|profile|no|no|Nysa and Legnica; profiles
+326|1|no|oblique_distant|partly|no|Marienberg
+327|1|no|landscape|no|no|Penig; landscape
+328|1|no|plan_birdseye|yes|no|Vienna
+329|2|yes|landscape|no|no|Eisenstadt and Mannersdorf; landscape
+330|1|no|profile|no|no|Enns; distant profile
+331|1|no|profile|no|no|St Polten; distant profile
+332|2|yes|landscape|no|no|Caslav and Chomutov; landscape
+333|2|yes|landscape|no|no|Louny and Slany; landscape
+334|1|no|landscape|no|no|Polna; landscape (scan truncated at bottom)
+335|1|no|oblique_distant|partly|no|Znojmo
+336|1|no|profile|no|no|Brno; elevated profile
+337|1|no|oblique_distant|partly|no|Buda with Pest; distant bird's-eye
+338|1|no|oblique_distant|partly|no|Kosice
+339|1|no|landscape|no|partly|Eger (Hungary); fortress dominates, town small
+340|1|no|plan_birdseye|yes|no|Szolnok; fortress and town
+341|1|no|landscape|no|partly|Tata; fortress in landscape, little town
+342|1|no|plan_birdseye|yes|no|Papa
+343|2|yes|plan_birdseye|partly|partly|Petrinja: Turkish fort landscape and Christian fort plan; military forts
+344|1|no|plan_birdseye|yes|partly|Torokszentmiklos; fortress plan
+345|0|no|landscape|no|yes|Saros castle (Zaros); castle landscape, not a town
+346|1|no|landscape|no|no|Dregelypalank; village in landscape
+347|1|no|plan_birdseye|yes|no|Oradea; fortress and town
+348|1|no|oblique_distant|partly|no|Cluj
+349|1|no|oblique_distant|partly|no|Krakow (Metropolis); distant bird's-eye
+350|1|no|landscape|no|no|Kostajnica; landscape
+351|1|no|profile|no|no|Krakow; profile
+352|0|no|landscape|no|yes|Kalwaria Zebrzydowska pilgrimage hill; not a city
+353|2|yes|mixed|partly|no|Poznan bird's-eye; Krosno profile
+354|1|no|profile|no|no|Warsaw; river profile
+355|1|no|profile|no|no|Lublin; profile
+356|1|no|profile|no|no|Lviv; profile
+357|2|yes|profile|no|no|Sandomierz and Biecz; profiles
+358|1|no|plan_birdseye|yes|no|Lowicz
+359|1|no|oblique_distant|partly|no|Przemysl
+360|1|no|plan_birdseye|yes|no|Zamosc
+361|1|no|plan_birdseye|yes|no|Moscow
+362|1|no|plan_birdseye|yes|no|Padua
+363|1|no|plan_birdseye|yes|no|Novara
+364|1|no|oblique_distant|partly|no|Tricarico
+365|0|no|landscape|no|yes|Strait of Messina prospect; landscape, Messina tiny
