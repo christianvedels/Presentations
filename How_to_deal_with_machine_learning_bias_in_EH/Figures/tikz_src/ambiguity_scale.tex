@@ -1,0 +1,18 @@
+\begin{tikzpicture}[
+        >=Stealth,
+        axis/.style   = {-{Stealth[length=10pt,width=7pt]}, line width=1.6pt},
+        every node/.style = {font=\large},          
+        label/.style = {anchor=north}               
+      ]
+        % horizontal scale
+        \draw[axis] (0,0) -- (12,0);
+        
+        % title 
+        \node[anchor=south,font=\large\bfseries] at (6,0.15) {Ambiguity};
+        
+        % scale labels
+        \node[label] at (0,0)  {Numbers};
+        \node[label] at (6,0)  {Occupations};
+        \node[label] at (12,0) {Semantics};
+    
+\end{tikzpicture}

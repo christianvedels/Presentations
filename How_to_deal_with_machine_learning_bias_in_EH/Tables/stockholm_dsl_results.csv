@@ -1,0 +1,5 @@
+Estimator,Estimate,SE,CI_lower,CI_upper,Observations
+Oracle (true gender),-0.822,0.025,-0.871,-0.774,"3,271"
+Naive ML (predicted gender),-0.713,0.028,-0.767,-0.658,"3,271"
+Labeled-only (10% subsample),-0.760,0.076,-0.908,-0.612,"326"
+DSL (debiased),-0.814,0.048,-0.909,-0.719,"3,271"

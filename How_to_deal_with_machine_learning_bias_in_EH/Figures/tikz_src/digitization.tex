@@ -1,0 +1,55 @@
+\begin{tikzpicture}[
+  font=\normalsize,
+  >=Latex,
+  arr/.style={->, line width=1pt},
+  box/.style={draw, rounded corners=3pt, align=center, inner sep=5pt},
+  txt/.style={align=center},
+  lbl/.style={font=\small, align=center}
+]
+
+% -------------------------
+% Nodes (tighter x-layout)
+% -------------------------
+\node[txt] (scan) {Scan};
+
+\node[txt, below left=1.cm and 2cm of scan] (hand) {handwritten};
+\node[txt, below right=1cm and 2cm of scan] (machine) {machine\\written};
+
+% Force HTR and OCR to be exactly on the same y-level (closer horizontally)
+\node[txt, below=1.1cm of hand] (htr) {HTR};
+\node[txt] (ocr) at ([xshift=7.1cm]htr) {OCR};
+
+% Move model stack further down (unchanged)
+\node[box, below=4cm of scan] (vlm) {VLM};
+\node[box, below=1.1cm of vlm] (llm) {LLM};
+\node[txt, below=1.2cm of llm] (out) {Output};
+
+
+% -------------------------
+% Arrows
+% -------------------------
+\draw[arr] (scan) to[bend right=25] (hand);
+\draw[arr] (scan) to[bend left=25]  (machine);
+
+\draw[arr] (hand) -- (htr);
+\draw[arr] (machine) -- (ocr);
+
+\draw[arr] (htr) to[bend right=18] (vlm.west);
+\draw[arr] (ocr) to[bend left=18]  (vlm.east);
+
+% Dashed inputs to LLM
+\draw[arr, dashed] (ocr) to[bend left=22] (llm.east);
+\draw[arr, dashed] (htr) to[bend right=22] (llm.west);
+
+% VLM directly to Output (avoid crossing LLM)
+\draw[arr] (vlm) to[bend right=35] (out.west);
+
+% LLM to Output
+\draw[arr] (llm) -- (out);
+
+% Direct-to-output outer arcs
+\draw[arr] (htr) to[bend right=55] (out.west);
+\draw[arr] (ocr) to[bend left=55]  (out.east);
+
+
+\end{tikzpicture}

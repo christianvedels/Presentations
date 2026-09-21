@@ -1,0 +1,45 @@
+% Stylized illustration of word arithmetic in an embedding space (greyscale):
+% start at king, subtract male, add female (tip-to-tail), and land near queen.
+% Intended to be \input{} into a document that loads tikz with arrows.meta, calc.
+\begin{tikzpicture}[
+    >=Stealth,
+    arith/.style = {-{Stealth[length=7pt]}, line width=1.1pt, black}
+  ]
+
+  % shared bounding box so this panel aligns with papers_cosine.tex
+  \useasboundingbox (-0.3,-1.0) rectangle (4.9,3.7);
+
+  \coordinate (O)  at (0,0);
+  \coordinate (k)  at (3.4,1.0);   % king
+  \coordinate (km) at (2.2,0.05);  % king - male   (-male points down-left)
+  \coordinate (R)  at (2.8,2.3);   % king - male + female  (+female points up)
+  \coordinate (q)  at (3.05,2.2);  % queen (lands close to R)
+
+  % --- faint embedding-space axes ----------------------------------------
+  \draw[gray!50, -{Stealth[length=5pt]}] (O) -- (4.3,0);
+  \draw[gray!50, -{Stealth[length=5pt]}] (O) -- (0,3.6);
+
+  % --- resultant (net vector), drawn faint behind the path ---------------
+  \draw[gray!60, dotted, line width=0.9pt] (O) -- (R);
+
+  % --- the arithmetic path, tip to tail (subtraction = dashed) -----------
+  \draw[arith]         (O)  -- (k);
+  \draw[arith, dashed] (k)  -- (km);
+  \draw[arith]         (km) -- (R);
+
+  % --- king tip, result point (filled), and queen (open) -----------------
+  \fill[black] (k) circle (1.8pt);
+  \fill[black] (R) circle (1.8pt);
+  \draw[black, line width=0.9pt] (q) circle (2.3pt);
+
+  % --- arrow labels (kept off the arrows) --------------------------------
+  \node[font=\footnotesize\itshape, right=2pt] at (k)                              {king};
+  \node[font=\footnotesize, anchor=west]       at ($(k)!0.5!(km) + (0.12,-0.02)$)  {$-\,\textit{male}$};
+  \node[font=\footnotesize, anchor=west]       at ($(km)!0.7!(R) + (-0.12,0)$)    {$+\,\textit{female}$};
+  \node[font=\footnotesize\itshape, right=2pt] at (q)                              {queen};
+
+  % --- the analogy --------------------------------------------------------
+  \node[anchor=west, font=\small] at (0.05,3.35)
+        {$\textit{king}-\textit{male}+\textit{female}\;\approx\;\textit{queen}$};
+
+\end{tikzpicture}

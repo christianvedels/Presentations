@@ -1,0 +1,36 @@
+% Stylized illustration of cosine similarity between two document vectors (greyscale).
+% Intended to be \input{} into a document that loads tikz with arrows.meta, calc.
+\begin{tikzpicture}[
+    >=Stealth,
+    docvec/.style = {-{Stealth[length=7pt]}, line width=1.1pt, black},
+    lab/.style    = {font=\footnotesize, align=left}
+  ]
+
+  % shared bounding box so this panel aligns with kingqueen.tex
+  \useasboundingbox (-0.3,-1.0) rectangle (4.9,3.7);
+
+  \coordinate (O) at (0,0);
+
+  % --- faint embedding-space axes ----------------------------------------
+  \draw[gray!50, -{Stealth[length=5pt]}] (O) -- (4.1,0);
+  \draw[gray!50, -{Stealth[length=5pt]}] (O) -- (0,3.7);
+
+  % --- two document vectors (solid vs dashed to tell them apart) ----------
+  \coordinate (p1) at (30:3.4);
+  \coordinate (p2) at (62:3.0);
+  \draw[docvec]         (O) -- (p1);
+  \draw[docvec, dashed] (O) -- (p2);
+
+  % --- angle between them -------------------------------------------------
+  \draw[black, line width=0.8pt] (30:1.05) arc (30:62:1.05);
+  \node[font=\small] at (46:1.45) {$\theta$};
+
+  % --- labels at the vector tips -----------------------------------------
+  \node[lab, anchor=west]       at (p1) {Scientific\\paper 1};
+  \node[lab, anchor=south west] at (p2) {Scientific\\paper 2};
+
+  % --- annotation ---------------------------------------------------------
+  \node[anchor=west, font=\small] at (-0.2,-0.6)
+        {$\cos\theta$: similarity of two papers};
+
+\end{tikzpicture}

@@ -1,6 +1,8 @@
 # Guest Lectures and Talks
 In this repository I will collect random talks and guest lecture I give here and there. More to come! 
 
+[How to deal with machine learning bias in economic history](https://christianvedels.github.io/Presentations/How_to_deal_with_machine_learning_bias_in_EH/Slides_short.html): Short version (10 slides + appendix). [Full version](https://christianvedels.github.io/Presentations/How_to_deal_with_machine_learning_bias_in_EH/Slides.html). Paper: [arxiv.org/abs/2606.28063](https://arxiv.org/abs/2606.28063)
+
 [DOMUS](https://christianvedels.github.io/Presentations/DOMUS/Slides.html)
 
 [CHAOS - Converting Historical Accounts into Occupational Scores](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/CHAOS/Slides_CC.html)

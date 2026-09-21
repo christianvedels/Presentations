@@ -1,0 +1,59 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth]
+
+% --- Slopes ---
+\pgfmathsetmacro{\mM}{1.0}   % Manual slope
+\pgfmathsetmacro{\mO}{0.5}   % Off-the-shelf slope
+\pgfmathsetmacro{\mC}{0.1}   % Custom slope
+
+% --- Fixed intersection x-locations (keep these) ---
+\pgfmathsetmacro{\xMO}{2.5}  % Manual = Off-the-shelf
+\pgfmathsetmacro{\xOC}{7.0}  % Off-the-shelf = Custom
+
+% --- Intercepts (anchor Manual through origin) ---
+\pgfmathsetmacro{\aM}{0.0}
+\pgfmathsetmacro{\aO}{\aM + (\mM-\mO)*\xMO}
+\pgfmathsetmacro{\aC}{\aO + (\mO-\mC)*\xOC}
+
+% --- y-values at intersection points ---
+\pgfmathsetmacro{\yMO}{\aM + \mM*\xMO}
+\pgfmathsetmacro{\yOC}{\aO + \mO*\xOC}
+
+% Axes
+\draw[->, very thick] (0,0) -- (0,6.5)
+  node[above, align=center] {Total cost of\\research-ready data};
+\draw[->, very thick] (0,0) -- (10.5,0) node[right] {Data needed ($N$)};
+
+% Vertical dotted separators
+\draw[thick, dotted] (\xMO,0) -- (\xMO,6.2);
+\draw[thick, dotted] (\xOC,0) -- (\xOC,6.2);
+
+% Lines
+\draw[thick, plotblue] (0,\aM) -- (6,{\aM+\mM*6});
+\draw[thick, plotgreen] (0,\aO) -- (10,{\aO+\mO*10});
+\draw[thick, plotred] (0,\aC) -- (10,{\aC+\mC*10});
+
+% Intersection markers + labels
+\filldraw[plotblack] (\xMO,\yMO) circle (2pt)
+  node[above right] {$N_{12}$};
+\filldraw[plotblack] (\xOC,\yOC) circle (2pt)
+  node[above right] {$N_{23}$};
+
+% Labels
+\node[anchor=west, text=plotblue] at (4.0,5.7) {Manual};
+\node[anchor=west, text=plotgreen, align=left] at (7.5,6.5){Off-the-shelf\\(e.g.\ LLM)};
+\node[anchor=west, text=plotred, align=left] at (8.6,4.4) {Custom\\solution};
+
+% Braces + labels below the axis
+\draw[decorate, decoration={brace, amplitude=7pt, mirror}]
+  (0,-0.1) -- (\xMO,-0.1)
+  node[midway, below=8pt, align=center] {1. Type it\\yourself};
+
+\draw[decorate, decoration={brace, amplitude=7pt, mirror}]
+  (\xMO,-0.1) -- (\xOC,-0.1)
+  node[midway, below=8pt, align=center] {2. Off-the-shelf\\solution};
+
+\draw[decorate, decoration={brace, amplitude=7pt, mirror}]
+  (\xOC,-0.1) -- (10,-0.1)
+  node[midway, below=8pt, align=center] {3. Build your own\\solution};
+
+\end{tikzpicture}
