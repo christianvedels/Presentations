@@ -3,7 +3,7 @@ output:
   xaringan::moon_reader:
     seal: false
     includes:
-      after_body: insert-logo.html
+      after_body: [insert-logo.html, slide-numbers.html]
     self_contained: false
     lib_dir: libs
     nature:
@@ -148,6 +148,32 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
   display: block;
   margin: 0 auto;
 }
+
+/* Text box over a full-bleed painting */
+.overlay-box {
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  padding: 0.6em 1.1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+.overlay-box h1, .overlay-box h2 {
+  color: #fff;
+  margin: 0.2em 0 0.3em 0;
+}
+.overlay-spoiler {
+  margin-top: 0.8em;
+}
+.overlay-credit {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: 0.55em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 ```
 
 
@@ -164,6 +190,32 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 .small123[
 Paper: [arxiv.org/abs/2606.28063](https://arxiv.org/abs/2606.28063). Code: [github.com/juliuskoschnick/Machine-learning-and-bias-in-economic-history](https://github.com/juliuskoschnick/Machine-learning-and-bias-in-economic-history)
 ]
+]
+
+---
+name: newtech
+class: left, top
+background-image: url(Figures/kroyer_foundry.jpg)
+background-size: cover
+
+.overlay-box[
+## A world of wondrous new technology
+
+Is it good? Is it bad? No one knows.
+
+**We offer practical advice for economic historians.**
+]
+
+.overlay-credit[
+P.S. Krøyer, *Fra Burmeister & Wains jernstøberi* (1885). SMK, KMS3605, public domain.
+]
+
+--
+
+.overlay-box.overlay-spoiler[
+In this talk: how to use machine learning **and still draw credible conclusions**.
+
+*Spoiler: economic history still needs good historians.*
 ]
 
 ---
@@ -202,16 +254,44 @@ name: example
 
 # A motivating example: gender wage gap, Stockholm 1920
 
-.center[<img src="Figures/stockholm_coefplot.png" width="62%">]
+.pull-left-wide[
+**A common problem: many historical sources do not record gender**
+
+- Research question: the gender wage gap among 3,271 Stockholm taxpayers in 1920 (Bengtsson & Molinder 2024)
+- Can we construct gender from **first names** instead?
+
+.small123[
+$$\log(\textit{income}_i) = \beta_0 + \beta_1 \mathbf{1}(\textit{female}_i) + \varepsilon_i$$
+]
+]
+
+--
 
 .pull-left-wide[
-- Bengtsson & Molinder (2024): 3,271 taxpayers, income *and* gender observed. Pretend gender is unobserved and predict it from **names** (Naive Bayes, 81% accuracy)
-- **Naive ML is confident but wrong:** $-0.71$ vs. oracle $-0.82$. Errors are systematic: naming correlates with social status
-- **Labeled-only** (random 10%, $n = 326$) is unbiased but the CI is $3\times$ wider
+**Yes!**
+
+- A simple Naive Bayes classifier, trained on 2,000 Scandinavian name–gender pairs
+- **81% accurate**
+]
+
+---
+name: example-results
+
+# Stockholm 1920: the results
+
+.center[<img src="Figures/stockholm_coefplot.png" width="52%">]
+
+--
+
+.pull-left-wide[
+- **Naive ML is confident but wrong:** $-0.71$ vs. the true $-0.82$. The errors are systematic: naming correlates with social status
+- **Labeled-only** (random 10%, $n = 326$) is unbiased, but the CI is $3\times$ wider
 ]
 
 .pull-right-narrow[
-.small123[*Coefficient on female, log labor income. Bars: 95% CI. Dashed line: oracle. The classifier has 97.6% precision but 67.2% recall: it misclassifies a third of women as men.* [Setup in detail](#stockholm-setup)]
+> **Here we know the truth:** the tax records report gender, so the oracle (dashed line) is observed.
+
+.small123[*Bars: 95% CI. 97.6% precision, 67.2% recall: a third of women are classified as men.* [Setup in detail](#stockholm-setup)]
 ]
 
 ---
@@ -280,19 +360,9 @@ name: historical
 ]
 
 ---
-name: taxonomy
-class: plate-xl
-
-# When can the bias be corrected? A taxonomy
-
-![Taxonomy flowchart](Figures/analysis_flowchart.png)
-
-.small123[[Type 1](#type1-lit) · [Type 2](#type2-setup) · [Type 3](#type3-point)]
-
----
 name: what-to-do
 
-# What to do in each case
+# Three types of ML tasks in economic history
 
 .pull-left-wide[
 > **Type 1: ML to replace human annotators.** ML labels what humans *could* label, at scale: linkage, occupation coding, sentiment, topics. $\Rightarrow$ **Always debias.** Most applications in the field fall here. [Workflow](#type1-workflow)
@@ -309,6 +379,16 @@ name: what-to-do
 .pull-left-wide[
 > **Type 3: ML for new measures.** Continuous proxies humans *cannot* produce (embedding-based innovation, sentiment, stance). No gold standard by construction. $\Rightarrow$ **Surrogate logic: convergent validity with several proxies + placebo independence.** [Embeddings](#type3-embeddings) · [Validation](#type3-validation)
 ]
+
+---
+name: taxonomy
+class: plate-xl
+
+# When can the bias be corrected? Putting it together
+
+![Taxonomy flowchart](Figures/analysis_flowchart.png)
+
+.small123[[Type 1](#type1-lit) · [Type 2](#type2-setup) · [Type 3](#type3-point)]
 
 ---
 name: best-practices
@@ -330,16 +410,21 @@ name: best-practices
 ]
 ]
 .panel[.panel-name[Scale]
-.pull-left[
-.center[<img src="Figures/cost.png" width="70%">]
+.pull-left-wide[
+.center[<img src="Figures/cost.png" width="100%">]
 ]
-.pull-right[
-**How many hours would this take by hand?**
+.pull-right-narrow[
+.small123[
+$$C_k(N) = F_k + c_k N$$
+Fixed cost $F_k$ plus marginal cost $c_k$ per unit, for mode $k$
+]
 
-- Hours to tens: type it yourself
-- Hundreds to thousands: off-the-shelf LLM / VLM
-- Thousands+: build your own; released openly it becomes an off-the-shelf tool for the field
-- Research-ready includes validation and debiasing, so no project is fully automated
+**How many hours by hand?**
+
+- **Tens:** type it yourself
+- **Hundreds to thousands:** off-the-shelf LLM / VLM
+- **Thousands+:** build your own, and share it
+- Validation and debiasing are never automated
 
 .small123[[More](#scale)]
 ]
@@ -396,7 +481,8 @@ name: conclusion
 - BlueSky: [@christianvedel.bsky.social](https://bsky.app/profile/christianvedel.bsky.social)
 ]
 ---
-class: middle, center
+name: appendix
+class: middle, center, appendix
 
 # Appendix
 
@@ -429,7 +515,7 @@ $$\log(\textit{income}_i) = \beta_0 + \beta_1 \mathbf{1}(\textit{female}_i) + \v
 3. **Labeled-only:** hand-verify gender for a 10% random subsample $(n = 326)$
 ]
 
-.footnote[.left[.small123[[Back to slides](#example)]]]
+.footnote[.left[.small123[[Back to slides](#example-results)]]]
 
 ---
 name: debiasing-setup

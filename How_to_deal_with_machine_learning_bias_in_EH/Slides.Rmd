@@ -3,7 +3,7 @@ output:
   xaringan::moon_reader:
     seal: false
     includes:
-      after_body: insert-logo.html
+      after_body: [insert-logo.html, slide-numbers.html]
     self_contained: false
     lib_dir: libs
     nature:
@@ -148,6 +148,32 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
   display: block;
   margin: 0 auto;
 }
+
+/* Text box over a full-bleed painting */
+.overlay-box {
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  padding: 0.6em 1.1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+.overlay-box h1, .overlay-box h2 {
+  color: #fff;
+  margin: 0.2em 0 0.3em 0;
+}
+.overlay-spoiler {
+  margin-top: 0.8em;
+}
+.overlay-credit {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: 0.55em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 ```
 
 
@@ -164,6 +190,32 @@ xaringanExtra::use_progress_bar(color = "#808080", location = "top")
 .small123[
 Paper: [arxiv.org/abs/2606.28063](https://arxiv.org/abs/2606.28063). Code: [github.com/juliuskoschnick/Machine-learning-and-bias-in-economic-history](https://github.com/juliuskoschnick/Machine-learning-and-bias-in-economic-history)
 ]
+]
+
+---
+name: newtech
+class: left, top
+background-image: url(Figures/kroyer_foundry.jpg)
+background-size: cover
+
+.overlay-box[
+## A world of wondrous new technology
+
+Is it good? Is it bad? No one knows.
+
+**We offer practical advice for economic historians.**
+]
+
+.overlay-credit[
+P.S. Krøyer, *Fra Burmeister & Wains jernstøberi* (1885). SMK, KMS3605, public domain.
+]
+
+--
+
+.overlay-box.overlay-spoiler[
+In this talk: how to use machine learning **and still draw credible conclusions**.
+
+*Spoiler: economic history still needs good historians.*
 ]
 
 ---
@@ -964,7 +1016,8 @@ name: conclusion
 ]
 
 ---
-class: middle, center
+name: appendix
+class: middle, center, appendix
 
 # Appendix
 

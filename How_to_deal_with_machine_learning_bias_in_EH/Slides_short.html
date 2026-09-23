@@ -172,6 +172,32 @@ class: center, inverse, middle
   display: block;
   margin: 0 auto;
 }
+
+/* Text box over a full-bleed painting */
+.overlay-box {
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  padding: 0.6em 1.1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+.overlay-box h1, .overlay-box h2 {
+  color: #fff;
+  margin: 0.2em 0 0.3em 0;
+}
+.overlay-spoiler {
+  margin-top: 0.8em;
+}
+.overlay-credit {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: 0.55em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 &lt;/style&gt;
 
 
@@ -182,12 +208,38 @@ class: center, inverse, middle
 
 ### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
 
-### Updated 2026-09-21
+### Updated 2026-09-23
 
 .footnote[
 .small123[
 Paper: [arxiv.org/abs/2606.28063](https://arxiv.org/abs/2606.28063). Code: [github.com/juliuskoschnick/Machine-learning-and-bias-in-economic-history](https://github.com/juliuskoschnick/Machine-learning-and-bias-in-economic-history)
 ]
+]
+
+---
+name: newtech
+class: left, top
+background-image: url(Figures/kroyer_foundry.jpg)
+background-size: cover
+
+.overlay-box[
+## A world of wondrous new technology
+
+Is it good? Is it bad? No one knows.
+
+**We offer practical advice for economic historians.**
+]
+
+.overlay-credit[
+P.S. Krøyer, *Fra Burmeister &amp; Wains jernstøberi* (1885). SMK, KMS3605, public domain.
+]
+
+--
+
+.overlay-box.overlay-spoiler[
+In this talk: how to use machine learning **and still draw credible conclusions**.
+
+*Spoiler: economic history still needs good historians.*
 ]
 
 ---
@@ -226,16 +278,44 @@ name: example
 
 # A motivating example: gender wage gap, Stockholm 1920
 
-.center[&lt;img src="Figures/stockholm_coefplot.png" width="62%"&gt;]
+.pull-left-wide[
+**A common problem: many historical sources do not record gender**
+
+- Research question: the gender wage gap among 3,271 Stockholm taxpayers in 1920 (Bengtsson &amp; Molinder 2024)
+- Can we construct gender from **first names** instead?
+
+.small123[
+`$$\log(\textit{income}_i) = \beta_0 + \beta_1 \mathbf{1}(\textit{female}_i) + \varepsilon_i$$`
+]
+]
+
+--
 
 .pull-left-wide[
-- Bengtsson &amp; Molinder (2024): 3,271 taxpayers, income *and* gender observed. Pretend gender is unobserved and predict it from **names** (Naive Bayes, 81% accuracy)
-- **Naive ML is confident but wrong:** `\(-0.71\)` vs. oracle `\(-0.82\)`. Errors are systematic: naming correlates with social status
-- **Labeled-only** (random 10%, `\(n = 326\)`) is unbiased but the CI is `\(3\times\)` wider
+**Yes!**
+
+- A simple Naive Bayes classifier, trained on 2,000 Scandinavian name–gender pairs
+- **81% accurate**
+]
+
+---
+name: example-results
+
+# Stockholm 1920: the results
+
+.center[&lt;img src="Figures/stockholm_coefplot.png" width="52%"&gt;]
+
+--
+
+.pull-left-wide[
+- **Naive ML is confident but wrong:** `\(-0.71\)` vs. the true `\(-0.82\)`. The errors are systematic: naming correlates with social status
+- **Labeled-only** (random 10%, `\(n = 326\)`) is unbiased, but the CI is `\(3\times\)` wider
 ]
 
 .pull-right-narrow[
-.small123[*Coefficient on female, log labor income. Bars: 95% CI. Dashed line: oracle. The classifier has 97.6% precision but 67.2% recall: it misclassifies a third of women as men.* [Setup in detail](#stockholm-setup)]
+&gt; **Here we know the truth:** the tax records report gender, so the oracle (dashed line) is observed.
+
+.small123[*Bars: 95% CI. 97.6% precision, 67.2% recall: a third of women are classified as men.* [Setup in detail](#stockholm-setup)]
 ]
 
 ---
@@ -304,19 +384,9 @@ name: historical
 ]
 
 ---
-name: taxonomy
-class: plate-xl
-
-# When can the bias be corrected? A taxonomy
-
-![Taxonomy flowchart](Figures/analysis_flowchart.png)
-
-.small123[[Type 1](#type1-lit) · [Type 2](#type2-setup) · [Type 3](#type3-point)]
-
----
 name: what-to-do
 
-# What to do in each case
+# Three types of ML tasks in economic history
 
 .pull-left-wide[
 &gt; **Type 1: ML to replace human annotators.** ML labels what humans *could* label, at scale: linkage, occupation coding, sentiment, topics. `\(\Rightarrow\)` **Always debias.** Most applications in the field fall here. [Workflow](#type1-workflow)
@@ -333,6 +403,16 @@ name: what-to-do
 .pull-left-wide[
 &gt; **Type 3: ML for new measures.** Continuous proxies humans *cannot* produce (embedding-based innovation, sentiment, stance). No gold standard by construction. `\(\Rightarrow\)` **Surrogate logic: convergent validity with several proxies + placebo independence.** [Embeddings](#type3-embeddings) · [Validation](#type3-validation)
 ]
+
+---
+name: taxonomy
+class: plate-xl
+
+# When can the bias be corrected? Putting it together
+
+![Taxonomy flowchart](Figures/analysis_flowchart.png)
+
+.small123[[Type 1](#type1-lit) · [Type 2](#type2-setup) · [Type 3](#type3-point)]
 
 ---
 name: best-practices
@@ -354,16 +434,21 @@ name: best-practices
 ]
 ]
 .panel[.panel-name[Scale]
-.pull-left[
-.center[&lt;img src="Figures/cost.png" width="70%"&gt;]
+.pull-left-wide[
+.center[&lt;img src="Figures/cost.png" width="100%"&gt;]
 ]
-.pull-right[
-**How many hours would this take by hand?**
+.pull-right-narrow[
+.small123[
+`$$C_k(N) = F_k + c_k N$$`
+Fixed cost `\(F_k\)` plus marginal cost `\(c_k\)` per unit, for mode `\(k\)`
+]
 
-- Hours to tens: type it yourself
-- Hundreds to thousands: off-the-shelf LLM / VLM
-- Thousands+: build your own; released openly it becomes an off-the-shelf tool for the field
-- Research-ready includes validation and debiasing, so no project is fully automated
+**How many hours by hand?**
+
+- **Tens:** type it yourself
+- **Hundreds to thousands:** off-the-shelf LLM / VLM
+- **Thousands+:** build your own, and share it
+- Validation and debiasing are never automated
 
 .small123[[More](#scale)]
 ]
@@ -420,7 +505,8 @@ name: conclusion
 - BlueSky: [@christianvedel.bsky.social](https://bsky.app/profile/christianvedel.bsky.social)
 ]
 ---
-class: middle, center
+name: appendix
+class: middle, center, appendix
 
 # Appendix
 
@@ -453,7 +539,7 @@ name: stockholm-setup
 3. **Labeled-only:** hand-verify gender for a 10% random subsample `\((n = 326)\)`
 ]
 
-.footnote[.left[.small123[[Back to slides](#example)]]]
+.footnote[.left[.small123[[Back to slides](#example-results)]]]
 
 ---
 name: debiasing-setup
@@ -564,8 +650,8 @@ name: revisit-table
 
 # The numbers
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-c7b1d98eea054a35010d" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c7b1d98eea054a35010d">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["1","2","3","4"],["Oracle (true gender)","Naive ML (predicted gender)","Labeled-only (10% subsample)","DSL (debiased)"],[-0.822,-0.713,-0.76,-0.8139999999999999],[0.025,0.028,0.076,0.048],[-0.871,-0.767,-0.908,-0.909],[-0.774,-0.658,-0.612,-0.719],["3,271","3,271","326","3,271"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Estimator<\/th>\n      <th>Estimate<\/th>\n      <th>SE<\/th>\n      <th>CI_lower<\/th>\n      <th>CI_upper<\/th>\n      <th>Observations<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Estimator","targets":1},{"name":"Estimate","targets":2},{"name":"SE","targets":3},{"name":"CI_lower","targets":4},{"name":"CI_upper","targets":5},{"name":"Observations","targets":6}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-b98a481ea7edbf01f605" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b98a481ea7edbf01f605">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["1","2","3","4"],["Oracle (true gender)","Naive ML (predicted gender)","Labeled-only (10% subsample)","DSL (debiased)"],[-0.822,-0.713,-0.76,-0.8139999999999999],[0.025,0.028,0.076,0.048],[-0.871,-0.767,-0.908,-0.909],[-0.774,-0.658,-0.612,-0.719],["3,271","3,271","326","3,271"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Estimator<\/th>\n      <th>Estimate<\/th>\n      <th>SE<\/th>\n      <th>CI_lower<\/th>\n      <th>CI_upper<\/th>\n      <th>Observations<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Estimator","targets":1},{"name":"Estimate","targets":2},{"name":"SE","targets":3},{"name":"CI_lower","targets":4},{"name":"CI_upper","targets":5},{"name":"Observations","targets":6}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 .small123[*Outcome: log labor income, Stockholm 1920. Gold-standard sample: 326 observations sampled independently with probability 0.1.*]
 
@@ -1275,6 +1361,34 @@ document
   .forEach(el => {
     el.innerHTML += '<div class="logo"></div>';
   });
+</script>
+<script>
+// Main slides: "n / (slides before the appendix)". Appendix: roman numerals.
+// The appendix divider slide is marked with `class: appendix`.
+(function () {
+  function roman(n) {
+    var map = [[1000, 'm'], [900, 'cm'], [500, 'd'], [400, 'cd'], [100, 'c'], [90, 'xc'],
+               [50, 'l'], [40, 'xl'], [10, 'x'], [9, 'ix'], [5, 'v'], [4, 'iv'], [1, 'i']];
+    var out = '';
+    map.forEach(function (p) { while (n >= p[0]) { out += p[1]; n -= p[0]; } });
+    return out;
+  }
+  var numbers = Array.prototype.slice.call(document.querySelectorAll('.remark-slide-number'));
+  var appendixAt = null;
+  numbers.forEach(function (el) {
+    var content = el.closest('.remark-slide').querySelector('.remark-slide-content');
+    if (appendixAt === null && content.classList.contains('appendix')) {
+      appendixAt = parseInt(el.textContent, 10);
+    }
+  });
+  if (appendixAt === null) return;
+  numbers.forEach(function (el) {
+    var n = parseInt(el.textContent, 10);
+    if (n < appendixAt) el.textContent = n + ' / ' + (appendixAt - 1);
+    else if (n === appendixAt) el.textContent = '';
+    else el.textContent = roman(n - appendixAt);
+  });
+})();
 </script>
 
 <script>
