@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-170 0 1350 640" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <style>
+      .card { fill: #f6f4ef; stroke: #8a7f6a; stroke-width: 2; }
+      .hdr { font-size: 24px; font-weight: bold; fill: #222222; }
+      .sub { font-size: 18px; fill: #666666; font-style: italic; }
+      .raw { font-size: 21px; fill: #3a3326; font-style: italic; }
+      .mach { fill: #b33d3d; }
+      .machttl { font-size: 32px; font-weight: bold; fill: #ffffff; }
+      .machsub { font-size: 18px; fill: #ffffff; font-style: italic; }
+      .tbl { fill: #ffffff; stroke: #2c5c34; stroke-width: 2; }
+      .th { font-size: 19px; font-weight: bold; fill: #ffffff; }
+      .td { font-size: 19px; fill: #222222; }
+      .code { font-size: 19px; fill: #222222; font-family: Consolas, 'Courier New', monospace; }
+      .arrow { stroke: #1a1a1a; stroke-width: 5; fill: none; }
+      .hand { font-family: 'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive; fill: #1a1a1a; }
+      .ink { stroke: #1a1a1a; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .closing { font-size: 26px; fill: #222222; font-style: italic; }
+    </style>
+    <marker id="head" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/>
+    </marker>
+  </defs>
+
+  <!-- hand-drawn brace: 13 mio -->
+  <path class="ink" d="M30,84 C12,86 17,118 17,170 C17,236 19,262 0,275 C19,288 17,314 17,380 C17,432 12,462 30,466"/>
+  <text x="-8" y="288" text-anchor="end" class="hand" font-size="34">13 mio.</text>
+
+  <!-- input: a stack of census pages -->
+  <rect class="card" x="52" y="92" width="330" height="380" rx="6"/>
+  <rect class="card" x="46" y="86" width="330" height="380" rx="6"/>
+  <rect class="card" x="40" y="80" width="330" height="380" rx="6"/>
+  <text x="205" y="40" text-anchor="middle" class="hdr">In: census records</text>
+  <text x="205" y="66" text-anchor="middle" class="sub">free text, 1787–1901</text>
+  <text x="65" y="130" class="raw">Huusmand og Fisker</text>
+  <text x="65" y="175" class="raw">Inderste og Dagleier</text>
+  <text x="65" y="220" class="raw">Væversvend</text>
+  <text x="65" y="265" class="raw">Gaardmand</text>
+  <text x="65" y="310" class="raw">Huusmand lever af</text>
+  <text x="85" y="338" class="raw">sin Jordlod</text>
+  <text x="65" y="383" class="raw">Skipper</text>
+  <text x="65" y="428" class="raw">…</text>
+
+  <!-- hand-labelled time: by hand -->
+  <text x="205" y="518" text-anchor="middle" class="hand" font-size="21">By hand, 10 sec. each:</text>
+  <text x="205" y="552" text-anchor="middle" class="hand" font-size="25">≈ 36,000 hours non-stop</text>
+
+  <!-- arrow in -->
+  <line x1="392" y1="275" x2="452" y2="275" class="arrow" marker-end="url(#head)"/>
+
+  <!-- the machine -->
+  <rect class="mach" x="470" y="180" width="250" height="190" rx="10"/>
+  <text x="595" y="268" text-anchor="middle" class="machttl">OccCANINE</text>
+  <text x="595" y="300" text-anchor="middle" class="machsub">text → HISCO</text>
+  <rect x="490" y="370" width="22" height="26" fill="#1a1a1a"/>
+  <rect x="678" y="370" width="22" height="26" fill="#1a1a1a"/>
+
+  <!-- arrow out -->
+  <line x1="730" y1="275" x2="790" y2="275" class="arrow" marker-end="url(#head)"/>
+
+  <!-- output: structured table -->
+  <text x="985" y="40" text-anchor="middle" class="hdr">Out: structured data</text>
+  <text x="985" y="66" text-anchor="middle" class="sub">every person, every parish</text>
+  <rect class="tbl" x="808" y="80" width="354" height="380" rx="6"/>
+  <rect x="808" y="80" width="354" height="44" rx="6" fill="#2c5c34"/>
+  <rect x="808" y="104" width="354" height="20" fill="#2c5c34"/>
+  <text x="826" y="110" class="th">HISCO</text>
+  <text x="940" y="110" class="th">Occupation</text>
+  <text x="826" y="160" class="code">62105</text><text x="940" y="160" class="td">Farm worker</text>
+  <text x="826" y="190" class="code">64100</text><text x="940" y="190" class="td">Fisherman</text>
+  <line x1="808" y1="204" x2="1162" y2="204" stroke="#dddddd"/>
+  <text x="826" y="235" class="code">99920</text><text x="940" y="235" class="td">Day labourer</text>
+  <line x1="808" y1="249" x2="1162" y2="249" stroke="#dddddd"/>
+  <text x="826" y="280" class="code">75400</text><text x="940" y="280" class="td">Weaver</text>
+  <line x1="808" y1="294" x2="1162" y2="294" stroke="#dddddd"/>
+  <text x="826" y="325" class="code">61110</text><text x="940" y="325" class="td">Farmer</text>
+  <line x1="808" y1="339" x2="1162" y2="339" stroke="#dddddd"/>
+  <text x="826" y="370" class="code">61115</text><text x="940" y="370" class="td">Subsistence farmer</text>
+  <line x1="808" y1="384" x2="1162" y2="384" stroke="#dddddd"/>
+  <text x="826" y="415" class="code">04217</text><text x="940" y="415" class="td">Ship's master</text>
+  <text x="826" y="445" class="code">…</text>
+
+  <!-- hand-labelled time: OccCANINE -->
+  <text x="985" y="518" text-anchor="middle" class="hand" font-size="21">OccCANINE on a laptop:</text>
+  <text x="985" y="552" text-anchor="middle" class="hand" font-size="25">≈ 35 hours</text>
+
+  <!-- closing line -->
+  <text x="595" y="618" text-anchor="middle" class="closing">And this is fully local and replicable</text>
+</svg>
