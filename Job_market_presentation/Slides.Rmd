@@ -247,92 +247,14 @@ xaringanExtra::use_tile_view()
 (⏱ minutes on this slide / cumulative minutes at the end of it / main-talk slides left; 30-minute plan, Other work slides not counted)
 ⏱ 0.5 / 0.5 / 31
 STRUCTURE (fractal) — each layer retells the whole story in more detail:
-- By minute 5.5: who I am, the covid-vacation pictures, the two pillars, painting + map ("if I were out of time, I would end here")
+- By minute 3: painting + map
+- By minute 6.5: who I am, the covid-vacation pictures, live map, the two pillars ("if I were out of time, I would end here")
 - By minute 9: the question and the literature
 - By minute 18.5: one full pass through the evidence
 - By minute 30: mechanisms, the mirror experiment
 - By minute 60: ongoing work and agenda
 - Up to 120: deep dives after the conclusion
 SECRET LINKS: click "SDU" in the logo -> conclusion; click the twig in the logo -> ongoing work and agenda. Same corner works invisibly on dark slides.
-
----
-name: profile
-class: middle
-# About me
-
-.pull-left-wide[
-- **Economist** at the University of Southern Denmark
-- **I build and use machine-learning tools** to turn historical sources into data
-- **I find natural experiments** to give causal answers to big questions in long-run development
-
-*Always curious about the causes of things: science, nature, society, history …*
-]
-
-.pull-right-narrow[
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("Figures/ai_cosmos_documents.jpg")
-```
-
-> *Today: one natural experiment — and the tools it needed.*
-]
-
-???
-⏱ 1 / 1.5 / 30
-- 60 seconds. Say it in your own words.
-
----
-name: origin
-# On a vacation during covid...
-
-.pull-left-wide[
-- Summer 2020: cycling along the Agger isthmus
-- Local maritime history: the storm, the channel, the fishing towns
-- The work of maritime historian **Bo Poulsen** (Aalborg University) — this paper is in large part a quantitative test of it
-]
-
-.pull-right-narrow[
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("Figures/photo_isthmus_bike.jpg")
-```
-]
-
-???
-⏱ 0.5 / 2 / 29
-- Personal hook; keep it to 30 seconds.
-
----
-name: thyboron
-class: center
-# More pictures
-
-.pull-left[
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("Figures/photo_thyboron.jpg")
-```
-]
-
-.pull-right[
-```{r echo=FALSE, out.width="70%"}
-knitr::include_graphics("Figures/photo_fish.jpg")
-```
-]
-
-???
-⏱ 0.5 / 2.5 / 28
-- The town on the channel opened by the 1862 storm — a fishing port today.
-
----
-name: pillars
-class: middle
-# Two pillars
-
-```{r echo=FALSE, out.width="88%", fig.align='center'}
-knitr::include_graphics("Figures/pillars.svg")
-```
-
-???
-⏱ 0.5 / 3 / 27
-- Applications answer the big question; the tools make them possible. Today's paper sits on top of both.
 
 ---
 name: opening
@@ -363,7 +285,7 @@ Carl Locher, *Frisk kuling i Sundet* (1892). SMK, KKS1399, public domain.
 ]
 
 ???
-⏱ 2 / 5 / 26
+⏱ 2 / 2.5 / 30
 - WHY (box 1): explaining prosperity is one of the biggest asks in economics. The tension: first nature (geography) and second nature (institutions, what people build) are almost impossible to disentangle, because they arrive together.
 - WHAT (box 2): a natural experiment — first nature suddenly changed — observed in millions of individual census records, 1787–1901.
 - RESULT (box 3): trade followed; +27% population a generation later, with an occupational shift towards farmers, fishermen and textile workers; the mirror experiment 700 years earlier.
@@ -381,10 +303,76 @@ knitr::include_graphics("Figures/Map_nobg.png")
 .map-effect[<span class="num">+27%</span><br><span class="lab">population by 1901</span>]
 
 ???
-⏱ 0.5 / 5.5 / 25
+⏱ 0.5 / 3 / 29
 - This map is the whole story. Before 1834 a merchant in the west Limfjord sailed east via Aalborg and round the top of Jutland. Then the storm opened the western route.
 - "If I were already out of time, I would end here."
-- END OF LAYER 1 (by minute 5.5).
+- END OF LAYER 1 (by minute 3).
+
+---
+name: profile
+class: middle
+# About me
+
+.pull-left-wide[
+- **Economist** at the University of Southern Denmark
+- **I build and use machine-learning tools** to turn historical sources into data
+- **I find natural experiments** to give causal answers to big questions in long-run development
+
+*Always curious about the causes of things: science, nature, society, history …*
+]
+
+.pull-right-narrow[
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("Figures/ai_cosmos_documents.jpg")
+```
+
+> *Today: one natural experiment — and the tools it needed.*
+]
+
+???
+⏱ 1 / 4 / 28
+- 60 seconds. Say it in your own words.
+
+---
+name: origin
+# On a vacation during covid...
+
+.pull-left-wide[
+- Summer 2020: cycling along the Agger isthmus
+- Local maritime history: the storm, the channel, the fishing towns
+- The work of maritime historian **Bo Poulsen** (Aalborg University) — this paper is in large part a quantitative test of it
+]
+
+.pull-right-narrow[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/photo_isthmus_bike.jpg")
+```
+]
+
+???
+⏱ 0.5 / 4.5 / 27
+- Personal hook; keep it to 30 seconds.
+
+---
+name: thyboron
+class: center
+# More pictures
+
+.pull-left[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/photo_thyboron.jpg")
+```
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="70%"}
+knitr::include_graphics("Figures/photo_fish.jpg")
+```
+]
+
+???
+⏱ 0.5 / 5 / 26
+- The town on the channel opened by the 1862 storm — a fishing port today.
 
 ---
 name: gmap
@@ -393,9 +381,22 @@ class: hide-logo
 <iframe class="gmap-frame" src="https://maps.google.com/maps?q=56.700,8.242&t=k&z=11&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ???
-⏱ 1 / 6.5 / 24
+⏱ 1 / 6 / 25
 - Live Google Maps (satellite), centred on the Thyborøn channel. Zoom out to show the whole Limfjord and the route east to Aalborg.
 - Needs an internet connection. If it does not load, the map on the previous slide tells the same story.
+
+---
+name: pillars
+class: middle
+# Two pillars
+
+```{r echo=FALSE, out.width="88%", fig.align='center'}
+knitr::include_graphics("Figures/pillars.svg")
+```
+
+???
+⏱ 0.5 / 6.5 / 24
+- Applications answer the big question; the tools make them possible. Today's paper sits on top of both.
 
 ---
 name: nightlights
