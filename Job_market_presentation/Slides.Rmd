@@ -247,8 +247,8 @@ xaringanExtra::use_tile_view()
 (⏱ minutes on this slide / cumulative minutes at the end of it / main-talk slides left; 30-minute plan, Other work slides not counted)
 ⏱ 0.5 / 0.5 / 31
 STRUCTURE (fractal) — each layer retells the whole story in more detail:
-- By minute 3: painting + map
-- By minute 6.5: who I am, the covid-vacation pictures, live map, the two pillars ("if I were out of time, I would end here")
+- By minute 4: painting + map + live map
+- By minute 6.5: who I am, the covid-vacation pictures, the two pillars ("if I were out of time, I would end here")
 - By minute 9: the question and the literature
 - By minute 18.5: one full pass through the evidence
 - By minute 30: mechanisms, the mirror experiment
@@ -306,7 +306,18 @@ knitr::include_graphics("Figures/Map_nobg.png")
 ⏱ 0.5 / 3 / 29
 - This map is the whole story. Before 1834 a merchant in the west Limfjord sailed east via Aalborg and round the top of Jutland. Then the storm opened the western route.
 - "If I were already out of time, I would end here."
-- END OF LAYER 1 (by minute 3).
+- END OF LAYER 1 after the live map (minute 4).
+
+---
+name: gmap
+class: hide-logo
+
+<iframe class="gmap-frame" src="https://maps.google.com/maps?q=56.700,8.242&t=k&z=11&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+???
+⏱ 1 / 4 / 28
+- Live Google Maps (satellite), centred on the Thyborøn channel. Zoom out to show the whole Limfjord and the route east to Aalborg.
+- Needs an internet connection. If it does not load, the map on the previous slide tells the same story.
 
 ---
 name: profile
@@ -330,7 +341,7 @@ knitr::include_graphics("Figures/ai_cosmos_documents.jpg")
 ]
 
 ???
-⏱ 1 / 4 / 28
+⏱ 1 / 5 / 27
 - 60 seconds. Say it in your own words.
 
 ---
@@ -350,7 +361,7 @@ knitr::include_graphics("Figures/photo_isthmus_bike.jpg")
 ]
 
 ???
-⏱ 0.5 / 4.5 / 27
+⏱ 0.5 / 5.5 / 26
 - Personal hook; keep it to 30 seconds.
 
 ---
@@ -371,19 +382,8 @@ knitr::include_graphics("Figures/photo_fish.jpg")
 ]
 
 ???
-⏱ 0.5 / 5 / 26
+⏱ 0.5 / 6 / 25
 - The town on the channel opened by the 1862 storm — a fishing port today.
-
----
-name: gmap
-class: hide-logo
-
-<iframe class="gmap-frame" src="https://maps.google.com/maps?q=56.700,8.242&t=k&z=11&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-???
-⏱ 1 / 6 / 25
-- Live Google Maps (satellite), centred on the Thyborøn channel. Zoom out to show the whole Limfjord and the route east to Aalborg.
-- Needs an internet connection. If it does not load, the map on the previous slide tells the same story.
 
 ---
 name: pillars
