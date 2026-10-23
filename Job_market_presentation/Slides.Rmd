@@ -539,6 +539,15 @@ knitr::include_graphics("Figures/Stenkul_from_Newcastle.PNG")
 - Answers "why the lag?": the geography moved on its own; realising its value took a generation of adaptation.
 
 ---
+name: divider-data
+class: inverse, center, middle
+
+# Data and empirical strategy
+
+???
+⏱ 0 / 11.5 / — (divider, not counted in slides left)
+
+---
 name: data-census
 # Population and occupations: the census
 
@@ -675,6 +684,15 @@ $$MA_i = \sum_{h \in \mathcal{H}} CostDist(i,h)^{\theta}, \quad \theta = -1$$
 
 ???
 ⏱ 2 / 16 / 14
+
+---
+name: divider-results
+class: inverse, center, middle
+
+# Results
+
+???
+⏱ 0 / 16 / — (divider, not counted in slides left)
 
 ---
 name: trade
