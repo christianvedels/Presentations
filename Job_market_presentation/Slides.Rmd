@@ -897,10 +897,12 @@ knitr::include_graphics("Figures/Morsoe.jpg")
 
 ---
 name: external-validity
-class: left, middle, hide-logo
+class: left, top, hide-logo
 background-image: url(Figures/gislev_hoard_pennies.jpg)
 background-size: cover
 background-position: center
+
+<br><br><br>
 
 .overlay-box[
 ## What about external validity?
