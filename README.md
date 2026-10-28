@@ -19,6 +19,8 @@ In this repository I will collect random talks and guest lecture I give here and
 
 [Copenhagen Tax Book Project](https://raw.githack.com/christianvedels/Guest_Lectures_and_misc_talks/main/Incomes_Copenhagen/Slides.html)
 
+[The Seminar Series: how it works now, and what should we change?](https://christianvedels.github.io/Presentations/Seminar_series_quarterly_meeting/Slides.html): Quarterly department meeting, 29 October 2026 (with Matthew Curtis)
+
 ### Danish presentations 
 
 [Hvad er meningen med: Kunstig intelligens i samfundsvidenskabelig forskning?](https://raw.githack.com/christianvedels/Presentations/refs/heads/main/Hvad_er_meningen_med_AI/Slides.html): Om AI i forskning
