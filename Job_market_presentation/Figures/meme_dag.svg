@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Georgia, 'Times New Roman', serif">
+  <!-- Figure 2 (Christian's notebook, 2026-10-24): the meme DAG. m -> m -> m', each causing an outcome below -->
+  <defs>
+    <marker id="hk" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/>
+    </marker>
+    <marker id="hr" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b33d3d"/>
+    </marker>
+  </defs>
+
+  <!-- row labels -->
+  <text x="20" y="118" font-size="24" fill="#666666" font-style="italic">meme</text>
+  <text x="20" y="368" font-size="24" fill="#666666" font-style="italic">outcome</text>
+
+  <!-- meme nodes -->
+  <circle cx="230" cy="110" r="52" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="230" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#1a1a1a">m</text>
+  <circle cx="500" cy="110" r="52" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="500" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#1a1a1a">m</text>
+  <circle cx="770" cy="110" r="52" fill="#fbecec" stroke="#b33d3d" stroke-width="4"/>
+  <text x="770" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#b33d3d">m′</text>
+
+  <!-- replication arrows -->
+  <line x1="288" y1="110" x2="430" y2="110" stroke="#1a1a1a" stroke-width="5" marker-end="url(#hk)"/>
+  <text x="365" y="80" text-anchor="middle" font-size="26" fill="#1a1a1a">copy</text>
+  <line x1="558" y1="110" x2="700" y2="110" stroke="#b33d3d" stroke-width="5" marker-end="url(#hr)"/>
+  <text x="635" y="80" text-anchor="middle" font-size="26" fill="#b33d3d">mutation</text>
+
+  <!-- effect arrows -->
+  <line x1="230" y1="168" x2="230" y2="290" stroke="#1a1a1a" stroke-width="5" marker-end="url(#hk)"/>
+  <line x1="500" y1="168" x2="500" y2="290" stroke="#1a1a1a" stroke-width="5" marker-end="url(#hk)"/>
+  <line x1="770" y1="168" x2="770" y2="290" stroke="#b33d3d" stroke-width="5" marker-end="url(#hr)"/>
+  <text x="245" y="240" font-size="24" fill="#666666" font-style="italic">causes</text>
+
+  <!-- outcome nodes -->
+  <rect x="180" y="310" width="100" height="90" rx="10" fill="#ffffff" stroke="#2c5c34" stroke-width="4"/>
+  <text x="230" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#2c5c34">Y</text>
+  <rect x="450" y="310" width="100" height="90" rx="10" fill="#ffffff" stroke="#2c5c34" stroke-width="4"/>
+  <text x="500" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#2c5c34">Y</text>
+  <rect x="720" y="310" width="100" height="90" rx="10" fill="#fbecec" stroke="#b33d3d" stroke-width="4"/>
+  <text x="770" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#b33d3d">Y′</text>
+
+  <text x="500" y="455" text-anchor="middle" font-size="24" fill="#666666" font-style="italic">same meme, same outcome; a different meme, a different outcome</text>
+</svg>

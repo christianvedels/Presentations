@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" font-family="Georgia, 'Times New Roman', serif">
+  <!-- Redrawn from ML in economic history/Figures/kingqueen.tex: king, then -male (dashed), then +female, tip to tail, landing near queen -->
+  <defs>
+    <marker id="hk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker>
+    <marker id="hm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b33d3d"/></marker>
+    <marker id="hf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5c34"/></marker>
+    <marker id="ha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b0aca4"/></marker>
+  </defs>
+  <rect x="5" y="5" width="610" height="490" rx="40" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- faint embedding-space axes -->
+  <line x1="50" y1="430" x2="570" y2="430" stroke="#b0aca4" stroke-width="2.5" marker-end="url(#ha)"/>
+  <line x1="50" y1="430" x2="50" y2="40" stroke="#b0aca4" stroke-width="2.5" marker-end="url(#ha)"/>
+
+  <!-- resultant, faint, behind the path -->
+  <line x1="50" y1="430" x2="384" y2="156" stroke="#b0aca4" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+
+  <!-- the arithmetic path, tip to tail -->
+  <line x1="50" y1="430" x2="455" y2="312" stroke="#1a1a1a" stroke-width="4" marker-end="url(#hk)"/>
+  <line x1="460" y1="310" x2="318" y2="423" stroke="#b33d3d" stroke-width="4" stroke-dasharray="14 9" marker-end="url(#hm)"/>
+  <line x1="316" y1="424" x2="382" y2="162" stroke="#2c5c34" stroke-width="4" marker-end="url(#hf)"/>
+
+  <!-- king tip, result point, queen (open) -->
+  <circle cx="460" cy="310" r="7" fill="#1a1a1a"/>
+  <circle cx="384" cy="156" r="7" fill="#1a1a1a"/>
+  <circle cx="420" cy="170" r="10" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- labels -->
+  <text x="474" y="318" font-size="32" font-style="italic" fill="#1a1a1a">king</text>
+  <text x="402" y="388" font-size="30" fill="#b33d3d">− <tspan font-style="italic">male</tspan></text>
+  <text x="208" y="270" font-size="30" fill="#2c5c34">+ <tspan font-style="italic">female</tspan></text>
+  <text x="438" y="180" font-size="32" font-style="italic" fill="#1a1a1a">queen</text>
+
+  <!-- the analogy -->
+  <text x="72" y="82" font-size="32" fill="#1a1a1a"><tspan font-style="italic">king</tspan> − <tspan font-style="italic">male</tspan> + <tspan font-style="italic">female</tspan> ≈ <tspan font-style="italic">queen</tspan></text>
+</svg>

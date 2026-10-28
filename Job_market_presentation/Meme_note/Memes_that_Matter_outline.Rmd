@@ -1,0 +1,359 @@
+---
+title: "Memes that Matter"
+subtitle: "The outline of a research proposal on measuring ideas and their effects on long-run development"
+author: "Christian Vedel, University of Southern Denmark, Department of Economics"
+date: "28 October 2026 (working draft)"
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    number_sections: true
+    toc: true
+    toc_depth: 2
+    fig_caption: true
+geometry: margin=2.6cm
+fontsize: 11pt
+linestretch: 1.15
+fontfamily: lmodern
+header-includes:
+  - \input{glyphtounicode}
+  - \pdfgentounicode=1
+  - \usepackage{float}
+  - \usepackage{framed}
+  - \usepackage{xcolor}
+  - \definecolor{memered}{HTML}{B33D3D}
+  - \definecolor{shadecolor}{HTML}{F6F4EF}
+  - \renewcommand{\figurename}{Figure}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", out.width = "80%", fig.pos = "H")
+```
+
+\begin{shaded}
+\textbf{Read this first. This is the outline of a research proposal, not a finished study.}
+
+Nothing in this note is a result. It describes a research project that Christian Vedel proposes to carry out, mostly as work package 2 (WP2) of a junior professor chair application titled \emph{Memes that Matter}. The text sets out the question, the definitions, the planned method, the data, and, at length, the objections and open problems. Where the note says "we will" or "the project will", read it as a plan. Where it says a method "identifies" something, read it as a claim to be proven.
+
+Some references come from working notes and have not yet been checked against the original publications. They are marked \textbf{[to verify]}. Treat them as pointers, not as established citations.
+
+\textbf{Whose ideas are these?} The core of the proposal (the question, the functionalist definition, the two claims, the figures, the use of invariance) is Christian's. Several refinements were developed in his working notes together with an AI research assistant (Claude) and have \emph{not yet been adopted} by him. The text says so each time, in the running text, with the phrase \textbf{suggestion, not yet adopted}. Anyone summarising this note should keep those hedges: they are the difference between a position and a proposal.
+
+The note is written so that it can be read aloud or turned into a conversation. It therefore explains its technical terms as it goes, and ends with a glossary.
+\end{shaded}
+
+# The question in one paragraph
+
+We know that ideas matter for prosperity. Societies that shared useful knowledge innovated more (Cinnirella, Hornung and Koschnick 2025), and towns that got the printing press grew faster (Dittmar 2011). But *which* ideas mattered, and how did they change how ordinary people lived? Historians have long answered such questions with careful case studies of tangled, qualitative processes. The proposal behind this note makes a different bet:
+
+> It is the role of the economist in the age of machine learning to provide causal insights at scale.
+
+The project wants to measure ideas as units, follow them across Europe and across centuries, and estimate what they did to living standards. Its central object is the **meme**, borrowed from Richard Dawkins (1976): an atomistic unit of culture that is copied from person to person. The hard part, and the intellectual core of the proposal, is that nobody hands us the units. An idea like "bourgeois dignity" (McCloskey 2010) might really be several distinct memes about merchants, profit and innovation. The proposal argues that modern machine learning, combined with causal inference, makes it possible to find those units in historical text and to estimate their effects.
+
+# The project in brief
+
+The application is organised in three work packages. The meme idea is the second, but it depends on the other two.
+
+**WP1. Measuring what we want from scattered sources.** Long-run economics needs pairs: an exposure and an outcome for the same unit. Archives rarely give both. One source lists occupations, another lists wages, with no one-to-one match. WP1 generalises an estimator Christian and coauthors have built for occupational incomes:
+$$\hat{y}_i = \sum_{j \in \mathcal{S}} w_{ij}\, y_j ,$$
+a weighted average of source observations $y_j$, where machine learning estimates how relevant each source observation $j$ is to the target $i$, followed by a debiasing step. The goal is outcomes across Europe and over time: living standards, skills, technology in production, value of trade, causes of death, population density and urban development.
+
+**WP2. Measuring memes.** The subject of this note. It defines memes, proposes how to find them in large historical corpora, and how to test that what was found really behaves like a meme.
+
+**WP3. Inclusive institutions and economic development.** Does democracy cause growth? Acemoglu et al. (2019) answer yes for 1960–2010. WP3 wants to push the evidence back to the origins of inclusive ideas. The main threat is reverse causality: places may adopt or drop inclusive ideas *because* they prospered or declined (Chinoy et al. 2026). The design is a shift-share on pre-existing network exposure (Borusyak, Hull and Jaravel 2022; Goldsmith-Pinkham, Sorkin and Swift 2020), using networks such as the Sound Toll registers, coin finds as evidence of trade flows (Boehm and Chaney 2026) and the network of scholars (de la Croix 2021; Curtis and de la Croix 2026). A specific case is Denmark in 1770, when the king's physician, Johann Friedrich Struensee, seized power and abolished censorship outright; three years later the reforms were reversed. Free speech was switched on and off for reasons unrelated to the economy, and the Danish newspaper archive runs from 1666.
+
+The deliverable that ties the three together is a database, *Memes that Matter*: which ideas circulated where and when in Europe, and how people lived there at the time, on one map and one timeline, released as open data and tools.
+
+# What is a meme?
+
+Dawkins coined the word in *The Selfish Gene* (1976) for a cultural equivalent of the gene: a unit of culture that is copied. Susan Blackmore's *The Meme Machine* (1999) is the most developed book-length treatment. Her working definition is broad (p. 7):
+
+> "If in doubt, remember that something must have been copied. Everything that is passed from person to person in this way is a meme. This includes all the words in your vocabulary, the stories you know, the skills and habits you have picked up from others and the games you like to play. It includes the songs you sing and the rules you obey."
+
+Most listeners will first think of *internet* memes: Dancing Baby, "All your base are belong to us", Rickrolling, Doge. These are memes, but they are a small corner of a much larger set. Figure \ref{fig:venn} makes the point. Tunes, catch-phrases and ways of building arches (Dawkins' own examples), the Protestant work ethic, folk high schools, cooperative dairies and free speech are memes too. "Kilroy was here", the graffiti doodle that spread with soldiers in the Second World War, sits just outside the internet region: a pre-internet meme that behaves exactly like an internet one.
+
+```{r venn, fig.cap="\\label{fig:venn}Memes are a large set; internet memes are a small part of it. The named examples are illustrations chosen for the talk, not findings. Thumbnails: Wikimedia Commons (public domain or CC) and, for the four internet memes, Wikipedia's non-free files used here for academic illustration."}
+knitr::include_graphics("figures/meme_venn.pdf")
+```
+
+## The meme is the instruction, not the expression
+
+Dawkins' foreword to Blackmore's book distinguishes two ways a meme can be copied. If people copy the *product* (a Lamarckian mode), errors accumulate and the meme fades, like a message in a game of whispers. If people copy the *instruction* (a Weismannian mode, named after the biologist who separated the germ line from the body), copying corrects itself. The apprentice who watches a master carpenter recognises the master's slips and does not copy them; what is passed on is the intended chair, not the flawed one.
+
+The project takes this seriously. A meme is the instruction. What we observe in archives are its **expressions**: texts, paintings, conversations, behaviour. Expressions are noisy instances of a meme that we never observe directly. Blackmore's birthday example captures it: "Something, some kind of information, some kind of instruction, has become lodged in all those brains so that now we all do the same thing at birthday parties."
+
+## Two traditions, and which one this is
+
+Economists know cultural transmission mainly through models in the line of Cavalli-Sforza and Feldman (1981), such as Bisin and Verdier's models of parents socialising their children **[to verify]**. In that tradition a cultural trait serves the host, either the biological fitness of the carrier or the preferences of the parents. Memetics differs in one crucial way: the replicator has a "fitness" of its own, which can differ from the host's. Blackmore puts it bluntly: memes "spread themselves around indiscriminately without regard to whether they are useful, neutral, or positively harmful to us" (p. 7).
+
+The proposal sits in the memetic tradition, for a reason that becomes clear in the definition below: a meme's future copies are treated as one of its outcomes, separate from its effect on living standards. Spread is therefore not evidence of benefit. Nathan Nunn's "History as evolution" (2020) is the economics bridge: it treats beliefs and practices as things that are transmitted and selected.
+
+# A functionalist definition
+
+The proposal defines memes by what they do. **Memes are atomistic ideas that cause expressions (conversation, text, art) and, by extension, societal outcomes (for example living standards).**
+
+Formally, let $\mathcal{I}$ be the universe of expressions. A meme assignment $\kappa$ (kappa) maps each expression $\iota$ (iota) to the meme it belongs to, so the memes are a partition of $\mathcal{I}$. Let $\mathcal{Y}$ be a set of outcomes. Then
+$$\kappa(\iota) = \kappa(\iota') \iff \mathbb{E}[Y \mid \iota] = \mathbb{E}[Y \mid \iota'] \quad \forall\, Y \in \mathcal{Y}.$$
+
+In words: two expressions belong to the same meme if, and only if, they have the same expected value of every outcome in the outcome set.
+
+Read it in both directions:
+
+- **Left to right: memes are meaningful.** Expressions in one meme do the same thing; they have the same expected effect on every outcome.
+- **Right to left: memes are atomistic.** Expressions that do the same thing are not split apart into different memes.
+
+Finding the assignment $\kappa$ (kappa) is the same as finding the memes. The definition mirrors how geneticists find genes in genome-wide association studies (GWAS; Uffelmann et al. 2021): a variant is interesting because of what it does to a trait, and the scan runs over very many candidates at once.
+
+**Where the definition comes from.** The same condition appears in Christian's work on occupational income scores (Curtis, Johansen, Koschnick and Vedel 2026), in an appendix on "an ideal classification system": a classification should preserve expected outcomes (left to right) and be parsimonious (right to left). That work makes a point that carries over directly: **the definition is relative to the outcome set $\mathcal{Y}$.** There is no ideal classification in the abstract, only one for a stated set of outcomes. The historical occupational classification HISCO, for instance, is the wrong classification if the outcome is income. For memes, this means *Memes that Matter* are memes for living standards and the other outcomes the project measures. The database is not a catalogue of all culture, and it is not meant to be. It also answers the question "why these units?": because these are the units that make a difference to the outcomes we care about.
+
+**Association or causation?** As written, $\mathbb{E}[Y \mid \iota]$, the expected outcome given the expression, is a conditional expectation, an association. But the words say that memes *cause* outcomes. Two expressions can have the same expected outcome because they come from similar places (confounding), and an expression produced in a rich place can look "effective" because riches produced it (reverse causation). The causal version replaces conditioning by intervention, $\mathbb{E}[Y \mid do(\iota)]$, the expected outcome if we *set* the expression: what would happen to the outcome if this expression were put into the world. The proposal should define the assignment $\kappa$ (kappa) causally and estimate it with designs that justify that step, which is what the tests in Section 7 are for. This is the first question an econometrician will ask.
+
+```{r dag, fig.cap="\\label{fig:dag}The meme as a causal graph (Christian's notebook figure, 24 October 2026). Horizontal arrows are replication: a meme causes its next copy. Vertical arrows are effects: each copy causes an outcome. A mutation $m'$ is, by definition, a different meme with a different effect $Y'$.", out.width="62%"}
+knitr::include_graphics("figures/meme_dag.pdf")
+```
+
+**One condition instead of two (suggestion, not yet adopted).** Figure \ref{fig:dag} shows two properties side by side: memes replicate (the horizontal arrows) and memes have effects (the vertical arrows). The working notes suggest that the definition can hold both at once. Put *future expressions* into the outcome set $\mathcal{Y}$. Then the condition says that expressions in the same meme generate the same future expressions *and* the same societal outcomes, and Dawkins' replication and the GWAS-style effects become one condition. Christian has not yet decided whether to adopt this. If he does, future copies and living standards stay separate elements of $\mathcal{Y}$, so that spreading well is never read as doing good.
+
+**Why mutation matters.** If a copy changes enough that it no longer does the same thing, the definition forces it to be a new meme. Mutation is what gives selection something to select among, and it is why $m'$ in the figure is drawn as a different node with a different outcome $Y'$.
+
+# Two claims
+
+The proposal makes two claims, in Christian's own words.
+
+> **1. Most ideas that shape society are constellations of memes.**
+
+This is why the project is worth doing: measure the memes and you measure what shapes society.
+
+> **2. Memes can be identified with econometrics, causal discovery and mechanistic interpretability.**
+
+This is why the project is feasible.
+
+**What makes claim 1 a claim.** With a functional definition, almost any idea can be split into parts, so claim 1 risks being true by definition. It becomes an empirical claim through two commitments. *Sparsity*: a fairly small set of memes accounts for a great many expressions. *Modularity*: a meme has roughly the same effect whatever constellation it appears in. If interactions dominate (what geneticists call epistasis), the constellation is the real unit and decomposing it buys nothing. A good proposal should say which of the two it expects to fail first.
+
+**"Identify" means two things.** Economists hear "identification" and think of causal effects. Claim 2 uses the word for two separate tasks: *measuring* the unit (finding the meme) and *identifying its effect* (what it did). Keeping them apart avoids a common misunderstanding.
+
+**The bridge between the claims.** "Constellations" is, in machine-learning terms, superposition: one expression carries a sparse mixture of several memes (Elhage et al. 2022). Sparse dictionary learning, a tool from interpretability research, recovers exactly such mixtures. So claim 1, the ontology, predicts the shape of the object that claim 2, the method, sets out to measure. This is what makes the two claims one argument.
+
+# Where memes live: embedding space
+
+Large language models turn text into vectors: long lists of numbers, hundreds or thousands of them, that place each word or passage as a point in a high-dimensional space. The geometry of this "embedding space" carries meaning. The classic illustration (Figure \ref{fig:kingqueen}; Mikolov, Yih and Zweig 2013 **[to verify]**) is that subtracting the vector for *male* from *king* and adding the vector for *female* lands very close to *queen*. Arithmetic on the vectors mirrors a relationship between meanings. The same logic extends to longer texts in BERT-style models, where cosine similarity, the angle between two vectors, is the workhorse measure of how similar two passages are (Johansen, Koschnick and Vedel 2026).
+
+```{r kingqueen, fig.cap="\\label{fig:kingqueen}Arithmetic on word meanings, in a stylised two-dimensional picture. Real spaces have hundreds of dimensions (768 per token in BERT-base). Redrawn from Johansen, Koschnick and Vedel (2026).", out.width="45%"}
+knitr::include_graphics("figures/kingqueen.pdf")
+```
+
+Why should memes be findable there? The application points to two lines of evidence from machine learning:
+
+- **Ideas sit in almost-orthogonal directions.** Language models pack far more concepts than they have dimensions by storing each one in a nearly perpendicular direction (superposition; Elhage et al. 2022). Models also carry recognisable, linearly readable representations of things like space and time (Gurnee and Tegmark 2023).
+- **Different models converge on similar representations.** The "platonic representation hypothesis" (Huh et al. 2024) argues that models trained on different data and objectives converge towards a shared representation of the world. Jha, Zhang, Shmatikov and Morris (2025) show that embeddings can be translated between models without any paired data, which is evidence in the same direction.
+- **Features can be intervened on.** Recent interpretability work (for example Lindsey et al. 2025 **[to verify]**) switches an internal feature on or off and watches the model's output change. That is the logic of the meme method in miniature: a unit defined by what it does.
+- **Culture already lives in these spaces.** Kozlowski, Taddy and Evans (2019) show that cultural dimensions such as class and gender appear as directions in word-embedding space **[to verify]**.
+
+**A meme as a region.** The intuitive picture is that a meme's expressions cluster together: a meme is a region in embedding space. Clustering in embedding space is routine in machine learning. BERTopic (Grootendorst 2022), Top2Vec (Angelov 2020) and work on unsupervised domain clusters in pretrained language models (Aharoni and Goldberg 2020) all find topics or domains as dense regions, using tools such as UMAP (McInnes, Healy and Melville 2018) and HDBSCAN (Campello, Moulavi and Sander 2013). In economics, Hoberg and Phillips (2016) cluster firms by the similarity of their product descriptions, using word counts rather than neural embeddings. **[All six to verify.]**
+
+**What is new here** is the criterion. Those methods cluster by *semantic similarity*. The proposal clusters by *effect*: two expressions belong to the same meme if they do the same thing, not merely if they sound alike. Semantic neighbours are candidates, not memes.
+
+**A region or a mixture?** Superposition pulls in the other direction from the "region" picture. If one text carries several memes at once, hard clusters are the wrong object, and each expression is better described as a sparse mixture over memes. Christian's notes make the analogy to topic models: a vehicle (a book, a person) carries several replicators, much as a document in Latent Dirichlet Allocation is a mixture of topics (Blei, Ng and Jordan 2003). LDA gives the right measurement model for one expression, but it has no replication and no outcomes. Both pictures can hold: clusters for expressions dominated by one meme, sparse mixtures in general.
+
+# How to find memes: the proposed method
+
+The method is a pipeline in which each tool has one job (Figure \ref{fig:pipeline}).
+
+```{r pipeline, fig.cap="\\label{fig:pipeline}Claim 2 as a pipeline. Interpretability supplies the space and candidate units; causal discovery keeps the candidates that replicate and whose effect is invariant; the payoff is what these ideas did to long-run development, using outcomes from WP1.", out.width="95%"}
+knitr::include_graphics("figures/meme_pipeline.pdf")
+```
+
+1. **Interpretability proposes candidate units.** Language models encode ideas in high-dimensional space. Directions or sparse features in that space are candidate memes.
+2. **Causal discovery keeps the candidates that behave like memes.** A candidate survives if it (a) replicates, (b) acts as one node with a homogeneous effect, and (c) keeps that effect across heterogeneous environments.
+3. **Econometrics estimates what they did to long-run development**, using outcomes from WP1 and exogenous variation of the kind WP3 builds.
+
+The rest of this section sets out the tests in step 2.
+
+The idea that finding memes is a causal-discovery task, with replication and invariance as the criteria, is Christian's (working note, 19 October 2026). The specific forms of Tests 1 and 3 below were worked out in the AI-assisted notes and are **suggestions, not yet adopted**.
+
+## Test 1: replication through others, not own lags
+
+A naive test of replication would ask whether a cluster that is frequent today is frequent again tomorrow. That fails. Persistent common causes, such as place, genre, which archive survived, or the quality of the optical character recognition, produce the same autocorrelation without any copying. Economists know this as the dynamic-panel problem.
+
+The suggested fix is to identify replication through **transmission to others**. A meme replicates if exposure through a pre-existing network raises its later expression in *other* places. That is exactly the shift-share design of WP3, so WP2 and WP3 could share one identification strategy. If adopted, this would be the single most useful consequence of treating memes as replicators.
+
+## Test 2: invariance across environments
+
+The second test borrows **invariant causal prediction** (ICP; Peters, Bühlmann and Meinshausen 2016). Its core idea: the direct causes of an outcome are the variables whose predictive relationship with the outcome stays the same across different environments, even when some of those environments involve interventions on other variables. Spurious predictors, by contrast, change their relationship when the environment shifts. In the original paper's first figure, interventions are drawn as hammers.
+
+> Under homogeneity, an identified effect stays the same in heterogeneous environments.
+
+Figure \ref{fig:invariance} adapts this to memes. It is the meme graph from Figure \ref{fig:dag}, with one addition: each copy of the meme lives in an environment $e$ (a region, a century, a language, a network shock). The environment and the meme influence each other, and so do the environment and the outcome; the arrows run both ways. Each environment is hit by an intervention (the hammers). Despite this, the meme still causes its next copy, and, if its effect is homogeneous, it has the same effect on the outcome in every environment. Unless it mutates: then it is, by definition, a different meme with a different effect.
+
+```{r invariance, fig.cap="\\label{fig:invariance}Invariance as a test for memes, adapted from Figure 1 of Peters, Bühlmann and Meinshausen (2016). The environment $e$ is an observed cause of both the meme and the outcome; the interventions (hammers) hit the environment, never the outcome itself. Invariance means that the outcome given the meme and its environment is the same under every intervention. The two-way arrows are feedback over time.", out.width="72%"}
+knitr::include_graphics("figures/meme_invariance.pdf")
+```
+
+Christian's claim for this figure, in his words:
+
+> *My claim is that there are enough restrictions here that we will be able to observe some memes, at least* ***if they matter***.
+
+The qualification is important. The method is not promised to find every meme. It is designed to find the memes that leave a mark on outcomes, which are the ones the project cares about.
+
+**How the figure fits invariant causal prediction.** ICP does not forbid the environment from affecting the outcome. What it forbids is an intervention on the outcome *itself*. In the original paper, invariance holds when the conditioning set contains all direct causes of the outcome "and if we do not intervene on $Y$" (Peters, Bühlmann and Meinshausen 2016, Section 1.1). Interventions on other variables, including other direct causes of the outcome, are exactly what the method exploits. So Figure ef{fig:invariance} is read as follows:
+
+- **The environment $e$ is an observed cause of the outcome**, not the label of an environment. Wars, plagues, trade conditions and the network all move living standards directly, and they enter the conditioning set alongside the meme.
+- **The hammers are the interventions** that define the different settings, and they hit the environment, never the outcome's own mechanism.
+- **The test** is that the outcome given the meme *and* its environment, $Y \mid m, e$, has the same distribution under every intervention. If it does, the meme passes; if conditioning on the meme and the environment does not give a stable relationship, the candidate is not a cause.
+- **The two-way arrows are feedback over time.** The environment at one date shapes the meme and the outcome at that date; the outcome and the meme then shape the environment at the next date. Read this way, the conditioning set contains no consequence of the outcome it is trying to explain. The original paper notes that a constrained form of feedback is compatible with the method.
+
+What remains to be shown is that this time structure can be measured in the data: that the environment is observed at the right dates, and that it does not include anything the outcome has already caused. A second practical issue: ICP searches over subsets of candidate causes, which is infeasible with thousands of candidate memes. The interpretability stage therefore has to act as a screen, and a high-dimensional variant of the method is probably needed **[to verify]**.
+
+Two practical consequences:
+
+- **Language differences become part of the test.** A meme that replicates and acts the same way in Danish and in German passes a stronger test than one observed in one language. Comparability across languages, usually a nuisance, becomes part of the identification.
+- **Discovery and replication samples.** If memes are defined as the clusters that best predict outcomes, their estimated effects will be overstated on the same data. As in GWAS, the project would split the data by region or period: discover memes in one part and estimate their effects in another.
+
+## Test 3: bounded spread under copying
+
+This test is a **suggestion, not yet adopted**, built on a distinction Christian noted while reading Blackmore. Dawkins' distinction between copying the product and copying the instruction gives a third, outcome-free signature. Under product-copying, the spread of expressions around a meme's centre in embedding space should grow with each transmission step, like a random walk. Under instruction-copying, spread stays **bounded**, because copies are pulled back towards the centre. Stated as a condition: *a meme is a cluster whose spread does not grow as it is copied through the network.* This test does not use the outcome $Y$, so it avoids the circularity problem.
+
+It also sharpens Test 1. With instruction-copying, the idiosyncratic error in a copy at time $t$ should not predict the error at $t+1$, while the meme's centre at $t$ should predict the centre at $t+1$. That separates replication of the instruction from persistence of a particular wording.
+
+**The rival.** Dan Sperber's objection to memetics (Sperber 2000) is that memetics needs high-fidelity copying, while most cultural transmission is *reconstruction*: receivers rebuild what they see or hear using what they already know. Sperber frames this as an "epidemiology of representations"; the related idea that reconstructions converge on common "attractors" is from his earlier work and is cited here from memory **[to verify]**. Reconstruction predicts the same bounded spread for a different reason: variants converge even when copying is poor. Instruction-copying and attraction are therefore observationally similar. The difference is where the centre lives: in the transmitted content (a meme) or in the receivers (an attractor). A design that separates them would compare transmission into populations with different priors. If the centre moves with the receiving population, it is attraction; if it travels with the content, it is a meme.
+
+## Replication that runs through the outcome
+
+Christian's reading notes add a path: from the outcome back to the next copy, $m \to Y \to m$. A meme can replicate directly, because it is catchy or easy to copy, or *through its effect*, because people adopt it for what it does. Both can be present, and the mix differs across memes. **This is not a hypothesis that good ideas spread.** A good outcome is neither necessary nor sufficient for replication. It is a quantity to estimate for each meme.
+
+The cleaner design varies the *payoff* rather than the meme: if something raises the value of an outcome without touching the meme (say, a trade shock that makes knowledge more valuable), adoption should respond for memes that replicate through that outcome and not for the rest. Letters are a special case: a technology for copying *other* memes. Writing, print and the post are memes whose effect is to change the replication network itself, which links WP2 to WP3.
+
+# Data
+
+Estimation needs three kinds of source: outcomes, validation, and large quantities of historical expressions.
+
+- **Expressions.** Paintings (Gorin, Heblich and Zylberberg 2025), newspaper clippings (Dell et al. 2023) and early scientific papers (Koschnick 2025).
+- **Validation.** Concepts described in encyclopaedias, against which discovered memes can be compared. A further internal test from Koselleck's conceptual history: a *counter-concept* should replicate in response to its concept.
+- **Outcomes.** From WP1: living standards, skills, technology in production, value of trade, causes of death, population density and urban development, estimated from scattered archival sources.
+- **Networks, for the shift-share tests.** Sound Toll registers, coin evidence on trade flows, the network of scholars, and newspaper archives such as the Danish one from 1666.
+
+As the application puts it: we are in an age where archives are readily available.
+
+# Objections and open problems
+
+A proposal is only as strong as its answers to the hardest questions. These are the ones the project expects, roughly in order of difficulty.
+
+1. **Language-model features are features of the model.** The models are trained mostly on modern text. Their internal units need not be units of the historical world. The answer has to be validation: replication, effects on outcomes, encyclopaedias and counter-concepts. "Models converge on the same representation" is a hope, not an argument.
+2. **Circularity.** Defining memes by their effects and then estimating their effects on the same data overstates the effects. Answer: discovery and replication samples, as in GWAS, and Test 3, which does not use the outcome at all.
+3. **Persistence is not replication.** Answered by Test 1: replication is identified through transmission to others along pre-existing networks, not through own lags.
+4. **Survival is selection on the outcome.** Memes that replicate leave more copies, and more copies survive in archives. Letters judged useful were kept. Archival survival and replicative success are partly the same process, so the observed record is biased towards successful memes. This may also be a feature: survival can be modelled as part of the replication dynamics.
+5. **The price of parsimony.** "The most parsimonious clusters" needs a stated trade-off. Merge too much and effects become heterogeneous; split too much and each meme has too few expressions to estimate anything. Causal coarsening results (Chalupka, Perona and Eberhardt **[to verify]**) give the *finest* partition that preserves the causal information; estimation pushes towards coarser ones. Writing this trade-off down formally is the methodological crux.
+6. **Superposition.** Most expressions carry several memes. Hard clustering is therefore the wrong default; sparse mixtures are the more honest model.
+7. **Attraction rather than replication.** Sperber's objection that most cultural transmission is reconstruction, not copying. Answered, if at all, by the design comparing populations with different priors.
+8. **Institutions as equilibria.** Many institutions persist because they are self-enforcing equilibria, sustained by incentives rather than copying. The concession: claim 1 is about the *idea content* of institutions and culture, not the equilibria themselves.
+9. **True by definition.** Claim 1 needs sparsity and modularity to be a claim (Section 5).
+10. **Homogeneity.** The invariance test assumes that a meme's effect is the same across environments. Where effects genuinely differ by context, the test will reject real memes. The qualification "at least if they matter" is partly an acknowledgement of this.
+11. **Association versus causation in the definition.** Section 4: the definition must be read with $do(\cdot)$, and the design has to earn it.
+12. **Timing of the environment.** Section 7.2: the invariance test conditions on the environment, which is allowed as long as the interventions never hit the outcome itself and the environment is measured before the outcome it helps explain. With feedback from outcomes to environments, getting the dates right in historical data is the hard part.
+13. **Anachronism in the embeddings.** Language models encode when and where a text comes from (Gurnee and Tegmark 2023). Clusters may therefore separate by period, region or spelling rather than by idea. Remedies: remove the time, place and genre directions before clustering, and validate within a period.
+14. **Unit mismatch.** Outcomes from WP1 are measured for places and years; expressions are documents. The expected outcome given an expression, $\mathbb{E}[Y \mid \iota]$, then averages over the places that produced a document, which is a form of ecological inference, and it gives a mechanical advantage to memes from places that produced many documents. The proposal must say at what level the meme assignment $\kappa$ (kappa) is estimated.
+15. **Estimated regressors.** Meme membership is predicted by a model and then used as a regressor. Prediction errors that are systematic bias the estimates. This is the problem Christian's own paper on machine-learning bias addresses (Johansen, Koschnick and Vedel 2026); see also recent work on inference with variables learned from text (Carlson and Dell 2025; Modarressi, Spiess and Venugopal 2025 **[to verify]**). Together with discovering memes on the same data, it calls for sample splitting.
+16. **Novelty.** The two closest neighbours are Koschnick (2025), who uses embeddings of some 300,000 English titles and patents to test Mokyr's feedback loop between knowledge and growth, and the causal-coarsening literature (Chalupka, Perona and Eberhardt, unread **[to verify]**), which defines "macro-causes" as the partition of a micro-space whose members have the same effect on an outcome. That is very close to the meme assignment $\kappa$ (kappa): possibly its formal backbone, possibly a novelty problem. The intended difference is replication plus outcome-defined units, as opposed to similarity-defined ones. Whether to collaborate with Koschnick or to differentiate is an open decision for Christian.
+17. **Feasibility.** The working notes ask whether extracting discrete units of culture is a three-year problem or a ten-year one. The timeline puts basic proofs in year 1 and a paper in year 3. A sensible fallback deliverable would be memes for one corpus and one outcome.
+
+# Neighbouring work
+
+Beyond the references already discussed, these strands are close to the project and a reviewer would expect it to engage with them. Most come from Christian's reading notes; several have not been read in full.
+
+- **Ideas and growth in economic history.** Mokyr (2016) argues that a European "market for ideas" preceded the Industrial Revolution. McCloskey (2010) argues that rhetoric about the bourgeoisie, not capital, caused modern growth. Almelhem, Iyigun, Kennedy and Rubin (2023) build text measures of the idea of progress before the Industrial Revolution **[to verify]**. Cinnirella, Hornung and Koschnick (2025) find that economic societies raised innovation.
+- **Text, images and machine learning in economic history.** Grajzl (2025) surveys machine learning combined with econometrics on the historical roots of institutions and culture. Voth and Yanagizawa-Drott (2024) measure identity from the style of images **[to verify]**. Dell et al. (2023) provide large-scale historical newspaper text. Chiopris (2024) studies spatial networks and the diffusion of ideas **[to verify]**.
+- **Cultural evolution.** Dawkins (1976), Blackmore (1999), Sperber (2000) and Nunn (2020) are discussed above. From memory and not yet in the notes: Boyd and Richerson, Henrich's "collective brain", Lumsden and Wilson's "culturgens" (1981), Campbell's evolutionary account of creative thought (1960, 1965) and Durham (1991) **[all to verify]**.
+- **Causal machine learning.** Causal abstraction, which asks when a coarse model faithfully summarises a fine one (Rubenstein et al. 2017; Beckers and Halpern 2019), and causal representation learning (Schölkopf et al. 2021) **[all to verify]**.
+
+# Speculations and spin-offs
+
+These are ideas from Christian's working notes. They are not part of the proposal's core and are flagged as such.
+
+- **Could memetic inheritance look genetic?** Christian's question; the proposed test is a suggestion, not yet adopted. Gregory Clark's work on the inheritance of social status in England (Clark 2023) reads long, stable persistence across generations as genetic. Faithful copying of ideas from parents to children would leave a similar pattern. The separating fact is that memes, unlike genes, also travel sideways to people who are not kin. Under memetic inheritance, a family's persistence should respond to exposure through non-kin networks (teachers, masters, congregations, neighbours); under genetic inheritance it should not. *Speculative, and Clark's answer to cultural-transmission critics has not yet been checked.*
+- **Apprenticeship and guilds.** Apprenticeship is the textbook channel for instruction-copying of skills. Guild-regulated crafts against unregulated ones would be a historical contrast between instruction-copying and product-copying, linking WP1's skills data to WP2 (Wallis 2019; de Pleijt, Koschnick and Wallis 2026 **[to verify]**).
+- **Could the models find memes on their own?** A meme is a replicator, so one could search for directions in embedding space that reproduce themselves across generations of text. A curiosity, mentioned in the talk, not developed.
+
+# Plan and obstacles
+
+From the application's indicators:
+
+- **Year 1.** WP1 estimator generalised and released as an open library. Basic proofs for WP2.
+- **Year 2.** Database of outcomes across Europe. WP1 submitted. Early WP2 results. WP3 networks assembled.
+- **Year 3.** WP2 paper submitted. Preliminary WP3 results. Start an ERC application.
+- **Year 4.** WP3 submitted. ERC proposal submitted.
+
+The application is candid about where the risk lies. WP1 is an extension of existing work. **WP2 is the hard part**: the object is defined, but reasonable estimation strategies and the data collection are a large task. WP3 is volume of work rather than a conceptual problem.
+
+Dissemination follows the same open logic: replication packages and every model released open source, and a public database, website and short videos, because "maps of income and ideas need no training to read".
+
+# Glossary
+
+**Meme.** A unit of culture that is copied. Here: an atomistic idea defined by what it causes.\
+**Expression.** An observed instance of a meme: a text, a painting, a conversation, a behaviour.\
+**Replicator.** Something that causes copies of itself. Genes and, by analogy, memes.\
+**Lamarckian vs Weismannian copying.** Copying the product (errors accumulate) vs copying the instruction (errors are corrected).\
+**Functionalist definition.** Defining a thing by what it does rather than what it looks like.\
+**$\kappa$ (kappa).** The rule that assigns each expression to its meme.\
+**GWAS.** Genome-wide association study: a scan over many genetic variants for associations with a trait, with separate discovery and replication samples.\
+**Embedding space.** The high-dimensional space in which a language model represents words and texts as vectors.\
+**Cosine similarity.** A measure of how similar two vectors are, based on the angle between them.\
+**Superposition.** A model storing more concepts than it has dimensions, by using nearly perpendicular directions.\
+**Mechanistic interpretability.** Research that reverse-engineers what a neural network represents internally.\
+**Causal discovery.** Methods that learn causal structure, not just correlations, from data.\
+**Invariant causal prediction (ICP).** Finding causes as the predictors whose relation to an outcome is stable across environments.\
+**Shift-share design.** An identification strategy that combines pre-existing exposure shares (here, network links) with shocks.\
+**Cultural attraction.** Sperber's theory that cultural stability comes from receivers reconstructing towards common attractors, not from faithful copying.\
+**Epistasis.** In genetics, interaction between genes; here, memes whose effects depend on which other memes they appear with.
+
+# References
+
+*References marked [to verify] come from working notes and have not been checked against the original publication.*
+
+Acemoglu, D. and Robinson, J. A. (2019). *The Narrow Corridor*. Penguin.\
+Acemoglu, D., Naidu, S., Restrepo, P. and Robinson, J. A. (2019). Democracy does cause growth. *Journal of Political Economy* 127(1).\
+Aharoni, R. and Goldberg, Y. (2020). Unsupervised domain clusters in pretrained language models. *ACL 2020*. [to verify]\
+Almelhem, A., Iyigun, M., Kennedy, A. and Rubin, J. (2023). Enlightenment ideals and belief in progress in the run-up to the Industrial Revolution. IZA DP 16674. [to verify]\
+Angelov, D. (2020). Top2Vec: Distributed representations of topics. arXiv 2008.09470. [to verify]\
+Blackmore, S. (1999). *The Meme Machine*. Oxford University Press. Foreword by R. Dawkins.\
+Blei, D., Ng, A. and Jordan, M. (2003). Latent Dirichlet allocation. *Journal of Machine Learning Research* 3.\
+Boehm, J. and Chaney, T. (2026). As cited in the application.\
+Borusyak, K., Hull, P. and Jaravel, X. (2022). Quasi-experimental shift-share research designs. *Review of Economic Studies* 89(1).\
+Campello, R., Moulavi, D. and Sander, J. (2013). Density-based clustering based on hierarchical density estimates. *PAKDD 2013*. [to verify]\
+Carlson, J. and Dell, M. (2025). Inference with unstructured data. arXiv 2505.00282. [to verify]\
+Cavalli-Sforza, L. L. and Feldman, M. W. (1981). *Cultural Transmission and Evolution*. Princeton University Press. [to verify]\
+Chalupka, K., Perona, P. and Eberhardt, F. (c. 2015–2017). Papers on causal feature learning and causal coarsening. [not read; to verify]\
+Chinoy, S. et al. (2026). As cited in the application.\
+Chiopris, C. (2024). Spatial networks and the diffusion of ideas. Job-market paper. [to verify]\
+Cinnirella, F., Hornung, E. and Koschnick, J. (2025). Flow of ideas. *Economic Journal*.\
+Clark, G. (2023). The inheritance of social status: England, 1600 to 2022. *PNAS*. [to verify]\
+Curtis, D. and de la Croix, D. (2026). As cited in the application.\
+Curtis, D., Johansen, T., Koschnick, J. and Vedel, C. (2026). Occupational income scores from scattered evidence (CHAOS). Working paper.\
+Dawkins, R. (1976). *The Selfish Gene*. Oxford University Press.\
+de la Croix, D. (2021). As cited in the application.\
+Dell, M. et al. (2023). American Stories: a large-scale structured text dataset of historical U.S. newspapers. *NeurIPS 2023*.\
+Dittmar, J. (2011). Information technology and economic change: the impact of the printing press. *Quarterly Journal of Economics* 126(3).\
+Elhage, N. et al. (2022). Toy models of superposition. *Transformer Circuits Thread* (Anthropic).\
+Fukuyama, F. (2011). *The Origins of Political Order*. Farrar, Straus and Giroux.\
+Goldsmith-Pinkham, P., Sorkin, I. and Swift, H. (2020). Bartik instruments: what, when, why, and how. *American Economic Review* 110(8).\
+Gorin, Heblich and Zylberberg (2025). State of the art. NBER Working Paper 33976. [to verify]\
+Grajzl, P. (2025). Machine learning and econometrics on the historical roots of institutions and culture. Handbook chapter. [to verify]\
+Grootendorst, M. (2022). BERTopic: Neural topic modeling with a class-based TF-IDF procedure. arXiv 2203.05794. [to verify]\
+Gurnee, W. and Tegmark, M. (2023). Language models represent space and time. arXiv 2310.02207.\
+Hoberg, G. and Phillips, G. (2016). Text-based network industries and endogenous product differentiation. *Journal of Political Economy* 124(5). [to verify]\
+Huh, M., Cheung, B., Wang, T. and Isola, P. (2024). The platonic representation hypothesis. *ICML 2024*.\
+Jha, R., Zhang, C., Shmatikov, V. and Morris, J. X. (2025). Harnessing the universal geometry of embeddings. arXiv 2505.12540.\
+Johansen, T., Koschnick, J. and Vedel, C. (2026). Machine learning bias in economic history. arXiv 2606.28063.\
+Koschnick, J. (2025). Did a feedback mechanism between knowledge and growth create modern growth? arXiv 2512.16587. (Title abbreviated in the notes.)\
+Kozlowski, A., Taddy, M. and Evans, J. (2019). The geometry of culture. *American Sociological Review* 84(5). [to verify]\
+Lindsey, J. et al. (2025). On the biology of a large language model. *Transformer Circuits Thread* (Anthropic). [to verify]\
+McCloskey, D. (2010). *Bourgeois Dignity*. University of Chicago Press.\
+McInnes, L., Healy, J. and Melville, J. (2018). UMAP: Uniform manifold approximation and projection for dimension reduction. arXiv 1802.03426. [to verify]\
+Mikolov, T., Yih, W. and Zweig, G. (2013). Linguistic regularities in continuous space word representations. *NAACL 2013*. [to verify]\
+Modarressi, I., Spiess, J. and Venugopal, A. (2025). Causal inference on outcomes learned from text. [to verify]\
+Mokyr, J. (2016). *A Culture of Growth*. Princeton University Press.\
+Nunn, N. (2020). History as evolution. NBER Working Paper / *Handbook of Historical Economics*.\
+Peters, J., Bühlmann, P. and Meinshausen, N. (2016). Causal inference by using invariant prediction: identification and confidence intervals. *Journal of the Royal Statistical Society, Series B* 78(5), 947–1012.\
+Sperber, D. (1996). *Explaining Culture: A Naturalistic Approach*. Blackwell. [to verify]\
+Sperber, D. (2000). An objection to the memetic approach to culture. In R. Aunger (ed.), *Darwinizing Culture*. Oxford University Press. [volume details to verify]\
+Uffelmann, E. et al. (2021). Genome-wide association studies. *Nature Reviews Methods Primers* 1.\
+Voth, H.-J. and Yanagizawa-Drott, D. (2024). Image(s). [to verify]\
+Wallis, P. (2019). Between apprenticeship and skill. [to verify]

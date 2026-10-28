@@ -1,0 +1,1448 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    includes:
+      after_body: insert-logo-Research.html
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+editor_options:
+  chunk_output_type: console
+---
+class: center, inverse, middle
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringan-progress-bar, echo=FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
+```{r inline-svg, include=FALSE}
+# Inline SVGs so they stay vector under remark's slide scaling (an <img> SVG is rasterised at its layout size).
+# IDs are prefixed with the file name so markers and clip paths stay unique across the deck.
+inline_svg <- function(path, width = "100%") {
+  svg <- paste(trimws(readLines(path, warn = FALSE, encoding = "UTF-8")), collapse = " ")
+  svg <- gsub("<!--.*?-->", "", svg, perl = TRUE)
+  stem <- tools::file_path_sans_ext(basename(path))
+  svg <- gsub('id="([^"]+)"', paste0('id="', stem, '_\\1"'), svg)
+  svg <- gsub("url[(]#([^)]+)[)]", paste0("url(#", stem, "_\\1)"), svg)
+  htmltools::HTML(paste0('<div class="svg-inline" style="width:', width, '">', svg, '</div>'))
+}
+```
+
+```{css echo=FALSE}
+.svg-inline {
+  margin: 0 auto;
+}
+.svg-inline svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p,
+.pull-right ~ blockquote {
+  clear: both;
+}
+
+/* status lists: the status symbol replaces the bullet */
+.status ul {
+  list-style: none;
+  padding-left: 0.5em;
+}
+.status li {
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+}
+
+/* revealed brace with a remark, to the right of a centred figure */
+.brace-note {
+  position: absolute;
+  left: 914px;
+  top: 190px;
+  width: 246px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brace-note p:first-child {
+  flex: 0 0 26px;
+  height: 100%;
+}
+.brace-note svg {
+  display: block;
+  width: 26px;
+  height: 100%;
+}
+.brace-note p {
+  margin: 0;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.pull-right-extra-narrow {
+  float: right;
+  width: 20%;
+}
+
+.pull-center {
+  margin: 0 auto;
+  width: 44%;
+}
+.pull-center-wide {
+  margin: 0 auto;
+  width: 66%;
+}
+.pull-center-medium {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.eq150 {
+  font-size: 1.25em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+
+.blue {
+  color: #2c4f8a
+}
+
+.chaosred {
+  color: #b33d3d
+}
+
+/* Painting slide: text box over a full-bleed image */
+.overlay-box {
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  padding: 0.6em 1.1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+.overlay-box h1, .overlay-box h2 {
+  color: #fff;
+  margin: 0.2em 0 0.3em 0;
+}
+.overlay-spoiler {
+  margin-top: 0.8em;
+}
+.title-sm h1 {
+  font-size: 34px;
+}
+.boe-left {
+  float: left;
+  clear: left;
+  width: 37%;
+}
+.boe-right {
+  float: right;
+  width: 60%;
+}
+.boe-col, .boe-col p, .boe-col li {
+  font-size: 20px;
+}
+.gmap-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.regtab table {
+  font-size: 17px;
+  margin: 0 auto;
+}
+.regtab td, .regtab th {
+  padding: 4px 12px;
+  text-align: center;
+}
+.regtab td:first-child, .regtab th:first-child {
+  text-align: left;
+}
+.bigq {
+  font-size: 220px;
+  line-height: 1;
+  color: #b33d3d;
+  text-align: center;
+  font-weight: bold;
+}
+.bigq p {
+  margin: 0;
+}
+.map-inset {
+  position: absolute;
+  right: 3%;
+  bottom: 6%;
+  width: 24%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  padding: 0.4em;
+}
+.map-inset img {
+  width: 100%;
+  display: block;
+}
+.map-effect {
+  position: absolute;
+  left: 2%;
+  width: 17%;
+  top: 25%;
+  text-align: right;
+  line-height: 1;
+}
+.map-effect .num {
+  font-size: 3.6em;
+  font-weight: bold;
+  color: #d9730d;
+}
+.map-effect .lab {
+  font-size: 0.85em;
+  color: #333;
+}
+.remark-slide-content .footnote {
+  left: 64px;
+  right: 64px;
+}
+.overlay-narrow {
+  max-width: 9em;
+  margin-left: -1.5em;
+}
+.remark-slide-content.bottom .overlay-box {
+  margin-bottom: 1.8em;
+}
+.overlay-credit {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: 0.55em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+```
+
+# Memes that Matter
+## Research agenda
+
+### Christian Vedel,<br>University of Southern Denmark, Department of Economics
+
+### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+
+### Updated `r Sys.Date()`
+
+???
+- Research agenda talk: other work first, then the research project, Memes that Matter.
+- SECRET LINKS: click "SDU" in the logo -> Other work; click the twig in the logo -> Other work and future agenda. Same corner works invisibly on dark slides.
+
+---
+name: this-talk
+class: middle
+# This talk
+
+.pull-left-wide[
+**From what people had to what they thought**
+
+- **Other work:** published papers, working papers and work in progress
+- **Memes that Matter:** the research project, in three work packages
+- **Timeline** and obstacles
+- **Backup:** a test for replication, and each project in more detail
+]
+
+.pull-right-narrow[
+![Trees](Figures/Trees1.jpg)
+]
+
+???
+- Roadmap. The backup is only on request; the project slides link into it.
+
+---
+name: programme
+class: left, middle, hide-logo
+background-image: url(Figures/ai_enlightenment.jpg)
+background-size: contain
+background-color: #07090d
+
+.overlay-box.overlay-narrow[
+## Other work and future agenda
+
+Measuring what people had — and what they thought.
+]
+
+.overlay-credit[
+AI-generated illustration.
+]
+
+???
+LAYER 5 (by minute 60).
+
+---
+name: ongoing
+# Other work
+
+.pull-left[.status[
+**Published**
+- ● [**Holy Cows and Spilled Milk**](#proj-holycows) — Weber, missions and firm productivity (*J. Development Economics*, 2026)
+- ● [**Adaptability, Diversification and Energy Shocks**](#proj-energy) — peat, coal and creameries (*Energy Economics*, 2024)
+- ● [**Tracks to Modernity**](#proj-tracks) — *European Review of Economic History*, forthcoming
+
+**Working papers**
+- ◐ [**OccCANINE**](#occcanine) — R&R *Explorations in Economic History*
+- ◐ [**ML bias in EH**](#ml-bias)
+- ◐ [**Physical Memories and the Far Right**](#proj-farright)
+]]
+
+.pull-right[.status[
+**In progress**
+- ○ [**CHAOS**](#proj-chaos) — occupational incomes from scattered evidence
+- ○ [**Counting Houses**](#proj-domus) — population from historical town maps
+- ○ [**Copenhagen Tax Books**](#proj-copenhagen) — incomes, 1862–1918
+- ○ **Occupations Past** — [occupationspast.org](https://www.occupationspast.org/)
+
+**Plans**
+- ◇ [**Trade Liberalisations**](#proj-freedom) — freedom of trade and the Danish economy (funded)
+- ◇ [**Agenda**](#agenda) — what they had and what they thought
+]]
+
+.footnote[.small123[● published · ◐ working paper · ○ in progress · ◇ planned]]
+
+???
+- Click any title for its slides in the appendix; each has a link back here.
+
+---
+name: divider-project
+class: inverse, middle, center
+
+# Memes that Matter
+## The research project
+
+---
+name: project-question
+# The question: which ideas made Europe prosper?
+
+.pull-left-wide[
+We know that **ideas matter** for prosperity:
+- Societies that shared useful knowledge innovated more (Cinnirella, Hornung & Koschnick 2025)
+- Towns that got the printing press grew faster (Dittmar 2011)
+]
+
+--
+
+.pull-left-wide[
+But **which** ideas, and how did they affect **living standards**?
+- No useful unit of culture is given in advance: "bourgeois dignity" (McCloskey 2010) may be several distinct memes about merchants, profit and innovation
+]
+
+--
+
+.pull-left-wide[
+> *It is the role of the economist in the age of machine learning to provide causal insights at scale.*
+]
+
+???
+- The research statement opens here. The case-study historian's question, asked at scale.
+- Machine learning on large text corpora to measure the ideas; new data on living standards to measure the outcomes.
+
+---
+name: agenda
+# Memes that Matter: the research project
+
+.pull-left-wide[
+- **WP1:** [Measuring what we want from scattered sources](#wp1) <br> .small123[living standards and other outcomes from archives]
+- **WP2:** [Measuring memes](#wp2-meme) <br> .small123[ideas as measurable, causal units]
+- **WP3:** [Inclusive institutions and economic development](#wp3) <br> .small123[how inclusive ideas spread, and what they did]
+
+> **Memes that Matter:** a database of ideas and economic outcomes for Europe, on one map and one timeline, released as open data and tools
+]
+
+.pull-right-narrow[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/vision_layers.png")
+```
+
+.small123[*AI-generated illustration.*]
+]
+
+???
+- Three work packages: outcomes (bottom layer), ideas (top layer), institutions (middle layer). WP1 and WP2 build the measurements, WP3 uses them.
+- The deliverable is the picture: which ideas circulated where, and how people lived there at the time.
+
+---
+name: wp1
+# WP1: Measuring what we want from scattered sources
+
+.pull-left-wide[
+- We want pairs $(x_i, y_i)$: an exposure and an outcome for a unit
+- Archives rarely give both: one source lists occupations, another lists wages, with no one-to-one match
+- Weight source observations $j$ by their relevance to target $i$:
+$$\hat{y}_i = \sum_{j \in \mathcal{S}} w_{ij}\, y_j$$
+with $w_{ij}$ estimated by machine learning, then debiased
+- Done for occupations: [CHAOS](#proj-chaos) (Curtis, Johansen, Koschnick & Vedel 2026)
+- Next: any source, with LLM text embeddings ([Johansen, Koschnick & Vedel 2026](#ml-bias))
+]
+
+.pull-right-narrow[
+**Outcomes across Europe, over time**
+- Living standards
+- Skills
+- Technology in production
+- Value of trade
+- Causes of death
+- Population density ([Counting Houses](#proj-domus))
+]
+
+???
+- Generalises what applied work already does ad hoc (Autor, Levy & Murnane 2003; Ager et al. 2021; Sobek 1995).
+- The key is knowing the relevance of each source for what you want to predict.
+- So far only for occupations, and only through a fixed classifier (OccCANINE) as an intermediate step. The contribution is the general case.
+- Expected to work: an extension of existing work. The labour is collecting sources.
+
+---
+name: wp2-meme
+# WP2: What is a meme?
+
+.small123[
+> *"If in doubt, remember that something must have been copied. Everything that is passed from person to person in this way is a meme. This includes all the words in your vocabulary, the stories you know, the skills and habits you have picked up from others and the games you like to play. It includes the songs you sing and the rules you obey."* (Blackmore 1999, p. 7)
+]
+
+.center[
+```{r echo=FALSE}
+inline_svg("Figures/meme_venn.svg", "54%")
+```
+]
+
+.footnote[.small123[Blackmore (1999), *The Meme Machine*. Dawkins (1976): a cultural gene. Nunn (2020): beliefs are transmitted and selected.]]
+
+???
+- Head off the everyday reading of the word first: internet memes are one part of a much larger set.
+- "Songs you sing" is the culture box; "rules you obey" is the institutions box.
+- Same page, to say aloud: "Something, some kind of information, some kind of instruction, has become lodged in all those brains so that now we all do the same thing at birthday parties."
+- The meme is the *instruction*, not the expression, and we recognise it because everyone does *the same thing*. That is the definition on the next slide, in plain words.
+- Examples in the figure. Internet: Dancing Baby (1996), "All your base are belong to us" (2001), Rickroll (2007), Doge (2013). Kilroy was here (WWII graffiti) sits just outside: a pre-internet meme that behaves like one. Culture: arches, tunes, catch-phrases (Dawkins 1976, ch. 11: "ways of building arches"). Religion: the Protestant work ethic. Institutions: Grundtvig's folk high schools (Tracks to Modernity), cooperative dairies, free speech (Struensee 1770, WP3).
+- ⚠ REVIEW: added by coach, not yet checked by Christian. All named examples in the figure, and their dates.
+- Image credits (⚠ REVIEW: added by coach). Thumbnails ≤300 px in Figures/memes/, embedded in meme_venn.svg:
+  - Dancing Baby: en.wikipedia.org/wiki/File:DancingBaby.jpg (non-free, fair use)
+  - All your base: en.wikipedia.org/wiki/File:Aybabtu.png (non-free, fair use; Zero Wing, 1991)
+  - Rickroll: en.wikipedia.org/wiki/File:First_seconds_of_Never_Gonna_Give_You_Up.gif (non-free, fair use; first frame)
+  - Doge: commons.wikimedia.org/wiki/File:Doge_meme_example.jpg (CC BY 2.0, likeaduck)
+  - Kilroy: commons.wikimedia.org/wiki/File:Kilroy_Was_Here_-_Washington_DC_WWII_Memorial.jpg (CC BY 2.0, Luis Rubio)
+  - Arches: commons.wikimedia.org/wiki/File:Worcester_cathedral_010.JPG (public domain, Mattana)
+  - Weber 1905 cover: commons.wikimedia.org/wiki/File:Die_protestantische_Ethik_und_der_%27Geist%27_des_Kapitalismus_original_cover.jpg (public domain)
+  - Rødding Højskole: commons.wikimedia.org/wiki/File:R%C3%B8dding_H%C3%B8jskole_202203a.jpg (CC BY-SA 4.0, Hjart)
+  - Hjedding Andelsmejeri, the first cooperative dairy (1882): commons.wikimedia.org/wiki/File:Hjedding_Andelsmejeri_tegning.jpg (public domain)
+  - Struensee, by Jens Juel: commons.wikimedia.org/wiki/File:Struensee_Juel_(cropped).jpg (public domain)
+
+---
+name: wp2-definition
+# WP2: A functionalist definition
+
+.pull-left-wide[
+> Memes are atomistic ideas that cause **expressions** (text, art, conversation) and **societal outcomes**. An expression $\iota$ belongs to meme $\kappa(\iota)$:
+
+$$\kappa(\iota) = \kappa(\iota') \iff \mathbb{E}[Y \mid \iota] = \mathbb{E}[Y \mid \iota'] \;\; \forall\, Y \in \mathcal{Y}$$
+
+- $\Rightarrow$ **meaningful:** expressions in one meme do the same thing
+- $\Leftarrow$ **atomistic:** expressions that do the same thing are not split apart
+]
+
+.center[
+```{r echo=FALSE}
+inline_svg("Figures/meme_dag.svg", "45%")
+```
+
+.small123[*Mirrors how GWAS finds genes (Uffelmann et al. 2021). Tested by [invariant causal prediction](#wp2-invariance) (Peters, Bühlmann & Meinshausen 2016).*]
+]
+
+???
+- Horizontal arrows: replication. Vertical arrows: effects. m′ is a mutation; a different meme, a different outcome.
+- One option: put future expressions into 𝒴; then replication and effects are one condition.
+- Finding κ is the same as finding the memes: a clustering problem in embedding space with a causal criterion.
+
+---
+name: wp2-embedding
+# WP2: Memes live in embedding space
+
+.pull-left-wide[
+- Language models map text to vectors
+- Subtracting *male* from *king* and adding *female* lands very close to *queen*: arithmetic on the vectors mirrors meaning
+- Same logic for longer texts in BERT-style models; cosine similarity is the workhorse
+- **A meme is a region:** its expressions cluster together
+- Finding clusters in embedding space is standard (BERTopic, Grootendorst 2022; Top2Vec, Angelov 2020; Aharoni & Goldberg 2020) ⚠
+- New here: the criterion is **causal**, not semantic
+]
+
+.pull-right-narrow[
+```{r echo=FALSE}
+inline_svg("Figures/kingqueen.svg")
+```
+.small123[*Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
+]
+
+.footnote[.small123[Johansen, Koschnick & Vedel (2026), [ML Bias in EH](#ml-bias); Mikolov, Yih & Zweig (2013) ⚠. [More on clustering](#wp2-clustering)]]
+
+???
+- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
+- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
+- ⚠ REVIEW: added by coach, not yet checked by Christian. The clustering references (Grootendorst 2022; Angelov 2020; Aharoni & Goldberg 2020) and Mikolov, Yih & Zweig (2013).
+
+---
+name: wp2-claims
+# WP2: Two claims
+
+.pull-left-wide[
+> **1. Most ideas that shape society are constellations of memes.**
+]
+
+--
+
+.pull-left-wide[
+> **2. Memes can be identified with econometrics, causal discovery and mechanistic interpretability.**
+]
+
+--
+
+.center[
+```{r echo=FALSE}
+inline_svg("Figures/meme_pipeline.svg", "88%")
+```
+
+.small123[*Curiosity:* could the models find memes on their own? Search for embeddings that reproduce themselves.]
+]
+
+.footnote[.small123[[A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
+
+???
+- Claim 1 is why it is worth doing: measure the memes and you measure what shapes society.
+- Claim 2 is why it is feasible: each tool has one job (the pipeline). Interpretability finds the space, causal discovery finds the units, and the payoff is what they did to long-run development.
+- Box 1 citations are the application's: ideas sit in almost-orthogonal directions (Elhage et al. 2022; Gurnee & Tegmark 2023), and models converge on one representation (Huh et al. 2024; Jha et al. 2025).
+- Quirky aside, not developed: a meme is a replicator, so look for directions in embedding space that reproduce themselves across generations of text. Mention it, don't defend it.
+
+Q&A prep (not for the slide):
+- Claim 1 risks being true by definition. It is a claim only with **sparsity** (few memes cover many expressions) and **modularity** (a meme does the same thing in any constellation). If interactions dominate (epistasis), the constellation is the unit.
+- "Most": Sperber (2000) says most transmission is reconstruction, not replication; institutions as equilibria persist through incentives. The claim is about the *idea content* of institutions, not the equilibria.
+- "Identify" means two things: *measuring* the unit and *identifying* its effect. Say which.
+- Language-model features are features of the *model*, trained on modern text. The answer is validation: replication, outcomes, encyclopaedias. Platonic convergence (Huh et al.) is a hope, not an argument.
+- Spread is not benefit: memes spread regardless of usefulness (Blackmore p. 7). Some replicate *through* their effect (letters); how much is something to estimate.
+
+---
+name: data
+# The data
+### Outcomes, validation and historical expressions
+
+.pull-left[
+**Expressions** (WP2)
+- Paintings (Gorin, Heblich & Zylberberg 2025)
+- Newspaper clippings (Dell et al. 2023)
+- Early scientific papers (Koschnick 2025)
+
+**Validation** (WP2)
+- Concepts described in encyclopaedias
+]
+
+.pull-right[
+**Outcomes** (WP1), estimated as $\hat{y}_i = \sum_j w_{ij} y_j$ from scattered archives
+- Living standards, skills, technology in production, value of trade, causes of death, population density, urban development
+- Builds on [CHAOS](#proj-chaos) and [Counting Houses](#proj-domus)
+]
+
+> *We are in an age where archives are readily available.*
+
+???
+- Lead-in, from the application: "Estimation needs three kinds of source: outcomes, validation, and large quantities of historical expressions."
+- The WP3 networks are on the WP3 slide.
+
+---
+name: wp3
+# WP3: Inclusive institutions and economic development
+
+.pull-left-wide[
+- Does democracy cause growth? Yes, for 1960–2010 (Acemoglu et al. 2019). Back to the origins?
+- **Threat:** places adopt or drop inclusive ideas *because* they prospered or declined (Chinoy et al. 2026)
+- **Design:** shift-share on pre-existing network exposure (Borusyak, Hull & Jaravel 2022; Goldsmith-Pinkham et al. 2020), as in [Holy Cows](#proj-holycows)
+- **Networks:** Sound Toll registers; coins (Boehm & Chaney 2026); scholars (de la Croix 2021; Curtis & de la Croix 2026)
+- **Outcomes** from WP1, **ideas** from WP2
+]
+
+.pull-right-narrow[
+**Case: Struensee, 1770**
+
+The king's physician seizes power and abolishes censorship; three years later the reforms are reversed.
+
+Free speech switched **on and off** for reasons unrelated to the economy.
+
+Newspaper archive from **1666**: plenty of data before and after.
+]
+
+???
+- Formal institutions survive only in balance with something less tangible (Acemoglu & Robinson 2019; Fukuyama 2011).
+- Shift-share is valid if either the exposure or the new ideas are exogenous. History is full of cases where one of them is.
+- The hard part is data, and WP1 and WP2 build it. The rest is volume of work, not a conceptual problem.
+
+---
+name: project-timeline
+# Timeline and obstacles
+
+.pull-left-wide[
+| Year | Milestones |
+|:---|:---|
+| **1** | WP1 estimator released as an open library; basic proofs for WP2 |
+| **2** | Database of outcomes across Europe; WP1 submitted; early WP2 results; WP3 networks assembled |
+| **3** | WP2 submitted; preliminary WP3 results; start ERC application |
+| **4** | WP3 submitted; ERC proposal submitted |
+]
+
+.pull-right-narrow[
+**Obstacles**
+- **WP1:** an extension of existing work
+- **WP2:** the hard part: estimation and data collection
+- **WP3:** volume of work, not concept
+
+**Dissemination:** open data and models; in this field, open tooling *is* dissemination
+]
+
+???
+- Each WP gives one or two papers, general-interest and leading field journals.
+- Public good: the database, a website and short videos. Maps of income and ideas need no training to read.
+
+---
+name: thank-you
+class: middle
+# Thank you
+
+.pull-left-wide[
+**Questions?**
+
+- **Email:** [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+- **Twitter/X:** [@ChristianVedel](https://twitter.com/ChristianVedel)
+- **BlueSky:** [@christianvedel.bsky.social](https://bsky.app/profile/christianvedel.bsky.social)
+]
+
+.pull-right-narrow[
+![Trees](Figures/Trees1.jpg)
+]
+
+???
+- End of the main talk. The backup follows; the project slides link into it.
+
+---
+name: divider-backup
+class: inverse, middle, center
+
+# Backup
+
+---
+name: wp2-weismann
+# WP2: A test for replication
+
+.pull-left-wide[
+- Dawkins (foreword to Blackmore 1999): memes copied as **products** accumulate errors; memes copied as **instructions** correct them (apprenticeship)
+- The meme is the instruction; expressions scatter around it in embedding space
+- **Signature:** under instruction-copying, dispersion around a meme's centre stays **bounded** as it travels through the network; under product-copying it grows
+- Measurable without using the outcome $Y$
+- **Rival:** if transmission is reconstruction rather than copying (Sperber 2000), spread also stays bounded. Does the centre travel with the content or stay with the receivers?
+]
+
+.footnote[.small123[[Back to the two claims](#wp2-claims)]]
+
+???
+- Separating meme from attraction: transmit into populations with different priors. Centre moves with the receivers: attraction. Centre travels with the content: meme.
+
+---
+name: wp2-invariance
+# WP2: A test for effects
+
+> Under homogeneity, an identified effect stays the same in heterogeneous environments.
+
+.center[
+```{r echo=FALSE}
+inline_svg("Figures/meme_invariance.svg", "57%")
+```
+]
+
+.footnote[.small123[Adapted from Peters, Bühlmann & Meinshausen (2016), Fig. 1. Conditioning on *e* is allowed; only interventions on *Y* are ruled out (sec. 1.1). Two-way arrows are feedback over time. [Back to the definition](#wp2-definition) · [Back to the two claims](#wp2-claims)]]
+
+--
+
+.brace-note[
+<svg viewBox="0 0 30 300" preserveAspectRatio="none"><path d="M0,2 Q15,2 15,17 L15,133 Q15,150 30,150 Q15,150 15,167 L15,283 Q15,298 0,298" fill="none" stroke="#1a1a1a" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>
+<p><em>My claim is that there are enough restrictions here that we will be able to observe some memes, at least <strong>if they matter</strong>.</em></p>
+]
+
+???
+- The meme DAG again, with the environment e of each copy (region, century, language, a network shock from WP3). The hammers are interventions on it.
+- The environment and the meme, and the environment and the outcome, shape each other (arrows both ways). Read the two-way arrows as feedback over time: e today shapes m and Y today; Y and m today shape e tomorrow.
+- e is an observed cause of Y, so it goes into the conditioning set. The hammers hit e, never Y itself. That is exactly what ICP allows: invariance holds if we condition on all direct causes of Y "and if we do not intervene on Y" (Peters et al. 2016, sec. 1.1).
+- The test: Y given m and e is the same under every intervention.
+- Despite the hammers, the meme still causes its next copy and has the same effect on Y (if the effect is homogeneous).
+- Unless it mutates: m′ is then by definition a different meme, with a different effect Y′.
+- Invariance across environments is the test, and differences across languages become part of the identification.
+
+---
+name: wp2-clustering
+# WP2: Clustering in embedding space ⚠
+
+.pull-left-wide[
+- **Topics as clusters of document embeddings:** BERTopic, UMAP + HDBSCAN (Grootendorst 2022, arXiv 2203.05794)
+- **Topics as dense regions** in a joint document/word space: Top2Vec (Angelov 2020, arXiv 2008.09470)
+- **Domains cluster without supervision** in BERT-style models (Aharoni & Goldberg 2020, ACL)
+- **Tools:** UMAP (McInnes, Healy & Melville 2018); HDBSCAN (Campello, Moulavi & Sander 2013, PAKDD)
+- **In economics:** firms clustered by product-text similarity (Hoberg & Phillips 2016, *JPE*); word-count similarity, not neural embeddings
+- **Origin of the arithmetic:** Mikolov, Yih & Zweig (2013), NAACL
+]
+
+.footnote[.small123[[Back to embedding space](#wp2-embedding)]]
+
+???
+- ⚠ REVIEW: added by coach, not yet checked by Christian. Every reference on this slide.
+- The gap these leave: they cluster by similarity. WP2 clusters by effect (κ), with replication as the test.
+
+---
+name: occcanine
+# A tool this paper needed: OccCANINE
+
+.chaosred[**A separate paper:** *Breaking the HISCO Barrier* — Dahl, Johansen & Vedel — [arXiv 2402.13604](https://arxiv.org/abs/2402.13604)]
+
+.pull-left-wide[
+- Maps free-text occupational descriptions to **HISCO** codes, in **13 languages**
+- Fine-tuned on **15.8 million** description–code pairs from 29 sources; **96%** accuracy
+- Open source: **9,348+** downloads
+- EHES WP 255; R&R *Explorations in Economic History*
+]
+
+<br>
+
+```{r echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("Figures/occcanine_simple.png")
+```
+
+???
+⏱ 0.5 / 12.5 / 18
+
+---
+name: occcanine-architecture
+# How OccCANINE works
+
+.chaosred[**A separate paper:** *Breaking the HISCO Barrier* — Dahl, Johansen & Vedel — [arXiv 2402.13604](https://arxiv.org/abs/2402.13604)]
+
+```{r echo=FALSE, out.width="72%", fig.align='center'}
+knitr::include_graphics("Figures/occcanine_architecture.png")
+```
+
+.footnote[.small123[Character-level encoder (CANINE) with two decoders: a flat classifier ("fast") and a sequential, digit-by-digit transformer decoder ("good").]]
+
+???
+⏱ 0.5 / 13 / 17
+
+---
+name: occcanine-census
+# OccCANINE enabled this project
+
+```{r echo=FALSE, out.width="88%", fig.align='center'}
+knitr::include_graphics("Figures/occcanine_census_pipeline.svg")
+```
+
+???
+⏱ 0.5 / 13.5 / 16
+- Every occupational description in the Danish censuses, 1787–1901, goes in as free text; HISCO codes come out.
+- The examples are real census entries (see the census slide). One entry can hold two occupations.
+- Time: by hand at 10 sec. per record (the benchmark in Breaking the HISCO Barrier): 13 mio. x 10 s = 36,000 hours of non-stop work (about 4 years round the clock; 22 work-years at 1,650 h/year).
+- OccCANINE (paper benchmark, laptop with NVIDIA Quadro T2000 4GB): 10,000 records in 1 min 38 s (flat decoder) => 13 mio. in ~35 hours. Sequential decoder: 8 min 56 s per 10,000 => ~8 days.
+
+---
+name: deep-dives
+class: left, bottom
+background-image: url(Figures/clemens_workshop_KMS1457.jpg)
+background-size: cover
+
+.overlay-box[
+## More detail
+]
+
+.overlay-credit[
+G.A. Clemens, *Gårdinteriør fra en maskinfabrik i en provinsby* (1892). SMK, KMS1457, public domain.
+]
+
+???
+LAYER 6 — deep dives, only on request.
+
+---
+name: proj-holycows
+# Holy Cows and Spilled Milk
+### Does religion shape economic life? Weber's question, without the confounders
+
+.pull-left-wide[
+- **Weber (1905):** the Protestant ethic and the spirit of capitalism — religion as a driver of economic behaviour
+- **Development economics:** missions in today's developing countries are credited and blamed for a lot — human capital, health, values (Nunn 2010; Cagé & Rueda 2016; Valencia Caicedo 2019)
+- **The problem:** missionaries were Westerners in colonial settings who also brought schools, printing presses and science — so the *religious* effect is never isolated
+- **Our test:** a revivalist mission *inside* a homogeneous Protestant society, with no colonial or cultural confounders
+]
+
+.pull-right-narrow[
+> *"It is a question of heaven or hell…"* <br>— *"And then I thought that heaven was the more comfortable place to be."*
+
+.small123[Missionary and dairy farmer (Haue, 1978)]
+]
+
+.footnote[.small123[**Published:** Bentzen, Boberg-Fazlić, Sharp, Skovsgaard & Vedel, *Journal of Development Economics* 179 (2026), [doi:10.1016/j.jdeveco.2025.103651](https://doi.org/10.1016/j.jdeveco.2025.103651). [Back to other work](#ongoing)]]
+
+---
+name: holycows-design
+# Holy Cows and Spilled Milk
+### Setting and identification
+
+.pull-left[
+- Denmark c. 1900: rapid industrialisation through **964 cooperative creameries**
+- The pietist **Inner Mission** spread from 1872; productivity = milk needed per unit of butter
+- **Shift-share design:** local mission-house density in **1890** (the early houses) × the **national** expansion of the movement
+- Robustness: exposure to the controversial preacher **Carl Moe**
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="88%"}
+knitr::include_graphics("Figures/hc_map.png")
+```
+
+.small123[*Potential influence of the Inner Mission*]
+]
+
+.footnote[.small123[**Published:** Bentzen, Boberg-Fazlić, Sharp, Skovsgaard & Vedel, *Journal of Development Economics* 179 (2026), [doi:10.1016/j.jdeveco.2025.103651](https://doi.org/10.1016/j.jdeveco.2025.103651). [Back to other work](#ongoing)]]
+
+---
+name: holycows-results
+# Holy Cows and Spilled Milk
+### Mission intensity lowered productivity
+
+.pull-left[
+```{r echo=FALSE, out.width="78%"}
+knitr::include_graphics("Figures/hc_binned.png")
+```
+
+.small123[*Milk-to-butter ratio against mission intensity (higher = less efficient)*]
+]
+
+.pull-right[
+- Loss ≈ **7.5% of dividends** to farmer-shareholders (≈ 23,500 2010 USD for the median creamery)
+- **Sunday closures** broke the economies of scale of daily milk processing
+- **Doctrinal splits:** Sabbatarian farmers left to found their own creameries
+- Religiosity itself — not colonialism or Western technology — constrained firms
+]
+
+.footnote[.small123[**Published:** Bentzen, Boberg-Fazlić, Sharp, Skovsgaard & Vedel, *Journal of Development Economics* 179 (2026), [doi:10.1016/j.jdeveco.2025.103651](https://doi.org/10.1016/j.jdeveco.2025.103651). [Back to other work](#ongoing)]]
+
+---
+name: proj-energy
+# Adaptability, Diversification and Energy Shocks
+### When the coal stopped coming
+
+.pull-left[
+- Danish industry ran almost entirely on **British coal**
+- From 1917 coal became scarce and expensive into the 1920s
+- Local alternative: **peat** — but only near freshwater deposits
+- Micro data on butter factories, **1900–1928**
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("Figures/es_coal.png")
+```
+
+.small123[*Coal imports and prices, 1900–1928*]
+]
+
+.footnote[.small123[**Published:** Henriques, Sharp, Tsoukli & Vedel, *Energy Economics* 139 (2024), [doi:10.1016/j.eneco.2024.107887](https://doi.org/10.1016/j.eneco.2024.107887). [Back to other work](#ongoing)]]
+
+---
+name: energy-results
+# Adaptability, Diversification and Energy Shocks
+### Firms that could switch fuels did better — and kept the gains
+
+.pull-left[
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("Figures/es_event.png")
+```
+
+.small123[*Milk-to-butter ratio, demeaned by year: within vs. beyond 500 m of peat (lower = more efficient)*]
+]
+
+.pull-right[
+- Event study around the coal shortage
+- Creameries near peat became **more efficient**
+- The advantage **persisted** after peat was no longer used
+- Lesson: support adaptability for firms least able to switch energy source
+]
+
+.footnote[.small123[**Published:** *Energy Economics* (2024). [Back to other work](#ongoing)]]
+
+---
+name: ml-bias
+# ML Bias in EH
+### The problem: confident but wrong
+
+.pull-left-wide[
+- Many sources do not record what we need — e.g. **gender** among 3,271 Stockholm taxpayers in 1920
+- Predict it from first names: a simple classifier, **81% accurate**
+- The gender wage gap comes out at **−0.71** — the truth is **−0.82**
+- The errors are **systematic**: naming correlates with social status
+- With Torben Johansen and Julius Koschnick
+]
+
+.pull-right-narrow[
+> *Here the truth is known: the tax records report gender.*
+]
+
+```{r echo=FALSE, out.width="46%", fig.align='center'}
+knitr::include_graphics("Figures/mlb_stockholm_naive.png")
+```
+
+.footnote[.small123[**Working paper:** Johansen, Koschnick & Vedel (2026), [arXiv 2606.28063](https://arxiv.org/abs/2606.28063). [Back to other work](#ongoing)]]
+
+---
+name: ml-bias-fix
+# ML Bias in EH
+### The fix: a small gold standard
+
+.pull-left-wide[
+1. Predict the variable for **all** observations
+2. Hand-code a small **random** subsample
+3. Use it to estimate and remove the model's bias (PPI, DSL)
+
+- Same Stockholm data, 10% gold standard: **−0.81** vs. the true **−0.82**
+- Confidence interval **36% narrower** than using the hand-coded sample alone
+]
+
+.pull-right-narrow[
+> *ML and the historian are complements.*
+]
+
+```{r echo=FALSE, out.width="44%", fig.align='center'}
+knitr::include_graphics("Figures/mlb_stockholm_dsl.png")
+```
+
+.footnote[.small123[**Working paper:** Johansen, Koschnick & Vedel (2026), [arXiv 2606.28063](https://arxiv.org/abs/2606.28063). [Back to other work](#ongoing)]]
+
+---
+name: ml-bias-types
+# ML Bias in EH
+### Three kinds of ML tasks — and what to do about each
+
+.pull-left[
+- **Type 1 — replacing annotators** (linkage, occupation coding, sentiment): always debias
+- **Type 2 — filling missing data** (occupational scores, name-based proxies): debias if source and target are relevant to each other
+- **Type 3 — new measures** (embeddings): no gold standard; validate against several proxies and placebos
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("Figures/mlb_flowchart.png")
+```
+]
+
+.footnote[.small123[**Working paper:** Johansen, Koschnick & Vedel (2026), [arXiv 2606.28063](https://arxiv.org/abs/2606.28063). [Back to other work](#ongoing)]]
+
+---
+name: ml-bias-scale
+# ML Bias in EH
+### Advice: think about the scale of your problem
+
+.pull-left-wide[
+```{r echo=FALSE, out.width="68%"}
+knitr::include_graphics("Figures/mlb_cost.png")
+```
+
+.small123[*Stylised total cost of research-ready data: fixed cost plus marginal cost per observation*]
+]
+
+.pull-right-narrow[
+**How many hours by hand?**
+- **Tens:** type it yourself
+- **Hundreds to thousands:** off-the-shelf LLM / VLM
+- **Thousands+:** build your own — and share it (OccCANINE)
+- Validation and debiasing are never automated
+]
+
+.footnote[.small123[**Working paper:** Johansen, Koschnick & Vedel (2026), [arXiv 2606.28063](https://arxiv.org/abs/2606.28063). [Back to other work](#ongoing)]]
+
+---
+name: proj-chaos
+# CHAOS
+### Converting Historical Accounts into Occupational Scores
+
+.pull-left-narrow[
+- **Source:** occupations with known wages or skills — **88,000** occupation–income pairs
+- **Target:** a census with occupations only
+- **CHAOS** turns OccCANINE's class probabilities into a prediction for every target occupation
+- With Matt Curtis, Torben Johansen and Julius Koschnick
+]
+
+.pull-right-wide[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/proj_chaos_funnel.jpg")
+```
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: chaos-validation
+# CHAOS
+### Does it work? Predicting wages out of sample
+
+.pull-left[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/chaos_val_scatter_1879.png")
+```
+
+.small123[*Predicted vs. actual wages, New York 1879, with 1880 as the source year*]
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/chaos_val_rsq_1880.png")
+```
+
+.small123[*R² of CHAOS predictions by year, source year in red*]
+]
+
+.footnote[.small123[Close to the source year CHAOS tracks actual wages well (R² ≈ 0.6); fit decays with distance — source–target drift, the first problem on the next slide. [Back to other work](#ongoing)]]
+
+---
+name: chaos-problem
+# CHAOS
+### Two problems with occupational scores
+
+.pull-left-wide[
+.small123[
+$$\underbrace{\mu_S(d_i) - y_i}_{\text{proxy error}} = \underbrace{\mu_S(d_i) - \mu_T(d_i)}_{\text{source–target drift}} + \underbrace{\mu_T(d_i) - y_i}_{\text{within-occupation residual}}$$
+]
+
+- **Drift:** 1950 US wages ≠ 1850 England
+- **Residual:** apprentice ≠ master; "smith" is a blacksmith or a goldsmith
+- If the error correlates with the regressor, coefficients are biased
+]
+
+.pull-right-narrow[
+> *CHAOS addresses the first and formalises the second — with standard errors and a full audit trail for every prediction.*
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: chaos-skills
+# CHAOS
+### A first application: what happened to routine skills?
+
+.pull-left-wide[
+```{r echo=FALSE, out.width="70%"}
+knitr::include_graphics("Figures/chaos_skill_routine.png")
+```
+]
+
+.pull-right-narrow[
+- Premium for **routine** relative to non-routine work, relative to 1800
+- Falls in the first half of the century in the UK, the US and Western Europe
+- .chaosred[**Preliminary**]: descriptive, no controls for selection
+]
+
+.footnote[.small123[Skills: *The London Tradesman* (Campbell, 1747), descriptions of 229 occupations. Wages: US Commissioner (Department) of Labor reports — occupation–place–year cells, 1800–1900, 135,182 observations in 67 places, digitised with Gemini. [Back to other work](#ongoing)]]
+
+---
+name: chaos-embedding
+# CHAOS
+### Measuring skills with embeddings
+
+.pull-left[
+- An LLM extracts a list of **skills** from each occupation's 1747 description
+- Each skill is embedded (Sentence-BERT) and compared with **anchor phrases**: routine vs. non-routine, cognitive vs. manual
+- Gives each occupation a position in a **task space** — mapped to any census through HISCO
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="64%"}
+knitr::include_graphics("Figures/chaos_embedding_2d.jpg")
+```
+
+.small123[*Occupations in cognitive × routine space*]
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: proj-domus
+# Counting Houses
+### The source: *Civitates Orbis Terrarum*
+
+.pull-left[
+- Braun & Hogenberg, Cologne, **1572–1617**
+- **543 views of 475 towns**, 95% European
+- A publishing enterprise, not a survey — but walls, churches and street fabric were drawn to be recognisable
+- With Chiara Zanardello (TSE). .chaosred[**Preliminary**]
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/domus_odense_colour.jpg")
+```
+
+.small123[*Odense in the Civitates*]
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: domus-model
+# Counting Houses
+### DOMUS: from a plate to a building count
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("Figures/proj_domus_pipeline.jpg")
+```
+
+.pull-center-wide[
+- A vision model predicts a **building density** for each plate; its integral is the count
+- Trained from a few thousand clicks — one per building
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: domus-paris
+# Counting Houses
+### Paris, c. 1572: every predicted building
+
+```{r echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("Figures/domus_paris_light.jpg")
+```
+
+.footnote[.small123[Braun & Hogenberg, *Civitates Orbis Terrarum*. Red: DOMUS building density; the model counts **4,202** houses. [Back to other work](#ongoing)]]
+
+---
+name: domus-odense
+# Counting Houses
+### Back of the envelope: Odense, c. 1590
+
+.pull-left[
+- **883** houses on the plate
+- × **4.3** people per house (Leiden, 1561–1606)
+- $\approx$ **3,800** inhabitants
+- Other sources: 3,000–3,200 in 1570; 4,000 in 1640
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/domus_odense_density.jpg")
+```
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: proj-tracks
+# Tracks to Modernity
+### Railways, growth and social movements in Denmark
+
+.pull-left-wide[
+- **1,589 parishes**, staggered difference-in-differences for railway connection (TWFE and Callaway & Sant'Anna)
+- Population **+7%**, partly through **in-migration**; no effect on fertility
+- **Structural change** out of agriculture
+- With Tom Görges, Magnus Ørberg Rove and Paul Sharp. R&R, *European Review of Economic History*
+]
+
+.pull-right-narrow[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/tracks_v3_population.png")
+```
+
+.small123[*Log population by years since connection*]
+]
+
+.footnote[.small123[**Working paper:** Görges, Rove, Sharp & Vedel, [arXiv 2502.21141](https://arxiv.org/abs/2502.21141) (v3, Sept 2026). [Back to other work](#ongoing)]]
+
+---
+name: tracks-economy
+# Tracks to Modernity
+### Migration and structural change
+
+.small123[No pre-trends; effects appear on connection and grow with exposure (manufacturing share +1.8 pp).]
+
+.pull-left[
+```{r echo=FALSE, out.width="72%"}
+knitr::include_graphics("Figures/tracks_v3_manufacturing.png")
+```
+
+.small123[*Manufacturing employment share*]
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="72%"}
+knitr::include_graphics("Figures/tracks_v3_migration.png")
+```
+
+.small123[*Log in-migration*]
+]
+
+.footnote[.small123[**Working paper:** Görges, Rove, Sharp & Vedel, [arXiv 2502.21141](https://arxiv.org/abs/2502.21141) (v3, Sept 2026). [Back to other work](#ongoing)]]
+
+---
+name: tracks-ideas
+# Tracks to Modernity
+### Railways carried ideas: folk high schools and community houses
+
+.small123[Inverse-distance densities of nearby institutions. Less robust than the economic results.]
+
+.pull-left[
+```{r echo=FALSE, out.width="72%"}
+knitr::include_graphics("Figures/tracks_v3_ma_folkhigh.png")
+```
+
+.small123[*Local density of folk high schools*]
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="72%"}
+knitr::include_graphics("Figures/tracks_v3_ma_assembly.png")
+```
+
+.small123[*Local density of community houses*]
+]
+
+.footnote[.small123[**Working paper:** Görges, Rove, Sharp & Vedel, [arXiv 2502.21141](https://arxiv.org/abs/2502.21141) (v3, Sept 2026). [Back to other work](#ongoing)]]
+
+---
+name: proj-copenhagen
+# Copenhagen Tax Books
+### The source
+
+.pull-left-narrow[
+- Copenhagen's income tax, enacted **1861** — 50 years before the national tax
+- Annual books **1862–1918**: about **2.1 million** taxpayer records
+- ~17,000 taxpayers in 1862, ~164,000 by 1919
+- With Casper Worm Hansen and Asger Mose Wingender
+]
+
+.pull-right-wide[
+```{r echo=FALSE, out.width="48%"}
+knitr::include_graphics("Figures/proj_taxbook_1863.jpg")
+```
+
+.small123[*A page from the 1863–64 tax book*]
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: cph-pipeline
+# Copenhagen Tax Books
+### Digitising 40 books with a vision LLM
+
+.pull-left-wide[
+1. Split each book into page images
+2. Page + layout prompt + schema $\Rightarrow$ **Gemini** returns one structured row per taxpayer
+3. Assemble a dataset per book
+4. Occupations $\Rightarrow$ HISCO with **OccCANINE**
+]
+
+.pull-right-narrow[
+> *Standard OCR fails on these tables: five layouts, shifting columns, no row delimiters.*
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: cph-first-look
+# Copenhagen Tax Books
+### A first look: income inequality, 1862–1918
+
+.pull-left-wide[
+```{r echo=FALSE, out.width="62%"}
+knitr::include_graphics("Figures/cph_gini.png")
+```
+]
+
+.pull-right-narrow[
+- The first full income distributions for a 19th-century Danish city
+- The 800 kr deduction truncates the bottom: measures are lower bounds
+- .chaosred[**Preliminary**]
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: proj-freedom
+# Trade Liberalisations
+### Freedom of trade and the Danish economy
+
+.pull-left-wide[
+- The **Næringsfrihed** (freedom of trade) reform (law of 1857, in force 1862) dismantled guild privileges and opened trades
+- What did liberalisation do to **who worked in what, and for how much**, across places?
+- DFF project *Denmark's Path to Economic Development*: **DKK 6.1M**, 2027–2030 (PI Casper Worm Hansen; named participant)
+- With Casper Worm Hansen and Asger Mose Wingender. .chaosred[**Early stage**]
+]
+
+.pull-right-narrow[
+```{r echo=FALSE, out.width="62%"}
+knitr::include_graphics("Figures/gottschalk_stege_KMS3286.jpg")
+```
+
+.tiny123[Albert Gottschalk, *Marked på Stege Torv* (1892). SMK, KMS3286, public domain.]
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: freedom-approach
+# Trade Liberalisations
+### Approach
+
+.pull-left-wide[
+- Parish-level occupational structure from the censuses, coded with **OccCANINE**
+- Occupational incomes with **CHAOS**, linked to tax records
+- Compare places and trades by how binding the old privileges were, before and after the reform
+]
+
+.pull-right-narrow[
+> *The same tool chain as the rest of the programme — applied to an institutional reform.*
+]
+
+.footnote[.small123[[Back to other work](#ongoing)]]
+
+---
+name: proj-farright
+# Physical Memories and the Far Right
+### Did symbols of the past mobilise voters?
+
+.pull-left-wide[
+- The Danish Nazi party (**DNSAP**) built its propaganda on Denmark's pre-Christian past
+- Theory: politicising the past should work best where the past is **physically present**
+- Test: local density of pre-Christian monuments (burial mounds, rune stones) vs. DNSAP votes, elections **1935–1943**
+- With Lasse Aaskoven
+]
+
+.footnote[.small123[**Working paper:** Aaskoven & Vedel (2026), [EHES WP 295](https://ehes.org/wp/EHES_295.pdf). [Back to other work](#ongoing)]]
+
+---
+name: farright-data
+# Physical Memories and the Far Right
+### Monuments and votes
+
+.pull-left[
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("Figures/fr_map_arch.png")
+```
+
+.small123[*Pre-Christian monuments*]
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("Figures/fr_map_nazis.png")
+```
+
+.small123[*DNSAP vote share*]
+]
+
+.footnote[.small123[**Working paper:** Aaskoven & Vedel (2026), [EHES WP 295](https://ehes.org/wp/EHES_295.pdf). [Back to other work](#ongoing)]]
+
+---
+name: farright-result
+# Physical Memories and the Far Right
+### No effect
+
+.pull-left-wide[
+```{r echo=FALSE, out.width="68%"}
+knitr::include_graphics("Figures/fr_vote_arch.png")
+```
+]
+
+.pull-right-narrow[
+- No relationship between monument density and the DNSAP vote
+- Holds across site types (mounds, passage graves, rune stones, coins)
+]
+
+.footnote[.small123[**Working paper:** Aaskoven & Vedel (2026), [EHES WP 295](https://ehes.org/wp/EHES_295.pdf). [Back to other work](#ongoing)]]
+
+---
+name: farright-bulwark
+# Physical Memories and the Far Right
+### A bulwark? Civil society and party members
+
+.pull-left[
+```{r echo=FALSE, out.width="72%"}
+knitr::include_graphics("Figures/fr_map_gr.jpg")
+```
+
+.small123[*Grundtvigian institutions*]
+]
+
+.pull-right[
+- Had the Grundtvigian movement already **claimed the symbols** of the pre-Christian past?
+- Neither Grundtvigian nor Inner Mission institutions predict the vote
+- But **18,634 geolocated party members**: more where the pietist Inner Mission was strong
+- Unlike Germany, Danish civil society **neither fuelled nor blocked** the far right at the ballot box
+]
+
+.footnote[.small123[**Working paper:** Aaskoven & Vedel (2026), [EHES WP 295](https://ehes.org/wp/EHES_295.pdf). [Back to other work](#ongoing)]]
+

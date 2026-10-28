@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" font-family="Georgia, 'Times New Roman', serif">
+  <!-- Claim 2 as a pipeline: each tool has one job -->
+  <defs>
+    <marker id="hp" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="340" height="62" fill="#b33d3d" stroke="#b33d3d" stroke-width="3"/>
+  <text x="180" y="52" text-anchor="middle" font-size="27" font-weight="bold" fill="#ffffff">Interpretability</text>
+  <rect x="10" y="72" width="340" height="200" fill="#f6f4ef" stroke="#b33d3d" stroke-width="3"/>
+  <text x="180" y="116" text-anchor="middle" font-size="25" fill="#222222">LLMs encode ideas in</text>
+  <text x="180" y="150" text-anchor="middle" font-size="25" fill="#222222">high-dimensional space</text>
+  <text x="180" y="205" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Elhage et al. 2022; Huh et al. 2024;</text>
+  <text x="180" y="230" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Gurnee &amp; Tegmark 2023; Jha et al. 2025</text>
+
+  <line x1="360" y1="165" x2="420" y2="165" stroke="#1a1a1a" stroke-width="4" marker-end="url(#hp)"/>
+
+  <rect x="430" y="10" width="340" height="62" fill="#2c4f8a" stroke="#2c4f8a" stroke-width="3"/>
+  <text x="600" y="52" text-anchor="middle" font-size="27" font-weight="bold" fill="#ffffff">Causal discovery</text>
+  <rect x="430" y="72" width="340" height="200" fill="#f6f4ef" stroke="#2c4f8a" stroke-width="3"/>
+  <text x="600" y="116" text-anchor="middle" font-size="25" fill="#222222">keeps memes whose effect</text>
+  <text x="600" y="150" text-anchor="middle" font-size="25" fill="#222222">stays the same across</text>
+  <text x="600" y="184" text-anchor="middle" font-size="25" fill="#222222">heterogeneous environments</text>
+  <text x="600" y="230" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Invariant causal prediction:</text>
+  <text x="600" y="255" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Peters, Bühlmann &amp; Meinshausen 2016</text>
+
+  <line x1="780" y1="165" x2="840" y2="165" stroke="#1a1a1a" stroke-width="4" marker-end="url(#hp)"/>
+
+  <rect x="850" y="10" width="340" height="62" fill="#2c5c34" stroke="#2c5c34" stroke-width="3"/>
+  <text x="1020" y="52" text-anchor="middle" font-size="27" font-weight="bold" fill="#ffffff">Long-run development</text>
+  <rect x="850" y="72" width="340" height="200" fill="#f6f4ef" stroke="#2c5c34" stroke-width="3"/>
+  <text x="1020" y="116" text-anchor="middle" font-size="25" fill="#222222">what these ideas did</text>
+  <text x="1020" y="150" text-anchor="middle" font-size="25" fill="#222222">to living standards,</text>
+  <text x="1020" y="184" text-anchor="middle" font-size="25" fill="#222222">over centuries</text>
+  <text x="1020" y="243" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Outcomes from WP1</text>
+</svg>

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Slides_JMP.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, inverse, middle
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.pull-right-extra-narrow {
+  float: right;
+  width: 20%;
+}
+
+.pull-center {
+  margin: 0 auto;
+  width: 44%;
+}
+.pull-center-wide {
+  margin: 0 auto;
+  width: 66%;
+}
+.pull-center-medium {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.eq150 {
+  font-size: 1.25em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+
+.blue {
+  color: #2c4f8a
+}
+
+.chaosred {
+  color: #b33d3d
+}
+
+/* Painting slide: text box over a full-bleed image */
+.overlay-box {
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  padding: 0.6em 1.1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+.overlay-box h1, .overlay-box h2 {
+  color: #fff;
+  margin: 0.2em 0 0.3em 0;
+}
+.overlay-spoiler {
+  margin-top: 0.8em;
+}
+.title-sm h1 {
+  font-size: 34px;
+}
+.boe-left {
+  float: left;
+  clear: left;
+  width: 37%;
+}
+.boe-right {
+  float: right;
+  width: 60%;
+}
+.boe-col, .boe-col p, .boe-col li {
+  font-size: 20px;
+}
+.gmap-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.regtab table {
+  font-size: 17px;
+  margin: 0 auto;
+}
+.regtab td, .regtab th {
+  padding: 4px 12px;
+  text-align: center;
+}
+.regtab td:first-child, .regtab th:first-child {
+  text-align: left;
+}
+.bigq {
+  font-size: 220px;
+  line-height: 1;
+  color: #b33d3d;
+  text-align: center;
+  font-weight: bold;
+}
+.bigq p {
+  margin: 0;
+}
+.map-inset {
+  position: absolute;
+  right: 3%;
+  bottom: 6%;
+  width: 24%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  padding: 0.4em;
+}
+.map-inset img {
+  width: 100%;
+  display: block;
+}
+.map-effect {
+  position: absolute;
+  left: 2%;
+  width: 17%;
+  top: 25%;
+  text-align: right;
+  line-height: 1;
+}
+.map-effect .num {
+  font-size: 3.6em;
+  font-weight: bold;
+  color: #d9730d;
+}
+.map-effect .lab {
+  font-size: 0.85em;
+  color: #333;
+}
+.remark-slide-content .footnote {
+  left: 64px;
+  right: 64px;
+}
+.overlay-narrow {
+  max-width: 9em;
+  margin-left: -1.5em;
+}
+.remark-slide-content.bottom .overlay-box {
+  margin-bottom: 1.8em;
+}
+.overlay-credit {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: 0.55em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+&lt;/style&gt;
+
+# A Perfect Storm
+## First-Nature Geography and Economic Development
+
+### **Christian Vedel**,
+### University of Southern Denmark
+
+### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+
+### Updated 2026-10-28
+
+.footnote[
+.left[
+.small123[
+*Paper: [arxiv.org/abs/2408.00885](https://arxiv.org/abs/2408.00885). Replication package: [github.com/christianvedels/A_perfect_storm](https://github.com/christianvedels/A_perfect_storm)*
+]
+]
+]
+
+???
+(⏱ minutes on this slide / cumulative minutes at the end of it / main-talk slides left; 30-minute plan, Other work slides not counted)
+⏱ 0.5 / 0.5 / 31
+STRUCTURE (fractal) — each layer retells the whole story in more detail:
+- By minute 4: painting + map + live map
+- By minute 6.5: who I am, the covid-vacation pictures, the two pillars ("if I were out of time, I would end here")
+- By minute 9: the question and the literature
+- By minute 18.5: one full pass through the evidence
+- By minute 30: mechanisms, the mirror experiment
+- By minute 60: ongoing work and agenda
+- Up to 120: deep dives after the conclusion
+SECRET LINKS: click "SDU" in the logo -&gt; conclusion; click the twig in the logo -&gt; ongoing work and agenda. Same corner works invisibly on dark slides.
+
+---
+name: opening
+class: left, top
+background-image: url(Figures/locher_kuling_KKS1399.jpg)
+background-size: cover
+
+.overlay-box[
+## Why do some places prosper while others do not?
+
+What is the role of first-nature geography?
+]
+
+.overlay-credit[
+Carl Locher, *Frisk kuling i Sundet* (1892). SMK, KKS1399, public domain.
+]
+
+--
+
+.overlay-box.overlay-spoiler[
+**What I do:** in 1825 a storm suddenly changed first-nature geography. I follow the region through **millions of individual census records, 1787–1901**.
+]
+
+--
+
+.overlay-box.overlay-spoiler[
+**Trade followed. A generation later, population was 27% higher, with more farmers, fishermen and textile workers.**
+]
+
+???
+⏱ 2 / 2.5 / 30
+- WHY (box 1): explaining prosperity is one of the biggest asks in economics. The tension: first nature (geography) and second nature (institutions, what people build) are almost impossible to disentangle, because they arrive together.
+- WHAT (box 2): a natural experiment — first nature suddenly changed — observed in millions of individual census records, 1787–1901.
+- RESULT (box 3): trade followed; +27% population a generation later, with an occupational shift towards farmers, fishermen and textile workers; the mirror experiment 700 years earlier.
+
+---
+name: map
+class: center
+
+&lt;img src="Figures/Map_nobg.png" width="72%" style="display: block; margin: auto;" /&gt;
+
+--
+
+.map-effect[&lt;span class="num"&gt;+27%&lt;/span&gt;&lt;br&gt;&lt;span class="lab"&gt;population by 1901&lt;/span&gt;]
+
+???
+⏱ 0.5 / 3 / 29
+- This map is the whole story. Before 1834 a merchant in the west Limfjord sailed east via Aalborg and round the top of Jutland. Then the storm opened the western route.
+- "If I were already out of time, I would end here."
+- END OF LAYER 1 after the live map (minute 4).
+
+---
+name: gmap
+class: hide-logo
+
+&lt;iframe class="gmap-frame" src="https://maps.google.com/maps?q=56.700,8.242&amp;t=k&amp;z=11&amp;output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"&gt;&lt;/iframe&gt;
+
+???
+⏱ 1 / 4 / 28
+- Live Google Maps (satellite), centred on the Thyborøn channel. Zoom out to show the whole Limfjord and the route east to Aalborg.
+- Needs an internet connection. If it does not load, the map on the previous slide tells the same story.
+
+---
+name: profile
+class: middle
+# About me
+
+.pull-left-wide[
+- **Economist** at the University of Southern Denmark
+- **I build and use machine-learning tools** to turn historical sources into data
+- **I find natural experiments** to give causal answers to big questions in long-run development
+
+*Always curious about the causes of things: science, nature, society, history …*
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/ai_cosmos_documents.jpg" width="80%" /&gt;
+
+&gt; *Today: one natural experiment — and the tools it needed.*
+]
+
+???
+⏱ 1 / 5 / 27
+- 60 seconds. Say it in your own words.
+
+---
+name: origin
+# On a vacation during covid...
+
+.pull-left-wide[
+- Summer 2020: cycling along the Agger isthmus
+- Local maritime history: the storm, the channel, the fishing towns
+- The work of maritime historian **Bo Poulsen** (Aalborg University) — this paper is in large part a quantitative test of it
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/photo_isthmus_bike.jpg" width="100%" /&gt;
+]
+
+???
+⏱ 0.5 / 5.5 / 26
+- Personal hook; keep it to 30 seconds.
+
+---
+name: thyboron
+class: center
+# More pictures
+
+.pull-left[
+&lt;img src="Figures/photo_thyboron.jpg" width="100%" /&gt;
+]
+
+.pull-right[
+&lt;img src="Figures/photo_fish.jpg" width="70%" /&gt;
+]
+
+???
+⏱ 0.5 / 6 / 25
+- The town on the channel opened by the 1862 storm — a fishing port today.
+
+---
+name: pillars
+class: middle
+# Two pillars
+
+&lt;img src="Figures/pillars.svg" width="88%" style="display: block; margin: auto;" /&gt;
+
+???
+⏱ 0.5 / 6.5 / 24
+- Applications answer the big question; the tools make them possible. Today's paper sits on top of both.
+
+---
+name: nightlights
+class: left, bottom, hide-logo
+background-image: url(Figures/The_earth_at_night_greyscale.png)
+background-size: cover
+background-position: center
+
+.overlay-box[
+### Henderson et al. (2018)
+- 24 first-nature attributes explain **47%** of the variation in night lights
+- Can we observe the **dynamics** of this happening?
+- What if we **randomly changed** first nature?
+]
+
+.overlay-credit[
+NASA Earth Observatory (2012), via Wikimedia Commons
+]
+
+???
+⏱ 1 / 7.5 / 23
+- Geography is hard to study because it doesn't move. Here it moved — twice.
+
+---
+name: literature
+# Where this paper fits
+
+.panelset[
+.panel[.panel-name[Geography vs institutions]
+
+.pull-left[
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:2.2em;width:2.2em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2c4f8a;overflow:visible;position:relative;"><path d="M240.1 4.2c9.8-5.6 21.9-5.6 31.8 0l171.8 98.1L448 104l0 .9 47.9 27.4c12.6 7.2 18.8 22 15.1 36s-16.4 23.8-30.9 23.8H32c-14.5 0-27.2-9.8-30.9-23.8s2.5-28.8 15.1-36L64 104.9V104l4.4-1.6L240.1 4.2zM64 224h64V416h40V224h64V416h48V224h64V416h40V224h64V420.3c.6 .3 1.2 .7 1.8 1.1l48 32c11.7 7.8 17 22.4 12.9 35.9S494.1 512 480 512H32c-14.1 0-26.5-9.2-30.6-22.7s1.1-28.1 12.9-35.9l48-32c.6-.4 1.2-.7 1.8-1.1V224z"/></svg>
+
+### Institutions
+Acemoglu, Johnson &amp; Robinson (2001); Rodrik, Subramanian &amp; Trebbi (2004)
+]
+
+.pull-right[
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:2.2em;width:2.2em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2c5c34;overflow:visible;position:relative;"><path d="M256 32c12.5 0 24.1 6.4 30.8 17L503.4 394.4c5.6 8.9 8.6 19.2 8.6 29.7c0 30.9-25 55.9-55.9 55.9H55.9C25 480 0 455 0 424.1c0-10.5 3-20.8 8.6-29.7L225.2 49c6.6-10.6 18.3-17 30.8-17zm65 192L256 120.4 176.9 246.5l18.3 24.4c6.4 8.5 19.2 8.5 25.6 0l25.6-34.1c6-8.1 15.5-12.8 25.6-12.8h49z"/></svg>
+
+### Geography
+Henderson et al. (2018); Bleakley &amp; Lin (2012); Diamond (1997)
+]
+
+**The gap:** geography rarely moves — so its effect is hard to separate from what grew around it.
+]
+
+.panel[.panel-name[First vs second nature]
+
+.pull-left[
+<svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:2.2em;width:2.48em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#2c4f8a;overflow:visible;position:relative;"><path d="M269.5 69.9c11.1-7.9 25.9-7.9 37 0C329 85.4 356.5 96 384 96c26.9 0 55.4-10.8 77.4-26.1l0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 149.7 417 160 384 160c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4C42.8 92.6 61 83.5 75.3 71.6c11.1-9.5 27.3-10.1 39.2-1.7l0 0C136.7 85.2 165.1 96 192 96c27.5 0 55-10.6 77.5-26.1zm37 288C329 373.4 356.5 384 384 384c26.9 0 55.4-10.8 77.4-26.1l0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 437.7 417 448 384 448c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4c18.1-4.2 36.2-13.3 50.6-25.2c11.1-9.4 27.3-10.1 39.2-1.7l0 0C136.7 373.2 165.1 384 192 384c27.5 0 55-10.6 77.5-26.1c11.1-7.9 25.9-7.9 37 0zm0-144C329 229.4 356.5 240 384 240c26.9 0 55.4-10.8 77.4-26.1l0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 293.7 417 304 384 304c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4c18.1-4.2 36.2-13.3 50.6-25.2c11.1-9.5 27.3-10.1 39.2-1.7l0 0C136.7 229.2 165.1 240 192 240c27.5 0 55-10.6 77.5-26.1c11.1-7.9 25.9-7.9 37 0z"/></svg>
+
+### First nature
+Coasts, rivers, soil — **what places are given**
+
+.small123[Shifting rivers and routes in the ancient world: Seror (2020); Bakker et al. (2021); Allen et al. (2023)&lt;br&gt;
+Single channels: soil (Andersen et al., 2016); coal (Fernihough &amp; O'Rourke, 2020); fish (Dalgaard et al., 2020)]
+]
+
+.pull-right[
+<svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:2.2em;width:2.48em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#b33d3d;overflow:visible;position:relative;"><path d="M64 32C46.3 32 32 46.3 32 64V304v48 80c0 26.5 21.5 48 48 48H496c26.5 0 48-21.5 48-48V304 152.2c0-18.2-19.4-29.7-35.4-21.1L352 215.4V152.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4V64c0-17.7-14.3-32-32-32H64z"/></svg>
+
+### Second nature
+Ports, railways, density — **what people build**
+
+.small123[The Berlin Wall: Redding &amp; Sturm (2008); Ahlfeldt et al. (2015)&lt;br&gt;
+Railroads and canals: Donaldson &amp; Hornbeck (2016); Maurer &amp; Rauch (2022)]
+]
+
+Bosker (2022) calls for natural experiments. **Here, a storm moved first nature.**
+]
+]
+
+???
+⏱ 1.5 / 9 / 22
+GEOGRAPHY VS INSTITUTIONS tab:
+- Large shocks wash out (Davis &amp; Weinstein, 2002) or persist through path dependence (Bleakley &amp; Lin, 2012). Deep-history first nature: Allen et al. (2023); Matranga (2024).
+
+FIRST VS SECOND NATURE tab:
+- "Think of the Berlin Wall papers — but the wall here is a sand bar, and nature moved it, in both directions."
+- Terms: Cronon (1991), Krugman (1993). Other second-nature shocks: wartime bombing (Davis &amp; Weinstein, 2002), railways, canals.
+END OF LAYER 2 (by minute 9).
+
+---
+name: setting
+class: left, bottom
+background-image: url(Figures/smidth_fur_marked_KMS7589.jpg)
+background-size: cover
+
+.overlay-box[
+## The Limfjord: Brief historical background
+
+A protected inland sea — with one exit, until 1825.
+]
+
+.overlay-credit[
+Hans Smidth, *Fur marked* (1860–1900). SMK, KMS7589, public domain.
+]
+
+.map-inset[![](Figures/Map_inset.png)]
+
+???
+⏱ 0.5 / 9.5 / 21
+- Fur is an island in the Limfjord — a market there in the decades after the opening.
+- LAYER 3 starts (minute 9): one full pass, to minute 18.5.
+
+---
+name: timeline
+# Timeline
+
+.pull-left-wide[
+#### Pre-event
+- **1086–1208:** the western outlet silts shut (land rise since the last ice age); the west Limfjord becomes a dead end
+- **1672:** Aalborg, in the east, is Denmark's second-largest town; the other Limfjord towns lag far behind
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/Stenkul_from_Newcastle.PNG" width="100%" /&gt;
+
+.small123[*Local newspaper: a ship arrives with coal from Newcastle*]
+]
+
+--
+
+.pull-left-wide[
+#### Event
+- **1825:** a storm breaches the Agger Isthmus; **1825–28:** a fish windfall in the brackish fjord
+- **1834:** ships pass regularly through the new, natural channel
+- **1841:** independent trading rights for west Limfjord market towns
+- **1840s–60s:** new ports, a steam route to England, the canal at Løgstør (1861)
+- **1860–1901:** stronger growth
+]
+
+???
+⏱ 2 / 11.5 / 20
+- Modelled on the PhD defence timeline slide.
+- The decree is 1841, seven years after navigability. The claim is that the *geography* moved exogenously, twice — not that nobody responded.
+- Answers "why the lag?": the geography moved on its own; realising its value took a generation of adaptation.
+
+---
+name: divider-data
+class: inverse, center, middle
+
+# Data and empirical strategy
+
+???
+⏱ 0 / 11.5 / — (divider, not counted in slides left)
+
+---
+name: data-census
+# Population and occupations: the census
+
+.pull-left-wide[
+- **Link Lives** census microdata, **1787–1901**, aggregated to **1,589 parishes** with consistent borders
+- Outcomes: population, **occupations**, **child–woman ratio**, born in another county
+- **Occupations come as free text** ⇒ a tool I built: **OccCANINE**
+
+.small123[
+| Census entry | | HISCO |
+|:--|:--|:--|
+| *Huusmand og Fisker* | cottager and fisherman | 62105 + 64100 |
+| *Huusmand lever af sin Jordlod* | cottager, lives off his plot | 61115 |
+| *Inderste og Dagleier* | lodger and day labourer | 99920 |
+| *Væversvend* | journeyman weaver | 75400 |
+| *Skipper* | ship's master | 04217 |
+]
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/census_1840.jpg" width="62%" /&gt;
+
+.small123[*The 1840 census (Wikimedia Commons, public domain)*]
+]
+
+???
+⏱ 0.5 / 12 / 19
+- Without the tool, no occupational results. Explain in one breath, then move on.
+- Examples are real Danish census entries from the OccCANINE validation data (DK census), shown with OccCANINE's HISCO codes. One entry can hold two occupations.
+
+---
+name: occcanine
+# A tool this paper needed: OccCANINE
+
+.chaosred[**A separate paper:** *Breaking the HISCO Barrier* — Dahl, Johansen &amp; Vedel — [arXiv 2402.13604](https://arxiv.org/abs/2402.13604)]
+
+.pull-left-wide[
+- Maps free-text occupational descriptions to **HISCO** codes, in **13 languages**
+- Fine-tuned on **15.8 million** description–code pairs from 29 sources; **96%** accuracy
+- Open source: **9,348+** downloads
+- EHES WP 255; R&amp;R *Explorations in Economic History*
+]
+
+&lt;br&gt;
+
+&lt;img src="Figures/occcanine_simple.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+???
+⏱ 0.5 / 12.5 / 18
+
+---
+name: occcanine-architecture
+# How OccCANINE works
+
+.chaosred[**A separate paper:** *Breaking the HISCO Barrier* — Dahl, Johansen &amp; Vedel — [arXiv 2402.13604](https://arxiv.org/abs/2402.13604)]
+
+&lt;img src="Figures/occcanine_architecture.png" width="72%" style="display: block; margin: auto;" /&gt;
+
+.footnote[.small123[Character-level encoder (CANINE) with two decoders: a flat classifier ("fast") and a sequential, digit-by-digit transformer decoder ("good").]]
+
+???
+⏱ 0.5 / 13 / 17
+
+---
+name: occcanine-census
+# OccCANINE enabled this project
+
+&lt;img src="Figures/occcanine_census_pipeline.svg" width="88%" style="display: block; margin: auto;" /&gt;
+
+???
+⏱ 0.5 / 13.5 / 16
+- Every occupational description in the Danish censuses, 1787–1901, goes in as free text; HISCO codes come out.
+- The examples are real census entries (see the census slide). One entry can hold two occupations.
+- Time: by hand at 10 sec. per record (the benchmark in Breaking the HISCO Barrier): 13 mio. x 10 s = 36,000 hours of non-stop work (about 4 years round the clock; 22 work-years at 1,650 h/year).
+- OccCANINE (paper benchmark, laptop with NVIDIA Quadro T2000 4GB): 10,000 records in 1 min 38 s (flat decoder) =&gt; 13 mio. in ~35 hours. Sequential decoder: 8 min 56 s per 10,000 =&gt; ~8 days.
+
+---
+name: data-str
+# Trade: the Sound Toll registers
+
+.pull-left[
+- Every ship passing Elsinore, **1497–1857** — 1.8 million passages
+- Digitised by the University of Groningen (Veluwenkamp &amp; Woude)
+- Ships from Limfjord ports, by part of the fjord: west, middle, east
+- Eastbound trade only: the westward route bypasses Elsinore
+]
+
+.pull-right[
+&lt;img src="Figures/str_page_1734.jpg" width="85%" /&gt;
+
+.small123[*A page from the Sound Toll Register, 1734 (rug.nl)*]
+]
+
+???
+⏱ 0.5 / 14 / 15
+
+---
+name: strategy
+class: middle
+# Empirical strategy
+
+.pull-left[
+.small123[
+`$$\log(y_{it}) = \sum_{t} \beta_t \, Affected_i \times Year_t + \alpha_i + \delta_t + \varepsilon_{it}$$`
+]
+
+*Affected* is either
+- **Dummy:** parish in the west Limfjord, or
+- **Market access:** change in log market access after the breach
+
+&lt;img src="Figures/Map_nobg.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+.small123[
+`$$MA_i = \sum_{h \in \mathcal{H}} CostDist(i,h)^{\theta}, \quad \theta = -1$$`
+]
+
+- Least-cost paths over land and sea to **126 Danish ports**; land 10× sea
+- **Identification:** absent the storm, affected parishes would have trended like other Danish parishes
+]
+
+???
+⏱ 2 / 16 / 14
+
+---
+name: divider-results
+class: inverse, center, middle
+
+# Results
+
+???
+⏱ 0 / 16 / — (divider, not counted in slides left)
+
+---
+name: trade
+# Trade followed the geography
+
+.pull-left-wide[
+&lt;img src="Figures/Ship_trafic.png" width="100%" /&gt;
+]
+
+.pull-right-narrow[
+- **Sound Toll registers:** 1.8 million passages through the Øresund, 1497–1857
+- West and middle Limfjord ports **appear after the opening** and grow after the **1841** trading rights
+- No comparable break for East Limfjord (Aalborg) or the reference series
+
+[Regression table](#trade-table) · [Ships through the channel](#channel-traffic)
+]
+
+???
+⏱ 1 / 17 / 13
+- Main trade result. Be upfront: these are eastbound passages; part of the growth follows the 1841 rights.
+- Direct westward evidence (ships through the channel itself) is in the deep dives.
+
+---
+name: pop
+# Population: +27% within a generation
+
+.pull-left[
+&lt;img src="Figures/pop_dummy.png" width="86%" /&gt;
+
+.small123[*Dummy approach*]
+]
+
+.pull-right[
+&lt;img src="Figures/pop_MA.png" width="86%" /&gt;
+
+.small123[*Market access approach*]
+]
+
+.footnote[.small123[No pre-trends (1787, 1801). By 1901: **0.24 log points (27.0%)**; market-access elasticity **1.6**, similar in relative terms to the Panama Canal (Rauch &amp; Maurer).]]
+
+???
+⏱ 1.5 / 18.5 / 12
+
+---
+name: mechanisms
+class: left, top
+background-image: url(Figures/kroyer_foundry_KMS3605.jpg)
+background-size: cover
+
+.overlay-box[
+## Mechanisms
+
+How the local economy changed — and who changed it.
+]
+
+.overlay-credit[
+P.S. Krøyer, *Fra Burmeister &amp; Wains jernstøberi* (1885). SMK, KMS3605, public domain.
+]
+
+???
+⏱ 0.5 / 19 / 11
+LAYER 4 starts (minute 18.5): mechanisms, then the mirror, to minute 28.
+- Industrial work: the kind of production that grew in the west Limfjord (spinners, foundries).
+
+---
+name: occupations
+# What people did: farming, fishing and production
+
+.pull-left[
+&lt;img src="Figures/All_occupations_dummy.png" width="92%" /&gt;
+]
+
+.pull-right[
+- HISCO major groups in **1901** (coded with OccCANINE)
+- More **agricultural** (incl. fishing) and **production** workers where these already existed (intensive margin)
+- No new occupation types appear (extensive margin)
+
+&lt;img src="Figures/roos_cattle_market_KMS4793.jpg" width="70%" /&gt;
+
+.tiny123[Johann Heinrich Roos, *Et kvægmarked* (1676). SMK, KMS4793, public domain.]
+]
+
+???
+⏱ 1 / 20 / 10
+
+---
+name: occ-detail
+# Who exactly: fishermen, farmers, spinners
+
+.pull-left-wide[
+&lt;img src="Figures/Dummy_asi.png" width="85%" /&gt;
+]
+
+.pull-right-narrow[
+- **Fishermen** and **general farmers** grow
+- **Spinners and weavers** grow most among production workers
+- [Fishing early, spinning late](#fish-spin)
+
+&lt;img src="Figures/bloch_fish_KMS1085.jpg" width="55%" /&gt;
+
+.tiny123[Carl Bloch, *En kone, der sælger fisk* (1875). SMK, KMS1085, public domain.]
+]
+
+???
+⏱ 1.5 / 21.5 / 9
+
+---
+name: fertility
+# Growth from within: fertility, not migration
+
+.pull-left[
+**Child–woman ratio**
+&lt;img src="Figures/fertility_Dummy.png" width="80%" /&gt;
+]
+
+.pull-right[
+**Share born in another county**
+&lt;img src="Figures/born_different_share_Dummy.png" width="80%" /&gt;
+]
+
+.footnote[.small123[Child–woman ratio = children 1–5 / women 15–45; captures births *and* early survival. [Market-access versions](#fertility-ma) · [A younger population](#age).]]
+
+???
+⏱ 1 / 22.5 / 8
+- Post-Malthusian Denmark (Jensen et al. 2022). Don't say "entirely".
+
+---
+name: boe
+class: title-sm
+# Back of the envelope: can fertility explain the observed population growth?
+
+.boe-left.boe-col[
+**Setup**
+
+Take the fertility estimates and ask what they imply for population, holding **migration and mortality fixed**.
+]
+
+--
+
+.boe-right[
+&lt;img src="Figures/boe_fertility_pop.png" width="100%" /&gt;
+
+.small123[*Red: implied by fertility. Green: observed. Appendix Figure A7*]
+]
+
+--
+
+.boe-left.boe-col[
+- Diverge before 1860 (the salinity shock)
+- **Match by 1901:** 1.59 vs 1.59; 0.238 vs 0.239
+- ⇒ fertility accounts for the growth
+- Denmark was **post-Malthusian** by then (Jensen et al., 2022): more children suggests higher living standards, a speculative link to prosperity
+]
+
+???
+⏱ 1.5 / 24 / 7
+- Explain the setup BEFORE revealing the figure: the fertility result is a rate, the population result is a stock. A persistent rise in the birth rate compounds into a larger proportional gain in the stock.
+- CWR counts children 0–5, so divide by five for an annual rate; multiply by w_f (1801 share of women 15–44 in treated parishes, 0.219, stable over the period); cumulate over inter-census intervals (1825 as left boundary for 1834).
+- Post-Malthusian: Jensen, Pedersen, Radu &amp; Sharp (2022, EEH), "Arresting the Sword of Damocles": diminishing returns in Denmark until c. 1775, then the post-Malthusian era. In the paper, higher net fertility signals improved living standards (Jensen 2022; Klemp 2016). Keep it speculative.
+- By 1901: market access 1.593 implied vs 1.59 observed; dummy 0.238 vs 0.239 (paper, Appendix "From fertility effect to population effect").
+
+---
+name: morso
+# A local example: the Morsø foundry
+
+.pull-left-wide[
+- **Morsø Jernstøberi**, founded **1853** in Nykøbing Mors, on the Limfjord
+- Located where imported **British coal** and **Swedish iron** could now arrive by ship
+- Still making cast-iron stoves today
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/Morsoe.jpg" width="100%" /&gt;
+
+.small123[*Private picture from the house where I grew up*]
+]
+
+???
+⏱ 0.5 / 24.5 / 6
+
+---
+name: external-validity
+class: left, top, hide-logo
+background-image: url(Figures/gislev_hoard_pennies.jpg)
+background-size: cover
+background-position: center
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+.overlay-box[
+## What about external validity?
+
+- Ideally: the **same shock**, in **similar geography**
+- …in a society where everything else differs: economy, technology, culture, institutions, religion
+]
+
+.overlay-credit[
+Pennies from the Gislev Hoard, minted under Erik Menved (1286–1319); Gråbrødrekloster museum, Aalborg. Wmpearl, Wikimedia Commons, CC0.
+]
+
+--
+
+.overlay-box.overlay-spoiler[
+**I use the exact mirror event in the 12th century**
+]
+
+???
+⏱ 0.5 / 25 / 5
+- The coins hint at what is coming: pennies from the Gislev Hoard (Erik Menved), shown at the Gråbrødrekloster museum in Aalborg, on the Limfjord. Finds like these are the outcome in the mirror.
+- Build the tension: the ideal check on external validity is the same shock, same geography, different society.
+- Pause before the last bullet; then the next slide shows the mirror: the same channel, closing 700 years earlier.
+
+---
+name: mirror
+# The mirror: the same channel, closing
+
+.pull-left-wide[
+- In the Viking age the Limfjord had **two openings** — a protected shortcut between the North Sea and the Kattegat
+- The western outlet **silted shut between 1086 and 1208** (Saxo, historical and geological sources)
+- A very different society — other institutions, technology, trade partners. **Same geography**
+- Outcome: probability of **coin** and **building** finds over time
+
+&lt;img src="Figures/Hub2.jpg" width="62%" /&gt;
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/roerich_overseas_guests.jpg" width="100%" /&gt;
+
+.tiny123[Nicholas Roerich, *Guests from Overseas* (1901). Wikimedia Commons, public domain.]
+
+]
+
+???
+⏱ 1 / 26 / 4
+
+---
+name: arch-descriptive
+# Coin finds by region, before any adjustment
+
+.pull-left-wide[
+&lt;img src="Figures/Arch_descriptive.png" width="88%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/gislev_hoard_pennies.jpg" width="100%" /&gt;
+
+.tiny123[Pennies from the Gislev Hoard, minted under Erik Menved (1286–1319); Gråbrødrekloster museum, Aalborg. Wmpearl, Wikimedia Commons, CC0.]
+]
+
+.footnote[.small123[Raw counts: after the closure, the East Limfjord and the rest of Denmark grow while the West and Middle stagnate. But raw counts over-weight finds with wide date ranges — next slide.]]
+
+???
+⏱ 0.5 / 26.5 / 3
+
+---
+name: arch-source
+# Measuring the medieval economy
+
+.eq150[
+`$$\underbrace{P(\text{find in parish } i \mid t)}_{\text{what we want: activity in year } t} = 1 - \prod_{c=1}^{K_i}\Big(1 - \underbrace{P(t \mid c)}_{\text{what we have: date range of find } c}\Big)$$`
+]
+
+.pull-center-wide[
+- **Bayesian intuition:** a museum dates a coin to *1300–1535* — that is *P*(*t* | *c*), how likely each year is *given the find*. We invert it into how likely the parish *produced a find in year* *t*
+- **Source:** *Fund og Fortidsminder* — 3,411 coins (trade) and 4,396 buildings (settlement), 750–1500; Monte Carlo draws, bootstrapped standard errors
+- Parishes **matched on soil type**
+]
+
+.footnote[.small123[Finds as economic data: Ortman &amp; Lobo (2020); Barjamovic et al. (2019); Bakker et al. (2021); Allen et al. (2023); Boehm &amp; Chaney (2024). [Estimator](#arch-estimator) · [Matching](#arch-matching)]]
+
+???
+⏱ 0.5 / 27 / 2
+- Same approach in economics (paper, footnote and Section 4): Barjamovic, Chaney, Coşar &amp; Hortaçsu (2019, QJE); Bakker, Maurer, Pischke &amp; Rauch (2021); Allen, Bertazzini &amp; Heldring (2023); Boehm &amp; Chaney (2024). Settlement scaling: Ortman &amp; Lobo (2020, Science Advances).
+- Naive approach: a 1 in every year of the range — over-weights the vaguest finds (the descriptive figure).
+- Instead treat each range as a distribution; the product term is the probability that *none* of the parish's K finds dates to t, so one minus it is the probability of at least one.
+
+---
+name: arch
+# Closure ⇒ decline
+
+.pull-left[
+&lt;img src="Figures/arch_dummy_coins.png" width="90%" /&gt;
+
+.small123[*Coin finds*]
+]
+
+.pull-right[
+&lt;img src="Figures/arch_dummy_buildings.png" width="90%" /&gt;
+
+.small123[*Building finds*]
+]
+
+.footnote[.small123[Building finds fall from c. 1100; coin finds from c. 1200 and recover after 1400. [Market-access versions](#arch-ma).]]
+
+???
+⏱ 1 / 28 / 1
+End of the mirror experiment.
+
+END OF LAYER 4 (by minute 30).
+- Q&amp;A prep (threats slide dropped 2026-10-20): trading rights 1841 and new ports are part of the response; navigability from erosion, Thyborøn from a second storm; estimates are relative (some re-routing from Aalborg), and the mirror shows the reverse. Also: dune maintenance, Copenhagen in market access, spillovers, spatial standard errors.
+
+---
+name: conclusion
+# Conclusion
+
+.pull-left-wide[
+- A storm moved the geography; **trade followed**, and a generation later **population (+27%)** and more **farmers, fishermen and textile workers**, driven by **fertility**
+- The **same channel closing** 700 years earlier produced the mirror image
+- *In an age of climate change, we want to understand how the landscape affects the location of development and prosperity*
+]
+
+.pull-right-narrow[
+**Email:** [cvedel.eh@gmail.com](mailto:cvedel.eh@gmail.com)&lt;br&gt;
+**Website:** [christianvedels.github.io](https://christianvedels.github.io/)&lt;br&gt;
+**Twitter/X:** [@ChristianVedel](https://twitter.com/ChristianVedel)&lt;br&gt;
+**BlueSky:** [@christianvedel.bsky.social](https://bsky.app/profile/christianvedel.bsky.social)
+
+&lt;img src="Figures/Map_nobg.png" width="78%" /&gt;
+]
+
+.footnote[.small123[**Working paper:** Vedel, *A Perfect Storm*, [arXiv 2408.00885](https://arxiv.org/abs/2408.00885) (EHES WP 262). Full replication package available at [github.com/christianvedels/A_perfect_storm](https://github.com/christianvedels/A_perfect_storm).]]
+
+???
+⏱ 2 / 30 / 0
+Target of the secret logo link.
+
+---
+name: appendix
+class: inverse, center, middle
+
+# Appendix
+
+---
+name: age
+# A younger population
+
+.pull-left-wide[
+&lt;img src="Figures/Age_composition_Dummy.png" width="80%" /&gt;
+]
+
+.pull-right-narrow[
+- Age structure in **1901**
+- More young children, fewer older adults, relative to other parishes
+- What growth through fertility should look like
+]
+
+
+[Back to fertility](#fertility)
+
+---
+name: newspapers
+# Contemporaries noticed
+
+.pull-left-wide[
+&lt;img src="Figures/Mentions_of_agger_channel.png" width="90%" /&gt;
+]
+
+.pull-right-narrow[
+- Danish newspapers mentioning the Agger channel
+- Attention jumps after the breach and stays high while the channel carries traffic
+]
+
+
+[Back to the timeline](#timeline)
+
+---
+name: robustness
+# Robustness: comparison groups
+
+.pull-left[
+&lt;img src="Figures/Multiverse_MA.png" width="100%" /&gt;
+
+.small123[*Market access approach*]
+]
+
+.pull-right[
+&lt;img src="Figures/Multiverse_dummy.png" width="100%" /&gt;
+
+.small123[*Dummy approach*]
+]
+
+[Back to population](#pop)
+
+---
+name: robustness-param
+# Robustness: market access parameters
+
+&lt;img src="Figures/Multiverse_MA_param.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+[Back to the strategy](#strategy)
+
+---
+name: fish-spin
+# Fishing early, spinning late
+
+.pull-left[
+&lt;img src="Figures/fish_dummy.png" width="90%" /&gt;
+
+.small123[*Fishermen*]
+]
+
+.pull-right[
+&lt;img src="Figures/spinning_dummy.png" width="90%" /&gt;
+
+.small123[*Spinners and weavers*]
+]
+
+[Back to the occupations](#occ-detail)
+
+.footnote[.small123[Fishing responds from the 1840s; textile work only by 1901 — a sequence from the sea, to trade, to industry.]]
+
+
+---
+name: trade-table
+# Channel introduction and trade
+
+.regtab[
+| | (1) | (2) | (3) | (4) | (5) |
+|:--|:--:|:--:|:--:|:--:|:--:|
+| Dependent variable | traffic | traffic | log(traffic+1) | asinh(traffic) | 1[traffic &gt; 0] |
+| Estimator | Poisson | Poisson | OLS | OLS | OLS |
+| Post × east | −0.490\*\*&lt;br&gt;(0.217) | −0.482\*&lt;br&gt;(0.249) | −0.003&lt;br&gt;(0.092) | −0.023&lt;br&gt;(0.145) | 0.012&lt;br&gt;(0.174) |
+| Post × middle | 5.557\*\*\*&lt;br&gt;(0.215) | 11.76\*\*\*&lt;br&gt;(0.247) | 0.967\*\*\*&lt;br&gt;(0.058) | 1.215\*\*\*&lt;br&gt;(0.070) | 0.381\*\*\*&lt;br&gt;(0.023) |
+| **Post × west** | **4.129\*\*\***&lt;br&gt;(0.509) | **4.698\*\*\***&lt;br&gt;(0.471) | 0.382&lt;br&gt;(0.264) | 0.506&lt;br&gt;(0.329) | **0.319\*\***&lt;br&gt;(0.126) |
+| 1807–14 and 1825–33 excluded | No | Yes | No | No | No |
+| Observations | 13,356 | 11,214 | 13,356 | 13,356 | 13,356 |
+]
+
+[Back to the Sound Toll results](#trade)
+
+.footnote[.small123[Port-level panel from the Sound Toll registers. Standard errors clustered by port. ∗∗∗ p&lt;0.01, ∗∗ p&lt;0.05, ∗ p&lt;0.1. Paper, Table "Channel Introduction and Trade".]]
+
+???
+- West and middle Limfjord ports trade far more after the opening; no comparable rise for the east (Aalborg), which if anything loses.
+- Column (2) drops the Napoleonic war years and the years between the breach and navigability.
+- The log and asinh columns are imprecise for the west; the extensive margin (5) shows west ports start trading at all.
+
+---
+name: channel-traffic
+# Ships through the new channel
+
+.pull-left-wide[
+&lt;img src="Figures/Ship_trafic_channel.png" width="100%" /&gt;
+]
+
+.pull-right-narrow[
+- Ships passing the channel itself: **19** in 1835 `\(\Rightarrow\)` nearly **2,000** in 1855
+- Agger silts up in the 1860s; **Thyborøn**, opened by another storm in 1862, takes over
+]
+
+[Back to the Sound Toll results](#trade)
+
+---
+name: balance
+# Balance
+
+&lt;img src="Figures/Balancing_plot.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+[Back to the strategy](#strategy)
+
+---
+name: fertility-ma
+# Fertility and migration: market access versions
+
+.pull-left[
+&lt;img src="Figures/fertility_MA.png" width="80%" /&gt;
+
+.small123[*Child–woman ratio*]
+]
+
+.pull-right[
+&lt;img src="Figures/born_different_share_MA.png" width="80%" /&gt;
+
+.small123[*Born in another county*]
+]
+
+[Back to fertility](#fertility)
+
+---
+name: adaptation
+# Adaptation after the opening
+
+.pull-left[
+- **1840s:** new ports in all west Limfjord market towns
+- **1841:** independent trading rights
+- **1852:** first Danish steam route to England
+- **1856–61:** Frederik VII canal at Løgstør
+]
+
+.pull-right[
+&lt;img src="Figures/placat_1841.jpg" width="80%" /&gt;
+
+.small123[*Placat announcing trading rights for Limfjord market towns, 1841*]
+]
+
+[Back to the timeline](#timeline)
+
+---
+name: fish
+# The fish windfall
+
+&lt;img src="Figures/Herring_caught_Poulsen_et_al_2007.png" width="60%" style="display: block; margin: auto;" /&gt;
+.center[.small123[*Herring catch in the Limfjord (Poulsen et al., 2007)*]]
+
+[Back to the timeline](#timeline)
+
+---
+name: arch-estimator
+# From dating ranges to a panel
+
+.pull-left[
+- Have: `\(P(t \mid c)\)` for each find `\(c\)` (a dating range)
+- Want: `\(P(\{c\} \mid t)\)`, the probability of *any* find at site `\(i\)` in year `\(t\)`
+- Sample `\(t\)` for each find, count, repeat
+]
+
+.pull-right[
+.small123[
+`$$P(\{c\}\mid t)=\left[1-\prod_{c=1}^{K_i}\left(1-P(t\mid c)\right)\right]P(\{c\})$$`
+]
+- `\(P(t \mid c)\)` uniform over the range, or normal with `\(\sigma_c = (Year^{c}_{max}-Year^{c}_{min})/1.96\)`
+]
+
+[Back to the method](#arch-source)
+
+---
+name: arch-matching
+# Matching on soil type
+
+.pull-left[
+&lt;img src="Figures/Propensity_before.png" width="80%" /&gt;
+
+.small123[*Before matching*]
+]
+
+.pull-right[
+&lt;img src="Figures/Propensity_after.png" width="80%" /&gt;
+
+.small123[*After matching*]
+]
+
+[Back to the method](#arch-source)
+
+---
+name: arch-ma
+# Mirror experiment: market access approach
+
+.pull-left[
+&lt;img src="Figures/arch_MA_coins.png" width="100%" /&gt;
+
+.small123[*Coin finds*]
+]
+
+.pull-right[
+&lt;img src="Figures/arch_MA_buildings.png" width="100%" /&gt;
+
+.small123[*Building finds*]
+]
+
+[Back to the results](#arch)
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo, .logo-hidden {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 125px;
+  height: 60px;
+  z-index: 100;
+}
+.logo {
+  background-image: url(SDU_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* Two invisible hotspots on the logo (the logo image fills ~105 x 60 px):
+   - "SDU" letters and the department name -> conclusion
+   - the twig with the apple (top right)   -> appendix */
+.logo a, .logo-hidden a {
+  position: absolute;
+  display: block;
+  cursor: default;
+}
+.logo .hot-sdu, .logo-hidden .hot-sdu {
+  left: 0; top: 0; width: 68px; height: 60px;
+}
+.logo .hot-twig, .logo-hidden .hot-twig {
+  left: 68px; top: 0; width: 40px; height: 32px;
+}
+/* Job-market deck: no slide numbers */
+.remark-slide-number {
+  display: none;
+}
+</style>
+
+<script>
+// Secret shortcuts:
+//   click "SDU" in the logo        -> slide "conclusion"
+//   click the twig in the logo     -> slide "appendix"
+// On dark slides without a visible logo, the same corner is an invisible hotspot.
+document
+  .querySelectorAll('.remark-slide-content')
+  .forEach(el => {
+    const hidden = el.classList.contains('inverse') ||
+                   el.classList.contains('title-slide') ||
+                   el.classList.contains('hide-logo');
+    el.innerHTML += '<div class="' + (hidden ? 'logo-hidden' : 'logo') + '">' +
+      '<a class="hot-sdu" href="#conclusion"></a>' +
+      '<a class="hot-twig" href="#appendix"></a>' +
+      '</div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<style>
+.logo, .logo-hidden {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 125px;
+  height: 60px;
+  z-index: 100;
+}
+.logo {
+  background-image: url(SDU_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* Two invisible hotspots on the logo (the logo image fills ~105 x 60 px):
+   - "SDU" letters and the department name -> other work
+   - the twig with the apple (top right)   -> ongoing work and agenda */
+.logo a, .logo-hidden a {
+  position: absolute;
+  display: block;
+  cursor: default;
+}
+.logo .hot-sdu, .logo-hidden .hot-sdu {
+  left: 0; top: 0; width: 68px; height: 60px;
+}
+.logo .hot-twig, .logo-hidden .hot-twig {
+  left: 68px; top: 0; width: 40px; height: 32px;
+}
+/* Job-market deck: no slide numbers */
+.remark-slide-number {
+  display: none;
+}
+</style>
+
+<script>
+// Secret shortcuts:
+//   click "SDU" in the logo        -> slide "ongoing" (other work)
+//   click the twig in the logo     -> slide "programme" (ongoing work and agenda)
+// On dark slides without a visible logo, the same corner is an invisible hotspot.
+document
+  .querySelectorAll('.remark-slide-content')
+  .forEach(el => {
+    const hidden = el.classList.contains('inverse') ||
+                   el.classList.contains('title-slide') ||
+                   el.classList.contains('hide-logo');
+    el.innerHTML += '<div class="' + (hidden ? 'logo-hidden' : 'logo') + '">' +
+      '<a class="hot-sdu" href="#ongoing"></a>' +
+      '<a class="hot-twig" href="#programme"></a>' +
+      '</div>';
+  });
+</script>
