@@ -1,0 +1,194 @@
+---
+title: "The Seminar Series"
+output:
+  xaringan::moon_reader:
+    seal: false
+    includes:
+      after_body: insert-logo.html
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+editor_options:
+  chunk_output_type: console
+---
+class: center, inverse, middle
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#808080", location = "top")
+```
+
+```{css echo=FALSE}
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
+
+.pull-left-wide {
+  float: left;
+  width: 66%;
+}
+.pull-right-wide {
+  float: right;
+  width: 66%;
+}
+.pull-right-wide ~ p {
+  clear: both;
+}
+
+.pull-left-narrow {
+  float: left;
+  width: 30%;
+}
+.pull-right-narrow {
+  float: right;
+  width: 30%;
+}
+
+.tiny123 {
+  font-size: 0.40em;
+}
+
+.small123 {
+  font-size: 0.80em;
+}
+
+.large123 {
+  font-size: 2em;
+}
+
+.red {
+  color: red
+}
+
+.orange {
+  color: orange
+}
+
+.green {
+  color: green
+}
+```
+
+
+
+# The Seminar Series
+## How it works now, and what should we change?
+
+### Christian Vedel and Matthew Curtis,<br>Department of Economics
+
+### Email: [christian-vs@sam.sdu.dk](mailto:christian-vs@sam.sdu.dk)
+
+### Quarterly meeting, 2026-10-29
+
+???
+15 minutes in total: 5 on how the seminar works, 5 at the tables, 5 in plenum.
+
+---
+class: middle
+# Today
+.pull-left-wide[
+**15 minutes, three parts:**
+
+- **Part 1 (5 min):** How the seminar works now
+- **Part 2 (5 min):** Discuss with your neighbours
+- **Part 3 (5 min):** Open floor
+]
+
+.pull-right-narrow[
+![Trees](Figures/Trees1.jpg)
+]
+
+???
+Christian does part 1 and introduces part 2. Matt and Christian take the open floor together.
+
+---
+# From suggestion to departure
+
+.panelset[
+.panel[.panel-name[Before the visit]
+
+1. **Suggest** .small123[*(ongoing)*]<br>Colleagues send speaker suggestions to the organisers. The colleague who suggests usually hosts.
+
+2. **Invite** .small123[*(the semester before)*]<br>We invite the speaker with the open Tuesdays. They pick three dates; we confirm and explain the reimbursement rules.
+
+3. **Gather details** .small123[*(a few months ahead)*]<br>Travel dates, title and abstract, the paper, and any dietary needs.
+
+4. **Book** .small123[*(once travel is known)*]<br>Order form to the secretariat, who book the hotel (two nights) and the dinner restaurant.
+]
+
+.panel[.panel-name[The week before]
+
+1. **Start of week: announcement**<br>Email to everyone in Econ and CPOP: a short bio of the speaker, their website, the paper, and the sign-up form.
+
+2. **Thursday 16:00: sign-up closes**<br>Office meetings (30 min), lunch, and dinner, through Microsoft Forms.
+
+3. **Friday: schedule out**<br>An algorithm builds the day's schedule from the sign-ups:
+    - It fits as many people as possible into one unbroken block of meetings
+    - Anyone already joining lunch or dinner gives up their slot if someone else would otherwise miss the speaker
+    - The schedule is then sent to colleagues and the speaker
+]
+
+.panel[.panel-name[The visit]
+
+.pull-left[
+**Monday: arrival**<br>The speaker arrives in Odense (usually by train from Copenhagen Airport) and checks in at Hotel Odeon.
+
+**Wednesday: departure**<br>The speaker leaves. We send a thank-you with the reimbursement form; receipts are due within a week.
+]
+
+.pull-right[
+**Tuesday: seminar day**
+- **10:00** Office meetings
+- **~12:00** Lunch with colleagues
+- **12:45–13:45** .red[**Seminar**]
+- **13:45** PhD student group
+- **14:30–16:30** Office meetings
+- **Before dinner** We often go for drinks
+- **~18:00** Dinner
+]
+]
+]
+
+???
+Click through the three tabs. Point: suggestions can come from anyone in the department. Announcement, sign-up and schedule all happen the week BEFORE the visit.
+
+---
+# Discuss with your neighbours
+
+```{r echo=FALSE}
+library(countdown)
+countdown(5, 0, top=TRUE)
+```
+
+.pull-left-wide[
+1. **Who should we invite?**<br>Up-and-coming researchers or established seniors?
+
+2. **Balance of topics and disciplines:**<br>Do we have too much history?
+
+3. **Practicalities:**<br>Seminar length, chairing, office meetings, dinners, sign-up. Anything to change here?
+
+4. **Anything else?**
+]
+
+???
+Ask people to talk with the people next to them for 5 minutes. Then open the floor on the same slide (5 min); collect points and follow up by email.
