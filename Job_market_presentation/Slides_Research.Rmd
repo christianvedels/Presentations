@@ -290,6 +290,12 @@ inline_svg <- function(path, width = "100%") {
   border-left: 6px solid #b33d3d;
   padding: 0.2em 0.8em 0.2em 0.4em;
 }
+.side-note {
+  position: absolute;
+  right: 64px;
+  top: 190px;
+  width: 27%;
+}
 .overlay-corner {
   margin-left: -2.5em;
   margin-top: -0.9em;
@@ -421,6 +427,11 @@ name: origins
 - **Institutions matter:** rules that protect property and include many let prosperity last (Acemoglu, Johnson & Robinson 2001; Dell 2010; [Görges et al. 2026](#proj-tracks))
 ]
 
+.pull-right-narrow[
+![Earth at night](Figures/earth_at_night_small.jpg)
+.small123[*The Earth at night. NASA Earth Observatory (2012), via Wikimedia Commons.*]
+]
+
 --
 
 .pull-left-wide[.ideas-box[
@@ -428,6 +439,12 @@ name: origins
 - **Recognition matters:** people want dignity, not only goods; Grundtvig's folk high schools gave it to Danish peasants (Fukuyama 1992; 2015)
 - **Ideas matter:** useful knowledge and new values drove growth (Mokyr 2016; McCloskey 2010; Dittmar 2011; Cinnirella et al. 2025) and travel between societies (Graeber & Wengrow 2021)
 ]]
+
+--
+
+.pull-left-wide[
+**With ML it is now time for memetics**
+]
 
 ???
 - Geography and institutions first; then the channels that live in people's heads, highlighted, because that is where this project sits.
@@ -494,6 +511,11 @@ name: wp2-darwin
 - **A different kind of explanation:** not rational agents adopting the most productive idea (Bisin & Verdier 2001), but ideas that stick
 - **Evolutionary biology:** genes spread by getting themselves copied; the meme is the cultural replicator ([Dawkins 1976](https://en.wikipedia.org/wiki/The_Selfish_Gene))
 - **Universal Darwinism:** anything copied with variation and selection evolves, ideas included, useful or harmful ([Blackmore 1999](https://www.susanblackmore.uk/the-meme-machine/))
+]
+
+.pull-right-narrow[
+<img src="Figures/ai_cosmos_documents.jpg" style="display:block; margin:0 auto; max-height:400px;">
+.small123[*AI-generated illustration.*]
 ]
 
 --
@@ -594,10 +616,39 @@ inline_svg("Figures/meme_dag.svg", "45%")
 .small123[*Mirrors how GWAS finds genes (Uffelmann et al. 2021). Tested by [invariant causal prediction](#wp2-invariance) (Peters, Bühlmann & Meinshausen 2016).*]
 ]
 
+--
+
+.side-note[.ideas-box[
+**The RQ in terms of ML is whether we can learn $\kappa$.** It's [causal discovery](#wp2-invariance).
+]]
+
 ???
 - Horizontal arrows: replication. Vertical arrows: effects. m′ is a mutation; a different meme, a different outcome.
 - One option: put future expressions into 𝒴; then replication and effects are one condition.
 - Finding κ is the same as finding the memes: a clustering problem in embedding space with a causal criterion.
+
+---
+name: wp2-embedding
+# WP2: Memes live in embedding space
+
+.pull-left-narrow[
+- Language models turn text into vectors: **meaning becomes geometry**
+- *king* − *male* + *female* ≈ *queen*
+- **A meme is a region:** its expressions cluster together
+- New here: regions defined by what ideas **do**, not by how they sound
+]
+
+.pull-right-wide[
+<img src="Figures/kingqueen.gif" style="display:block; margin:0 auto; width:72%;">
+.small123[*Figure from Johansen, Koschnick & Vedel (2026), "How to deal with machine learning bias in economic history", [arXiv 2606.28063](https://arxiv.org/abs/2606.28063). Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
+]
+
+.footnote[.small123[[ML bias in economic history](#ml-bias)]]
+
+???
+- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
+- The same logic extends to longer texts in BERT-style models; cosine similarity is the workhorse.
+- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
 
 ---
 name: wp2-claims
@@ -619,17 +670,14 @@ name: wp2-claims
 ```{r echo=FALSE}
 inline_svg("Figures/meme_pipeline.svg", "88%")
 ```
-
-.small123[*Curiosity:* could the models find memes on their own? Search for embeddings that reproduce themselves.]
 ]
 
-.footnote[.small123[[Memes in embedding space](#wp2-embedding) · [A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
+.footnote[.small123[[A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
 
 ???
 - Claim 1 is why it is worth doing: measure the memes and you measure what shapes society.
 - Claim 2 is why it is feasible: each tool has one job (the pipeline). Interpretability finds the space, causal discovery finds the units, and the payoff is what they did to long-run development.
 - Box 1 citations are the application's: ideas sit in almost-orthogonal directions (Elhage et al. 2022; Gurnee & Tegmark 2023), and models converge on one representation (Huh et al. 2024; Jha et al. 2025).
-- Quirky aside, not developed: a meme is a replicator, so look for directions in embedding space that reproduce themselves across generations of text. Mention it, don't defend it.
 
 Q&A prep (not for the slide):
 - Claim 1 risks being true by definition. It is a claim only with **sparsity** (few memes cover many expressions) and **modularity** (a meme does the same thing in any constellation). If interactions dominate (epistasis), the constellation is the unit.
@@ -649,7 +697,7 @@ knitr::include_graphics("Figures/poc_full_shares_slide.png")
 ]
 
 .pull-right-narrow[
-**Data:** full text of **13,008** patents (Chen et al.), linked to patent quality
+**Data:** full text of **13,008** patents ([Berkes, Chen & Tranchero 2026](https://doi.org/10.1016/j.respol.2025.105347)), linked to patent quality
 
 **What we see**
 - Steam, railways, telegraph rise with the Industrial Revolution
@@ -661,7 +709,7 @@ knitr::include_graphics("Figures/poc_full_shares_slide.png")
 
 ???
 - Proof of concept, not a result. It shows the pipeline runs end to end on real historical text: 13,008 patents, 205,532 passages, 30 memes, boilerplate as a separate class.
-- Data: full text of English patent specifications from 300 Years of British Patents (Chen et al.), linked to patent quality (Woodcroft; Nuvolari) and metadata (Billington et al.), which came via Julius Koschnick.
+- Data: full text of English patent specifications from Berkes, Chen & Tranchero (2026), "300 years of British patents", Research Policy 55(1), 105347 (data on Hugging Face: matthewleechen/300YearsOfBritishPatents), linked to patent quality (Woodcroft; Nuvolari) and metadata (Billington et al.), which came via Julius Koschnick.
 - Paraphrase: cosine ≥ 0.8 to a passage in an earlier patent by a different inventor; median lag 7 years, 18% reach back 20+ years.
 - Quality = WRI, BCI, log Woodcroft references and eminence; each residualised on 5-year cohort and log specification length, winsorised at ±3 SD; 5-fold cross-validation. Specification length alone gives 1.3%.
 - Memes differ in "fitness": later close paraphrases by other inventors within 15 years, per passage, run from 0.96 (lace and net machines), 0.88 (boilers) and 0.83 (steam engine) down to 0.09 (chemistry, glass).
@@ -682,13 +730,13 @@ name: wp3
 ]
 
 .pull-right-narrow[
+<img src="Figures/struensee_juel.jpg" style="display:block; margin:0 auto; max-height:140px;">
+.small123[*Struensee, by Jens Juel. Public domain.*]
+
 **Case: Struensee, 1770**
-
-The king's physician seizes power and abolishes censorship; three years later the reforms are reversed.
-
-Free speech switched **on and off** for reasons unrelated to the economy.
-
-Newspaper archive from **1666**: plenty of data before and after.
+- The king's physician seizes power and abolishes censorship; three years later the reforms are reversed
+- Free speech switched **on and off** for reasons unrelated to the economy
+- Newspaper archive from **1666**: plenty of data before and after
 ]
 
 ???
@@ -715,18 +763,21 @@ name: project-timeline
 **Budget considerations**
 - €200,000 start-up package
 - One PhD student is the largest item (≈ €117,000)
-- Language-model tokens and cloud GPUs (≈ €32,000); national supercomputer hours are free
-- Student assistants for archival work (≈ €35,000)
+- My own small server with 4 GPUs (≈ €34,000); national supercomputer hours are free
+- Conferences (≈ €15,000), student assistants (≈ €20,000) and language-model tokens (≈ €10,000)
 
 .small123[*Based on my impression of costs in France; to be adapted with Dauphine.*]
 ]
 
-.footnote[.small123[Appendix: [Full budget](#budget) · [Teaching](#teaching)]]
+.footnote[.small123[Appendix: [Teaching](#teaching)]]
 
 ???
 - Each WP gives one or two papers, general-interest and leading field journals.
 - Public good: the database, a website and short videos. Maps of income and ideas need no training to read.
-- Budget: one PhD, tokens and compute, assistants; running costs make up the rest. No postdoc in the package; a postdoc comes with the next grant. These are my impressions of French costs, to be adapted with Dauphine's HR.
+- Budget (sums to €200,000): PhD 3 years €116,600 (36 × €3,239 employer cost of the 2026 minimum contrat doctoral, €2,300 gross; Univ. Lille, charge rate 2023); GPU server €34,000 (4 × RTX 5090 at ≈ €6,500 + host); conferences €15,000 (≈ €3,000 a year); research assistants €20,000; LLM tokens €10,000 (≈ €2,000 a year; Claude Sonnet 5.5 $2/$10 per million tokens, 50% off in batch); data and re-OCR €4,400.
+- Server: GPU prices are inflated by the 2026 memory shortage (RTX 5090 street price ≈ €6,000–6,700 in France, Oct. 2026; list €2,099). Two GPUs instead of four would save ≈ €13,000 for more assistant hours. Big runs go on Jean Zay (GENCI), free for academics.
+- No postdoc in the package: the posting's PhD plus a two-year postdoc would cost ≈ €214,000 at national grids (postdoc €97,400, ENS Lyon 2025 grid). A postdoc comes with the next grant: ANR JCJC, then ERC.
+- These are my impressions of French costs, to be adapted with Dauphine's HR.
 
 ---
 name: thank-you
@@ -753,39 +804,6 @@ name: divider-qa
 class: inverse, middle, center
 
 # Appendix
-
----
-name: budget
-# Feasibility: budget
-
-.pull-left-wide[
-| Item | Basis | Cost |
-|:---|:---|---:|
-| PhD student, 3 years | 36 months × €3,239 | €116,600 |
-| Research assistants | data collection and validation | €35,000 |
-| LLM API, "tokens to burn" | ≈ €4,000 a year × 5 | €20,000 |
-| GPU | Jean Zay free; cloud top-up; workstation | €12,000 |
-| Running costs | conferences, data access, re-OCR | €16,400 |
-| **Total = start-up package** | | **€200,000** |
-]
-
-.pull-right-narrow[
-**Why this mix**
-- One PhD on the core of WP2
-- Agents and student assistants do the archival work a postdoc would
-- National supercomputer hours are free; the cloud is for bursts
-- A postdoc comes with the next grant: ANR JCJC, then ERC
-
-.small123[*Based on my impression of costs in France; to be adapted with Dauphine.*]
-]
-
-.footnote[.small123[Sources: PhD: 2026 minimum *contrat doctoral* €2,300 gross, employer cost from Univ. Lille (charge rate 2023). Tokens: Claude Sonnet 5.5 API, $2/$10 per million tokens, 50% off in batch. GPU: GENCI dynamic access; Scaleway/OVHcloud H100 ≈ €3/hour. Package: LEDa Chair posting. [Back to the timeline](#project-timeline)]]
-
-???
-- The posting mentions a PhD and a two-year postdoc. At national grids the two together cost about €214,000, more than the package, so I fund one PhD and put the rest into assistants, tokens and compute. A postdoc is what the next grant pays for.
-- Research assistants and running costs are my estimates; Dauphine's HR will price the PhD contract exactly.
-- Tokens: at batch prices, a billion and a half input tokens a year is about €2,000; the rest is agents and coding.
-- If asked about the postdoc: a two-year postdoc is €97,400 at the ENS Lyon 2025 grid (€2,900 gross, 40% charges).
 
 ---
 name: teaching
@@ -839,33 +857,6 @@ knitr::include_graphics("Figures/chaos_val_scatter_1879.png")
 - Size of points: effective observations. The R² by year is in the backup.
 
 ---
-name: wp2-embedding
-# WP2: Memes live in embedding space
-
-.pull-left-wide[
-- Language models map text to vectors
-- Subtracting *male* from *king* and adding *female* lands very close to *queen*: arithmetic on the vectors mirrors meaning
-- Same logic for longer texts in BERT-style models; cosine similarity is the workhorse
-- **A meme is a region:** its expressions cluster together
-- Finding clusters in embedding space is standard (BERTopic, Grootendorst 2022; Top2Vec, Angelov 2020; Aharoni & Goldberg 2020) ⚠
-- New here: the criterion is **causal**, not semantic
-]
-
-.pull-right-narrow[
-```{r echo=FALSE}
-inline_svg("Figures/kingqueen.svg")
-```
-.small123[*Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
-]
-
-.footnote[.small123[Johansen, Koschnick & Vedel (2026), [ML Bias in EH](#ml-bias); Mikolov, Yih & Zweig (2013) ⚠. [More on clustering](#wp2-clustering) · [Back to the two claims](#wp2-claims)]]
-
-???
-- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
-- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
-- ⚠ REVIEW: added by coach, not yet checked by Christian. The clustering references (Grootendorst 2022; Angelov 2020; Aharoni & Goldberg 2020) and Mikolov, Yih & Zweig (2013).
-
----
 name: wp2-weismann
 # WP2: A test for replication
 
@@ -911,25 +902,6 @@ inline_svg("Figures/meme_invariance.svg", "57%")
 - Despite the hammers, the meme still causes its next copy and has the same effect on Y (if the effect is homogeneous).
 - Unless it mutates: m′ is then by definition a different meme, with a different effect Y′.
 - Invariance across environments is the test, and differences across languages become part of the identification.
-
----
-name: wp2-clustering
-# WP2: Clustering in embedding space ⚠
-
-.pull-left-wide[
-- **Topics as clusters of document embeddings:** BERTopic, UMAP + HDBSCAN (Grootendorst 2022, arXiv 2203.05794)
-- **Topics as dense regions** in a joint document/word space: Top2Vec (Angelov 2020, arXiv 2008.09470)
-- **Domains cluster without supervision** in BERT-style models (Aharoni & Goldberg 2020, ACL)
-- **Tools:** UMAP (McInnes, Healy & Melville 2018); HDBSCAN (Campello, Moulavi & Sander 2013, PAKDD)
-- **In economics:** firms clustered by product-text similarity (Hoberg & Phillips 2016, *JPE*); word-count similarity, not neural embeddings
-- **Origin of the arithmetic:** Mikolov, Yih & Zweig (2013), NAACL
-]
-
-.footnote[.small123[[Back to embedding space](#wp2-embedding)]]
-
-???
-- ⚠ REVIEW: added by coach, not yet checked by Christian. Every reference on this slide.
-- The gap these leave: they cluster by similarity. WP2 clusters by effect (κ), with replication as the test.
 
 ---
 name: data

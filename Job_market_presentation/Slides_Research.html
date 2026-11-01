@@ -293,6 +293,12 @@ class: center, inverse, middle
   border-left: 6px solid #b33d3d;
   padding: 0.2em 0.8em 0.2em 0.4em;
 }
+.side-note {
+  position: absolute;
+  right: 64px;
+  top: 190px;
+  width: 27%;
+}
 .overlay-corner {
   margin-left: -2.5em;
   margin-top: -0.9em;
@@ -422,6 +428,11 @@ name: origins
 - **Institutions matter:** rules that protect property and include many let prosperity last (Acemoglu, Johnson &amp; Robinson 2001; Dell 2010; [Görges et al. 2026](#proj-tracks))
 ]
 
+.pull-right-narrow[
+![Earth at night](Figures/earth_at_night_small.jpg)
+.small123[*The Earth at night. NASA Earth Observatory (2012), via Wikimedia Commons.*]
+]
+
 --
 
 .pull-left-wide[.ideas-box[
@@ -429,6 +440,12 @@ name: origins
 - **Recognition matters:** people want dignity, not only goods; Grundtvig's folk high schools gave it to Danish peasants (Fukuyama 1992; 2015)
 - **Ideas matter:** useful knowledge and new values drove growth (Mokyr 2016; McCloskey 2010; Dittmar 2011; Cinnirella et al. 2025) and travel between societies (Graeber &amp; Wengrow 2021)
 ]]
+
+--
+
+.pull-left-wide[
+**With ML it is now time for memetics**
+]
 
 ???
 - Geography and institutions first; then the channels that live in people's heads, highlighted, because that is where this project sits.
@@ -493,6 +510,11 @@ name: wp2-darwin
 - **A different kind of explanation:** not rational agents adopting the most productive idea (Bisin &amp; Verdier 2001), but ideas that stick
 - **Evolutionary biology:** genes spread by getting themselves copied; the meme is the cultural replicator ([Dawkins 1976](https://en.wikipedia.org/wiki/The_Selfish_Gene))
 - **Universal Darwinism:** anything copied with variation and selection evolves, ideas included, useful or harmful ([Blackmore 1999](https://www.susanblackmore.uk/the-meme-machine/))
+]
+
+.pull-right-narrow[
+&lt;img src="Figures/ai_cosmos_documents.jpg" style="display:block; margin:0 auto; max-height:400px;"&gt;
+.small123[*AI-generated illustration.*]
 ]
 
 --
@@ -584,15 +606,44 @@ name: wp2-definition
 ]
 
 .center[
-<div class="svg-inline" style="width:45%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Georgia, 'Times New Roman', serif">  <defs> <marker id="meme_dag_hk" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="strokeWidth"> <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/> </marker> <marker id="meme_dag_hr" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="strokeWidth"> <path d="M0,0 L10,5 L0,10 z" fill="#b33d3d"/> </marker> </defs>   <text x="20" y="118" font-size="24" fill="#666666" font-style="italic">meme</text> <text x="20" y="368" font-size="24" fill="#666666" font-style="italic">outcome</text>   <circle cx="230" cy="110" r="52" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="4"/> <text x="230" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#1a1a1a">m</text> <circle cx="500" cy="110" r="52" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="4"/> <text x="500" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#1a1a1a">m</text> <circle cx="770" cy="110" r="52" fill="#fbecec" stroke="#b33d3d" stroke-width="4"/> <text x="770" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#b33d3d">m′</text>   <line x1="288" y1="110" x2="430" y2="110" stroke="#1a1a1a" stroke-width="5" marker-end="url(#meme_dag_hk)"/> <text x="365" y="80" text-anchor="middle" font-size="26" fill="#1a1a1a">copy</text> <line x1="558" y1="110" x2="700" y2="110" stroke="#b33d3d" stroke-width="5" marker-end="url(#meme_dag_hr)"/> <text x="635" y="80" text-anchor="middle" font-size="26" fill="#b33d3d">mutation</text>   <line x1="230" y1="168" x2="230" y2="290" stroke="#1a1a1a" stroke-width="5" marker-end="url(#meme_dag_hk)"/> <line x1="500" y1="168" x2="500" y2="290" stroke="#1a1a1a" stroke-width="5" marker-end="url(#meme_dag_hk)"/> <line x1="770" y1="168" x2="770" y2="290" stroke="#b33d3d" stroke-width="5" marker-end="url(#meme_dag_hr)"/> <text x="245" y="240" font-size="24" fill="#666666" font-style="italic">causes</text>   <rect x="180" y="310" width="100" height="90" rx="10" fill="#ffffff" stroke="#2c5c34" stroke-width="4"/> <text x="230" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#2c5c34">Y</text> <rect x="450" y="310" width="100" height="90" rx="10" fill="#ffffff" stroke="#2c5c34" stroke-width="4"/> <text x="500" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#2c5c34">Y</text> <rect x="720" y="310" width="100" height="90" rx="10" fill="#fbecec" stroke="#b33d3d" stroke-width="4"/> <text x="770" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#b33d3d">Y′</text>  <text x="500" y="455" text-anchor="middle" font-size="24" fill="#666666" font-style="italic">same meme, same outcome; a different meme, a different outcome</text> </svg></div>
+<div class="svg-inline" style="width:45%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Georgia, 'Times New Roman', serif">    <text x="20" y="118" font-size="24" fill="#666666" font-style="italic">meme</text> <text x="20" y="368" font-size="24" fill="#666666" font-style="italic">outcome</text>   <circle cx="230" cy="110" r="52" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="4"/> <text x="230" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#1a1a1a">m</text> <circle cx="500" cy="110" r="52" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="4"/> <text x="500" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#1a1a1a">m</text> <circle cx="770" cy="110" r="52" fill="#fbecec" stroke="#b33d3d" stroke-width="4"/> <text x="770" y="128" text-anchor="middle" font-size="52" font-style="italic" fill="#b33d3d">m′</text>   <line x1="288" y1="110" x2="430" y2="110" stroke="#1a1a1a" stroke-width="5"/><polygon points="445.0,110.0 395.0,135.0 395.0,85.0" fill="#1a1a1a"/> <text x="365" y="80" text-anchor="middle" font-size="26" fill="#1a1a1a">copy</text> <line x1="558" y1="110" x2="700" y2="110" stroke="#b33d3d" stroke-width="5"/><polygon points="715.0,110.0 665.0,135.0 665.0,85.0" fill="#b33d3d"/> <text x="635" y="80" text-anchor="middle" font-size="26" fill="#b33d3d">mutation</text>   <line x1="230" y1="168" x2="230" y2="290" stroke="#1a1a1a" stroke-width="5"/><polygon points="230.0,305.0 205.0,255.0 255.0,255.0" fill="#1a1a1a"/> <line x1="500" y1="168" x2="500" y2="290" stroke="#1a1a1a" stroke-width="5"/><polygon points="500.0,305.0 475.0,255.0 525.0,255.0" fill="#1a1a1a"/> <line x1="770" y1="168" x2="770" y2="290" stroke="#b33d3d" stroke-width="5"/><polygon points="770.0,305.0 745.0,255.0 795.0,255.0" fill="#b33d3d"/> <text x="245" y="240" font-size="24" fill="#666666" font-style="italic">causes</text>   <rect x="180" y="310" width="100" height="90" rx="10" fill="#ffffff" stroke="#2c5c34" stroke-width="4"/> <text x="230" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#2c5c34">Y</text> <rect x="450" y="310" width="100" height="90" rx="10" fill="#ffffff" stroke="#2c5c34" stroke-width="4"/> <text x="500" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#2c5c34">Y</text> <rect x="720" y="310" width="100" height="90" rx="10" fill="#fbecec" stroke="#b33d3d" stroke-width="4"/> <text x="770" y="372" text-anchor="middle" font-size="52" font-style="italic" fill="#b33d3d">Y′</text>  <text x="500" y="455" text-anchor="middle" font-size="24" fill="#666666" font-style="italic">same meme, same outcome; a different meme, a different outcome</text> </svg></div>
 
 .small123[*Mirrors how GWAS finds genes (Uffelmann et al. 2021). Tested by [invariant causal prediction](#wp2-invariance) (Peters, Bühlmann &amp; Meinshausen 2016).*]
 ]
+
+--
+
+.side-note[.ideas-box[
+**The RQ in terms of ML is whether we can learn `\(\kappa\)`.** It's [causal discovery](#wp2-invariance).
+]]
 
 ???
 - Horizontal arrows: replication. Vertical arrows: effects. m′ is a mutation; a different meme, a different outcome.
 - One option: put future expressions into 𝒴; then replication and effects are one condition.
 - Finding κ is the same as finding the memes: a clustering problem in embedding space with a causal criterion.
+
+---
+name: wp2-embedding
+# WP2: Memes live in embedding space
+
+.pull-left-narrow[
+- Language models turn text into vectors: **meaning becomes geometry**
+- *king* − *male* + *female* ≈ *queen*
+- **A meme is a region:** its expressions cluster together
+- New here: regions defined by what ideas **do**, not by how they sound
+]
+
+.pull-right-wide[
+&lt;img src="Figures/kingqueen.gif" style="display:block; margin:0 auto; width:72%;"&gt;
+.small123[*Figure from Johansen, Koschnick &amp; Vedel (2026), "How to deal with machine learning bias in economic history", [arXiv 2606.28063](https://arxiv.org/abs/2606.28063). Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
+]
+
+.footnote[.small123[[ML bias in economic history](#ml-bias)]]
+
+???
+- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
+- The same logic extends to longer texts in BERT-style models; cosine similarity is the workhorse.
+- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
 
 ---
 name: wp2-claims
@@ -612,17 +663,14 @@ name: wp2-claims
 
 .center[
 <div class="svg-inline" style="width:88%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" font-family="Georgia, 'Times New Roman', serif">  <defs> <marker id="meme_pipeline_hp" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto"> <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/> </marker> </defs>  <rect x="10" y="10" width="340" height="62" fill="#b33d3d" stroke="#b33d3d" stroke-width="3"/> <text x="180" y="52" text-anchor="middle" font-size="27" font-weight="bold" fill="#ffffff">Interpretability</text> <rect x="10" y="72" width="340" height="200" fill="#f6f4ef" stroke="#b33d3d" stroke-width="3"/> <text x="180" y="116" text-anchor="middle" font-size="25" fill="#222222">LLMs encode ideas in</text> <text x="180" y="150" text-anchor="middle" font-size="25" fill="#222222">high-dimensional space</text> <text x="180" y="205" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Elhage et al. 2022; Huh et al. 2024;</text> <text x="180" y="230" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Gurnee &amp; Tegmark 2023; Jha et al. 2025</text>  <line x1="360" y1="165" x2="420" y2="165" stroke="#1a1a1a" stroke-width="4" marker-end="url(#meme_pipeline_hp)"/>  <rect x="430" y="10" width="340" height="62" fill="#2c4f8a" stroke="#2c4f8a" stroke-width="3"/> <text x="600" y="52" text-anchor="middle" font-size="27" font-weight="bold" fill="#ffffff">Causal discovery</text> <rect x="430" y="72" width="340" height="200" fill="#f6f4ef" stroke="#2c4f8a" stroke-width="3"/> <text x="600" y="116" text-anchor="middle" font-size="25" fill="#222222">keeps memes whose effect</text> <text x="600" y="150" text-anchor="middle" font-size="25" fill="#222222">stays the same across</text> <text x="600" y="184" text-anchor="middle" font-size="25" fill="#222222">heterogeneous environments</text> <text x="600" y="230" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Invariant causal prediction:</text> <text x="600" y="255" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Peters, Bühlmann &amp; Meinshausen 2016</text>  <line x1="780" y1="165" x2="840" y2="165" stroke="#1a1a1a" stroke-width="4" marker-end="url(#meme_pipeline_hp)"/>  <rect x="850" y="10" width="340" height="62" fill="#2c5c34" stroke="#2c5c34" stroke-width="3"/> <text x="1020" y="52" text-anchor="middle" font-size="27" font-weight="bold" fill="#ffffff">Long-run development</text> <rect x="850" y="72" width="340" height="200" fill="#f6f4ef" stroke="#2c5c34" stroke-width="3"/> <text x="1020" y="116" text-anchor="middle" font-size="25" fill="#222222">what these ideas did</text> <text x="1020" y="150" text-anchor="middle" font-size="25" fill="#222222">to living standards,</text> <text x="1020" y="184" text-anchor="middle" font-size="25" fill="#222222">over centuries</text> <text x="1020" y="243" text-anchor="middle" font-size="17" fill="#666666" font-style="italic">Outcomes from WP1</text> </svg></div>
-
-.small123[*Curiosity:* could the models find memes on their own? Search for embeddings that reproduce themselves.]
 ]
 
-.footnote[.small123[[Memes in embedding space](#wp2-embedding) · [A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
+.footnote[.small123[[A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
 
 ???
 - Claim 1 is why it is worth doing: measure the memes and you measure what shapes society.
 - Claim 2 is why it is feasible: each tool has one job (the pipeline). Interpretability finds the space, causal discovery finds the units, and the payoff is what they did to long-run development.
 - Box 1 citations are the application's: ideas sit in almost-orthogonal directions (Elhage et al. 2022; Gurnee &amp; Tegmark 2023), and models converge on one representation (Huh et al. 2024; Jha et al. 2025).
-- Quirky aside, not developed: a meme is a replicator, so look for directions in embedding space that reproduce themselves across generations of text. Mention it, don't defend it.
 
 Q&amp;A prep (not for the slide):
 - Claim 1 risks being true by definition. It is a claim only with **sparsity** (few memes cover many expressions) and **modularity** (a meme does the same thing in any constellation). If interactions dominate (epistasis), the constellation is the unit.
@@ -640,7 +688,7 @@ name: wp2-poc
 ]
 
 .pull-right-narrow[
-**Data:** full text of **13,008** patents (Chen et al.), linked to patent quality
+**Data:** full text of **13,008** patents ([Berkes, Chen &amp; Tranchero 2026](https://doi.org/10.1016/j.respol.2025.105347)), linked to patent quality
 
 **What we see**
 - Steam, railways, telegraph rise with the Industrial Revolution
@@ -652,7 +700,7 @@ name: wp2-poc
 
 ???
 - Proof of concept, not a result. It shows the pipeline runs end to end on real historical text: 13,008 patents, 205,532 passages, 30 memes, boilerplate as a separate class.
-- Data: full text of English patent specifications from 300 Years of British Patents (Chen et al.), linked to patent quality (Woodcroft; Nuvolari) and metadata (Billington et al.), which came via Julius Koschnick.
+- Data: full text of English patent specifications from Berkes, Chen &amp; Tranchero (2026), "300 years of British patents", Research Policy 55(1), 105347 (data on Hugging Face: matthewleechen/300YearsOfBritishPatents), linked to patent quality (Woodcroft; Nuvolari) and metadata (Billington et al.), which came via Julius Koschnick.
 - Paraphrase: cosine ≥ 0.8 to a passage in an earlier patent by a different inventor; median lag 7 years, 18% reach back 20+ years.
 - Quality = WRI, BCI, log Woodcroft references and eminence; each residualised on 5-year cohort and log specification length, winsorised at ±3 SD; 5-fold cross-validation. Specification length alone gives 1.3%.
 - Memes differ in "fitness": later close paraphrases by other inventors within 15 years, per passage, run from 0.96 (lace and net machines), 0.88 (boilers) and 0.83 (steam engine) down to 0.09 (chemistry, glass).
@@ -673,13 +721,13 @@ name: wp3
 ]
 
 .pull-right-narrow[
+&lt;img src="Figures/struensee_juel.jpg" style="display:block; margin:0 auto; max-height:140px;"&gt;
+.small123[*Struensee, by Jens Juel. Public domain.*]
+
 **Case: Struensee, 1770**
-
-The king's physician seizes power and abolishes censorship; three years later the reforms are reversed.
-
-Free speech switched **on and off** for reasons unrelated to the economy.
-
-Newspaper archive from **1666**: plenty of data before and after.
+- The king's physician seizes power and abolishes censorship; three years later the reforms are reversed
+- Free speech switched **on and off** for reasons unrelated to the economy
+- Newspaper archive from **1666**: plenty of data before and after
 ]
 
 ???
@@ -706,18 +754,21 @@ name: project-timeline
 **Budget considerations**
 - €200,000 start-up package
 - One PhD student is the largest item (≈ €117,000)
-- Language-model tokens and cloud GPUs (≈ €32,000); national supercomputer hours are free
-- Student assistants for archival work (≈ €35,000)
+- My own small server with 4 GPUs (≈ €34,000); national supercomputer hours are free
+- Conferences (≈ €15,000), student assistants (≈ €20,000) and language-model tokens (≈ €10,000)
 
 .small123[*Based on my impression of costs in France; to be adapted with Dauphine.*]
 ]
 
-.footnote[.small123[Appendix: [Full budget](#budget) · [Teaching](#teaching)]]
+.footnote[.small123[Appendix: [Teaching](#teaching)]]
 
 ???
 - Each WP gives one or two papers, general-interest and leading field journals.
 - Public good: the database, a website and short videos. Maps of income and ideas need no training to read.
-- Budget: one PhD, tokens and compute, assistants; running costs make up the rest. No postdoc in the package; a postdoc comes with the next grant. These are my impressions of French costs, to be adapted with Dauphine's HR.
+- Budget (sums to €200,000): PhD 3 years €116,600 (36 × €3,239 employer cost of the 2026 minimum contrat doctoral, €2,300 gross; Univ. Lille, charge rate 2023); GPU server €34,000 (4 × RTX 5090 at ≈ €6,500 + host); conferences €15,000 (≈ €3,000 a year); research assistants €20,000; LLM tokens €10,000 (≈ €2,000 a year; Claude Sonnet 5.5 $2/$10 per million tokens, 50% off in batch); data and re-OCR €4,400.
+- Server: GPU prices are inflated by the 2026 memory shortage (RTX 5090 street price ≈ €6,000–6,700 in France, Oct. 2026; list €2,099). Two GPUs instead of four would save ≈ €13,000 for more assistant hours. Big runs go on Jean Zay (GENCI), free for academics.
+- No postdoc in the package: the posting's PhD plus a two-year postdoc would cost ≈ €214,000 at national grids (postdoc €97,400, ENS Lyon 2025 grid). A postdoc comes with the next grant: ANR JCJC, then ERC.
+- These are my impressions of French costs, to be adapted with Dauphine's HR.
 
 ---
 name: thank-you
@@ -744,39 +795,6 @@ name: divider-qa
 class: inverse, middle, center
 
 # Appendix
-
----
-name: budget
-# Feasibility: budget
-
-.pull-left-wide[
-| Item | Basis | Cost |
-|:---|:---|---:|
-| PhD student, 3 years | 36 months × €3,239 | €116,600 |
-| Research assistants | data collection and validation | €35,000 |
-| LLM API, "tokens to burn" | ≈ €4,000 a year × 5 | €20,000 |
-| GPU | Jean Zay free; cloud top-up; workstation | €12,000 |
-| Running costs | conferences, data access, re-OCR | €16,400 |
-| **Total = start-up package** | | **€200,000** |
-]
-
-.pull-right-narrow[
-**Why this mix**
-- One PhD on the core of WP2
-- Agents and student assistants do the archival work a postdoc would
-- National supercomputer hours are free; the cloud is for bursts
-- A postdoc comes with the next grant: ANR JCJC, then ERC
-
-.small123[*Based on my impression of costs in France; to be adapted with Dauphine.*]
-]
-
-.footnote[.small123[Sources: PhD: 2026 minimum *contrat doctoral* €2,300 gross, employer cost from Univ. Lille (charge rate 2023). Tokens: Claude Sonnet 5.5 API, $2/$10 per million tokens, 50% off in batch. GPU: GENCI dynamic access; Scaleway/OVHcloud H100 ≈ €3/hour. Package: LEDa Chair posting. [Back to the timeline](#project-timeline)]]
-
-???
-- The posting mentions a PhD and a two-year postdoc. At national grids the two together cost about €214,000, more than the package, so I fund one PhD and put the rest into assistants, tokens and compute. A postdoc is what the next grant pays for.
-- Research assistants and running costs are my estimates; Dauphine's HR will price the PhD contract exactly.
-- Tokens: at batch prices, a billion and a half input tokens a year is about €2,000; the rest is agents and coding.
-- If asked about the postdoc: a two-year postdoc is €97,400 at the ENS Lyon 2025 grid (€2,900 gross, 40% charges).
 
 ---
 name: teaching
@@ -828,31 +846,6 @@ name: wp1-poc
 - Size of points: effective observations. The R² by year is in the backup.
 
 ---
-name: wp2-embedding
-# WP2: Memes live in embedding space
-
-.pull-left-wide[
-- Language models map text to vectors
-- Subtracting *male* from *king* and adding *female* lands very close to *queen*: arithmetic on the vectors mirrors meaning
-- Same logic for longer texts in BERT-style models; cosine similarity is the workhorse
-- **A meme is a region:** its expressions cluster together
-- Finding clusters in embedding space is standard (BERTopic, Grootendorst 2022; Top2Vec, Angelov 2020; Aharoni &amp; Goldberg 2020) ⚠
-- New here: the criterion is **causal**, not semantic
-]
-
-.pull-right-narrow[
-<div class="svg-inline" style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" font-family="Georgia, 'Times New Roman', serif">  <defs> <marker id="kingqueen_hk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker> <marker id="kingqueen_hm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b33d3d"/></marker> <marker id="kingqueen_hf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5c34"/></marker> <marker id="kingqueen_ha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b0aca4"/></marker> </defs> <rect x="5" y="5" width="610" height="490" rx="40" fill="#f6f4ef" stroke="#1a1a1a" stroke-width="3"/>   <line x1="50" y1="430" x2="570" y2="430" stroke="#b0aca4" stroke-width="2.5" marker-end="url(#kingqueen_ha)"/> <line x1="50" y1="430" x2="50" y2="40" stroke="#b0aca4" stroke-width="2.5" marker-end="url(#kingqueen_ha)"/>   <line x1="50" y1="430" x2="384" y2="156" stroke="#b0aca4" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>   <line x1="50" y1="430" x2="455" y2="312" stroke="#1a1a1a" stroke-width="4" marker-end="url(#kingqueen_hk)"/> <line x1="460" y1="310" x2="318" y2="423" stroke="#b33d3d" stroke-width="4" stroke-dasharray="14 9" marker-end="url(#kingqueen_hm)"/> <line x1="316" y1="424" x2="382" y2="162" stroke="#2c5c34" stroke-width="4" marker-end="url(#kingqueen_hf)"/>   <circle cx="460" cy="310" r="7" fill="#1a1a1a"/> <circle cx="384" cy="156" r="7" fill="#1a1a1a"/> <circle cx="420" cy="170" r="10" fill="none" stroke="#1a1a1a" stroke-width="3"/>   <text x="474" y="318" font-size="32" font-style="italic" fill="#1a1a1a">king</text> <text x="402" y="388" font-size="30" fill="#b33d3d">− <tspan font-style="italic">male</tspan></text> <text x="208" y="270" font-size="30" fill="#2c5c34">+ <tspan font-style="italic">female</tspan></text> <text x="438" y="180" font-size="32" font-style="italic" fill="#1a1a1a">queen</text>   <text x="72" y="82" font-size="32" fill="#1a1a1a"><tspan font-style="italic">king</tspan> − <tspan font-style="italic">male</tspan> + <tspan font-style="italic">female</tspan> ≈ <tspan font-style="italic">queen</tspan></text> </svg></div>
-.small123[*Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
-]
-
-.footnote[.small123[Johansen, Koschnick &amp; Vedel (2026), [ML Bias in EH](#ml-bias); Mikolov, Yih &amp; Zweig (2013) ⚠. [More on clustering](#wp2-clustering) · [Back to the two claims](#wp2-claims)]]
-
-???
-- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
-- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
-- ⚠ REVIEW: added by coach, not yet checked by Christian. The clustering references (Grootendorst 2022; Angelov 2020; Aharoni &amp; Goldberg 2020) and Mikolov, Yih &amp; Zweig (2013).
-
----
 name: wp2-weismann
 # WP2: A test for replication
 
@@ -896,25 +889,6 @@ name: wp2-invariance
 - Despite the hammers, the meme still causes its next copy and has the same effect on Y (if the effect is homogeneous).
 - Unless it mutates: m′ is then by definition a different meme, with a different effect Y′.
 - Invariance across environments is the test, and differences across languages become part of the identification.
-
----
-name: wp2-clustering
-# WP2: Clustering in embedding space ⚠
-
-.pull-left-wide[
-- **Topics as clusters of document embeddings:** BERTopic, UMAP + HDBSCAN (Grootendorst 2022, arXiv 2203.05794)
-- **Topics as dense regions** in a joint document/word space: Top2Vec (Angelov 2020, arXiv 2008.09470)
-- **Domains cluster without supervision** in BERT-style models (Aharoni &amp; Goldberg 2020, ACL)
-- **Tools:** UMAP (McInnes, Healy &amp; Melville 2018); HDBSCAN (Campello, Moulavi &amp; Sander 2013, PAKDD)
-- **In economics:** firms clustered by product-text similarity (Hoberg &amp; Phillips 2016, *JPE*); word-count similarity, not neural embeddings
-- **Origin of the arithmetic:** Mikolov, Yih &amp; Zweig (2013), NAACL
-]
-
-.footnote[.small123[[Back to embedding space](#wp2-embedding)]]
-
-???
-- ⚠ REVIEW: added by coach, not yet checked by Christian. Every reference on this slide.
-- The gap these leave: they cluster by similarity. WP2 clusters by effect (κ), with replication as the test.
 
 ---
 name: data
