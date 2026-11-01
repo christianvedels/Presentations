@@ -60,7 +60,8 @@ inline_svg <- function(path, width = "100%") {
   width: 44%;
 }
 .pull-right ~ p,
-.pull-right ~ blockquote {
+.pull-right ~ blockquote,
+.pull-left-wide ~ blockquote {
   clear: both;
 }
 
@@ -284,6 +285,11 @@ inline_svg <- function(path, width = "100%") {
 .overlay-roadmap ul {
   padding-left: 1.1em;
 }
+.ideas-box {
+  background: #f6f4ef;
+  border-left: 6px solid #b33d3d;
+  padding: 0.2em 0.8em 0.2em 0.4em;
+}
 .overlay-corner {
   margin-left: -2.5em;
   margin-top: -0.9em;
@@ -410,52 +416,108 @@ Nicolai Abildgaard, *Oprettelsen af skoler. Allegori* (1779–82). SMK, KMS1963a
 name: origins
 # Why do some places prosper?
 
-| | Geography | Institutions | Culture |
-|:---|:---|:---|:---|
-| **Classic answers** | Diamond (1997); Gallup, Sachs & Mellinger (1999); Henderson et al. (2018) | Acemoglu, Johnson & Robinson (2001); Rodrik, Subramanian & Trebbi (2004); Dell (2010) | Weber (1905); Guiso, Sapienza & Zingales (2006); Becker & Woessmann (2009) |
-| **My work** | **A Perfect Storm:** a storm moved first-nature geography | [Tracks to Modernity](#proj-tracks): railways spread folk high schools and assembly houses | [Holy Cows and Spilled Milk](#proj-holycows): religiosity cost creameries 8% of dividends |
+.pull-left-wide[
+- **Geography matters:** access to sea, rivers and good land decides where people settle and trade (Diamond 1997; Henderson et al. 2018; [Vedel 2024](https://christianvedels.github.io/Presentations/Job_market_presentation/Slides_JMP.html))
+- **Institutions matter:** rules that protect property and include many let prosperity last (Acemoglu, Johnson & Robinson 2001; Dell 2010; [Görges et al. 2026](#proj-tracks))
+]
 
-**My approach:** a clean shock to one fundamental, traced into the others.
+--
 
-> All three channels run through **ideas**: what people knew, believed and copied. This project measures them.
+.pull-left-wide[.ideas-box[
+- **Culture matters:** beliefs and values shape work, trust and thrift (Weber 1905; Guiso, Sapienza & Zingales 2006; [Bentzen et al. 2026](#proj-holycows))
+- **Recognition matters:** people want dignity, not only goods; Grundtvig's folk high schools gave it to Danish peasants (Fukuyama 1992; 2015)
+- **Ideas matter:** useful knowledge and new values drove growth (Mokyr 2016; McCloskey 2010; Dittmar 2011; Cinnirella et al. 2025) and travel between societies (Graeber & Wengrow 2021)
+]]
 
 ???
-- Geography is entangled with the institutions and culture that grew on top of it (A Perfect Storm). My papers each use a clean shock to one fundamental and trace it into the others; that pre-empts "isn't this all just Denmark?".
-- Culture and institutions both live as ideas in people's heads; that is where memes come in.
-- More if asked. Geography: Davis & Weinstein (2002, AER); Bleakley & Lin (2012, QJE). Institutions: Acemoglu, Naidu, Restrepo & Robinson (2019, JPE); Glaeser et al. (2004, JEG) as the human-capital counterpoint; Fukuyama (2011); Boberg-Fazlic et al. (2023, JEG) on getting to Denmark. Culture: Alesina & Giuliano (2015, JEL); Nunn (2020, Handbook of Historical Economics); Mokyr (2016); Andersen, Bentzen, Dalgaard & Sharp (2017, EJ). Umbrella: Spolaore & Wacziarg (2013, JEL).
-- My other papers on the fundamentals: Energy Shocks (Energy Economics 2024; peat as a first-nature lottery); Physical Memories and the Far Right (EHES WP 295); Assimilate for God (EHES WP 253).
-- Status: Tracks to Modernity accepted at EREH on 27 Oct 2026 ("Railroads, Growth, and Civic Institutions in Denmark"); A Perfect Storm under review at JEEA (confirm).
+- Geography and institutions first; then the channels that live in people's heads, highlighted, because that is where this project sits.
+- My papers: A Perfect Storm (Vedel 2024), Tracks to Modernity (Görges, Rove, Sharp & Vedel 2026, EREH forthcoming), Holy Cows and Spilled Milk (Bentzen et al. 2026, JDE). Each uses a clean shock to one fundamental and traces it into the others.
+- Recognition: Plato's soul has appetite (eros, desire), spiritedness (thymos) and reason. Fukuyama reads history as driven by thymos, the demand for recognition, not only by material wants. Grundtvig's movement turned recognition of the peasantry into institutions; that is the Tracks to Modernity mechanism.
+- Graeber & Wengrow: memetic exchange in action; ideas copied across societies, not invented in one place.
+- More if asked. Geography: Gallup, Sachs & Mellinger (1999); Davis & Weinstein (2002); Bleakley & Lin (2012). Institutions: Rodrik, Subramanian & Trebbi (2004); Acemoglu, Naidu, Restrepo & Robinson (2019); Glaeser et al. (2004); Fukuyama (2011); Boberg-Fazlic et al. (2023). Culture: Becker & Woessmann (2009); Alesina & Giuliano (2015); Nunn (2020); Andersen, Bentzen, Dalgaard & Sharp (2017). Closest in method: Almelhem, Iyigun, Kennedy & Rubin (2023); Koschnick (2025). Umbrella: Spolaore & Wacziarg (2013).
+- ⚠ REVIEW: Fukuyama (1992) The End of History and the Last Man, and (2018) Identity, are cited from memory. Fukuyama (2015), "Nation Building and State Building", in Building the Nation: N.F.S. Grundtvig and Danish National Identity, is from the Tracks to Modernity bibliography.
+- Status: A Perfect Storm under review at JEEA (confirm).
 
 ---
-name: project-question
-# The question: which ideas made Europe prosper?
+name: wp2-meme
+# What is a meme?
+
+.pull-left-narrow[
+- A **meme** is a unit of culture that is copied from person to person: a word, a tune, a skill, a rule
+- Like a gene, it **replicates**: copies of copies, with variation
+- What we observe are its **expressions**: texts, images, behaviour
+- **Internet memes** are a small corner of the set
+
+.small123[Dawkins (1976), *The Selfish Gene*; Blackmore (1999), *The Meme Machine*]
+]
+
+.pull-right-wide[.panelset[
+.panel[.panel-name[Darwin]
+<img src="Figures/darwin_cameron_1868.jpg" style="display:block; margin:0 auto; max-height:340px;">
+
+.small123[*Charles Darwin, photographed by Julia Margaret Cameron (1868). Public domain, via Wikimedia Commons.*]
+]
+.panel[.panel-name[Memes]
+```{r echo=FALSE}
+inline_svg("Figures/meme_venn.svg", "100%")
+```
+]
+]]
+
+???
+- Start from Darwin: variation, copying, selection. Dawkins asked what else is copied with variation, and named the cultural replicator the meme.
+- Blackmore (p. 7): "Everything that is passed from person to person in this way is a meme … the songs you sing and the rules you obey." "Songs" is the culture box; "rules" is the institutions box.
+- Head off the everyday reading of the word: internet memes are one part of a much larger set (second tab).
+- Same page, to say aloud: "Something, some kind of information, some kind of instruction, has become lodged in all those brains so that now we all do the same thing at birthday parties."
+- The meme is the *instruction*, not the expression, and we recognise it because everyone does *the same thing*. That is the WP2 definition, in plain words.
+- Examples in the figure. Internet: Dancing Baby (1996), "All your base are belong to us" (2001), Rickroll (2007), Doge (2013). Kilroy was here (WWII graffiti) sits just outside: a pre-internet meme that behaves like one. Culture: arches, tunes, catch-phrases (Dawkins 1976, ch. 11: "ways of building arches"). Religion: the Protestant work ethic. Institutions: Grundtvig's folk high schools (Tracks to Modernity), cooperative dairies, free speech (Struensee 1770, WP3).
+- ⚠ REVIEW: added by coach, not yet checked by Christian. All named examples in the figure, and their dates.
+- Image credits (⚠ REVIEW: added by coach). Thumbnails ≤300 px in Figures/memes/, embedded in meme_venn.svg:
+  - Dancing Baby: en.wikipedia.org/wiki/File:DancingBaby.jpg (non-free, fair use)
+  - All your base: en.wikipedia.org/wiki/File:Aybabtu.png (non-free, fair use; Zero Wing, 1991)
+  - Rickroll: en.wikipedia.org/wiki/File:First_seconds_of_Never_Gonna_Give_You_Up.gif (non-free, fair use; first frame)
+  - Doge: commons.wikimedia.org/wiki/File:Doge_meme_example.jpg (CC BY 2.0, likeaduck)
+  - Kilroy: commons.wikimedia.org/wiki/File:Kilroy_Was_Here_-_Washington_DC_WWII_Memorial.jpg (CC BY 2.0, Luis Rubio)
+  - Arches: commons.wikimedia.org/wiki/File:Worcester_cathedral_010.JPG (public domain, Mattana)
+  - Weber 1905 cover: commons.wikimedia.org/wiki/File:Die_protestantische_Ethik_und_der_%27Geist%27_des_Kapitalismus_original_cover.jpg (public domain)
+  - Rødding Højskole: commons.wikimedia.org/wiki/File:R%C3%B8dding_H%C3%B8jskole_202203a.jpg (CC BY-SA 4.0, Hjart)
+  - Hjedding Andelsmejeri, the first cooperative dairy (1882): commons.wikimedia.org/wiki/File:Hjedding_Andelsmejeri_tegning.jpg (public domain)
+  - Struensee, by Jens Juel: commons.wikimedia.org/wiki/File:Struensee_Juel_(cropped).jpg (public domain)
+
+---
+name: wp2-darwin
+# What is a memetic explanation?
 
 .pull-left-wide[
-We know that **ideas matter** for prosperity:
-- A European "market for ideas" came before the Industrial Revolution ([Mokyr 2016](https://doi.org/10.2307/j.ctt1wf4dft))
-- Words, not capital: new respect for merchants and innovators made the modern economy ([McCloskey 2010](https://doi.org/10.7208/chicago/9780226556666.001.0001))
-- Societies that shared useful knowledge innovated more ([Cinnirella, Hornung & Koschnick 2025](https://doi.org/10.1093/ej/ueae115))
-- Towns that got the printing press grew faster ([Dittmar 2011](https://doi.org/10.1093/qje/qjr035))
+> Ideas do not arise because they are good. They **stick around** if they do something that makes them stick around, and sometimes that is being good.
+
+- **A different kind of explanation:** not rational agents adopting the most productive idea (Bisin & Verdier 2001), but ideas that stick
+- **Evolutionary biology:** genes spread by getting themselves copied; the meme is the cultural replicator ([Dawkins 1976](https://en.wikipedia.org/wiki/The_Selfish_Gene))
+- **Universal Darwinism:** anything copied with variation and selection evolves, ideas included, useful or harmful ([Blackmore 1999](https://www.susanblackmore.uk/the-meme-machine/))
 ]
 
 --
 
 .pull-left-wide[
-But **which** ideas, and how did they affect **living standards**?
-- No useful unit of culture is given in advance: "bourgeois dignity" (McCloskey 2010) may be several distinct memes about merchants, profit and innovation
-]
-
---
-
-.pull-left-wide[
-> *It is the role of the economist in the age of machine learning to provide causal insights at scale.*
+- **Why memetics stalled:** no way to find the units of culture or to count the copies (Sperber 2000)
+- **What has changed:** digitised archives; language models that encode ideas, which mechanistic interpretability can read (Elhage et al. 2022; Lindsey et al. 2025); and causal inference at scale
+- **The opening:** at the frontier of AI in economics, the units can now be measured and their effects estimated; embeddings already trace knowledge spillovers in early modern England (Koschnick 2025)
 ]
 
 ???
-- The research statement opens here. The case-study historian's question, asked at scale.
-- Machine learning on large text corpora to measure the ideas; new data on living standards to measure the outcomes.
-- Mokyr and McCloskey make the case in words; Cinnirella et al. and Dittmar measure it. Closest in method, if asked: Almelhem, Iyigun, Kennedy & Rubin (2023, IZA DP 16674) measure belief in progress in 173,031 English works printed 1500–1900. Koschnick (2025) tests Mokyr's knowledge–growth feedback loop with embeddings.
-- ⚠ REVIEW: citations and links added by Claude (2026-11-01); DOIs checked against Crossref.
+- Economics bridge, if asked: Nunn (2020), "History as evolution" (NBER w27706): beliefs and practices are transmitted and selected.
+- The key distinction: ideas do not arise because they are good. They stick around if they do something that makes them stick around; sometimes that turns out to be because they are good.
+- The memetic question is not "who benefits?" but "why did this idea survive?". An idea we observe is one that managed to survive; that is all its presence tells us.
+- Not the usual story in economics: in Bisin & Verdier (2001, JET), a trait spreads because it serves the people who carry or teach it; in technology-adoption stories, agents pick the most productive idea.
+- Blackmore (p. 7): memes spread "without regard to whether they are useful, neutral, or positively harmful to us".
+- Why it stalled: memetics had no operational unit and no way to observe copying at scale; Sperber's objection was that most transmission is reconstruction, not copying. Both are measurement problems, and this project is a measurement project.
+- Mechanistic interpretability: Elhage et al. (2022), Toy Models of Superposition (Anthropic); Lindsey et al. (2025), On the Biology of a Large Language Model (Anthropic). Koschnick (2025), arXiv 2512.16587: ~300,000 English titles and patents, 1600–1800; spillovers between propositional and prescriptive knowledge turn positive after 1750 (Mokyr's feedback loop).
+- "Universal Darwinism": Dawkins' term (1983), Blackmore's frame. ⚠ REVIEW: the 1983 attribution is from memory.
+- No moral verdict: a meme for free speech and a meme for witch hunts are explained the same way. Usefulness is one route to survival, not the only one.
+- Contrast with Cavalli-Sforza & Feldman (1981) and Bisin & Verdier: there the trait serves the host (the carrier's fitness or the parents' preferences). In memetics the replicator has a fitness of its own, which can differ from the host's.
+- This is why the WP2 definition has two kinds of arrows: replication (spread) and effects (living standards). Economics cares about the second; Darwin explains the first. Keeping them apart is the point.
+- Some memes spread *through* their effect (letters, which spread knowledge). How much is something to estimate, not assume.
+- ⚠ REVIEW: slide added by Claude (2026-11-01) from Christian's brief: "not good nor bad; ideas are there if they manage to survive; Darwinism takes centre stage". Dawkins links to Wikipedia because the OUP page could not be checked.
 
 ---
 name: agenda
@@ -463,7 +525,7 @@ name: agenda
 
 .pull-left-wide[
 - **WP1:** [Measuring what we want from scattered sources](#wp1) <br> .small123[living standards and other outcomes from archives]
-- **WP2:** [Measuring memes](#wp2-meme) <br> .small123[ideas as measurable, causal units]
+- **WP2:** [Measuring memes](#wp2-definition) <br> .small123[ideas as measurable, causal units]
 - **WP3:** [Inclusive institutions and economic development](#wp3) <br> .small123[how inclusive ideas spread, and what they did]
 
 > **Memes that Matter:** a database of ideas and economic outcomes for Europe, on one map and one timeline, released as open data and tools
@@ -482,87 +544,34 @@ knitr::include_graphics("Figures/vision_layers.png")
 - The deliverable is the picture: which ideas circulated where, and how people lived there at the time.
 
 ---
-name: wp1-poc
-# WP1 proof of concept: predicted vs observed wages
+name: wp1
+# WP1: Measuring what we want from scattered sources
 
 .pull-left-wide[
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("Figures/chaos_val_scatter_1879.png")
-```
-.small123[*CHAOS predictions against wages observed by the Department of Labor, New York 1879; source year 1880.*]
+- **The idea:** we want an outcome for every unit, but archives record it only for other, similar units. Predict each target from the source observations most relevant to it
+- **Sources, for example:** a census lists occupations, a wage book lists wages; one register lists goods sold, another their prices
+$$\hat{y}_i = \sum_{j \in \mathcal{S}} w_{ij}\, y_j$$
+- $w_{ij}$: how relevant source observation $j$ is to target $i$, estimated with machine learning and LLM text embeddings
+- **A generalisation of the CHAOS estimator:** unbiased, consistent and efficient ([Curtis, Johansen, Koschnick & Vedel 2026](#proj-chaos))
 ]
 
 .pull-right-narrow[
-- The WP1 estimator: a weighted average of scattered source observations, weights from machine learning
-- Wages predicted for occupations, then checked against wages we kept aside
-- Close to the source year: **R² ≈ 0.6**
-- Fit falls with distance in time: the drift WP1 has to model
-- Done for occupations; WP1 generalises it to **any source**
+**Outcomes across Europe, over time**
+- Living standards
+- Skills
+- Technology in production
+- Value of trade
+- Causes of death
+- Population density ([Counting Houses](#proj-domus))
 ]
 
-.footnote[.small123[Curtis, Johansen, Koschnick & Vedel (2026). [How the WP1 estimator works](#wp1) · [Fit by year](#chaos-validation)]]
+.footnote[.small123[[Proof of concept: predicted vs observed wages](#wp1-poc)]]
 
 ???
-- One slide of evidence that the WP1 estimator works where it has been tried.
-- Size of points: effective observations. The R² by year is in the backup.
-
----
-name: wp2-meme
-# WP2: What is a meme?
-
-.small123[
-> *"If in doubt, remember that something must have been copied. Everything that is passed from person to person in this way is a meme. This includes all the words in your vocabulary, the stories you know, the skills and habits you have picked up from others and the games you like to play. It includes the songs you sing and the rules you obey."* (Blackmore 1999, p. 7)
-]
-
-.center[
-```{r echo=FALSE}
-inline_svg("Figures/meme_venn.svg", "54%")
-```
-]
-
-.footnote[.small123[Blackmore (1999), *The Meme Machine*. Dawkins (1976): a cultural gene. Nunn (2020): beliefs are transmitted and selected.]]
-
-???
-- Head off the everyday reading of the word first: internet memes are one part of a much larger set.
-- "Songs you sing" is the culture box; "rules you obey" is the institutions box.
-- Same page, to say aloud: "Something, some kind of information, some kind of instruction, has become lodged in all those brains so that now we all do the same thing at birthday parties."
-- The meme is the *instruction*, not the expression, and we recognise it because everyone does *the same thing*. That is the definition on the next slide, in plain words.
-- Examples in the figure. Internet: Dancing Baby (1996), "All your base are belong to us" (2001), Rickroll (2007), Doge (2013). Kilroy was here (WWII graffiti) sits just outside: a pre-internet meme that behaves like one. Culture: arches, tunes, catch-phrases (Dawkins 1976, ch. 11: "ways of building arches"). Religion: the Protestant work ethic. Institutions: Grundtvig's folk high schools (Tracks to Modernity), cooperative dairies, free speech (Struensee 1770, WP3).
-- ⚠ REVIEW: added by coach, not yet checked by Christian. All named examples in the figure, and their dates.
-- Image credits (⚠ REVIEW: added by coach). Thumbnails ≤300 px in Figures/memes/, embedded in meme_venn.svg:
-  - Dancing Baby: en.wikipedia.org/wiki/File:DancingBaby.jpg (non-free, fair use)
-  - All your base: en.wikipedia.org/wiki/File:Aybabtu.png (non-free, fair use; Zero Wing, 1991)
-  - Rickroll: en.wikipedia.org/wiki/File:First_seconds_of_Never_Gonna_Give_You_Up.gif (non-free, fair use; first frame)
-  - Doge: commons.wikimedia.org/wiki/File:Doge_meme_example.jpg (CC BY 2.0, likeaduck)
-  - Kilroy: commons.wikimedia.org/wiki/File:Kilroy_Was_Here_-_Washington_DC_WWII_Memorial.jpg (CC BY 2.0, Luis Rubio)
-  - Arches: commons.wikimedia.org/wiki/File:Worcester_cathedral_010.JPG (public domain, Mattana)
-  - Weber 1905 cover: commons.wikimedia.org/wiki/File:Die_protestantische_Ethik_und_der_%27Geist%27_des_Kapitalismus_original_cover.jpg (public domain)
-  - Rødding Højskole: commons.wikimedia.org/wiki/File:R%C3%B8dding_H%C3%B8jskole_202203a.jpg (CC BY-SA 4.0, Hjart)
-  - Hjedding Andelsmejeri, the first cooperative dairy (1882): commons.wikimedia.org/wiki/File:Hjedding_Andelsmejeri_tegning.jpg (public domain)
-  - Struensee, by Jens Juel: commons.wikimedia.org/wiki/File:Struensee_Juel_(cropped).jpg (public domain)
-
----
-name: wp2-darwin
-# WP2: What is a memetic explanation?
-
-.pull-left-wide[
-> An idea is common because it was **good at being copied**, whether or not it was good for us.
-
-- **Darwin takes centre stage:** variation, copying and selection, with the meme as the replicator ([Dawkins 1976](https://en.wikipedia.org/wiki/The_Selfish_Gene))
-- **Neither good nor bad:** memes spread "without regard to whether they are useful, neutral, or positively harmful to us" ([Blackmore 1999](https://www.susanblackmore.uk/the-meme-machine/), p. 7)
-- **Not the usual story in economics:** there, a trait spreads because it serves the people who carry or teach it ([Bisin & Verdier 2001](https://doi.org/10.1006/jeth.2000.2678))
-- **So spread is not benefit:** how far a meme spreads and what it does to living standards must be measured separately
-]
-
-.footnote[.small123[Economics bridge: [Nunn (2020)](https://doi.org/10.3386/w27706), "History as evolution": beliefs and practices are transmitted and selected.]]
-
-???
-- The memetic question is not "who benefits?" but "why did this idea survive?". An idea we observe is one that managed to survive; that is all its presence tells us.
-- No moral verdict: a meme for free speech and a meme for witch hunts are explained the same way. Usefulness is one route to survival, not the only one.
-- Contrast with Cavalli-Sforza & Feldman (1981) and Bisin & Verdier: there the trait serves the host (the carrier's fitness or the parents' preferences). In memetics the replicator has a fitness of its own, which can differ from the host's.
-- This is why the definition on the next slide has two kinds of arrows: replication (spread) and effects (living standards). Economics cares about the second; Darwin explains the first. Keeping them apart is the point.
-- Some memes spread *through* their effect (letters, which spread knowledge). How much is something to estimate, not assume.
-- ⚠ REVIEW: slide added by Claude (2026-11-01) from Christian's brief: "not good nor bad; ideas are there if they manage to survive; Darwinism takes centre stage". Dawkins links to Wikipedia because the OUP page could not be checked.
+- Generalises what applied work already does ad hoc (Autor, Levy & Murnane 2003; Ager et al. 2021; Sobek 1995).
+- The key is knowing the relevance of each source for what you want to predict.
+- CHAOS does this for occupations, through a fixed classifier (OccCANINE) as an intermediate step. WP1 is the general case: any source, weights from text embeddings, debiased with the error structure from Johansen, Koschnick & Vedel (2026).
+- Proof of concept in the appendix: New York 1879 wages, R² ≈ 0.6 near the source year.
 
 ---
 name: wp2-definition
@@ -806,36 +815,28 @@ name: teaching
 - Enrolled in the university's lecturer training programme.
 
 ---
-name: wp1
-# WP1: Measuring what we want from scattered sources
+name: wp1-poc
+# WP1 proof of concept: predicted vs observed wages
 
 .pull-left-wide[
-- We want pairs $(x_i, y_i)$: an exposure and an outcome for a unit
-- Archives rarely give both: one source lists occupations, another lists wages, with no one-to-one match
-- Weight source observations $j$ by their relevance to target $i$:
-$$\hat{y}_i = \sum_{j \in \mathcal{S}} w_{ij}\, y_j$$
-with $w_{ij}$ estimated by machine learning, then debiased
-- Done for occupations: [CHAOS](#proj-chaos) (Curtis, Johansen, Koschnick & Vedel 2026)
-- Next: any source, with LLM text embeddings ([Johansen, Koschnick & Vedel 2026](#ml-bias))
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/chaos_val_scatter_1879.png")
+```
+.small123[*CHAOS predictions against wages observed by the Department of Labor, New York 1879; source year 1880.*]
 ]
 
 .pull-right-narrow[
-**Outcomes across Europe, over time**
-- Living standards
-- Skills
-- Technology in production
-- Value of trade
-- Causes of death
-- Population density ([Counting Houses](#proj-domus))
+- Wages predicted for occupations, then checked against wages we kept aside
+- Close to the source year: **R² ≈ 0.6**
+- Fit falls with distance in time: the drift WP1 has to model
+- Done for occupations; WP1 generalises it to **any source**
 ]
 
-.footnote[.small123[[Back to the proof of concept](#wp1-poc)]]
+.footnote[.small123[Curtis, Johansen, Koschnick & Vedel (2026). [Back to WP1](#wp1) · [Fit by year](#chaos-validation)]]
 
 ???
-- Generalises what applied work already does ad hoc (Autor, Levy & Murnane 2003; Ager et al. 2021; Sobek 1995).
-- The key is knowing the relevance of each source for what you want to predict.
-- So far only for occupations, and only through a fixed classifier (OccCANINE) as an intermediate step. The contribution is the general case.
-- Expected to work: an extension of existing work. The labour is collecting sources.
+- One slide of evidence that the WP1 estimator works where it has been tried.
+- Size of points: effective observations. The R² by year is in the backup.
 
 ---
 name: wp2-embedding
