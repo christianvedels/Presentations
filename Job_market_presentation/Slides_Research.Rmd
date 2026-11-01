@@ -319,10 +319,9 @@ background-color: #07090d
 
 **From what people had to what they thought**
 
-- **My research agenda:** from idea to working paper to publication
-- **Memes that Matter:** three work packages, two proofs of concept
-- **Feasibility:** timeline and budget
-- **Appendix:** budget, teaching, and each project in more detail
+- Research agenda
+- Research project
+- Practicalities
 ]
 
 .overlay-credit[
