@@ -307,10 +307,10 @@ class: middle
 .pull-left-wide[
 **From what people had to what they thought**
 
-- **Other work:** published papers, working papers and work in progress
-- **Memes that Matter:** the research project, in three work packages
-- **Timeline** and obstacles
-- **Backup:** a test for replication, and each project in more detail
+- **My research agenda:** from idea to working paper to publication
+- **Memes that Matter:** the project for the Chair, in three work packages, with two proofs of concept
+- **Feasibility:** timeline and risks
+- **For questions:** budget, teaching, and each project in more detail
 ]
 
 .pull-right-narrow[
@@ -321,28 +321,10 @@ class: middle
 - Roadmap. The backup is only on request; the project slides link into it.
 
 ---
-name: programme
-class: left, middle, hide-logo
-background-image: url(Figures/ai_enlightenment.jpg)
-background-size: contain
-background-color: #07090d
-
-.overlay-box.overlay-narrow[
-## Other work and future agenda
-
-Measuring what people had — and what they thought.
-]
-
-.overlay-credit[
-AI-generated illustration.
-]
-
-???
-LAYER 5 (by minute 60).
-
----
 name: ongoing
-# Other work
+# My research agenda: from idea to publication
+
+.center[◇ **planned** → ○ **in progress** → ◐ **working paper** → ● **published**]
 
 .pull-left[.status[
 **Published**
@@ -368,9 +350,8 @@ name: ongoing
 - ◇ [**Agenda**](#agenda) — what they had and what they thought
 ]]
 
-.footnote[.small123[● published · ◐ working paper · ○ in progress · ◇ planned]]
-
 ???
+- The point of this slide: ideas become working papers become publications. Three published since 2024, three working papers, four in progress.
 - Click any title for its slides in the appendix; each has a link back here.
 
 ---
@@ -432,34 +413,29 @@ knitr::include_graphics("Figures/vision_layers.png")
 - The deliverable is the picture: which ideas circulated where, and how people lived there at the time.
 
 ---
-name: wp1
-# WP1: Measuring what we want from scattered sources
+name: wp1-poc
+# WP1 proof of concept: predicted vs observed wages
 
 .pull-left-wide[
-- We want pairs $(x_i, y_i)$: an exposure and an outcome for a unit
-- Archives rarely give both: one source lists occupations, another lists wages, with no one-to-one match
-- Weight source observations $j$ by their relevance to target $i$:
-$$\hat{y}_i = \sum_{j \in \mathcal{S}} w_{ij}\, y_j$$
-with $w_{ij}$ estimated by machine learning, then debiased
-- Done for occupations: [CHAOS](#proj-chaos) (Curtis, Johansen, Koschnick & Vedel 2026)
-- Next: any source, with LLM text embeddings ([Johansen, Koschnick & Vedel 2026](#ml-bias))
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Figures/chaos_val_scatter_1879.png")
+```
+.small123[*CHAOS predictions against wages observed by the Department of Labor, New York 1879; source year 1880.*]
 ]
 
 .pull-right-narrow[
-**Outcomes across Europe, over time**
-- Living standards
-- Skills
-- Technology in production
-- Value of trade
-- Causes of death
-- Population density ([Counting Houses](#proj-domus))
+- The WP1 estimator: a weighted average of scattered source observations, weights from machine learning
+- Wages predicted for occupations, then checked against wages we kept aside
+- Close to the source year: **R² ≈ 0.6**
+- Fit falls with distance in time: the drift WP1 has to model
+- Done for occupations; WP1 generalises it to **any source**
 ]
 
+.footnote[.small123[Curtis, Johansen, Koschnick & Vedel (2026). [How the WP1 estimator works](#wp1) · [Fit by year](#chaos-validation)]]
+
 ???
-- Generalises what applied work already does ad hoc (Autor, Levy & Murnane 2003; Ager et al. 2021; Sobek 1995).
-- The key is knowing the relevance of each source for what you want to predict.
-- So far only for occupations, and only through a fixed classifier (OccCANINE) as an intermediate step. The contribution is the general case.
-- Expected to work: an extension of existing work. The labour is collecting sources.
+- One slide of evidence that the WP1 estimator works where it has been tried.
+- Size of points: effective observations. The R² by year is in the backup.
 
 ---
 name: wp2-meme
@@ -523,33 +499,6 @@ inline_svg("Figures/meme_dag.svg", "45%")
 - Finding κ is the same as finding the memes: a clustering problem in embedding space with a causal criterion.
 
 ---
-name: wp2-embedding
-# WP2: Memes live in embedding space
-
-.pull-left-wide[
-- Language models map text to vectors
-- Subtracting *male* from *king* and adding *female* lands very close to *queen*: arithmetic on the vectors mirrors meaning
-- Same logic for longer texts in BERT-style models; cosine similarity is the workhorse
-- **A meme is a region:** its expressions cluster together
-- Finding clusters in embedding space is standard (BERTopic, Grootendorst 2022; Top2Vec, Angelov 2020; Aharoni & Goldberg 2020) ⚠
-- New here: the criterion is **causal**, not semantic
-]
-
-.pull-right-narrow[
-```{r echo=FALSE}
-inline_svg("Figures/kingqueen.svg")
-```
-.small123[*Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
-]
-
-.footnote[.small123[Johansen, Koschnick & Vedel (2026), [ML Bias in EH](#ml-bias); Mikolov, Yih & Zweig (2013) ⚠. [More on clustering](#wp2-clustering)]]
-
-???
-- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
-- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
-- ⚠ REVIEW: added by coach, not yet checked by Christian. The clustering references (Grootendorst 2022; Angelov 2020; Aharoni & Goldberg 2020) and Mikolov, Yih & Zweig (2013).
-
----
 name: wp2-claims
 # WP2: Two claims
 
@@ -573,7 +522,7 @@ inline_svg("Figures/meme_pipeline.svg", "88%")
 .small123[*Curiosity:* could the models find memes on their own? Search for embeddings that reproduce themselves.]
 ]
 
-.footnote[.small123[[A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
+.footnote[.small123[[Memes in embedding space](#wp2-embedding) · [A test for replication](#wp2-weismann) · [A test for effects](#wp2-invariance)]]
 
 ???
 - Claim 1 is why it is worth doing: measure the memes and you measure what shapes society.
@@ -589,31 +538,35 @@ Q&A prep (not for the slide):
 - Spread is not benefit: memes spread regardless of usefulness (Blackmore p. 7). Some replicate *through* their effect (letters); how much is something to estimate.
 
 ---
-name: data
-# The data
-### Outcomes, validation and historical expressions
+name: wp2-poc
+# WP2 .red[proof of concept]: memes in patents, 1700–1852
 
-.pull-left[
-**Expressions** (WP2)
-- Paintings (Gorin, Heblich & Zylberberg 2025)
-- Newspaper clippings (Dell et al. 2023)
-- Early scientific papers (Koschnick 2025)
-
-**Validation** (WP2)
-- Concepts described in encyclopaedias
+.pull-left-wide[
+```{r echo=FALSE, out.width="88%"}
+knitr::include_graphics("Figures/poc_full_shares_slide.png")
+```
 ]
 
-.pull-right[
-**Outcomes** (WP1), estimated as $\hat{y}_i = \sum_j w_{ij} y_j$ from scattered archives
-- Living standards, skills, technology in production, value of trade, causes of death, population density, urban development
-- Builds on [CHAOS](#proj-chaos) and [Counting Houses](#proj-domus)
+.pull-right-narrow[
+**Data:** full text of **13,008** patents (Chen et al.), linked to patent quality
+
+**What we see**
+- Steam, railways, telegraph rise with the Industrial Revolution
+- Memes predict quality out of sample: R² **0.098** vs **0.013** for 21 industries
+- **36%** of passages paraphrase an earlier patent by another inventor
 ]
 
-> *We are in an age where archives are readily available.*
+.footnote[.small123[Share of passages per meme, by period; drawing descriptions and legal boilerplate removed. Proof of concept only: details deliberately left out. [Data sources for the project](#data)]]
 
 ???
-- Lead-in, from the application: "Estimation needs three kinds of source: outcomes, validation, and large quantities of historical expressions."
-- The WP3 networks are on the WP3 slide.
+- Proof of concept, not a result. It shows the pipeline runs end to end on real historical text: 13,008 patents, 205,532 passages, 30 memes, boilerplate as a separate class.
+- Data: full text of English patent specifications from 300 Years of British Patents (Chen et al.), linked to patent quality (Woodcroft; Nuvolari) and metadata (Billington et al.), which came via Julius Koschnick.
+- Paraphrase: cosine ≥ 0.8 to a passage in an earlier patent by a different inventor; median lag 7 years, 18% reach back 20+ years.
+- Quality = WRI, BCI, log Woodcroft references and eminence; each residualised on 5-year cohort and log specification length, winsorised at ±3 SD; 5-fold cross-validation. Specification length alone gives 1.3%.
+- Memes differ in "fitness": later close paraphrases by other inventors within 15 years, per passage, run from 0.96 (lace and net machines), 0.88 (boilers) and 0.83 (steam engine) down to 0.09 (chemistry, glass).
+- Eminence (named in a history of technology): electricity/telegraph +0.30 SD, steam engine +0.15, printing +0.14, relative to patents of the same length. Do NOT quote +1.04 for steam; that was a superseded run.
+- Clusters are stable across runs (ARI 0.31, against 0.14 for LDA).
+- If asked: descent with modification is not detected at the meme level yet; some clusters are a drawing-description register rather than ideas; the encoder is trained on modern English. That is why it is a proof of concept.
 
 ---
 name: wp3
@@ -644,7 +597,7 @@ Newspaper archive from **1666**: plenty of data before and after.
 
 ---
 name: project-timeline
-# Timeline and obstacles
+# Feasibility: timeline and risks
 
 .pull-left-wide[
 | Year | Milestones |
@@ -656,13 +609,15 @@ name: project-timeline
 ]
 
 .pull-right-narrow[
-**Obstacles**
-- **WP1:** an extension of existing work
-- **WP2:** the hard part: estimation and data collection
-- **WP3:** volume of work, not concept
+**Risks, ranked**
+1. **WP2** is the bottleneck: the method is the bet. Fallback: one corpus, one outcome (patents, running now)
+2. **WP1** is an extension of CHAOS
+3. **WP3** is volume of work, not concept; the Struensee case needs re-OCR of old newspapers
 
-**Dissemination:** open data and models; in this field, open tooling *is* dissemination
+**Dissemination:** open data and tools
 ]
+
+.footnote[.small123[For questions: [Budget](#budget) · [Teaching](#teaching)]]
 
 ???
 - Each WP gives one or two papers, general-interest and leading field journals.
@@ -689,10 +644,154 @@ class: middle
 - End of the main talk. The backup follows; the project slides link into it.
 
 ---
+name: divider-qa
+class: inverse, middle, center
+
+# For questions
+## Budget and teaching
+
+---
+name: budget
+# Feasibility: budget
+
+.pull-left-wide[
+| Item | Basis | Cost |
+|:---|:---|---:|
+| PhD student, 3 years | 36 months × €3,239 | €116,600 |
+| Research assistants | data collection and validation | €35,000 |
+| LLM API, "tokens to burn" | ≈ €4,000 a year × 5 | €20,000 |
+| GPU | Jean Zay free; cloud top-up; workstation | €12,000 |
+| Running costs | conferences, data access, re-OCR | €16,400 |
+| **Total = start-up package** | | **€200,000** |
+]
+
+.pull-right-narrow[
+**Why this mix**
+- One PhD on the core of WP2
+- Agents and student assistants do the archival work a postdoc would
+- National supercomputer hours are free; the cloud is for bursts
+- A postdoc comes with the next grant: ANR JCJC, then ERC
+]
+
+.footnote[.small123[Sources: PhD: 2026 minimum *contrat doctoral* €2,300 gross, employer cost from Univ. Lille (charge rate 2023). Tokens: Claude Sonnet 5.5 API, $2/$10 per million tokens, 50% off in batch. GPU: GENCI dynamic access; Scaleway/OVHcloud H100 ≈ €3/hour. Package: LEDa Chair posting. [Back to the timeline](#project-timeline)]]
+
+???
+- The posting mentions a PhD and a two-year postdoc. At national grids the two together cost about €214,000, more than the package, so I fund one PhD and put the rest into assistants, tokens and compute. A postdoc is what the next grant pays for.
+- Research assistants and running costs are my estimates; Dauphine's HR will price the PhD contract exactly.
+- Tokens: at batch prices, a billion and a half input tokens a year is about €2,000; the rest is agents and coding.
+- If asked about the postdoc: a two-year postdoc is €97,400 at the ENS Lyon 2025 grid (€2,900 gross, 40% charges).
+
+---
+name: teaching
+# Teaching
+
+.pull-left[
+**Experience, since 2017**
+- **Statistics:** course coordinator (2026); open-source material
+- **NLP** for the Data Science MSc: News and Market Sentiment Analysis (2023–25); open source
+- **Machine learning for economic history:** HEDG PhD summer school, with Torben Johansen (2024–26)
+- Economic History of Europe summer school (Copenhagen); microeconomics; business history
+- **Supervision:** PhD co-supervisor (Oslo); 8 master's theses in Economics, Mathematical Economics and Data Science
+]
+
+.pull-right[
+**At Dauphine**
+- Introductory to advanced statistics and machine learning, including NLP
+- Economic history, economic geography and development; introductory microeconomics
+- A crash course in machine learning for economics, as at HEDG
+- Open materials and many small exercises: learning needs friction with the material
+]
+
+.footnote[.small123[[Back to the timeline](#project-timeline)]]
+
+???
+- From the application's teaching statement. High expectations with compassion; many small exercises.
+- Enrolled in the university's lecturer training programme.
+
+---
 name: divider-backup
 class: inverse, middle, center
 
 # Backup
+
+---
+name: wp1
+# WP1: Measuring what we want from scattered sources
+
+.pull-left-wide[
+- We want pairs $(x_i, y_i)$: an exposure and an outcome for a unit
+- Archives rarely give both: one source lists occupations, another lists wages, with no one-to-one match
+- Weight source observations $j$ by their relevance to target $i$:
+$$\hat{y}_i = \sum_{j \in \mathcal{S}} w_{ij}\, y_j$$
+with $w_{ij}$ estimated by machine learning, then debiased
+- Done for occupations: [CHAOS](#proj-chaos) (Curtis, Johansen, Koschnick & Vedel 2026)
+- Next: any source, with LLM text embeddings ([Johansen, Koschnick & Vedel 2026](#ml-bias))
+]
+
+.pull-right-narrow[
+**Outcomes across Europe, over time**
+- Living standards
+- Skills
+- Technology in production
+- Value of trade
+- Causes of death
+- Population density ([Counting Houses](#proj-domus))
+]
+
+.footnote[.small123[[Back to the proof of concept](#wp1-poc)]]
+
+???
+- Generalises what applied work already does ad hoc (Autor, Levy & Murnane 2003; Ager et al. 2021; Sobek 1995).
+- The key is knowing the relevance of each source for what you want to predict.
+- So far only for occupations, and only through a fixed classifier (OccCANINE) as an intermediate step. The contribution is the general case.
+- Expected to work: an extension of existing work. The labour is collecting sources.
+
+---
+name: wp2-embedding
+# WP2: Memes live in embedding space
+
+.pull-left-wide[
+- Language models map text to vectors
+- Subtracting *male* from *king* and adding *female* lands very close to *queen*: arithmetic on the vectors mirrors meaning
+- Same logic for longer texts in BERT-style models; cosine similarity is the workhorse
+- **A meme is a region:** its expressions cluster together
+- Finding clusters in embedding space is standard (BERTopic, Grootendorst 2022; Top2Vec, Angelov 2020; Aharoni & Goldberg 2020) ⚠
+- New here: the criterion is **causal**, not semantic
+]
+
+.pull-right-narrow[
+```{r echo=FALSE}
+inline_svg("Figures/kingqueen.svg")
+```
+.small123[*Stylised: real spaces have hundreds of dimensions (768 per token in BERT-base).*]
+]
+
+.footnote[.small123[Johansen, Koschnick & Vedel (2026), [ML Bias in EH](#ml-bias); Mikolov, Yih & Zweig (2013) ⚠. [More on clustering](#wp2-clustering) · [Back to the two claims](#wp2-claims)]]
+
+???
+- Make the region intuitive: if meaning is geometry, then a set of expressions that do the same thing is a place in the space.
+- Clustering by similarity gives topics. We want clusters defined by κ: same effects on 𝒴. Semantic neighbours are candidates, not memes.
+- ⚠ REVIEW: added by coach, not yet checked by Christian. The clustering references (Grootendorst 2022; Angelov 2020; Aharoni & Goldberg 2020) and Mikolov, Yih & Zweig (2013).
+
+---
+name: programme
+class: left, middle, hide-logo
+background-image: url(Figures/ai_enlightenment.jpg)
+background-size: contain
+background-color: #07090d
+
+.overlay-box.overlay-narrow[
+## Other work and future agenda
+
+Measuring what people had — and what they thought.
+]
+
+.overlay-credit[
+AI-generated illustration.
+]
+
+???
+LAYER 5 (by minute 60).
 
 ---
 name: wp2-weismann
@@ -759,6 +858,35 @@ name: wp2-clustering
 ???
 - ⚠ REVIEW: added by coach, not yet checked by Christian. Every reference on this slide.
 - The gap these leave: they cluster by similarity. WP2 clusters by effect (κ), with replication as the test.
+
+---
+name: data
+# The data
+### Outcomes, validation and historical expressions
+
+.pull-left[
+**Expressions** (WP2)
+- Paintings (Gorin, Heblich & Zylberberg 2025)
+- Newspaper clippings (Dell et al. 2023)
+- Early scientific papers (Koschnick 2025)
+
+**Validation** (WP2)
+- Concepts described in encyclopaedias
+]
+
+.pull-right[
+**Outcomes** (WP1), estimated as $\hat{y}_i = \sum_j w_{ij} y_j$ from scattered archives
+- Living standards, skills, technology in production, value of trade, causes of death, population density, urban development
+- Builds on [CHAOS](#proj-chaos) and [Counting Houses](#proj-domus)
+]
+
+> *We are in an age where archives are readily available.*
+
+.footnote[.small123[[Back to the proof of concept](#wp2-poc)]]
+
+???
+- Lead-in, from the application: "Estimation needs three kinds of source: outcomes, validation, and large quantities of historical expressions."
+- The WP3 networks are on the WP3 slide.
 
 ---
 name: occcanine
