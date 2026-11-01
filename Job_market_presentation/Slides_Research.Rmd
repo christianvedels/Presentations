@@ -74,6 +74,11 @@ inline_svg <- function(path, width = "100%") {
   text-indent: -1.1em;
 }
 
+/* pillar colours, as in Figures/pillars_research.svg */
+.pq, .pq a, .pq strong { color: #2c5c34; }
+.pt, .pt a, .pt strong { color: #b33d3d; }
+.roof, .roof a, .roof strong { color: #1a1a1a; }
+
 /* revealed brace with a remark, to the right of a centred figure */
 .brace-note {
   position: absolute;
@@ -279,6 +284,10 @@ inline_svg <- function(path, width = "100%") {
 .overlay-roadmap ul {
   padding-left: 1.1em;
 }
+.overlay-corner {
+  margin-left: -2.5em;
+  margin-top: -0.9em;
+}
 .remark-slide-content.bottom .overlay-box {
   margin-bottom: 1.8em;
 }
@@ -345,44 +354,57 @@ knitr::include_graphics("Figures/pillars_research.svg")
 
 ---
 name: ongoing
-# My research agenda: from idea to publication
+# Selected publications and works in progress
 
-.center[◇ **planned** → ○ **in progress** → ◐ **working paper** → ● **published**]
+.center[.pq[■ **Big questions**] &nbsp; .pt[■ **Machine learning tools**] &nbsp;&nbsp;|&nbsp;&nbsp; ◇ planned → ○ in progress → ◐ working paper → ● published]
 
 .pull-left[.status[
 **Published**
-- ● [**Holy Cows and Spilled Milk**](#proj-holycows) — Weber, missions and firm productivity (*J. Development Economics*, 2026)
-- ● [**Adaptability, Diversification and Energy Shocks**](#proj-energy) — peat, coal and creameries (*Energy Economics*, 2024)
-- ● [**Tracks to Modernity**](#proj-tracks) — *European Review of Economic History*, forthcoming
+- ● .pq[[**Holy Cows and Spilled Milk**](#proj-holycows)] — Weber, missions and firm productivity (*J. Development Economics*, 2026)
+- ● .pq[[**Adaptability, Diversification and Energy Shocks**](#proj-energy)] — peat, coal and creameries (*Energy Economics*, 2024)
+- ● .pq[[**Tracks to Modernity**](#proj-tracks)] — *European Review of Economic History*, forthcoming
 
 **Working papers**
-- ◐ [**OccCANINE**](#occcanine) — R&R *Explorations in Economic History*
-- ◐ [**ML bias in EH**](#ml-bias)
-- ◐ [**Physical Memories and the Far Right**](#proj-farright)
+- ◐ .pt[[**OccCANINE**](#occcanine)] — R&R *Explorations in Economic History*
+- ◐ .pt[[**ML bias in EH**](#ml-bias)]
+- ◐ .pq[[**Physical Memories and the Far Right**](#proj-farright)]
 ]]
 
 .pull-right[.status[
 **In progress**
-- ○ [**CHAOS**](#proj-chaos) — occupational incomes from scattered evidence
-- ○ [**Counting Houses**](#proj-domus) — population from historical town maps
-- ○ [**Copenhagen Tax Books**](#proj-copenhagen) — incomes, 1862–1918
-- ○ **Occupations Past** — [occupationspast.org](https://www.occupationspast.org/)
+- ○ .pt[[**CHAOS**](#proj-chaos)] — occupational incomes from scattered evidence
+- ○ .pt[[**Counting Houses**](#proj-domus)] — population from historical town maps
+- ○ .pt[[**Copenhagen Tax Books**](#proj-copenhagen)] — incomes, 1862–1918
+- ○ .pt[**Occupations Past**] — [occupationspast.org](https://www.occupationspast.org/)
 
 **Plans**
-- ◇ [**Trade Liberalisations**](#proj-freedom) — freedom of trade and the Danish economy (funded)
-- ◇ [**Agenda**](#agenda) — what they had and what they thought
+- ◇ .pq[[**Trade Liberalisations**](#proj-freedom)] — freedom of trade and the Danish economy (funded)
+- ◇ .roof[[**Agenda**](#agenda)] — what they had and what they thought
 ]]
 
 ???
+- Colours follow the two pillars: green = big questions, red = machine learning tools; Memes that Matter (Agenda) sits on top of both. Copenhagen Tax Books is coloured as a measurement project.
 - The point of this slide: ideas become working papers become publications. Three published since 2024, three working papers, four in progress.
 - Click any title for its slides in the appendix; each has a link back here.
 
 ---
 name: divider-project
-class: inverse, middle, center
+class: left, top, hide-logo
+background-image: url(Figures/smk_abildgaard_schools.jpg)
+background-size: contain
+background-color: #000000
 
+.overlay-box.overlay-corner[
 # Memes that Matter
 ## The research project
+]
+
+.overlay-credit[
+Nicolai Abildgaard, *Oprettelsen af skoler. Allegori* (1779–82). SMK, KMS1963a, public domain.
+]
+
+???
+- Abildgaard's allegory of founding schools: the Danish Enlightenment spreading ideas on purpose. The project asks which of those ideas mattered.
 
 ---
 name: origins
