@@ -271,6 +271,14 @@ inline_svg <- function(path, width = "100%") {
   max-width: 9em;
   margin-left: -1.5em;
 }
+.overlay-roadmap {
+  max-width: 15em;
+  margin-left: -1.5em;
+  font-size: 0.8em;
+}
+.overlay-roadmap ul {
+  padding-left: 1.1em;
+}
 .remark-slide-content.bottom .overlay-box {
   margin-bottom: 1.8em;
 }
@@ -306,10 +314,15 @@ background-image: url(Figures/ai_enlightenment.jpg)
 background-size: contain
 background-color: #07090d
 
-.overlay-box.overlay-narrow[
-## Other work and future agenda
+.overlay-box.overlay-roadmap[
+## This talk
 
-Measuring what people had — and what they thought.
+**From what people had to what they thought**
+
+- **My research agenda:** from idea to working paper to publication
+- **Memes that Matter:** three work packages, two proofs of concept
+- **Feasibility:** timeline and budget
+- **Appendix:** budget, teaching, and each project in more detail
 ]
 
 .overlay-credit[
@@ -317,28 +330,19 @@ AI-generated illustration.
 ]
 
 ???
-- Opening image: the agenda in one line. Measuring what people had, and what they thought. Then straight into the papers.
+- Opening image and roadmap: from what people had to what they thought. Research agenda, then the project, then feasibility. The appendix is for questions.
 
 ---
-name: this-talk
+name: pillars
 class: middle
-# This talk
+# Two pillars
 
-.pull-left-wide[
-**From what people had to what they thought**
-
-- **My research agenda:** from idea to working paper to publication
-- **Memes that Matter:** the project for the Chair, in three work packages, with two proofs of concept
-- **Feasibility:** timeline and risks
-- **For questions:** budget, teaching, and each project in more detail
-]
-
-.pull-right-narrow[
-![Trees](Figures/Trees1.jpg)
-]
+```{r echo=FALSE, out.width="88%", fig.align='center'}
+knitr::include_graphics("Figures/pillars_research.svg")
+```
 
 ???
-- Roadmap. The backup is only on request; the project slides link into it.
+- Applications answer the big question; the tools make them possible. Memes that Matter sits on top of both.
 
 ---
 name: ongoing
@@ -382,13 +386,35 @@ class: inverse, middle, center
 ## The research project
 
 ---
+name: origins
+# Why do some places prosper?
+
+| | Geography | Institutions | Culture |
+|:---|:---|:---|:---|
+| **Classic answers** | Diamond (1997); Gallup, Sachs & Mellinger (1999); Henderson et al. (2018) | Acemoglu, Johnson & Robinson (2001); Rodrik, Subramanian & Trebbi (2004); Dell (2010) | Weber (1905); Guiso, Sapienza & Zingales (2006); Becker & Woessmann (2009) |
+| **My work** | **A Perfect Storm:** a storm moved first-nature geography | [Tracks to Modernity](#proj-tracks): railways spread folk high schools and assembly houses | [Holy Cows and Spilled Milk](#proj-holycows): religiosity cost creameries 8% of dividends |
+
+**My approach:** a clean shock to one fundamental, traced into the others.
+
+> All three channels run through **ideas**: what people knew, believed and copied. This project measures them.
+
+???
+- Geography is entangled with the institutions and culture that grew on top of it (A Perfect Storm). My papers each use a clean shock to one fundamental and trace it into the others; that pre-empts "isn't this all just Denmark?".
+- Culture and institutions both live as ideas in people's heads; that is where memes come in.
+- More if asked. Geography: Davis & Weinstein (2002, AER); Bleakley & Lin (2012, QJE). Institutions: Acemoglu, Naidu, Restrepo & Robinson (2019, JPE); Glaeser et al. (2004, JEG) as the human-capital counterpoint; Fukuyama (2011); Boberg-Fazlic et al. (2023, JEG) on getting to Denmark. Culture: Alesina & Giuliano (2015, JEL); Nunn (2020, Handbook of Historical Economics); Mokyr (2016); Andersen, Bentzen, Dalgaard & Sharp (2017, EJ). Umbrella: Spolaore & Wacziarg (2013, JEL).
+- My other papers on the fundamentals: Energy Shocks (Energy Economics 2024; peat as a first-nature lottery); Physical Memories and the Far Right (EHES WP 295); Assimilate for God (EHES WP 253).
+- Status: Tracks to Modernity accepted at EREH on 27 Oct 2026 ("Railroads, Growth, and Civic Institutions in Denmark"); A Perfect Storm under review at JEEA (confirm).
+
+---
 name: project-question
 # The question: which ideas made Europe prosper?
 
 .pull-left-wide[
 We know that **ideas matter** for prosperity:
-- Societies that shared useful knowledge innovated more (Cinnirella, Hornung & Koschnick 2025)
-- Towns that got the printing press grew faster (Dittmar 2011)
+- A European "market for ideas" came before the Industrial Revolution ([Mokyr 2016](https://doi.org/10.2307/j.ctt1wf4dft))
+- Words, not capital: new respect for merchants and innovators made the modern economy ([McCloskey 2010](https://doi.org/10.7208/chicago/9780226556666.001.0001))
+- Societies that shared useful knowledge innovated more ([Cinnirella, Hornung & Koschnick 2025](https://doi.org/10.1093/ej/ueae115))
+- Towns that got the printing press grew faster ([Dittmar 2011](https://doi.org/10.1093/qje/qjr035))
 ]
 
 --
@@ -407,6 +433,8 @@ But **which** ideas, and how did they affect **living standards**?
 ???
 - The research statement opens here. The case-study historian's question, asked at scale.
 - Machine learning on large text corpora to measure the ideas; new data on living standards to measure the outcomes.
+- Mokyr and McCloskey make the case in words; Cinnirella et al. and Dittmar measure it. Closest in method, if asked: Almelhem, Iyigun, Kennedy & Rubin (2023, IZA DP 16674) measure belief in progress in 173,031 English works printed 1500–1900. Koschnick (2025) tests Mokyr's knowledge–growth feedback loop with embeddings.
+- ⚠ REVIEW: citations and links added by Claude (2026-11-01); DOIs checked against Crossref.
 
 ---
 name: agenda
@@ -491,6 +519,29 @@ inline_svg("Figures/meme_venn.svg", "54%")
   - Rødding Højskole: commons.wikimedia.org/wiki/File:R%C3%B8dding_H%C3%B8jskole_202203a.jpg (CC BY-SA 4.0, Hjart)
   - Hjedding Andelsmejeri, the first cooperative dairy (1882): commons.wikimedia.org/wiki/File:Hjedding_Andelsmejeri_tegning.jpg (public domain)
   - Struensee, by Jens Juel: commons.wikimedia.org/wiki/File:Struensee_Juel_(cropped).jpg (public domain)
+
+---
+name: wp2-darwin
+# WP2: What is a memetic explanation?
+
+.pull-left-wide[
+> An idea is common because it was **good at being copied**, whether or not it was good for us.
+
+- **Darwin takes centre stage:** variation, copying and selection, with the meme as the replicator ([Dawkins 1976](https://en.wikipedia.org/wiki/The_Selfish_Gene))
+- **Neither good nor bad:** memes spread "without regard to whether they are useful, neutral, or positively harmful to us" ([Blackmore 1999](https://www.susanblackmore.uk/the-meme-machine/), p. 7)
+- **Not the usual story in economics:** there, a trait spreads because it serves the people who carry or teach it ([Bisin & Verdier 2001](https://doi.org/10.1006/jeth.2000.2678))
+- **So spread is not benefit:** how far a meme spreads and what it does to living standards must be measured separately
+]
+
+.footnote[.small123[Economics bridge: [Nunn (2020)](https://doi.org/10.3386/w27706), "History as evolution": beliefs and practices are transmitted and selected.]]
+
+???
+- The memetic question is not "who benefits?" but "why did this idea survive?". An idea we observe is one that managed to survive; that is all its presence tells us.
+- No moral verdict: a meme for free speech and a meme for witch hunts are explained the same way. Usefulness is one route to survival, not the only one.
+- Contrast with Cavalli-Sforza & Feldman (1981) and Bisin & Verdier: there the trait serves the host (the carrier's fitness or the parents' preferences). In memetics the replicator has a fitness of its own, which can differ from the host's.
+- This is why the definition on the next slide has two kinds of arrows: replication (spread) and effects (living standards). Economics cares about the second; Darwin explains the first. Keeping them apart is the point.
+- Some memes spread *through* their effect (letters, which spread knowledge). How much is something to estimate, not assume.
+- ⚠ REVIEW: slide added by Claude (2026-11-01) from Christian's brief: "not good nor bad; ideas are there if they manage to survive; Darwinism takes centre stage". Dawkins links to Wikipedia because the OUP page could not be checked.
 
 ---
 name: wp2-definition
@@ -617,7 +668,7 @@ Newspaper archive from **1666**: plenty of data before and after.
 
 ---
 name: project-timeline
-# Feasibility: timeline and risks
+# Feasibility: timeline and budget
 
 .pull-left-wide[
 | Year | Milestones |
@@ -626,22 +677,26 @@ name: project-timeline
 | **2** | Database of outcomes across Europe; WP1 submitted; early WP2 results; WP3 networks assembled |
 | **3** | WP2 submitted; preliminary WP3 results; start ERC application |
 | **4** | WP3 submitted; ERC proposal submitted |
+
+**Outputs:** one or two papers per WP; an open library; the *Memes that Matter* database, as open data
 ]
 
 .pull-right-narrow[
-**Risks, ranked**
-1. **WP2** is the bottleneck: the method is the bet. Fallback: one corpus, one outcome (patents, running now)
-2. **WP1** is an extension of CHAOS
-3. **WP3** is volume of work, not concept; the Struensee case needs re-OCR of old newspapers
+**Budget considerations**
+- €200,000 start-up package
+- One PhD student is the largest item (≈ €117,000)
+- Language-model tokens and cloud GPUs (≈ €32,000); national supercomputer hours are free
+- Student assistants for archival work (≈ €35,000)
 
-**Dissemination:** open data and tools
+.small123[*Based on my impression of costs in France; to be adapted with Dauphine.*]
 ]
 
-.footnote[.small123[For questions: [Budget](#budget) · [Teaching](#teaching)]]
+.footnote[.small123[Appendix: [Full budget](#budget) · [Teaching](#teaching)]]
 
 ???
 - Each WP gives one or two papers, general-interest and leading field journals.
 - Public good: the database, a website and short videos. Maps of income and ideas need no training to read.
+- Budget: one PhD, tokens and compute, assistants; running costs make up the rest. No postdoc in the package; a postdoc comes with the next grant. These are my impressions of French costs, to be adapted with Dauphine's HR.
 
 ---
 name: thank-you
@@ -667,8 +722,7 @@ class: middle
 name: divider-qa
 class: inverse, middle, center
 
-# For questions
-## Budget and teaching
+# Appendix
 
 ---
 name: budget
@@ -691,6 +745,8 @@ name: budget
 - Agents and student assistants do the archival work a postdoc would
 - National supercomputer hours are free; the cloud is for bursts
 - A postdoc comes with the next grant: ANR JCJC, then ERC
+
+.small123[*Based on my impression of costs in France; to be adapted with Dauphine.*]
 ]
 
 .footnote[.small123[Sources: PhD: 2026 minimum *contrat doctoral* €2,300 gross, employer cost from Univ. Lille (charge rate 2023). Tokens: Claude Sonnet 5.5 API, $2/$10 per million tokens, 50% off in batch. GPU: GENCI dynamic access; Scaleway/OVHcloud H100 ≈ €3/hour. Package: LEDa Chair posting. [Back to the timeline](#project-timeline)]]
@@ -727,12 +783,6 @@ name: teaching
 ???
 - From the application's teaching statement. High expectations with compassion; many small exercises.
 - Enrolled in the university's lecturer training programme.
-
----
-name: divider-backup
-class: inverse, middle, center
-
-# Backup
 
 ---
 name: wp1
